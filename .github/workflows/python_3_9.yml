@@ -63,12 +63,11 @@ jobs:
         key: ${{ runner.os }}-pt-${{ hashFiles('python/rikai/BUILD.pants') }}
     - name: sbt install
       run: |
+        echo "SPARK_VERSION=${{matrix.spark-version}}" >> $GITHUB_ENV
+        export SPARK_VERSION=${{matrix.spark-version}}
         sbt publishLocal
       env:
         SPARK_VERSION: "3.3.1"
-    - name: Start docker-compose
-      run: |
-        docker-compose -f .github/docker-compose.yml up -d
     - name: apt update and install
       run: |
         sudo apt update
@@ -81,23 +80,3 @@ jobs:
         ./pants test ::
       env:
         SPARK_LOCAL_IP: "127.0.0.1"
-        TEST_MLFLOW_TRACKING_URI: "http://localhost:15000"
-  mac-build:
-    runs-on: macos-12
-    timeout-minutes: 10
-    steps:
-      - uses: actions/checkout@v2
-      - name: Setup Scala
-        uses: olafurpg/setup-scala@v10
-        with:
-          java-version: adopt@1.11
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.9
-      - name: Test Pip install
-        working-directory: python
-        run: |
-          python -m pip install -q wheel
-          python setup.py bdist_wheel
-          python -m pip install $(ls dist/rikai*.whl)
