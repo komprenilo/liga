@@ -19,7 +19,6 @@ jobs:
     - uses: actions/checkout@v2
       with:
         fetch-depth: 0
-        lfs: true
     - name: Setup Scala
       uses: olafurpg/setup-scala@v10
       with:
