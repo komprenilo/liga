@@ -1,0 +1,5 @@
+#!/bin/bash
+
+./pants update-build-files
+
+./pants fmt ::
