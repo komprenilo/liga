@@ -29,10 +29,6 @@ python_requirement(
         "torch>=1.8.1,<1.13.0",
         "torchvision>=0.10.0",
 
-        # Tensorflow
-        "tensorflow>=2.5.0",
-        "tensorflow_hub",
-
         # Scikit Learn
         "scikit-learn",
 
