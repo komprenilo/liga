@@ -31,8 +31,6 @@ from rikai.io import open_uri
 __all__ = [
     "ToNumpy",
     "Asset",
-    "Displayable",
-    "Drawable",
     "ToDict",
     "Pretrained",
 ]
@@ -60,34 +58,6 @@ class ToDict(ABC):
     @abstractmethod
     def to_dict(self) -> dict:
         pass
-
-
-class Displayable(ABC):
-    """Mixin for notebook viz"""
-
-    @abstractmethod
-    def display(self, **kwargs) -> "IPython.display.DisplayObject":
-        """Return an IPython.display.DisplayObject"""
-
-
-class Drawable(ABC):
-    """Mixin for a class that is drawable"""
-
-    @abstractmethod
-    def _render(self, render: "rikai.viz.Renderer", **kwargs) -> None:
-        """Render the object using render."""
-
-    def __matmul__(self, style: Union[dict, "rikai.viz.Style"]) -> Drawable:
-        from rikai.viz import Style
-
-        if not isinstance(style, (Mapping, Style)):
-            raise ValueError(
-                f"Must decorate drawable with a dict or style object"
-                " but got {style}"
-            )
-        if isinstance(style, dict):
-            style = Style(**style)
-        return style(self)
 
 
 class Asset(ABC):

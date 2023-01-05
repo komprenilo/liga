@@ -1,0 +1,31 @@
+python_sources(name = "sources",
+    sources=["**/*.py"],
+    overrides={
+        (
+            "spark/sql/generated/*.py",
+        ): {"skip_black": True},
+    },
+    resolve=parametrize("default", "lab"))
+
+python_requirement(
+    name="requirements",
+    requirements=[
+        # Apache Spark
+        "pyspark==3.3.1",
+        "antlr4-python3-runtime==4.11.1",
+        "numpy",
+        "pyarrow>=6.0",
+        "pandas",
+        "py4j",
+
+        # MLflow
+        "mlflow==1.26.1",
+
+        # MISC
+        "jsonschema",
+        "pyyaml",
+        "requests",
+        "fsspec==2022.1.0",
+    ],
+    resolve=parametrize("default", "lab")
+)

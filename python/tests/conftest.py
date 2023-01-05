@@ -26,182 +26,16 @@ warnings.filterwarnings("ignore", category=DeprecationWarning)  # noqa
 # Third Party
 import mlflow
 import pytest
-import torch
-import torchvision
 from mlflow.tracking import MlflowClient
 from pyspark.sql import Row, SparkSession
 
 import rikai
-from rikai.contrib.torch.detections import OUTPUT_SCHEMA
 from rikai.spark.sql.codegen.mlflow_registry import CONF_MLFLOW_TRACKING_URI
 from rikai.spark.utils import get_default_jar_version, init_spark_session
-from rikai.types.vision import Image
-
-
-@pytest.fixture(scope="session")
-def two_flickr_images() -> list:
-    return [
-        Image.read(uri)
-        for uri in [
-            "http://farm2.staticflickr.com/1129/4726871278_4dd241a03a_z.jpg",
-            "http://farm4.staticflickr.com/3726/9457732891_87c6512b62_z.jpg",
-        ]
-    ]
-
-
-@pytest.fixture(scope="session")
-def two_flickr_rows(two_flickr_images: list) -> list:
-    return [Row(image=image) for image in two_flickr_images]
-
-
-@pytest.fixture(scope="session")
-def mlflow_client_with_tracking_uri(
-    tmp_path_factory, resnet_model_uri: str
-) -> (MlflowClient, str):
-    tmp_path = tmp_path_factory.mktemp("mlflow")
-    tmp_path.mkdir(parents=True, exist_ok=True)
-    tracking_uri = "sqlite:///" + str(tmp_path / "tracking.db")
-    mlflow.set_tracking_uri(tracking_uri)
-    experiment_id = mlflow.create_experiment("rikai-test", str(tmp_path))
-    # simpliest
-    with mlflow.start_run(experiment_id=experiment_id):
-        mlflow.log_param("optimizer", "Adam")
-        # Fake training loop
-        model = torch.load(resnet_model_uri)
-        artifact_path = "model"
-        rikai.mlflow.pytorch.log_model(
-            model,  # same as vanilla mlflow
-            artifact_path,  # same as vanilla mlflow
-            OUTPUT_SCHEMA,
-            model_type="resnet",
-            registered_model_name="rikai-test",  # same as vanilla mlflow
-        )
-
-    # vanilla mlflow
-    with mlflow.start_run():
-        mlflow.pytorch.log_model(
-            model, artifact_path, registered_model_name="vanilla-mlflow"
-        )
-        mlflow.set_tags(
-            {
-                "rikai.model.flavor": "pytorch",
-                "rikai.output.schema": OUTPUT_SCHEMA,
-            }
-        )
-
-    return mlflow.tracking.MlflowClient(tracking_uri), tracking_uri
-
 
 @pytest.fixture(scope="session")
 def mlflow_client(mlflow_client_with_tracking_uri):
     return mlflow_client_with_tracking_uri[0]
-
-
-@pytest.fixture(scope="session")
-def mlflow_tracking_uri(mlflow_client_with_tracking_uri):
-    return mlflow_client_with_tracking_uri[1]
-
-
-@pytest.fixture(scope="module")
-def gcs_spark(mlflow_tracking_uri: str) -> SparkSession:
-    print(f"mlflow tracking uri for spark: ${mlflow_tracking_uri}")
-    rikai_version = get_default_jar_version(use_snapshot=True)
-
-    return init_spark_session(
-        dict(
-            [
-                (
-                    "spark.jars.packages",
-                    ",".join(
-                        [
-                            "ai.eto:rikai_2.1:{}".format(rikai_version),
-                        ]
-                    ),
-                ),
-                (
-                    # Sadly we have to use a shaded gcs connector due to guava
-                    # conflicts with Spark 3.1
-                    "spark.jars",
-                    "https://repo1.maven.org/maven2/com/google/cloud/"
-                    "bigdataoss/gcs-connector/hadoop3-2.2.2/"
-                    "gcs-connector-hadoop3-2.2.2-shaded.jar",
-                ),
-                ("spark.port.maxRetries", 128),
-                (
-                    "spark.rikai.sql.ml.registry.test.impl",
-                    "ai.eto.rikai.sql.model.testing.TestRegistry",
-                ),
-                (
-                    "spark.hadoop.fs.gs.impl",
-                    "com.google.cloud.hadoop.fs.gcs.GoogleHadoopFileSystem",
-                ),
-                (
-                    "spark.hadoop.google.cloud.auth.service.account.enable",
-                    "true",
-                ),
-                (
-                    CONF_MLFLOW_TRACKING_URI,
-                    mlflow_tracking_uri,
-                ),
-                (
-                    "spark.rikai.sql.ml.catalog.impl",
-                    "ai.eto.rikai.sql.model.SimpleCatalog",
-                ),
-            ]
-        )
-    )
-
-
-@pytest.fixture(scope="module")
-def aws_spark(mlflow_tracking_uri: str) -> SparkSession:
-    print(f"mlflow tracking uri for spark: ${mlflow_tracking_uri}")
-    rikai_version = get_default_jar_version(use_snapshot=True)
-    hadoop_version = "3.2.0"  # TODO(lei): get hadoop version
-
-    return init_spark_session(
-        dict(
-            [
-                (
-                    "spark.jars.packages",
-                    ",".join(
-                        [
-                            f"org.apache.hadoop:hadoop-aws:{hadoop_version}",
-                            "ai.eto:rikai_2.12:{}".format(rikai_version),
-                        ]
-                    ),
-                ),
-                ("spark.port.maxRetries", 128),
-                (
-                    "spark.rikai.sql.ml.registry.test.impl",
-                    "ai.eto.rikai.sql.model.testing.TestRegistry",
-                ),
-                (
-                    "spark.hadoop.google.cloud.auth.service.account.enable",
-                    "true",
-                ),
-                ("com.amazonaws.services.s3.enableV4", "true"),
-                (
-                    "fs.s3a.aws.credentials.provider",
-                    "com.amazonaws.auth.InstanceProfileCredentialsProvider,"
-                    "com.amazonaws.auth.DefaultAWSCredentialsProviderChain",
-                ),
-                (
-                    "fs.AbstractFileSystem.s3a.impl",
-                    "org.apache.hadoop.fs.s3a.S3A",
-                ),
-                ("fs.s3a.impl", "org.apache.hadoop.fs.s3a.S3AFileSystem"),
-                ("spark.hadoop.fs.s3a.access.key", os.environ.get("AWS")),
-                (
-                    CONF_MLFLOW_TRACKING_URI,
-                    mlflow_tracking_uri,
-                ),
-                (
-                    "spark.rikai.sql.ml.catalog.impl",
-                    "ai.eto.rikai.sql.model.SimpleCatalog",
-                ),
-            ]
-        )
-    )
 
 
 @pytest.fixture(scope="module")
@@ -287,18 +121,6 @@ def s3_tmpdir() -> str:
     except Exception:
         logging.warn("Could not delete directory: %s", s3fs_path)
 
-
-@pytest.fixture(scope="session")
-def resnet_model_uri(tmp_path_factory):
-    # Prepare model
-    tmp_path = tmp_path_factory.mktemp(str(uuid.uuid4()))
-    resnet = torchvision.models.detection.fasterrcnn_resnet50_fpn(
-        pretrained=True,
-        progress=False,
-    )
-    model_uri = tmp_path / "resnet.pth"
-    torch.save(resnet, model_uri)
-    return model_uri
 
 
 @pytest.fixture
