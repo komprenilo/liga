@@ -242,18 +242,6 @@ def s3_tmpdir() -> str:
         logging.warn("Could not delete directory: %s", s3fs_path)
 
 
-@pytest.fixture(scope="session")
-def resnet_model_uri(tmp_path_factory):
-    # Prepare model
-    tmp_path = tmp_path_factory.mktemp(str(uuid.uuid4()))
-    resnet = torchvision.models.detection.fasterrcnn_resnet50_fpn(
-        pretrained=True,
-        progress=False,
-    )
-    model_uri = tmp_path / "resnet.pth"
-    torch.save(resnet, model_uri)
-    return model_uri
-
 
 @pytest.fixture
 def gcs_tmpdir() -> str:
