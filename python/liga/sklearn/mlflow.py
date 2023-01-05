@@ -1,6 +1,11 @@
 import rikai
 from typing import Any, Optional
-from sklearn.base import RegressorMixin, ClassifierMixin, TransformerMixin, ClusterMixin
+from sklearn.base import (
+    RegressorMixin,
+    ClassifierMixin,
+    TransformerMixin,
+    ClusterMixin,
+)
 
 
 def _get_model_type(model: Any) -> str:
@@ -9,10 +14,12 @@ def _get_model_type(model: Any) -> str:
     elif isinstance(model, ClassifierMixin):
         return "rikai_sklearn.models.classifier"
     elif isinstance(model, ClusterMixin):
-        if 'predict' in dir(model):
+        if "predict" in dir(model):
             return "rikai_sklearn.models.cluster"
         else:
-            raise RuntimeError(f"Clustering without predict method is not supported")
+            raise RuntimeError(
+                f"Clustering without predict method is not supported"
+            )
     elif isinstance(model, TransformerMixin):
         return "rikai_sklearn.models.transformer"
     else:
@@ -37,5 +44,5 @@ def log_model(
         customized_flavor,
         model_type,
         labels,
-        **kwargs
+        **kwargs,
     )
