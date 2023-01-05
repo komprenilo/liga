@@ -18,8 +18,8 @@ interpreter_constraints = [">=3.8,<3.10"]
 enable_resolves = true
 
 [python.resolves]
-  lab = "3rdparty/python/lab.lock"
-  default = "3rdparty/python/default.lock"
+  spark_3_2_1 = "3rdparty/python/spark_3_2_1.lock"
+  spark_3_3_1 = "3rdparty/python/spark_3_3_1.lock"
 
 [black]
   version = "black==22.1.0"

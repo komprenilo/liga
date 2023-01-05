@@ -1,4 +1,4 @@
-name: Python 3.9
+name: Python Test
 
 on:
   push:
@@ -68,11 +68,7 @@ jobs:
         sbt publishLocal
       env:
         SPARK_VERSION: ${{ matrix.spark-version }}
-    - name: Bootstrap Pants
-      run: |
-        ./pants --version
     - name: Run python tests
-      run: |
-        ./pants test ::
+      run: bin/test
       env:
-        SPARK_LOCAL_IP: "127.0.0.1"
+        SPARK_VERSION: ${{ matrix.spark-version }}
