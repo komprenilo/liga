@@ -36,7 +36,7 @@ def log_model(
     **kwargs: Any,
 ) -> None:
     model_type = _get_model_type(model)
-    rikai.mlflow.sklearn.log_model(
+    rikai.mlflow.sklearn.log_model(  # type: ignore[attr-defined]
         model,
         artifact_path,
         schema,
