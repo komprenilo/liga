@@ -33,6 +33,7 @@ import rikai
 from rikai.spark.sql.codegen.mlflow_registry import CONF_MLFLOW_TRACKING_URI
 from rikai.spark.utils import get_default_jar_version, init_spark_session
 
+
 @pytest.fixture(scope="session")
 def mlflow_client(mlflow_client_with_tracking_uri):
     return mlflow_client_with_tracking_uri[0]
@@ -120,7 +121,6 @@ def s3_tmpdir() -> str:
         s3fs.rm(s3fs_path, recursive=True)
     except Exception:
         logging.warn("Could not delete directory: %s", s3fs_path)
-
 
 
 @pytest.fixture

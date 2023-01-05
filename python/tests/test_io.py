@@ -37,7 +37,6 @@ def test_open_https_uri():
         assert len(fobj.read()) > 0
 
 
-
 def test_simple_http_credentials():
     with requests_mock.Mocker() as mock:
         mock.get("http://test.com", text="{}")
