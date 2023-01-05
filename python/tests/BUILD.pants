@@ -1,7 +1,7 @@
 python_sources(
     name="sources",
     sources=["**/conftest.py", "spark/sql/codegen/utils.py"],
-    resolve="default",
+    resolve=parametrize("spark_3_2_1", "spark_3_3_1"),
 )
 
 python_tests(name = "tests",
@@ -10,5 +10,5 @@ python_tests(name = "tests",
         "//python/rikai:sources",
         "//python/tests:sources"
     ],
-    resolve="default"
+    resolve=parametrize("spark_3_2_1", "spark_3_3_1"),
 )

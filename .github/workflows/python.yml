@@ -1,4 +1,4 @@
-name: Python 3.9
+name: Python Test
 
 on:
   push:
@@ -14,8 +14,13 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.9]
-        spark-version: [3.3.1]
+        python-version: [3.8, 3.9]
+        spark-version: [3.2.1, 3.3.1]
+        exclude:
+        - python-version: 3.8
+          spark-version: 3.3.1
+        - python-version: 3.9
+          spark-version: 3.2.1
     steps:
     - uses: actions/checkout@v2
       with:
@@ -26,7 +31,7 @@ jobs:
         java-version: adopt@1.11
     - uses: pantsbuild/actions/init-pants@v1
       # This action bootstraps pants and manages 2-3 GHA caches.
-      # See: github.com/pantsbuild/actions/tree/init-pants/
+      # See: https://github.com/pantsbuild/actions/tree/init-pants/
       with:
         pants-python-version: ${{ matrix.python-version }}
         # cache0 makes it easy to bust the cache if needed
@@ -55,23 +60,12 @@ jobs:
         path: |
           ~/.ivy2/cache
           ~/.sbt
-        key: ${{ runner.os }}-sbt-${{ hashFiles('**/build.sbt') }}
+        key: ${{ matrix.spark-version }}-sbt-${{ hashFiles('**/build.sbt') }}
     - name: sbt install
-      run: |
-        echo "SPARK_VERSION=${{matrix.spark-version}}" >> $GITHUB_ENV
-        export SPARK_VERSION=${{matrix.spark-version}}
-        sbt publishLocal
+      run: sbt publishLocal
       env:
-        SPARK_VERSION: "3.3.1"
-    - name: apt update and install
-      run: |
-        sudo apt update
-        sudo apt-get -y -qq install libsnappy-dev ffmpeg
-    - name: Bootstrap Pants
-      run: |
-        ./pants --version
+        SPARK_VERSION: ${{ matrix.spark-version }}
     - name: Run python tests
-      run: |
-        ./pants test ::
+      run: bin/test
       env:
-        SPARK_LOCAL_IP: "127.0.0.1"
+        SPARK_VERSION: ${{ matrix.spark-version }}

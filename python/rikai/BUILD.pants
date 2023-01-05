@@ -5,13 +5,30 @@ python_sources(name = "sources",
             "spark/sql/generated/*.py",
         ): {"skip_black": True},
     },
-    resolve=parametrize("default", "lab"))
+    resolve=parametrize("spark_3_2_1", "spark_3_3_1")
+)
+
+
+python_requirement(
+    name="spark_3_3",
+    requirements=[
+        "pyspark==3.3.1",
+    ],
+    resolve="spark_3_3_1",
+)
+
+python_requirement(
+    name="spark_3_2",
+    requirements=[
+        "pyspark==3.2.1",
+    ],
+    resolve="spark_3_2_1"
+)
 
 python_requirement(
     name="requirements",
     requirements=[
         # Apache Spark
-        "pyspark==3.3.1",
         "antlr4-python3-runtime==4.11.1",
         "numpy",
         "pyarrow>=6.0",
@@ -27,5 +44,5 @@ python_requirement(
         "requests",
         "fsspec==2022.1.0",
     ],
-    resolve=parametrize("default", "lab")
+    resolve=parametrize("spark_3_2_1", "spark_3_3_1")
 )
