@@ -26,13 +26,10 @@ warnings.filterwarnings("ignore", category=DeprecationWarning)  # noqa
 # Third Party
 import mlflow
 import pytest
-import torch
-import torchvision
 from mlflow.tracking import MlflowClient
 from pyspark.sql import Row, SparkSession
 
 import rikai
-from rikai.contrib.torch.detections import OUTPUT_SCHEMA
 from rikai.spark.sql.codegen.mlflow_registry import CONF_MLFLOW_TRACKING_URI
 from rikai.spark.utils import get_default_jar_version, init_spark_session
 from rikai.types.vision import Image
@@ -55,51 +52,8 @@ def two_flickr_rows(two_flickr_images: list) -> list:
 
 
 @pytest.fixture(scope="session")
-def mlflow_client_with_tracking_uri(
-    tmp_path_factory, resnet_model_uri: str
-) -> (MlflowClient, str):
-    tmp_path = tmp_path_factory.mktemp("mlflow")
-    tmp_path.mkdir(parents=True, exist_ok=True)
-    tracking_uri = "sqlite:///" + str(tmp_path / "tracking.db")
-    mlflow.set_tracking_uri(tracking_uri)
-    experiment_id = mlflow.create_experiment("rikai-test", str(tmp_path))
-    # simpliest
-    with mlflow.start_run(experiment_id=experiment_id):
-        mlflow.log_param("optimizer", "Adam")
-        # Fake training loop
-        model = torch.load(resnet_model_uri)
-        artifact_path = "model"
-        rikai.mlflow.pytorch.log_model(
-            model,  # same as vanilla mlflow
-            artifact_path,  # same as vanilla mlflow
-            OUTPUT_SCHEMA,
-            model_type="resnet",
-            registered_model_name="rikai-test",  # same as vanilla mlflow
-        )
-
-    # vanilla mlflow
-    with mlflow.start_run():
-        mlflow.pytorch.log_model(
-            model, artifact_path, registered_model_name="vanilla-mlflow"
-        )
-        mlflow.set_tags(
-            {
-                "rikai.model.flavor": "pytorch",
-                "rikai.output.schema": OUTPUT_SCHEMA,
-            }
-        )
-
-    return mlflow.tracking.MlflowClient(tracking_uri), tracking_uri
-
-
-@pytest.fixture(scope="session")
 def mlflow_client(mlflow_client_with_tracking_uri):
     return mlflow_client_with_tracking_uri[0]
-
-
-@pytest.fixture(scope="session")
-def mlflow_tracking_uri(mlflow_client_with_tracking_uri):
-    return mlflow_client_with_tracking_uri[1]
 
 
 @pytest.fixture(scope="module")
