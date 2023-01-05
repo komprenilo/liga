@@ -17,7 +17,6 @@ from io import BytesIO
 from pathlib import Path
 
 import numpy as np
-import PIL
 import requests
 import requests_mock
 

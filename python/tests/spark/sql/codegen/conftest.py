@@ -24,7 +24,6 @@ from mlflow.tracking import MlflowClient
 from pyspark.sql import SparkSession
 
 import rikai
-from rikai.contrib.tfhub.tensorflow.ssd import HUB_URL as SSD_HUB_URL
 from rikai.spark.sql.codegen.mlflow_registry import CONF_MLFLOW_TRACKING_URI
 from rikai.spark.utils import get_default_jar_version, init_spark_session
 
