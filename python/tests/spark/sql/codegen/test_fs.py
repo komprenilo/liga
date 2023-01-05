@@ -42,63 +42,6 @@ def spec_file(content: Dict[str, Any], tmp_path: Path) -> str:
     return str(spec_filepath)
 
 
-@pytest.fixture(scope="module")
-def resnet_spec(tmp_path_factory, resnet_model_uri):
-    # Can not use default pytest fixture `tmp_dir` or `tmp_path` because
-    # they do not work with module scoped fixture.
-    tmp_path = tmp_path_factory.mktemp(str(uuid.uuid4()))
-    spec_yaml = """
-version: "1.0"
-name: resnet
-model:
-  uri: {}
-  flavor: pytorch
-  type: fasterrcnn_resnet50_fpn
-    """.format(  # noqa: E501
-        resnet_model_uri
-    )
-
-    spec_file = tmp_path / "spec.yaml"
-    with spec_file.open("w") as fobj:
-        fobj.write(spec_yaml)
-    yield spec_file
-
-
-@pytest.fixture(scope="module")
-def count_objects_spec(tmp_path_factory, resnet_model_uri):
-    # Can not use default pytest fixture `tmp_dir` or `tmp_path` because
-    # they do not work with module scoped fixture.
-    tmp_path = tmp_path_factory.mktemp(str(uuid.uuid4()))
-    spec_yaml = """
-version: "1.0"
-name: fasterrcnn
-model:
-  uri: {}
-  flavor: pytorch
-  type: fasterrcnn
-    """.format(  # noqa: E501
-        resnet_model_uri
-    )
-
-    spec_file = tmp_path / "spec.yaml"
-    with spec_file.open("w") as fobj:
-        fobj.write(spec_yaml)
-    yield spec_file
-
-
-def assert_dataloader_transform(transform):
-    data = [1, 1, 1]
-    df = pd.DataFrame(data)
-    dataset = PandasDataset(df, transform)
-
-    for batch in DataLoader(
-        dataset,
-        batch_size=1,
-        num_workers=1,
-    ):
-        assert batch[0] == torch.tensor([1])
-
-
 def test_validate_yaml_spec(tmp_path):
     spec = FileModelSpec(
         {
@@ -219,52 +162,6 @@ def test_yaml_model_type(resnet_spec: str, two_flickr_images):
     assert len(results) == 2
     for series in results:
         assert len(series[0]) > 10
-
-
-@pytest.mark.timeout(120)
-def test_count_objects_model(
-    spark: SparkSession, count_objects_spec: str, two_flickr_rows: list
-):
-    spark.sql(
-        "CREATE MODEL count_objects USING 'file://{}'".format(
-            count_objects_spec
-        )
-    )
-    df = spark.createDataFrame(two_flickr_rows)
-    df.createOrReplaceTempView("df")
-
-    predictions = spark.sql(
-        "SELECT size(ML_PREDICT(count_objects, image)) as objects FROM df"
-    )
-    assert predictions.schema == StructType(
-        [StructField("objects", IntegerType(), False)]
-    )
-    assert predictions.count() == 2
-    assert predictions.where("objects > 0").count() == 2
-
-
-def test_directly_load_pth_file(
-    spark: SparkSession, resnet_model_uri: str, two_flickr_rows: list
-):
-    spark.sql(
-        """CREATE OR REPLACE MODEL fasterrcnn
-        FLAVOR pytorch
-        MODEL_TYPE fasterrcnn
-        USING 'file://{}'
-        """.format(
-            resnet_model_uri
-        )
-    )
-    df = spark.createDataFrame(two_flickr_rows)
-    df.createOrReplaceTempView("df")
-    predictions = spark.sql(
-        "SELECT size(ML_PREDICT(fasterrcnn, image)) as objects FROM df"
-    )
-    assert predictions.schema == StructType(
-        [StructField("objects", IntegerType(), False)]
-    )
-    assert predictions.count() == 2
-    assert predictions.where("objects > 0").count() == 2
 
 
 def test_load_pth_file_without_model_type(
