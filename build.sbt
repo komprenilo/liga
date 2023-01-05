@@ -21,7 +21,10 @@ def versionFmt(out: sbtdynver.GitDescribeOutput): String = {
   val parts = out.ref.dropPrefix.split('.').toList
   val major :: minor :: patch :: rest = parts
   val nextPatchInt = patch.toInt + 1
-  if (out.isSnapshot)
+
+  if (major == "0" && minor == "1")
+    s"0.2.0-SNAPSHOT"
+  else if (out.isSnapshot)
     s"$major.$minor.$nextPatchInt-SNAPSHOT"
   else
     out.ref.dropPrefix
