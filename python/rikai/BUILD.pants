@@ -5,7 +5,8 @@ python_sources(name = "sources",
             "spark/sql/generated/*.py",
         ): {"skip_black": True},
     },
-    resolve=parametrize("spark_3_2_1", "spark_3_3_1")
+    resolve=parametrize("spark_3_2_1", "spark_3_3_1"),
+    skip_mypy=True,
 )
 
 
@@ -22,7 +23,7 @@ python_requirement(
     requirements=[
         "pyspark==3.2.1",
     ],
-    resolve="spark_3_2_1"
+    resolve="spark_3_2_1",
 )
 
 python_requirement(
