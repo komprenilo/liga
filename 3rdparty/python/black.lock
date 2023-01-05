@@ -6,7 +6,7 @@
 // {
 //   "version": 3,
 //   "valid_for_interpreter_constraints": [
-//     "CPython>=3.8"
+//     "CPython<3.10,>=3.8"
 //   ],
 //   "generated_with_requirements": [
 //     "black==22.1.0",
@@ -58,11 +58,6 @@
             },
             {
               "algorithm": "sha256",
-              "hash": "2ff96450d3ad9ea499fc4c60e425a1439c2120cbbc1ab959ff20f7c76ec7e866",
-              "url": "https://files.pythonhosted.org/packages/40/4e/fa8299630a4957f543675b2d8999a80428a7e35a66ec21e8a7d250c97dab/black-22.1.0-cp310-cp310-macosx_10_9_x86_64.whl"
-            },
-            {
-              "algorithm": "sha256",
               "hash": "a7c0192d35635f6fc1174be575cb7915e92e5dd629ee79fdaf0dcfa41a80afb5",
               "url": "https://files.pythonhosted.org/packages/42/58/8a3443a5034685152270f9012a9d196c9f165791ed3f2777307708b15f6c/black-22.1.0.tar.gz"
             },
@@ -83,23 +78,8 @@
             },
             {
               "algorithm": "sha256",
-              "hash": "e2f69158a7d120fd641d1fa9a921d898e20d52e44a74a6fbbcc570a62a6bc8ab",
-              "url": "https://files.pythonhosted.org/packages/b3/4b/e490650ee69bd53bad29956969346fa9d345422eb9ed9e201ec9533688eb/black-22.1.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
-            },
-            {
-              "algorithm": "sha256",
-              "hash": "0e21e1f1efa65a50e3960edd068b6ae6d64ad6235bd8bfea116a03b21836af71",
-              "url": "https://files.pythonhosted.org/packages/b5/cb/d9799d8bd5f95e36ea4a04a80a0a48c24c638734a257d3b22fa16ec9a4ac/black-22.1.0-cp310-cp310-macosx_11_0_arm64.whl"
-            },
-            {
-              "algorithm": "sha256",
               "hash": "efbadd9b52c060a8fc3b9658744091cb33c31f830b3f074422ed27bad2b18e8f",
               "url": "https://files.pythonhosted.org/packages/c2/e2/6198c928e9cee46233463f30a8faf39a5752e75c07c8d30a908865a05a51/black-22.1.0-cp39-cp39-macosx_10_9_universal2.whl"
-            },
-            {
-              "algorithm": "sha256",
-              "hash": "1297c63b9e1b96a3d0da2d85d11cd9bf8664251fd69ddac068b98dc4f34f73b6",
-              "url": "https://files.pythonhosted.org/packages/fd/ae/c401710dabb32bac39d799417ab25bd59ffb1336652bcb04f4bdd7126b79/black-22.1.0-cp310-cp310-macosx_10_9_universal2.whl"
             }
           ],
           "project_name": "black",
@@ -259,7 +239,7 @@
     "typing-extensions>=3.10.0.0; python_version < \"3.10\""
   ],
   "requires_python": [
-    ">=3.8"
+    "<3.10,>=3.8"
   ],
   "resolver_version": "pip-2020-resolver",
   "style": "universal",

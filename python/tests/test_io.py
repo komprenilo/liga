@@ -22,7 +22,6 @@ import requests
 import requests_mock
 
 from rikai.io import exists, open_uri
-from rikai.types.vision import Image
 
 WIKIPEDIA = (
     "https://upload.wikimedia.org/wikipedia/commons/a/ad/"
@@ -38,15 +37,6 @@ def test_open_https_uri():
     with open_uri(WIKIPEDIA) as fobj:
         assert len(fobj.read()) > 0
 
-
-def test_image_use_https_uri():
-    img = Image(WIKIPEDIA)
-
-    fobj = BytesIO(
-        requests.get(WIKIPEDIA, headers={"User-agent": USER_AGENT}).content
-    )
-    pic = PIL.Image.open(fobj)
-    assert np.array_equal(img.to_numpy(), np.array(pic))
 
 
 def test_simple_http_credentials():

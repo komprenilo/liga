@@ -14,7 +14,7 @@ backend_packages.add = [
 root_patterns = ["python"]
 
 [python]
-interpreter_constraints = [">=3.8"]
+interpreter_constraints = [">=3.8,<3.10"]
 enable_resolves = true
 
 [python.resolves]
