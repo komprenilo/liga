@@ -7,7 +7,8 @@ pants_version = "2.14.0"
 
 backend_packages.add = [
   "pants.backend.python",
-  'pants.backend.python.lint.black',
+  "pants.backend.python.lint.black",
+  "pants.backend.python.typecheck.mypy",
 ]
 
 [source]
@@ -33,3 +34,7 @@ enable_resolves = true
     "requests-mock",
   ]
   lockfile = "3rdparty/python/pytest.lock"
+
+[mypy]
+  version = "mypy==0.910"
+  lockfile = "3rdparty/python/mypy.lock"
