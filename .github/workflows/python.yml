@@ -31,7 +31,7 @@ jobs:
         java-version: adopt@1.11
     - uses: pantsbuild/actions/init-pants@v1
       # This action bootstraps pants and manages 2-3 GHA caches.
-      # See: github.com/pantsbuild/actions/tree/init-pants/
+      # See: https://github.com/pantsbuild/actions/tree/init-pants/
       with:
         pants-python-version: ${{ matrix.python-version }}
         # cache0 makes it easy to bust the cache if needed
@@ -60,12 +60,9 @@ jobs:
         path: |
           ~/.ivy2/cache
           ~/.sbt
-        key: ${{ runner.os }}-sbt-${{ hashFiles('**/build.sbt') }}
+        key: ${{ matrix.spark-version }}-sbt-${{ hashFiles('**/build.sbt') }}
     - name: sbt install
-      run: |
-        echo "SPARK_VERSION=${{matrix.spark-version}}" >> $GITHUB_ENV
-        export SPARK_VERSION=${{matrix.spark-version}}
-        sbt publishLocal
+      run: sbt publishLocal
       env:
         SPARK_VERSION: ${{ matrix.spark-version }}
     - name: Run python tests
