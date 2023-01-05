@@ -21,14 +21,6 @@ python_requirement(
         # MLflow
         "mlflow==1.26.1",
 
-        # Image Processing
-        "opencv-python-headless",
-        "Pillow",
-
-        # Torch
-        "torch>=1.8.1,<1.13.0",
-        "torchvision>=0.10.0",
-
         # Scikit Learn
         "scikit-learn",
 
