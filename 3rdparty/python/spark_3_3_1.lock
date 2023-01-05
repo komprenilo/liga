@@ -19,7 +19,8 @@
 //     "pyarrow>=6.0",
 //     "pyspark==3.3.1",
 //     "pyyaml",
-//     "requests"
+//     "requests",
+//     "scikit-learn"
 //   ],
 //   "manylinux": "manylinux2014",
 //   "requirement_constraints": [],
@@ -622,6 +623,24 @@
           ],
           "requires_python": ">=3.7",
           "version": "3.1.2"
+        },
+        {
+          "artifacts": [
+            {
+              "algorithm": "sha256",
+              "hash": "091138ed78f800342968c523bdde947e7a305b8594b910a0fea2ab83c3c6d385",
+              "url": "https://files.pythonhosted.org/packages/91/d4/3b4c8e5a30604df4c7518c562d4bf0502f2fa29221459226e140cf846512/joblib-1.2.0-py3-none-any.whl"
+            },
+            {
+              "algorithm": "sha256",
+              "hash": "e1cee4a79e4af22881164f218d4311f60074197fb707e082e803b61f6d137018",
+              "url": "https://files.pythonhosted.org/packages/45/dd/a5435a6902d6315241c48a5343e6e6675b007e05d3738ed97a7a47864e53/joblib-1.2.0.tar.gz"
+            }
+          ],
+          "project_name": "joblib",
+          "requires_dists": [],
+          "requires_python": ">=3.7",
+          "version": "1.2"
         },
         {
           "artifacts": [
@@ -1428,6 +1447,97 @@
           "artifacts": [
             {
               "algorithm": "sha256",
+              "hash": "de897720173b26842e21bed54362f5294e282422116b61cd931d4f5d870b9855",
+              "url": "https://files.pythonhosted.org/packages/83/b5/0436307cb4f91ba280c74746fde7c89bed7a87703a2bf6e21791f56ce6de/scikit_learn-1.2.0-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+            },
+            {
+              "algorithm": "sha256",
+              "hash": "40f3ff68c505cb9d1f3693397c73991875d609da905087e00e7b4477645ec67b",
+              "url": "https://files.pythonhosted.org/packages/1a/30/e3f9ea2a4766a59ae4c2e1c229094d9589fb32e7027167fa9e81e080e321/scikit_learn-1.2.0-cp39-cp39-macosx_12_0_arm64.whl"
+            },
+            {
+              "algorithm": "sha256",
+              "hash": "680b65b3caee469541385d2ca5b03ff70408f6c618c583948312f0d2125df680",
+              "url": "https://files.pythonhosted.org/packages/27/a0/95eae31ceabeb7710a694367816edfcc0ccb001c794c14b3b234c148ae50/scikit-learn-1.2.0.tar.gz"
+            },
+            {
+              "algorithm": "sha256",
+              "hash": "23a88883ca60c571a06278e4726b3b51b3709cfa4c93cacbf5568b22ba960899",
+              "url": "https://files.pythonhosted.org/packages/44/09/1ce869919aef7996869c3c339a4531ce8db16ed8d49fb1c7acd50057203e/scikit_learn-1.2.0-cp39-cp39-macosx_10_9_x86_64.whl"
+            },
+            {
+              "algorithm": "sha256",
+              "hash": "25ba705ee1600ffc5df1dccd8fae129d7c6836e44ffcbb52d78536c9eaf8fcf9",
+              "url": "https://files.pythonhosted.org/packages/48/0a/b8049d5f2fb9d8f6960a0b1994d32529c17235d46cbaae2de15d6735ad36/scikit_learn-1.2.0-cp38-cp38-macosx_10_9_x86_64.whl"
+            },
+            {
+              "algorithm": "sha256",
+              "hash": "e9535e867281ae6987bb80620ba14cf1649e936bfe45f48727b978b7a2dbe835",
+              "url": "https://files.pythonhosted.org/packages/4f/10/dffb594160e9edf37fafde277933aee4c2bd19849c624c6c9541bb38341c/scikit_learn-1.2.0-cp39-cp39-manylinux_2_17_aarch64.manylinux2014_aarch64.whl"
+            },
+            {
+              "algorithm": "sha256",
+              "hash": "0834e4cec2a2e0d8978f39cb8fe1cad3be6c27a47927e1774bf5737ea65ec228",
+              "url": "https://files.pythonhosted.org/packages/92/03/02d3123d9462c6325e67731e7582f96904f514ede5b0666524c1bc25c053/scikit_learn-1.2.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+            },
+            {
+              "algorithm": "sha256",
+              "hash": "83c772fa8c64776ad769fd764752c8452844307adcf10dee3adcc43988260f21",
+              "url": "https://files.pythonhosted.org/packages/a0/53/d43d4e2882499ca3492a0c2a44184e96e6e87d4f2c7c2b60e4be5967e243/scikit_learn-1.2.0-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl"
+            },
+            {
+              "algorithm": "sha256",
+              "hash": "6b63ca2b0643d30fbf9d25d93017ed3fb8351f31175d82d104bfec60cba7bb87",
+              "url": "https://files.pythonhosted.org/packages/ca/3b/07b7dbef252b8da7c6f613fa89a69dc34cc99a6bc34fd48a1f9ddc2ffc71/scikit_learn-1.2.0-cp38-cp38-macosx_12_0_arm64.whl"
+            }
+          ],
+          "project_name": "scikit-learn",
+          "requires_dists": [
+            "Pillow>=7.1.2; extra == \"docs\"",
+            "black>=22.3.0; extra == \"tests\"",
+            "flake8>=3.8.2; extra == \"tests\"",
+            "joblib>=1.1.1",
+            "matplotlib>=3.1.3; extra == \"benchmark\"",
+            "matplotlib>=3.1.3; extra == \"docs\"",
+            "matplotlib>=3.1.3; extra == \"examples\"",
+            "matplotlib>=3.1.3; extra == \"tests\"",
+            "memory-profiler>=0.57.0; extra == \"benchmark\"",
+            "memory-profiler>=0.57.0; extra == \"docs\"",
+            "mypy>=0.961; extra == \"tests\"",
+            "numpy>=1.17.3",
+            "numpydoc>=1.2.0; extra == \"docs\"",
+            "numpydoc>=1.2.0; extra == \"tests\"",
+            "pandas>=1.0.5; extra == \"benchmark\"",
+            "pandas>=1.0.5; extra == \"docs\"",
+            "pandas>=1.0.5; extra == \"examples\"",
+            "pandas>=1.0.5; extra == \"tests\"",
+            "plotly>=5.10.0; extra == \"docs\"",
+            "plotly>=5.10.0; extra == \"examples\"",
+            "pooch>=1.6.0; extra == \"docs\"",
+            "pooch>=1.6.0; extra == \"examples\"",
+            "pooch>=1.6.0; extra == \"tests\"",
+            "pyamg>=4.0.0; extra == \"tests\"",
+            "pytest-cov>=2.9.0; extra == \"tests\"",
+            "pytest>=5.3.1; extra == \"tests\"",
+            "scikit-image>=0.16.2; extra == \"docs\"",
+            "scikit-image>=0.16.2; extra == \"examples\"",
+            "scikit-image>=0.16.2; extra == \"tests\"",
+            "scipy>=1.3.2",
+            "seaborn>=0.9.0; extra == \"docs\"",
+            "seaborn>=0.9.0; extra == \"examples\"",
+            "sphinx-gallery>=0.7.0; extra == \"docs\"",
+            "sphinx-prompt>=1.3.0; extra == \"docs\"",
+            "sphinx>=4.0.1; extra == \"docs\"",
+            "sphinxext-opengraph>=0.4.2; extra == \"docs\"",
+            "threadpoolctl>=2.0.0"
+          ],
+          "requires_python": ">=3.8",
+          "version": "1.2"
+        },
+        {
+          "artifacts": [
+            {
+              "algorithm": "sha256",
               "hash": "0490dc499fe23e4be35b8b6dd1e60a4a34f0c4adb30ac671e6332446b3cbbb5a",
               "url": "https://files.pythonhosted.org/packages/30/71/bb9e677e30c52f938ff71ba528915c579e794ac0f59804e06bfed3596dff/scipy-1.10.0-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
             },
@@ -1727,6 +1837,24 @@
           "artifacts": [
             {
               "algorithm": "sha256",
+              "hash": "8b99adda265feb6773280df41eece7b2e6561b772d21ffd52e372f999024907b",
+              "url": "https://files.pythonhosted.org/packages/61/cf/6e354304bcb9c6413c4e02a747b600061c21d38ba51e7e544ac7bc66aecc/threadpoolctl-3.1.0-py3-none-any.whl"
+            },
+            {
+              "algorithm": "sha256",
+              "hash": "a335baacfaa4400ae1f0d8e3a58d6674d2f8828e3716bb2802c44955ad391380",
+              "url": "https://files.pythonhosted.org/packages/1b/c7/3d85f8b3894ba7228d0c74e16e97a36a72b2cd2b0e0f8f89b5d435d11f71/threadpoolctl-3.1.0.tar.gz"
+            }
+          ],
+          "project_name": "threadpoolctl",
+          "requires_dists": [],
+          "requires_python": ">=3.6",
+          "version": "3.1"
+        },
+        {
+          "artifacts": [
+            {
+              "algorithm": "sha256",
               "hash": "47cc05d99aaa09c9e72ed5809b60e7ba354e64b59c9c173ac3018642d8bb41fc",
               "url": "https://files.pythonhosted.org/packages/65/0c/cc6644eaa594585e5875f46f3c83ee8762b647b51fc5b0fb253a242df2dc/urllib3-1.26.13-py2.py3-none-any.whl"
             },
@@ -1852,7 +1980,8 @@
     "pyarrow>=6.0",
     "pyspark==3.3.1",
     "pyyaml",
-    "requests"
+    "requests",
+    "scikit-learn"
   ],
   "requires_python": [
     "<3.10,>=3.8"
