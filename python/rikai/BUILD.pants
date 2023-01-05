@@ -21,9 +21,6 @@ python_requirement(
         # MLflow
         "mlflow==1.26.1",
 
-        # Scikit Learn
-        "scikit-learn",
-
         # MISC
         "jsonschema",
         "pyyaml",
