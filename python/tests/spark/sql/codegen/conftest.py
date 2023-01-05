@@ -20,9 +20,6 @@ import uuid
 
 import mlflow
 import pytest
-import tensorflow as tf
-import tensorflow_hub as hub
-import torch
 from mlflow.tracking import MlflowClient
 from pyspark.sql import SparkSession
 
@@ -31,81 +28,6 @@ from rikai.contrib.tfhub.tensorflow.ssd import HUB_URL as SSD_HUB_URL
 from rikai.spark.sql.codegen.mlflow_registry import CONF_MLFLOW_TRACKING_URI
 from rikai.spark.utils import get_default_jar_version, init_spark_session
 
-
-@pytest.fixture(scope="session")
-def tfhub_ssd(tmp_path_factory):
-    m = hub.load(SSD_HUB_URL)
-    tmp_path = tmp_path_factory.mktemp(str(uuid.uuid4()))
-    model_path = str(tmp_path / "model")
-    tf.saved_model.save(m, model_path)
-    return (m, model_path)
-
-
-@pytest.fixture(scope="session")
-def mlflow_client_http(
-    tmp_path_factory, resnet_model_uri: str
-) -> MlflowClient:
-    tracking_uri = os.getenv(
-        "TEST_MLFLOW_TRACKING_URI", "http://localhost:5000"
-    )
-    mlflow.set_tracking_uri(tracking_uri)
-    experiment_id = mlflow.create_experiment(
-        "rikai-test" + str(datetime.datetime.now()), "test-artifact"
-    )
-    # simpliest
-    with mlflow.start_run(experiment_id=experiment_id):
-        mlflow.log_param("optimizer", "Adam")
-        # Fake training loop
-        model = torch.load(resnet_model_uri)
-        artifact_path = "model"
-
-        schema = (
-            "STRUCT<boxes:ARRAY<ARRAY<float>>,"
-            "scores:ARRAY<float>,label_ids:ARRAY<int>>"
-        )
-        rikai.mlflow.pytorch.log_model(
-            model,  # same as vanilla mlflow
-            artifact_path,  # same as vanilla mlflow
-            schema,
-            registered_model_name="rikai-test",  # same as vanilla mlflow
-        )
-
-    # vanilla mlflow
-    with mlflow.start_run():
-        mlflow.pytorch.log_model(
-            model, artifact_path, registered_model_name="vanilla-mlflow"
-        )
-        mlflow.set_tags(
-            {
-                "rikai.model.flavor": "pytorch",
-                "rikai.output.schema": schema,
-            }
-        )
-
-    # vanilla mlflow no tags
-    with mlflow.start_run():
-        mlflow.pytorch.log_model(
-            model,
-            artifact_path,
-            registered_model_name="vanilla-mlflow-no-tags",
-        )
-
-    # vanilla mlflow wrong tags
-    with mlflow.start_run():
-        mlflow.pytorch.log_model(
-            model,
-            artifact_path,
-            registered_model_name="vanilla-mlflow-wrong-tags",
-        )
-        mlflow.set_tags(
-            {
-                "rikai.model.flavor": "pytorch",
-                "rikai.output.schema": schema,
-                "rikai.transforms.pre": "wrong_pre",
-                "rikai.transforms.post": "wrong_post",
-            }
-        )
-    return mlflow.tracking.MlflowClient(tracking_uri)
 
 
 @pytest.fixture(scope="class")
