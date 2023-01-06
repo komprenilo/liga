@@ -1,0 +1,19 @@
+python_requirement(
+    name="requirements",
+    requirements=[
+        "jupyterlab",
+        "matplotlib",
+    ],
+    resolve="sklearn",
+)
+
+python_sources(
+    name="sklearn",
+    sources=["lab.py"],
+    dependencies=[
+        "//python/liga/sklearn:sources@resolve=sklearn",
+        "//python/rikai:sources@resolve=sklearn"
+    ],
+    resolve="sklearn",
+    skip_mypy=True,
+)

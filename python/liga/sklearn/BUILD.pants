@@ -1,10 +1,10 @@
 python_requirement(
     name="sklearn",
     requirements=["scikit-learn"],
-    resolve=parametrize("spark_3_2_1", "spark_3_3_1"),
+    resolve=parametrize("spark_3_2_1", "spark_3_3_1", "sklearn"),
 )
 
 python_sources(
     name="sources",
-    resolve=parametrize("spark_3_2_1", "spark_3_3_1"),
+    resolve=parametrize("spark_3_2_1", "spark_3_3_1", "sklearn"),
 )
