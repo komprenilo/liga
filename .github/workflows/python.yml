@@ -5,6 +5,12 @@ on:
     branches:
       - main
   pull_request:
+    branches:
+      - main
+    paths:
+      - 'python/**'
+      - 'src/main/**'
+      - '.github/workflows/python.yml'
 
 jobs:
   build:
