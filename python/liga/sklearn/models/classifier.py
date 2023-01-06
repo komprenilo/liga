@@ -1,5 +1,5 @@
 from typing import List, Any
-from rikai_sklearn.models import SklearnModelType
+from liga.sklearn.models import SklearnModelType
 
 
 class Classifier(SklearnModelType):
@@ -12,4 +12,5 @@ class Classifier(SklearnModelType):
         assert self.model is not None
         return self.model.predict(x).tolist()
 
-MODEL_TYPE=Classifier()
+
+MODEL_TYPE = Classifier()

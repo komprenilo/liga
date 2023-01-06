@@ -1,5 +1,5 @@
 from typing import List, Any
-from rikai_sklearn.models import SklearnModelType
+from liga.sklearn.models import SklearnModelType
 
 
 class Regressor(SklearnModelType):
@@ -9,5 +9,6 @@ class Regressor(SklearnModelType):
     def predict(self, x: Any, *args: Any, **kwargs: Any) -> List[float]:
         assert self.model is not None
         return self.model.predict(x).tolist()
+
 
 MODEL_TYPE = Regressor()

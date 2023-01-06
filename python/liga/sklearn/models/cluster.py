@@ -1,5 +1,5 @@
 from typing import List, Any
-from rikai_sklearn.models import SklearnModelType
+from liga.sklearn.models import SklearnModelType
 
 
 class Clustering(SklearnModelType):
@@ -12,4 +12,5 @@ class Clustering(SklearnModelType):
         assert self.model is not None
         return self.model.predict(x).tolist()
 
-MODEL_TYPE=Clustering()
+
+MODEL_TYPE = Clustering()
