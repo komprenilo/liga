@@ -30,7 +30,7 @@ def log_model(
     model: Any,
     registered_model_name: Optional[str] = None,
     schema: Optional[str] = None,
-    customized_flavor: Optional[str] = None,
+    customized_flavor: Optional[str] = "liga.sklearn.codegen",
     labels: Optional[dict] = None,
     artifact_path: str = "model",
     **kwargs: Any,
