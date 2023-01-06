@@ -18,14 +18,6 @@ from rikai.__version__ import version
 from rikai.conf import CONF_PARQUET_BLOCK_SIZE
 
 
-def df_to_rikai(df: "pyspark.sql.DataFrame", uri: str):
-    (
-        df.write.format("rikai")
-        .option(CONF_PARQUET_BLOCK_SIZE, rikai.options.parquet.block.size)
-        .save(uri)
-    )
-
-
 def get_default_jar_version(use_snapshot=True):
     """
     Make it easier to reference the jar version in notebooks and conftest.

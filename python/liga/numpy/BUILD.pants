@@ -1,6 +1,6 @@
 python_requirement(
-    name="sklearn",
-    requirements=["scikit-learn"],
+    name="numpy",
+    requirements=["numpy"],
     resolve=parametrize("spark_3_2_1", "spark_3_3_1", "sklearn"),
 )
 

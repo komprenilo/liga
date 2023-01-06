@@ -12,7 +12,7 @@ backend_packages.add = [
 ]
 
 [source]
-root_patterns = ["python"]
+root_patterns = ["python", "notebooks"]
 
 [python]
 interpreter_constraints = [">=3.8,<3.10"]
@@ -21,6 +21,7 @@ enable_resolves = true
 [python.resolves]
   spark_3_2_1 = "3rdparty/python/spark_3_2_1.lock"
   spark_3_3_1 = "3rdparty/python/spark_3_3_1.lock"
+  sklearn = "3rdparty/python/sklearn.lock"
 
 [black]
   version = "black==22.1.0"

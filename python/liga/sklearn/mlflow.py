@@ -10,18 +10,18 @@ from sklearn.base import (
 
 def _get_model_type(model: Any) -> str:
     if isinstance(model, RegressorMixin):
-        return "rikai_sklearn.models.regressor"
+        return "liga.sklearn.models.regressor"
     elif isinstance(model, ClassifierMixin):
-        return "rikai_sklearn.models.classifier"
+        return "liga.sklearn.models.classifier"
     elif isinstance(model, ClusterMixin):
         if "predict" in dir(model):
-            return "rikai_sklearn.models.cluster"
+            return "liga.sklearn.models.cluster"
         else:
             raise RuntimeError(
                 f"Clustering without predict method is not supported"
             )
     elif isinstance(model, TransformerMixin):
-        return "rikai_sklearn.models.transformer"
+        return "liga.sklearn.models.transformer"
     else:
         raise RuntimeError(f"No corresponding ModelType yet")
 

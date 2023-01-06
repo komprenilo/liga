@@ -1,5 +1,6 @@
 from typing import List, Any
-from rikai_sklearn.models import SklearnModelType
+from liga.sklearn.models import SklearnModelType
+
 
 class DimensionalityReduction(SklearnModelType):
     """Dimensionality reduction models.
@@ -10,7 +11,10 @@ class DimensionalityReduction(SklearnModelType):
     def schema(self) -> str:
         return "array<float>"
 
-    def predict(self, x: Any, *args: Any, **kwargs: Any) -> List[float]:
-        return self.model.transform(x).tolist()
+    def predict(self, *args: Any, **kwargs: Any) -> List[float]:
+        assert self.model is not None
+        assert len(args) == 1
+        return self.model.transform(args[0]).tolist()
 
-MODEL_TYPE=DimensionalityReduction()
+
+MODEL_TYPE = DimensionalityReduction()
