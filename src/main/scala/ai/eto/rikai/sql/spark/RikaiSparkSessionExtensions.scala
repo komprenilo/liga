@@ -113,5 +113,10 @@ class RikaiSparkSessionExtensions extends (SparkSessionExtensions => Unit) {
     // We just use a placeholder so that later we can compile a `ML_PREDICT` expression
     // to use Models.
     extensions.injectFunction(Predict.functionDescriptor)
+
+    extensions.injectResolutionRule(session => {
+      new MlPredictRule(session)
+    })
+
   }
 }
