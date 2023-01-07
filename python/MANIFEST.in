@@ -1,4 +1,0 @@
-include rikai/spark/sql/generated/RikaiModelSchema.interp
-include rikai/spark/sql/generated/RikaiModelSchemaLexer.interp
-include rikai/spark/sql/generated/RikaiModelSchema.tokens
-include rikai/spark/sql/generated/RikaiModelSchemaLexer.tokens
