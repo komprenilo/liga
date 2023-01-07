@@ -16,9 +16,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-        with:
-          fetch-depth: 1
-          submodules: true
+      - name: Get tags
+        run: git fetch --tags origin
       - name: Setup Scala
         uses: olafurpg/setup-scala@v10
         with:
