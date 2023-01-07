@@ -35,10 +35,10 @@ jobs:
         env:
           SPARK_VERSION: ${{ matrix.spark-version }}
       - name: Upload assembly
-          uses: actions/upload-artifact@v3
-          if: ${{ !startsWith(github.ref, 'refs/tags/') }}
-          with:
-            path: ${{ github.workspace }}/target/scala-2.12/liga-*.jar
+        uses: actions/upload-artifact@v3
+        if: ${{ !startsWith(github.ref, 'refs/tags/') }}
+        with:
+          path: ${{ github.workspace }}/target/scala-2.12/liga-*.jar
       - name: Release assembly
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
