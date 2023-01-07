@@ -199,7 +199,3 @@ assembly / artifact := {
 addArtifact(assembly / artifact, assembly)
 
 test in assembly := {}
-
-githubOwner := "liga-ai"
-githubRepository := "liga"
-githubTokenSource := TokenSource.GitConfig("github.token")
