@@ -39,9 +39,6 @@ python_requirement(
         "pandas",
         "py4j",
 
-        # MLflow
-        "mlflow==1.26.1",
-
         # MISC
         "jsonschema",
         "pyyaml",

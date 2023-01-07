@@ -1,0 +1,15 @@
+python_requirement(
+    name="mlflow",
+    requirements=[
+        "mlflow==1.26.1",
+    ],
+    resolve=parametrize("spark_3_2_1", "spark_3_3_1", "sklearn"),
+)
+
+python_sources(
+    name="sources",
+    sources=["**/*.py"],
+    resolve=parametrize("spark_3_2_1", "spark_3_3_1", "sklearn"),
+    skip_pylint=True,
+    skip_mypy=True,
+)

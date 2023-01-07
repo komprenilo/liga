@@ -12,6 +12,7 @@ python_sources(
     sources=["lab.py"],
     dependencies=[
         "//python/liga/numpy:sources@resolve=sklearn",
+        "//python/liga/mlflow:sources@resolve=sklearn",
         "//python/liga/sklearn:sources@resolve=sklearn",
         "//python/rikai:sources@resolve=sklearn"
     ],
