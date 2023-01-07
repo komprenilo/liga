@@ -15,13 +15,11 @@
 """Rikai Feature Store
 """
 from rikai.conf import *
-from rikai.spark.sql.codegen import mlflow_logger as mlflow
 
 from .__version__ import version
 
 __all__ = [
     "get_option",
-    "mlflow",
     "options",
     "option_context",
     "reset_option",

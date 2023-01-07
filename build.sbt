@@ -96,7 +96,6 @@ libraryDependencies ++= {
       "org.scala-lang", "scala-reflect"
     ),
     "org.scalatest" %% "scalatest-funsuite" % scalatestVersion % Test,
-    "org.mlflow" % "mlflow-client" % mlflowVersion
   )
 }
 

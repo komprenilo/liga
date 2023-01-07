@@ -25,8 +25,6 @@ from sklearn.base import (
     ClusterMixin,
 )
 
-import rikai
-
 
 def _get_model_type(model: Any) -> str:
     if isinstance(model, RegressorMixin):
@@ -56,15 +54,16 @@ def log_model(
     """
     Log sklearn models to MLflow with proper default settings
     """
-    customized_flavor = ("liga.sklearn",)
-    artifact_path = ("model",)
     model_type = _get_model_type(model)
-    rikai.mlflow.sklearn.log_model(  # type: ignore[attr-defined]
+
+    from liga.mlflow import logger
+
+    logger.sklearn.log_model(  # type: ignore[attr-defined]
         model,
-        artifact_path,
+        "model",
         schema,
         registered_model_name,
-        customized_flavor,
+        "liga.sklearn",
         model_type,
         labels,
         **kwargs,

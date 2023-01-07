@@ -22,7 +22,6 @@ from pyspark.sql.types import BinaryType
 
 from rikai.internal.reflection import find_class
 from rikai.logging import logger
-from rikai.spark.sql.codegen.mlflow_logger import KNOWN_FLAVORS
 from rikai.spark.sql.exceptions import SpecError
 
 __all__ = ["Registry"]
@@ -75,8 +74,6 @@ def codegen_from_spec(spec: ModelSpec):
     """
     if is_fully_qualified_name(spec.flavor):
         codegen_module = f"{spec.flavor}.codegen"
-    elif spec.flavor in KNOWN_FLAVORS:
-        codegen_module = f"rikai.spark.sql.codegen.{spec.flavor}"
     else:
         codegen_module = f"rikai.contrib.{spec.flavor}.codegen"
 

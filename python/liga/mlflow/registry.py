@@ -28,7 +28,7 @@ from mlflow.tracking import MlflowClient
 
 from rikai.logging import logger
 from rikai.spark.sql.codegen.base import ModelSpec, Registry
-from rikai.spark.sql.codegen.mlflow_logger import (
+from liga.mlflow.logger import (
     CONF_MLFLOW_LABEL_FUNC,
     CONF_MLFLOW_LABEL_URI,
     CONF_MLFLOW_MODEL_FLAVOR,

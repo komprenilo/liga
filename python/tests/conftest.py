@@ -30,7 +30,7 @@ from mlflow.tracking import MlflowClient
 from pyspark.sql import Row, SparkSession
 
 import rikai
-from rikai.spark.sql.codegen.mlflow_registry import CONF_MLFLOW_TRACKING_URI
+from liga.mlflow.registry import CONF_MLFLOW_TRACKING_URI
 from rikai.spark.utils import get_default_jar_version, init_spark_session
 
 
