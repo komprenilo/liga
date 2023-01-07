@@ -69,12 +69,8 @@ def init_spark_session(
     builder = (
         SparkSession.builder.appName(app_name)
         .config(
-            "spark.jars.packages",
-            ",".join(
-                [
-                    "ai.eto:rikai_{}:{}".format(scala_version, rikai_version),
-                ]
-            ),
+            "spark.jars",
+            "https://github.com/liga-ai/liga/releases/download/v0.2.0.dev0/liga-spark331-assembly_2.12-0.2.0.dev0.jar"
         )
         .config(
             "spark.sql.extensions",
