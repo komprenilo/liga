@@ -1,10 +1,10 @@
 python_distribution(
     name="liga",
     dependencies=[
-        "rikai:sources",
+        "python/rikai:sources@resolve=spark_3_3_1",
     ],
     provides=python_artifact(
         name="liga",
-        version="0.1.16",
+        version="0.2.0.dev0",
     ),
 )
