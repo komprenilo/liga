@@ -17,7 +17,7 @@ Generate UDF for Liga and sklearn integration
 """
 
 import pickle
-from typing import Iterator
+from typing import Iterator, Any
 
 import numpy as np
 import pandas as pd
@@ -33,7 +33,7 @@ __all__ = ["generate_udf"]
 _pickler = CloudPickleSerializer()
 
 
-def generate_udf(spec: ModelSpec):
+def generate_udf(spec: ModelSpec): # type: ignore[no-untyped-def]
     """Construct a UDF to run sklearn model.
 
     Parameters
@@ -56,10 +56,10 @@ def generate_udf(spec: ModelSpec):
             y = [_pickler.dumps(pred) for pred in model.predict(X)]
             yield pd.Series(y)
 
-    return pandas_udf(sklearn_inference_udf, returnType=BinaryType())
+    return pandas_udf(sklearn_inference_udf, returnType=BinaryType()) # type: ignore[call-overload]
 
 
-def load_model_from_uri(uri: str):
+def load_model_from_uri(uri: str) -> Any:
     """Load a Sklearn model from URL.
 
     Assuming model is persisted via pickle following the instruction:
