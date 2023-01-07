@@ -12,10 +12,17 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 
+"""
+Convert numpy data into SQL literals
+"""
+
 import numpy as np
 
 
 def literal(arr: np.ndarray) -> str:
+    """
+    Convert a Numpy Array to SQL literal
+    """
     assert len(arr.shape) == 1
     arr_str = ",".join([str(i) for i in arr.tolist()])
     return f"array({arr_str})"

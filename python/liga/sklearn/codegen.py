@@ -12,6 +12,10 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 
+"""
+Generate UDF for Liga and sklearn integration
+"""
+
 import pickle
 from typing import Iterator
 
@@ -43,11 +47,11 @@ def generate_udf(spec: ModelSpec):
     """
 
     def sklearn_inference_udf(
-        iter: Iterator[pd.Series],
+        iterator: Iterator[pd.Series],
     ) -> Iterator[pd.Series]:
         model = spec.model_type
         model.load_model(spec)
-        for series in iter:
+        for series in iterator:
             X = np.vstack(series.apply(_pickler.loads).to_numpy())
             y = [_pickler.dumps(pred) for pred in model.predict(X)]
             yield pd.Series(y)

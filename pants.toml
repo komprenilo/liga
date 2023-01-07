@@ -28,6 +28,14 @@ enable_resolves = true
   version = "black==22.1.0"
   extra_requirements.add = ["click<8.1"]
   lockfile = "3rdparty/python/black.lock"
+ 
+[pylint]
+  version = "pylint==2.15.9"
+  lockfile = "3rdparty/python/pylint.lock"
+
+[mypy]
+  version = "mypy==0.910"
+  lockfile = "3rdparty/python/mypy.lock"
 
 [pytest]
   version = "pytest==7.0.1"
@@ -36,7 +44,3 @@ enable_resolves = true
     "requests-mock",
   ]
   lockfile = "3rdparty/python/pytest.lock"
-
-[mypy]
-  version = "mypy==0.910"
-  lockfile = "3rdparty/python/mypy.lock"

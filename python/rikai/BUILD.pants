@@ -3,9 +3,12 @@ python_sources(name = "sources",
     overrides={
         (
             "spark/sql/generated/*.py",
-        ): {"skip_black": True},
+        ): {
+            "skip_black": True,
+        },
     },
     resolve=parametrize("spark_3_2_1", "spark_3_3_1", "sklearn"),
+    skip_pylint=True,
     skip_mypy=True,
 )
 
