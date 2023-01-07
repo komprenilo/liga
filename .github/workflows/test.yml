@@ -10,7 +10,7 @@ on:
     paths:
       - 'python/**'
       - 'src/main/**'
-      - '.github/workflows/python.yml'
+      - '.github/workflows/test.yml'
 
 jobs:
   build:
@@ -75,3 +75,8 @@ jobs:
       run: bin/test
       env:
         SPARK_VERSION: ${{ matrix.spark-version }}
+    - name: Run scala tests
+      run: sbt test
+      env:
+        SPARK_VERSION: ${{ matrix.spark-version }}
+

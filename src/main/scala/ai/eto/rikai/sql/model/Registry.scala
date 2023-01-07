@@ -21,8 +21,10 @@ import org.apache.http.client.utils.URIUtils
 import org.apache.log4j.Logger
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.rikai.model.ModelResolver
-
 import java.net.URI
+
+import ai.eto.rikai.sql.model.testing.TestRegistry
+
 import scala.util.{Success, Try}
 
 /** Model Registry Integrations.
@@ -140,8 +142,15 @@ private[rikai] object Registry {
             if (scheme != null) { s"ModelRegistry(${scheme}) exists" }
             else { s"Default ModelRegistry exists" }
           )
-        registryMap += (scheme ->
-          new PyImplRegistry(value, conf))
+        if (scheme == "test") {
+          registryMap += (scheme ->
+            new TestRegistry(conf)
+          )
+        } else {
+          registryMap += (scheme ->
+            new PyImplRegistry(value, conf)
+          )
+        }
         logger.debug(s"Model Registry ${scheme} registered to: ${value}")
       }
     }
