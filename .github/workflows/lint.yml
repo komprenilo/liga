@@ -11,6 +11,8 @@ on:
       - 'python/**'
       - 'src/main/**'
       - '.github/workflows/lint.yml'
+      - 'build.sbt'
+      - 'pants.toml'
 
 jobs:
   build:
