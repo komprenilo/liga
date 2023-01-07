@@ -1,0 +1,10 @@
+python_distribution(
+    name="liga",
+    dependencies=[
+        "rikai:sources",
+    ],
+    provides=python_artifact(
+        name="liga",
+        version="0.1.16",
+    ),
+)
