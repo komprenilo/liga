@@ -58,7 +58,10 @@ object DummyRegistry extends Registry with LazyLogging {
   }
 }
 
-class PyImplRegistry(pyClass: String, val conf: Map[String, String]) extends Registry with LazyLogging {
+class PyImplRegistry(pyClass: String, val conf: Map[String, String])
+    extends Registry
+    with LazyLogging {
+
   /** Resolve a [[Model]] from the specific URI.
     *
     * @param session a live SparkSession
@@ -138,8 +141,7 @@ private[rikai] object Registry {
             else { s"Default ModelRegistry exists" }
           )
         registryMap += (scheme ->
-          new PyImplRegistry(value, conf)
-        )
+          new PyImplRegistry(value, conf))
         logger.debug(s"Model Registry ${scheme} registered to: ${value}")
       }
     }
