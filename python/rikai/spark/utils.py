@@ -38,7 +38,11 @@ def get_default_jar_version(use_snapshot=True):
 
 
 def init_spark_session(
-    conf: dict = None, app_name="rikai", rikai_version=None, num_cores=2
+    conf: dict = None,
+    app_name="rikai",
+    scala_version="2.12",
+    rikai_version=None,
+    num_cores=2
 ):
     from pyspark.sql import SparkSession
     import os
@@ -68,7 +72,7 @@ def init_spark_session(
             "spark.jars.packages",
             ",".join(
                 [
-                    "ai.eto:rikai_2.1:{}".format(rikai_version),
+                    "ai.eto:rikai_{}:{}".format(scala_version, rikai_version),
                 ]
             ),
         )
