@@ -144,12 +144,10 @@ private[rikai] object Registry {
           )
         if (scheme == "test") {
           registryMap += (scheme ->
-            new TestRegistry(conf)
-          )
+            new TestRegistry(conf))
         } else {
           registryMap += (scheme ->
-            new PyImplRegistry(value, conf)
-          )
+            new PyImplRegistry(value, conf))
         }
         logger.debug(s"Model Registry ${scheme} registered to: ${value}")
       }
