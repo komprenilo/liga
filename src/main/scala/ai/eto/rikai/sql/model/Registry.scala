@@ -16,7 +16,6 @@
 
 package ai.eto.rikai.sql.model
 
-import ai.eto.rikai.sql.model.dummy.DummyRegistry
 import com.typesafe.scalalogging.LazyLogging
 import org.apache.http.client.utils.URIUtils
 import org.apache.log4j.Logger
@@ -46,8 +45,22 @@ trait Registry {
   ): Model
 }
 
-abstract class PyImplRegistry extends Registry with LazyLogging {
-  def pyClass: String
+object DummyRegistry extends Registry with LazyLogging {
+  val pyClass: String =
+    "rikai.spark.sql.codegen.dummy.DummyRegistry"
+
+  override def resolve(
+      session: SparkSession,
+      spec: ModelSpec
+  ): Model = {
+    logger.info(s"Resolving ML model from ${spec.uri}")
+    ModelResolver.resolve(session, pyClass, spec)
+  }
+}
+
+class PyImplRegistry(pyClass: String, val conf: Map[String, String])
+    extends Registry
+    with LazyLogging {
 
   /** Resolve a [[Model]] from the specific URI.
     *
@@ -58,7 +71,6 @@ abstract class PyImplRegistry extends Registry with LazyLogging {
     *
     * @return [[Model]] if found.
     */
-  @throws[ModelNotFoundException]
   override def resolve(
       session: SparkSession,
       spec: ModelSpec
@@ -84,8 +96,8 @@ private[rikai] object Registry {
   /** Automatically configure registries for file:/ and mlflow:/ model uri's.
     */
   val DEFAULT_REGISTRIES = Map(
-    "spark.rikai.sql.ml.registry.file.impl" -> "ai.eto.rikai.sql.model.fs.FileSystemRegistry",
-    "spark.rikai.sql.ml.registry.mlflow.impl" -> "ai.eto.rikai.sql.model.mlflow.MlflowRegistry"
+    "spark.rikai.sql.ml.registry.file.impl" -> "rikai.spark.sql.codegen.fs.FileSystemRegistry",
+    "spark.rikai.sql.ml.registry.mlflow.impl" -> "rikai.spark.sql.codegen.mlflow_registry.MlflowRegistry"
   )
   private val logger = Logger.getLogger(Registry.getClass)
 
@@ -129,11 +141,7 @@ private[rikai] object Registry {
             else { s"Default ModelRegistry exists" }
           )
         registryMap += (scheme ->
-          Class
-            .forName(value)
-            .getDeclaredConstructor(classOf[Map[String, String]])
-            .newInstance(conf)
-            .asInstanceOf[Registry])
+          new PyImplRegistry(value, conf))
         logger.debug(s"Model Registry ${scheme} registered to: ${value}")
       }
     }
