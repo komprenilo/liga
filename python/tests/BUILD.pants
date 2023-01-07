@@ -2,6 +2,7 @@ python_sources(
     name="sources",
     sources=["**/conftest.py", "spark/sql/codegen/utils.py"],
     resolve=parametrize("spark_3_2_1", "spark_3_3_1"),
+    skip_pylint=True,
     skip_mypy=True,
 )
 
@@ -12,5 +13,6 @@ python_tests(name = "tests",
         "//python/tests:sources"
     ],
     resolve=parametrize("spark_3_2_1", "spark_3_3_1"),
+    skip_pylint=True,
     skip_mypy=True,
 )

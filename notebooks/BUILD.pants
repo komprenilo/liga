@@ -17,4 +17,5 @@ python_sources(
     ],
     resolve="sklearn",
     skip_mypy=True,
+    skip_pylint=True,
 )

@@ -1,11 +1,31 @@
-import rikai
+#  Copyright 2023 Liga Authors
+#
+#  Licensed under the Apache License, Version 2.0 (the "License");
+#  you may not use this file except in compliance with the License.
+#  You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+#  Unless required by applicable law or agreed to in writing, software
+#  distributed under the License is distributed on an "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#  See the License for the specific language governing permissions and
+#  limitations under the License.
+
+"""
+Utilities to log sklearn models to MLflow for Liga
+"""
+
 from typing import Any, Optional
+
 from sklearn.base import (
     RegressorMixin,
     ClassifierMixin,
     TransformerMixin,
     ClusterMixin,
 )
+
+import rikai
 
 
 def _get_model_type(model: Any) -> str:
@@ -18,23 +38,26 @@ def _get_model_type(model: Any) -> str:
             return "liga.sklearn.models.cluster"
         else:
             raise RuntimeError(
-                f"Clustering without predict method is not supported"
+                "Clustering without predict method is not supported"
             )
     elif isinstance(model, TransformerMixin):
         return "liga.sklearn.models.transformer"
     else:
-        raise RuntimeError(f"No corresponding ModelType yet")
+        raise RuntimeError("No corresponding ModelType yet")
 
 
 def log_model(
     model: Any,
     registered_model_name: Optional[str] = None,
     schema: Optional[str] = None,
-    customized_flavor: Optional[str] = "liga.sklearn",
     labels: Optional[dict] = None,
-    artifact_path: str = "model",
     **kwargs: Any,
 ) -> None:
+    """
+    Log sklearn models to MLflow with proper default settings
+    """
+    customized_flavor = ("liga.sklearn",)
+    artifact_path = ("model",)
     model_type = _get_model_type(model)
     rikai.mlflow.sklearn.log_model(  # type: ignore[attr-defined]
         model,
