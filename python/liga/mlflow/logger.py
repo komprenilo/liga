@@ -58,8 +58,8 @@ class MlflowLogger:
         customized_flavor: Optional[str] = None,
         model_type: Optional[str] = None,
         labels: Optional[dict] = None,
-        **kwargs,
-    ):
+        **kwargs: Any,
+    ) -> None:
         """Convenience function to log the model with tags needed by rikai.
         This should be called during training when the model is produced.
 

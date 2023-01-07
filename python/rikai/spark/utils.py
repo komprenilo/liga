@@ -42,7 +42,7 @@ def init_spark_session(
     app_name="rikai",
     scala_version="2.12",
     rikai_version=None,
-    num_cores=2
+    num_cores=2,
 ):
     from pyspark.sql import SparkSession
     import os

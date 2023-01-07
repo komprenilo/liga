@@ -25,8 +25,6 @@ from sklearn.base import (
     ClusterMixin,
 )
 
-import liga
-
 
 def _get_model_type(model: Any) -> str:
     if isinstance(model, RegressorMixin):
@@ -58,7 +56,8 @@ def log_model(
     """
     model_type = _get_model_type(model)
 
-    import liga.mlflow.logger as logger
+    from liga.mlflow import logger
+
     logger.sklearn.log_model(  # type: ignore[attr-defined]
         model,
         "model",
