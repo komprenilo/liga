@@ -34,7 +34,7 @@ jobs:
     - name: Setup Scala
       uses: olafurpg/setup-scala@v10
       with:
-        java-version: adopt@1.11
+        java-version: adopt@1.8
     - uses: pantsbuild/actions/init-pants@v1
       # This action bootstraps pants and manages 2-3 GHA caches.
       # See: https://github.com/pantsbuild/actions/tree/init-pants/
