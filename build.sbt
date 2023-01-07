@@ -1,7 +1,7 @@
 import java.io.File
 import scala.reflect.io.Directory
 
-name := "rikai"
+name := "liga"
 crossScalaVersions := List("2.12.16", "2.13.8")
 scalaVersion := "2.12.16"
 scalaBinaryVersion := scalaVersion.value.split('.').slice(0, 2).mkString(".")
@@ -199,3 +199,7 @@ assembly / artifact := {
 addArtifact(assembly / artifact, assembly)
 
 test in assembly := {}
+
+githubOwner := "liga-ai"
+githubRepository := "liga"
+githubTokenSource := TokenSource.GitConfig("github.token")
