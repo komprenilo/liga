@@ -12,8 +12,8 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 import re
+from importlib.metadata import version as find_version
 
-import rikai
 from rikai.__version__ import version
 from rikai.conf import CONF_PARQUET_BLOCK_SIZE
 
@@ -37,11 +37,17 @@ def get_default_jar_version(use_snapshot=True):
     return match_str
 
 
+def _liga_assembly_jar(scala_version: str):
+    spark_version = find_version("pyspark")
+    url = "https://github.com/liga-ai/liga/releases/download"
+    name = f"liga-spark{spark_version.replace('.', '')}"
+    return f"{url}/v{version}/{name}-assembly_{scala_version}-{version}.jar"
+
+
 def init_spark_session(
     conf: dict = None,
     app_name="rikai",
     scala_version="2.12",
-    rikai_version=None,
     num_cores=2,
 ):
     from pyspark.sql import SparkSession
@@ -64,18 +70,9 @@ def init_spark_session(
                 active_session.stop()
                 break
 
-    if not rikai_version:
-        rikai_version = get_default_jar_version(use_snapshot=True)
     builder = (
         SparkSession.builder.appName(app_name)
-        .config(
-            "spark.jars.packages",
-            ",".join(
-                [
-                    "ai.eto:rikai_{}:{}".format(scala_version, rikai_version),
-                ]
-            ),
-        )
+        .config("spark.jars", _liga_assembly_jar(scala_version))
         .config(
             "spark.sql.extensions",
             "ai.eto.rikai.sql.spark.RikaiSparkSessionExtensions",
