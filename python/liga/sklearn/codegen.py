@@ -64,4 +64,3 @@ def load_model_from_uri(uri: str):
     """
     with open_uri(uri) as fobj:
         return pickle.load(fobj)
-
