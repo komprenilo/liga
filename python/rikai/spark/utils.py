@@ -38,13 +38,14 @@ def get_default_jar_version(use_snapshot=True):
 
 
 def _liga_assembly_jar(jar_type: str, scala_version: str):
-    spark_version = find_version("pyspark")
-    name = f"liga-spark{spark_version.replace('.', '')}-assembly_{scala_version}"
+    spark_version = find_version("pyspark").replace(".", "")
+    name = f"liga-spark{spark_version}-assembly_{scala_version}"
     if jar_type == "github":
         url = "https://github.com/liga-ai/liga/releases/download"
         return f"{url}/v{version}/{name}-{version}.jar"
     elif jar_type == "local":
         import os
+
         project_path = os.environ["ROOTDIR"]
         return f"{project_path}/target/scala-{scala_version}/{name}-{get_default_jar_version()}.jar"
     else:
