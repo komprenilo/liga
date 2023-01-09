@@ -20,7 +20,7 @@ _LOG_FORMAT = (
 
 __all__ = ["logger"]
 
-logger = None
+logger: logging.Logger = None
 
 
 def _set_logger(level=logging.INFO):
