@@ -14,7 +14,7 @@
 
 import json
 from abc import ABC, abstractmethod
-from typing import Any, Callable, Dict, Optional, TypeVar
+from typing import Any, Callable, Dict, Optional, TypeVar, List
 
 from jsonschema.exceptions import ValidationError
 from jsonschema.validators import validate
@@ -33,7 +33,7 @@ M = TypeVar("M")  # Model Type
 
 # JSON schema specification for the model payload specifications
 # used to validate model spec input
-def gen_schema_spec(required_cols):
+def gen_schema_spec(required_cols: List) -> dict:
     return {
         "type": "object",
         "properties": {
@@ -66,7 +66,7 @@ def is_fully_qualified_name(name: str) -> bool:
     return "." in name
 
 
-def parse_model_type(flavor: str, model_type: str):
+def parse_model_type(flavor: str, model_type: str) -> "ModelType":
     model_modules_candidates = []
 
     if is_fully_qualified_name(model_type):
@@ -110,15 +110,15 @@ class ModelSpec(ABC):
         self,
         spec: Dict[str, Any],
         need_validate: bool = True,
-        spec_schema=SPEC_PAYLOAD_SCHEMA,
-    ):
+        spec_schema: dict = SPEC_PAYLOAD_SCHEMA,
+    ) -> None:
         self._spec = spec
         self._spec["options"] = self._spec.get("options", {})
         self._spec_schema = spec_schema
         if need_validate:
             self.validate()
 
-    def validate(self):
+    def validate(self) -> None:
         """Validate model spec
 
         Raises
@@ -205,7 +205,7 @@ class ModelType(ABC):
     """
 
     @abstractmethod
-    def load_model(self, spec: ModelSpec, **kwargs):
+    def load_model(self, spec: ModelSpec, **kwargs: Any) -> None:
         """Lazy loading the model from a :class:`ModelSpec`."""
         pass
 
@@ -221,7 +221,7 @@ class ModelType(ABC):
         """
         pass
 
-    def dataType(self) -> "pyspark.sql.types.DataType":
+    def dataType(self) -> "pyspark.sql.types.DataType":  # type: ignore[name-defined]
         """Returns schema as :py:class:`pyspark.sql.types.DataType`."""
         return parse_schema(self.schema())
 
@@ -236,17 +236,17 @@ class ModelType(ABC):
         pass
 
     @abstractmethod
-    def predict(self, *args, **kwargs) -> Any:
+    def predict(self, *args: Any, **kwargs: Any) -> Any:
         """Run model inference and convert return types into
         Rikai-compatible types.
 
         """
         pass
 
-    def __call__(self, *args, **kwargs) -> Any:
+    def __call__(self, *args: Any, **kwargs: Any) -> Any:
         return self.predict(*args, **kwargs)
 
-    def release(self):
+    def release(self) -> None:
         """Release underneath resources if applicable.
 
         It will be called after a model runner finishes a partition in Spark.
