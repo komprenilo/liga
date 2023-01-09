@@ -11,11 +11,10 @@ python_sources(
     name="sklearn",
     sources=["lab.py"],
     dependencies=[
-        "//python/liga/numpy:sources@resolve=sklearn",
+        "//python/rikai:sources@resolve=sklearn",
+        "//python/liga:sources@resolve=sklearn",
         "//python/liga/mlflow:sources@resolve=sklearn",
         "//python/liga/sklearn:sources@resolve=sklearn",
-        "//python/liga:sources@resolve=sklearn",
-        "//python/rikai:sources@resolve=sklearn"
     ],
     resolve="sklearn",
     skip_mypy=True,
