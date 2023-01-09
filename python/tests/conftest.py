@@ -34,6 +34,7 @@ import rikai
 from liga.mlflow.registry import CONF_MLFLOW_TRACKING_URI
 from rikai.spark.utils import get_default_jar_version, init_spark_session
 
+
 @pytest.fixture(scope="session")
 def mlflow_client_with_tracking_uri(
         tmp_path_factory
@@ -44,6 +45,7 @@ def mlflow_client_with_tracking_uri(
     mlflow.set_tracking_uri(tracking_uri)
 
     return mlflow.tracking.MlflowClient(tracking_uri), tracking_uri
+
 
 @pytest.fixture(scope="session")
 def mlflow_client(mlflow_client_with_tracking_uri):
@@ -80,12 +82,13 @@ def spark(mlflow_tracking_uri: str, tmp_path_factory) -> SparkSession:
                 ),
             ]
         )
-    )
+        , jar_type="local")
 
 
 @pytest.fixture
 def asset_path() -> Path:
     return Path(__file__).parent / "assets"
+
 
 @pytest.fixture(scope="session")
 def resnet_model_uri(tmp_path_factory):
@@ -97,7 +100,6 @@ def resnet_model_uri(tmp_path_factory):
     import mlflow
     from liga.sklearn.mlflow import log_model
     from sklearn.linear_model import LinearRegression
-
 
     mlflow_tracking_uri = "sqlite:///mlruns.db"
     mlflow.set_tracking_uri(mlflow_tracking_uri)
@@ -122,6 +124,7 @@ def resnet_model_uri(tmp_path_factory):
     # model_uri = tmp_path / "resnet.pth"
     # sklearn.save(resnet, model_uri)
     # return model_uri
+
 
 @pytest.fixture
 def s3_tmpdir() -> str:
@@ -150,9 +153,9 @@ def s3_tmpdir() -> str:
         pytest.skip("Skip test, rikai[aws] (boto3) is not installed")
 
     temp_dir = (
-        baseurl
-        + "/"
-        + "".join(random.choices(string.ascii_letters + string.digits, k=6))
+            baseurl
+            + "/"
+            + "".join(random.choices(string.ascii_letters + string.digits, k=6))
     )
     yield temp_dir
 
@@ -213,9 +216,9 @@ def gcs_tmpdir() -> str:
         pytest.skip("rikai[gcp] is not installed.")
 
     temp_dir = (
-        base_url
-        + "/"
-        + "".join(random.choices(string.ascii_letters + string.digits, k=6))
+            base_url
+            + "/"
+            + "".join(random.choices(string.ascii_letters + string.digits, k=6))
     )
     yield temp_dir
 
