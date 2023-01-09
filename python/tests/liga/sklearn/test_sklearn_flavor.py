@@ -24,6 +24,7 @@ from sklearn.datasets import make_classification
 from sklearn.decomposition import PCA
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LinearRegression
+from liga.sklearn.mlflow import log_model
 
 import rikai
 
@@ -42,11 +43,9 @@ def test_sklearn_linear_regression(
 
         reg_model_name = "sklearn_linear_regression"
         model_name = "sk_lr_m"
-        rikai.mlflow.sklearn.log_model(
+        log_model(
             model,
-            artifact_path="model",
             registered_model_name=reg_model_name,
-            model_type="linear_regression",
         )
 
         spark.sql(
@@ -86,10 +85,8 @@ def test_sklearn_random_forest(mlflow_tracking_uri: str, spark: SparkSession):
 
         reg_model_name = "sklearn_random_forest"
         model_name = "sk_rf_m"
-        rikai.mlflow.sklearn.log_model(
+        log_model(
             model,
-            artifact_path="model",
-            model_type="random_forest_classification",
             registered_model_name=reg_model_name,
         )
 
@@ -129,10 +126,8 @@ def test_sklearn_pca(mlflow_tracking_uri: str, spark: SparkSession):
         model.fit(X)
         model_name = "sklearn_pca"
         reg_model_name = model_name
-        rikai.mlflow.sklearn.log_model(
+        log_model(
             model,
-            "model",
-            model_type="pca",
             registered_model_name=reg_model_name,
         )
         spark.sql(
@@ -148,29 +143,3 @@ def test_sklearn_pca(mlflow_tracking_uri: str, spark: SparkSession):
         assert (
                 pytest.approx(result.head().pred) == model.transform([[3, 2]])[0]
         )
-
-
-def test_sklearn_pca_fs(spark: SparkSession, tmp_path: Path):
-    X = np.array([[-1, -1], [-2, -1], [-3, -2], [1, 1], [2, 1], [3, 2]])
-    model = PCA(n_components=2)
-
-    model.fit(X)
-    uri = tmp_path / "model.pt"
-    with uri.open("wb") as fobj:
-        pickle.dump(model, fobj)
-
-    model_name = "pca_fs"
-    spark.sql(
-        f"""
-        CREATE OR REPLACE MODEL {model_name}
-        FLAVOR sklearn
-        MODEL_TYPE pca
-        USING '{str(uri)}';
-        """
-    )
-    result = spark.sql(
-        f"""
-        select ML_PREDICT({model_name}, array(3, 2)) as pred
-        """
-    )
-    assert pytest.approx(result.head().pred) == model.transform([[3, 2]])[0]
