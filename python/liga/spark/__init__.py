@@ -14,12 +14,15 @@
 
 import re
 from importlib.metadata import version as find_version
+from typing import Optional
+
+from pyspark.sql import SparkSession
 
 from liga.__version__ import version
 from liga.logging import logger
 
 
-def get_default_jar_version(use_snapshot=True):
+def get_default_jar_version(use_snapshot: bool = True) -> str:
     """
     Make it easier to reference the jar version in notebooks and conftest.
 
@@ -38,7 +41,7 @@ def get_default_jar_version(use_snapshot=True):
     return match_str
 
 
-def _liga_assembly_jar(jar_type: str, scala_version: str):
+def _liga_assembly_jar(jar_type: str, scala_version: str) -> str:
     spark_version = find_version("pyspark").replace(".", "")
     name = f"liga-spark{spark_version}-assembly_{scala_version}"
     url = "https://github.com/liga-ai/liga/releases/download"
@@ -68,13 +71,12 @@ def _liga_assembly_jar(jar_type: str, scala_version: str):
 
 
 def init(
-    conf: dict = None,
-    app_name="Liga",
-    scala_version="2.12",
-    num_cores=2,
-    jar_type="github",
-):
-    from pyspark.sql import SparkSession
+    conf: Optional[dict] = None,
+    app_name: str ="Liga",
+    scala_version: str ="2.12",
+    num_cores: int =2,
+    jar_type: str ="github",
+) -> SparkSession:
     import os
     import sys
 
