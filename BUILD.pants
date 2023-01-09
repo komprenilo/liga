@@ -1,8 +1,8 @@
 python_distribution(
     name="liga",
     dependencies=[
-        "python/rikai:sources@resolve=spark_3_2_1",
-        "python/liga:sources@resolve=spark_3_2_1",
+        "python/rikai:sources@resolve=liga",
+        "python/liga:sources@resolve=liga",
     ],
     provides=python_artifact(
         name="liga",
@@ -13,7 +13,7 @@ python_distribution(
 python_distribution(
     name="liga-mlflow",
     dependencies=[
-        "python/liga/mlflow:sources",
+        "python/liga/mlflow:sources@resolve=mlflow",
     ],
     provides=python_artifact(
         name="liga-mlflow",
