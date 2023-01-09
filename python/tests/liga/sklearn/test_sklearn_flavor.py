@@ -30,40 +30,26 @@ import rikai
 
 
 def test_sklearn_linear_regression(
-    mlflow_tracking_uri: str, spark: SparkSession
+    mlflow_tracking_uri: str, sklearn_lr_uri: str, spark: SparkSession
 ):
-    # prepare training data
-    X = np.array([[1, 1], [1, 2], [2, 2], [2, 3]])
-    y = np.dot(X, np.array([1, 2])) + 3
-    model = LinearRegression()
+    model_name = "sk_lr_m"
 
-    mlflow.set_tracking_uri(mlflow_tracking_uri)
-    with mlflow.start_run():
-        model.fit(X, y)
+    spark.sql(
+        f"""
+        CREATE MODEL {model_name} USING '{sklearn_lr_uri}';
+        """
+    )
 
-        reg_model_name = "sklearn_linear_regression"
-        model_name = "sk_lr_m"
-        log_model(
-            model,
-            registered_model_name=reg_model_name,
-        )
+    df = spark.range(2).selectExpr("id as x0", "id+1 as x1")
+    df.createOrReplaceTempView("tbl_X")
 
-        spark.sql(
-            f"""
-            CREATE MODEL {model_name} USING 'mlflow:///{reg_model_name}';
-            """
-        )
-
-        df = spark.range(2).selectExpr("id as x0", "id+1 as x1")
-        df.createOrReplaceTempView("tbl_X")
-
-        result = spark.sql(
-            f"""
-            select ML_PREDICT({model_name}, array(x0, x1)) as pred from tbl_X
-            """
-        )
-        assert result.schema == StructType([StructField("pred", FloatType())])
-        assert result.count() == 2
+    result = spark.sql(
+        f"""
+        select ML_PREDICT({model_name}, array(x0, x1)) as pred from tbl_X
+        """
+    )
+    assert result.schema == StructType([StructField("pred", FloatType())])
+    assert result.count() == 2
 
 
 def test_sklearn_random_forest(mlflow_tracking_uri: str, spark: SparkSession):
