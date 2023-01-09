@@ -23,8 +23,8 @@ from pyspark.sql.types import BinaryType
 
 from rikai.internal.reflection import find_class
 from rikai.spark.sql.exceptions import SpecError
-from rikai.spark.sql.model import ModelSpec, is_fully_qualified_name
 
+from liga.registry.model import ModelSpec, is_fully_qualified_name
 from liga.logging import logger
 
 

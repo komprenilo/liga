@@ -90,10 +90,9 @@ def parse_model_type(flavor: str, model_type: str):
             return find_func(f"{model_module}.MODEL_TYPE")
         except ModuleNotFoundError:
             pass
-    else:
-        raise ModuleNotFoundError(
-            f"Model type not found for model/flavor: {model_type}/{flavor}"
-        )
+    raise ModuleNotFoundError(
+        f"Model type not found for model/flavor: {model_type}/{flavor}"
+    )
 
 
 class ModelSpec(ABC):
@@ -103,20 +102,20 @@ class ModelSpec(ABC):
     ----------
     spec : dict
         Dictionary representation of an input spec
-    validate : bool, default True.
+    need_validate : bool, default True.
         Validate the spec during construction. Default ``True``.
     """
 
     def __init__(
         self,
         spec: Dict[str, Any],
-        validate: bool = True,
+        need_validate: bool = True,
         spec_schema=SPEC_PAYLOAD_SCHEMA,
     ):
         self._spec = spec
         self._spec["options"] = self._spec.get("options", {})
         self._spec_schema = spec_schema
-        if validate:
+        if need_validate:
             self.validate()
 
     def validate(self):
@@ -156,6 +155,8 @@ class ModelSpec(ABC):
         mtype = self._spec["model"].get("type", None)
         if mtype:
             return parse_model_type(self.flavor, mtype)
+        else:
+            raise SpecError("ModelType is not available in spec")
 
     @abstractmethod
     def load_model(self) -> Any:
@@ -166,9 +167,9 @@ class ModelSpec(ABC):
         if "labels" in self._spec:
             uri = self._spec["labels"].get("uri")
             if uri:
-                with open(uri) as fh:
-                    dd = json.load(fh)
-                return lambda label_id: dd[label_id]
+                with open(uri) as f:
+                    data = json.load(f)
+                return lambda label_id: data[label_id]
             func = self._spec["labels"].get("func")
             if func:
                 return find_func(func)

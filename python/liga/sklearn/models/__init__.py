@@ -19,7 +19,7 @@ Base ModelType for sklearn
 from abc import ABC
 from typing import Callable, Any
 
-from rikai.spark.sql.model import ModelSpec, ModelType
+from liga.registry.model import ModelSpec, ModelType
 
 
 class SklearnModelType(ModelType, ABC):
