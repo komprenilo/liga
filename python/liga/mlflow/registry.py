@@ -38,7 +38,7 @@ from liga.mlflow.logger import (
     MlflowLogger,
 )
 from rikai.spark.sql.exceptions import SpecError
-from rikai.spark.sql.model import is_fully_qualified_name
+from liga.registry.model import is_fully_qualified_name
 
 __all__ = ["MlflowRegistry"]
 
@@ -56,7 +56,7 @@ class MlflowModelSpec(ModelSpec):
         The mlflow tracking uri
     options: Dict[str, Any], optional
         Additionally model runtime options
-    validate: bool, default True.
+    need_validate: bool, default True.
         Validate the spec during construction. Default ``True``.
     """
 
@@ -66,11 +66,11 @@ class MlflowModelSpec(ModelSpec):
         model_conf: dict,
         tracking_uri: str,
         options: Optional[Dict[str, Any]] = None,
-        validate: bool = True,
+        need_validate: bool = True,
     ):
         self.tracking_uri = tracking_uri
         spec_dict = self._load_spec_dict(model_uri, model_conf, options or {})
-        super().__init__(spec_dict, validate=validate)
+        super().__init__(spec_dict, need_validate=need_validate)
         self._artifact = None
 
     def load_model(self) -> Any:
