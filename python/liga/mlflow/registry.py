@@ -26,7 +26,6 @@ except ImportError:
     )
 from mlflow.tracking import MlflowClient
 
-from rikai.logging import logger
 from liga.registry.base import ModelSpec, Registry
 from liga.mlflow.logger import (
     CONF_MLFLOW_LABEL_FUNC,
