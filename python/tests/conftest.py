@@ -64,14 +64,6 @@ def spark(mlflow_tracking_uri: str, tmp_path_factory) -> SparkSession:
     return init_spark_session(
         dict(
             [
-                (
-                    "spark.jars.packages",
-                    ",".join(
-                        [
-                            "ai.eto:rikai_2.12:{}".format(rikai_version),
-                        ]
-                    ),
-                ),
                 ("spark.port.maxRetries", 128),
                 ("spark.sql.warehouse.dir", str(warehouse_path)),
                 (
