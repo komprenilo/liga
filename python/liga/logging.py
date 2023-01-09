@@ -20,22 +20,18 @@ _LOG_FORMAT = (
 
 __all__ = ["logger"]
 
-logger: logging.Logger = None
 
-
-def _set_logger(level=logging.INFO):
-    global logger
-    if logger is not None:
-        return logger
-    logger = logging.getLogger("Rikai")
-    logger.setLevel(level)
+def _set_logger(level: int = logging.INFO) -> logging.Logger:
+    l = logging.getLogger("Rikai")
+    l.setLevel(level)
 
     handler = logging.StreamHandler()
     handler.setFormatter(logging.Formatter(_LOG_FORMAT))
-    logger.handlers.clear()
-    logger.addHandler(handler)
+    l.handlers.clear()
+    l.addHandler(handler)
 
-    logger.propagate = False
+    l.propagate = False
+    return l
 
 
-_set_logger()
+logger: logging.Logger = _set_logger()
