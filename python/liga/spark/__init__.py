@@ -45,11 +45,17 @@ def _liga_assembly_jar(jar_type: str, scala_version: str):
     github_jar = f"{url}/v{version}/{name}-{version}.jar"
     if jar_type == "github":
         if "dev" in version:
-            logger.warn("Jar type `github` is for stable release, it may fail when version contains dev")
+            logger.warning(
+                "Jar type `github` is for stable release, "
+                "it may fail when version contains dev"
+            )
         return github_jar
     elif jar_type == "local":
         if "dev" not in version:
-            logger.warn("Jar type `local` is for developing purpose, use Jar on Github instead")
+            logger.warning(
+                "Jar type `local` is for developing purpose, "
+                "use Jar on Github instead"
+            )
             return github_jar
         else:
             import os
