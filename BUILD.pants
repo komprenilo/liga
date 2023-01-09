@@ -13,7 +13,7 @@ python_distribution(
 python_distribution(
     name="liga-mlflow",
     dependencies=[
-        "contrib/liga/mlflow:sources",
+        "python/liga/mlflow:sources",
     ],
     provides=python_artifact(
         name="liga-mlflow",
@@ -24,7 +24,7 @@ python_distribution(
 python_distribution(
     name="liga-sklearn",
     dependencies=[
-        "contrib/liga/sklearn:sources@resolve=sklearn",
+        "python/liga/sklearn:sources@resolve=sklearn",
     ],
     provides=python_artifact(
         name="liga-sklearn",
