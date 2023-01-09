@@ -37,7 +37,7 @@ from liga.mlflow.logger import (
     CONF_MLFLOW_TRACKING_URI,
     MlflowLogger,
 )
-from rikai.spark.sql.exceptions import SpecError
+from liga.exceptions import SpecError
 from liga.registry.model import is_fully_qualified_name
 
 __all__ = ["MlflowRegistry"]

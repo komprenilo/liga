@@ -13,7 +13,7 @@
 #  limitations under the License.
 
 from rikai.mixin import Pretrained
-from rikai.spark.sql.exceptions import SpecError
+from liga.exceptions import SpecError
 
 from liga.registry.base import ModelSpec, Registry
 from liga.registry.model import NOURI_SPEC_SCHEMA
