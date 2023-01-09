@@ -6,15 +6,6 @@ python_sources(
     skip_mypy=True,
 )
 
-python_requirement(
-    name="requirement",
-    requirements=[
-        "mlflow==1.26.1",
-        "scikit-learn",
-    ],
-    resolve=parametrize("spark_3_2_1", "spark_3_3_1"),
-)
-
 python_tests(name = "tests",
     sources=["**/*.py", "!**/conftest.py"],
     dependencies=[
