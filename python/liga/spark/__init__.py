@@ -1,24 +1,28 @@
-#  Copyright (c) 2021 Rikai Authors
+#  Copyright 2020 Rikai Authors
 #
-#   Licensed under the Apache License, Version 2.0 (the "License");
-#   you may not use this file except in compliance with the License.
+#  Licensed under the Apache License, Version 2.0 (the "License");
+#  you may not use this file except in compliance with the License.
 #  You may obtain a copy of the License at
 #
-#      http://www.apache.org/licenses/LICENSE-2.0
+#    http://www.apache.org/licenses/LICENSE-2.0
 #
 #  Unless required by applicable law or agreed to in writing, software
 #  distributed under the License is distributed on an "AS IS" BASIS,
 #  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
+
 import re
 from importlib.metadata import version as find_version
+from typing import Optional
 
-from rikai.__version__ import version
-from rikai.conf import CONF_PARQUET_BLOCK_SIZE
+from pyspark.sql import SparkSession
+
+from liga.__version__ import version
+from liga.logging import logger
 
 
-def get_default_jar_version(use_snapshot=True):
+def get_default_jar_version(use_snapshot: bool = True) -> str:
     """
     Make it easier to reference the jar version in notebooks and conftest.
 
@@ -30,36 +34,49 @@ def get_default_jar_version(use_snapshot=True):
     pattern = re.compile(r"([\d]+.[\d]+.[\d]+)")
     match = re.search(pattern, version)
     if not match:
-        raise ValueError("Ill-formed version string {}".format(version))
+        raise ValueError(f"Ill-formed version string {version}")
     match_str = match.group(1)
     if use_snapshot and (len(match_str) < len(version)):
         return match_str + "-SNAPSHOT"
     return match_str
 
 
-def _liga_assembly_jar(jar_type: str, scala_version: str):
+def _liga_assembly_jar(jar_type: str, scala_version: str) -> str:
     spark_version = find_version("pyspark").replace(".", "")
     name = f"liga-spark{spark_version}-assembly_{scala_version}"
+    url = "https://github.com/liga-ai/liga/releases/download"
+    github_jar = f"{url}/v{version}/{name}-{version}.jar"
     if jar_type == "github":
-        url = "https://github.com/liga-ai/liga/releases/download"
-        return f"{url}/v{version}/{name}-{version}.jar"
+        if "dev" in version:
+            logger.warning(
+                "Jar type `github` is for stable release, "
+                "it may fail when version contains dev"
+            )
+        return github_jar
     elif jar_type == "local":
-        import os
+        if "dev" not in version:
+            logger.warning(
+                "Jar type `local` is for developing purpose, "
+                "use Jar on Github instead"
+            )
+            return github_jar
+        else:
+            import os
 
-        project_path = os.environ["ROOTDIR"]
-        return f"{project_path}/target/scala-{scala_version}/{name}-{get_default_jar_version()}.jar"
+            project_path = os.environ["ROOTDIR"]
+            local_jar_path = f"{project_path}/target/scala-{scala_version}"
+            return f"{local_jar_path}/{name}-{get_default_jar_version()}.jar"
     else:
         raise ValueError(f"Invalid jar_type ({jar_type})!")
 
 
-def init_spark_session(
-    conf: dict = None,
-    app_name="rikai",
-    scala_version="2.12",
-    num_cores=2,
-    jar_type="github",
-):
-    from pyspark.sql import SparkSession
+def init(
+    conf: Optional[dict] = None,
+    app_name: str = "Liga",
+    scala_version: str = "2.12",
+    num_cores: int = 2,
+    jar_type: str = "github",
+) -> SparkSession:
     import os
     import sys
 

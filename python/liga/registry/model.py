@@ -20,9 +20,9 @@ from jsonschema.exceptions import ValidationError
 from jsonschema.validators import validate
 
 from rikai.internal.reflection import find_func
-from rikai.spark.sql.exceptions import SpecError
 from rikai.spark.sql.schema import parse_schema
 
+from liga.exceptions import SpecError
 from liga.logging import logger
 
 __all__ = ["ModelSpec", "ModelType"]

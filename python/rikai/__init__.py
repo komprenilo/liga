@@ -16,13 +16,10 @@
 """
 from rikai.conf import *
 
-from .__version__ import version
-
 __all__ = [
     "get_option",
     "options",
     "option_context",
     "reset_option",
     "set_option",
-    "version",
 ]

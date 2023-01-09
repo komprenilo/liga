@@ -27,7 +27,7 @@ except ImportError:
 from mlflow.tracking import MlflowClient
 
 from liga.registry.base import ModelSpec, Registry
-from liga.mlflow.logger import (
+from liga.mlflow import (
     CONF_MLFLOW_LABEL_FUNC,
     CONF_MLFLOW_LABEL_URI,
     CONF_MLFLOW_MODEL_FLAVOR,
@@ -35,9 +35,9 @@ from liga.mlflow.logger import (
     CONF_MLFLOW_OUTPUT_SCHEMA,
     CONF_MLFLOW_SPEC_VERSION,
     CONF_MLFLOW_TRACKING_URI,
-    MlflowLogger,
 )
-from rikai.spark.sql.exceptions import SpecError
+from liga.mlflow.logger import MlflowLogger
+from liga.exceptions import SpecError
 from liga.registry.model import is_fully_qualified_name
 
 __all__ = ["MlflowRegistry"]

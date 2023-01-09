@@ -20,7 +20,7 @@ from urllib.parse import urlparse
 import yaml
 
 from rikai.io import open_uri
-from rikai.spark.sql.exceptions import SpecError
+from liga.exceptions import SpecError
 from liga.registry.base import ModelSpec, Registry
 
 __all__ = ["FileSystemRegistry"]
