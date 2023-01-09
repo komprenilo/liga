@@ -100,4 +100,3 @@ def init_spark_session(
         builder = builder.config(k, v)
     session = builder.master(f"local[{num_cores}]").getOrCreate()
     return session
-
