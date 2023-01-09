@@ -30,7 +30,7 @@ import rikai
 
 
 def test_sklearn_linear_regression(
-        mlflow_tracking_uri: str, spark: SparkSession
+    mlflow_tracking_uri: str, spark: SparkSession
 ):
     # prepare training data
     X = np.array([[1, 1], [1, 2], [2, 2], [2, 3]])
@@ -112,8 +112,8 @@ def test_sklearn_random_forest(mlflow_tracking_uri: str, spark: SparkSession):
             [StructField("pred", IntegerType())]
         )
         assert (
-                result.collect()
-                == spark.createDataFrame([Row(pred=1), Row(pred=1)]).collect()
+            result.collect()
+            == spark.createDataFrame([Row(pred=1), Row(pred=1)]).collect()
         )
 
 
@@ -141,5 +141,5 @@ def test_sklearn_pca(mlflow_tracking_uri: str, spark: SparkSession):
             """
         )
         assert (
-                pytest.approx(result.head().pred) == model.transform([[3, 2]])[0]
+            pytest.approx(result.head().pred) == model.transform([[3, 2]])[0]
         )

@@ -36,9 +36,7 @@ from rikai.spark.utils import get_default_jar_version, init_spark_session
 
 
 @pytest.fixture(scope="session")
-def mlflow_client_with_tracking_uri(
-        tmp_path_factory
-) -> (MlflowClient, str):
+def mlflow_client_with_tracking_uri(tmp_path_factory) -> (MlflowClient, str):
     tmp_path = tmp_path_factory.mktemp("mlflow")
     tmp_path.mkdir(parents=True, exist_ok=True)
     tracking_uri = "sqlite:///" + str(tmp_path / "tracking.db")
@@ -81,8 +79,9 @@ def spark(mlflow_tracking_uri: str, tmp_path_factory) -> SparkSession:
                     "ai.eto.rikai.sql.model.SimpleCatalog",
                 ),
             ]
-        )
-        , jar_type="local")
+        ),
+        jar_type="local",
+    )
 
 
 @pytest.fixture
@@ -93,6 +92,7 @@ def asset_path() -> Path:
 @pytest.fixture(scope="session")
 def resnet_model_uri(tmp_path_factory):
     from sklearn.datasets import load_diabetes
+
     X, y = load_diabetes(return_X_y=True)
     (X.shape, y.shape)
     import getpass
@@ -153,9 +153,9 @@ def s3_tmpdir() -> str:
         pytest.skip("Skip test, rikai[aws] (boto3) is not installed")
 
     temp_dir = (
-            baseurl
-            + "/"
-            + "".join(random.choices(string.ascii_letters + string.digits, k=6))
+        baseurl
+        + "/"
+        + "".join(random.choices(string.ascii_letters + string.digits, k=6))
     )
     yield temp_dir
 
@@ -216,9 +216,9 @@ def gcs_tmpdir() -> str:
         pytest.skip("rikai[gcp] is not installed.")
 
     temp_dir = (
-            base_url
-            + "/"
-            + "".join(random.choices(string.ascii_letters + string.digits, k=6))
+        base_url
+        + "/"
+        + "".join(random.choices(string.ascii_letters + string.digits, k=6))
     )
     yield temp_dir
 
