@@ -11,3 +11,7 @@
 #  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
+
+from liga.spark import init as init_spark
+
+__all__ = ["init_spark"]

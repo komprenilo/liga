@@ -53,7 +53,7 @@ def spark(mlflow_tracking_uri: str, tmp_path_factory) -> SparkSession:
     print(f"mlflow tracking uri for spark: ${mlflow_tracking_uri}")
     warehouse_path = tmp_path_factory.mktemp("warehouse")
 
-    return liga.spark.init(
+    return liga.init_spark(
         dict(
             [
                 ("spark.port.maxRetries", 128),
