@@ -19,7 +19,7 @@
 //     "pandas",
 //     "py4j",
 //     "pyarrow>=6.0",
-//     "pyspark==3.3.1",
+//     "pyspark==3.2.1",
 //     "pyyaml",
 //     "requests",
 //     "scikit-learn"
@@ -2862,19 +2862,19 @@
           "artifacts": [
             {
               "algorithm": "sha256",
-              "hash": "957e2148ba0e1a3b282772e791ef1d8083648bc131c8ab0c1feba110ce1146c3",
-              "url": "https://files.pythonhosted.org/packages/8f/7b/42582927d281d7cb035609cd3a543ffac89b74f3f4ee8e1c50914bcb57eb/packaging-22.0-py3-none-any.whl"
+              "hash": "714ac14496c3e68c99c29b00845f7a2b85f3bb6f1078fd9f72fd20f0570002b2",
+              "url": "https://files.pythonhosted.org/packages/ed/35/a31aed2993e398f6b09a790a181a7927eb14610ee8bbf02dc14d31677f1c/packaging-23.0-py3-none-any.whl"
             },
             {
               "algorithm": "sha256",
-              "hash": "2198ec20bd4c017b8f9717e00f0c8714076fc2fd93816750ab48e2c41de2cfd3",
-              "url": "https://files.pythonhosted.org/packages/6b/f7/c240d7654ddd2d2f3f328d8468d4f1f876865f6b9038b146bec0a6737c65/packaging-22.0.tar.gz"
+              "hash": "b6ad297f8907de0fa2fe1ccbd26fdaf387f5f47c7275fedf8cce89f99446cf97",
+              "url": "https://files.pythonhosted.org/packages/47/d5/aca8ff6f49aa5565df1c826e7bf5e85a6df852ee063600c1efa5b932968c/packaging-23.0.tar.gz"
             }
           ],
           "project_name": "packaging",
           "requires_dists": [],
           "requires_python": ">=3.7",
-          "version": "22"
+          "version": "23"
         },
         {
           "artifacts": [
@@ -3033,8 +3033,8 @@
           "artifacts": [
             {
               "algorithm": "sha256",
-              "hash": "e621b0246192d3b9cb1dc62c78cfa4c6f6d2ddc0ec207d43c0dedecb914f152a",
-              "url": "https://files.pythonhosted.org/packages/b7/60/ca708f98a78a530ecc1c1d517cd220ad1c4ff2540b271a3ea7fcc30a6cd0/Pillow-9.4.0-pp39-pypy39_pp73-manylinux_2_28_x86_64.whl"
+              "hash": "43521ce2c4b865d385e78579a082b6ad1166ebed2b1a2293c3be1d68dd7ca3b9",
+              "url": "https://files.pythonhosted.org/packages/5c/2a/72b80cd8a35fac89142afb35aabab6ce2631a3261043b6216664c9137b29/Pillow-9.4.0-1-pp39-pypy39_pp73-macosx_10_10_x86_64.whl"
             },
             {
               "algorithm": "sha256",
@@ -3103,6 +3103,16 @@
             },
             {
               "algorithm": "sha256",
+              "hash": "b8c2f6eb0df979ee99433d8b3f6d193d9590f735cf12274c108bd954e30ca858",
+              "url": "https://files.pythonhosted.org/packages/78/19/a3688ff601b8ed7d7edd303cd6cc9b5b69cf2305a43752cf185e6f96521c/Pillow-9.4.0-1-cp39-cp39-macosx_10_10_x86_64.whl"
+            },
+            {
+              "algorithm": "sha256",
+              "hash": "b70756ec9417c34e097f987b4d8c510975216ad26ba6e57ccb53bc758f490dab",
+              "url": "https://files.pythonhosted.org/packages/7a/a2/258bc097dd133c66e68f4baa1891a5884fc2d4b8e78092c83635fac16426/Pillow-9.4.0-1-pp38-pypy38_pp73-macosx_10_10_x86_64.whl"
+            },
+            {
+              "algorithm": "sha256",
               "hash": "0e51f608da093e5d9038c592b5b575cadc12fd748af1479b5e858045fff955a9",
               "url": "https://files.pythonhosted.org/packages/7b/d7/3034e0961b19ce2a0e80951918e81939dfff1b635575be28a09348b7d032/Pillow-9.4.0-cp38-cp38-macosx_10_10_x86_64.whl"
             },
@@ -3118,6 +3128,11 @@
             },
             {
               "algorithm": "sha256",
+              "hash": "3f4cc516e0b264c8d4ccd6b6cbc69a07c6d582d8337df79be1e15a5056b258c9",
+              "url": "https://files.pythonhosted.org/packages/88/ae/2f554e2b2780467211c5a92a3b2f8fb0acd38d4b09ca6ba4bc4cdc1b9f9c/Pillow-9.4.0-1-cp38-cp38-macosx_10_10_x86_64.whl"
+            },
+            {
+              "algorithm": "sha256",
               "hash": "28676836c7796805914b76b1837a40f76827ee0d5398f72f7dcc634bae7c6264",
               "url": "https://files.pythonhosted.org/packages/9e/91/f0ae261eaa8e06550e89c169176fbca209b9fc74014581956cd0ffc705ee/Pillow-9.4.0-cp39-cp39-manylinux_2_17_i686.manylinux2014_i686.whl"
             },
@@ -3125,6 +3140,11 @@
               "algorithm": "sha256",
               "hash": "53dcb50fbdc3fb2c55431a9b30caeb2f7027fcd2aeb501459464f0214200a503",
               "url": "https://files.pythonhosted.org/packages/af/29/6d8f5bb2b9559144beeeece33732e5214046a918fbd50ab79c94b2ad07ec/Pillow-9.4.0-cp39-cp39-manylinux_2_28_aarch64.whl"
+            },
+            {
+              "algorithm": "sha256",
+              "hash": "e621b0246192d3b9cb1dc62c78cfa4c6f6d2ddc0ec207d43c0dedecb914f152a",
+              "url": "https://files.pythonhosted.org/packages/b7/60/ca708f98a78a530ecc1c1d517cd220ad1c4ff2540b271a3ea7fcc30a6cd0/Pillow-9.4.0-pp39-pypy39_pp73-manylinux_2_28_x86_64.whl"
             },
             {
               "algorithm": "sha256",
@@ -3436,19 +3456,19 @@
           "artifacts": [
             {
               "algorithm": "sha256",
-              "hash": "52d171a6a2b031d8a5d1de6efe451cf4f5baff1a2819aabc3741c8406539ba04",
-              "url": "https://files.pythonhosted.org/packages/86/ec/60880978512d5569ca4bf32b3b4d7776a528ecf4bca4523936c98c92a3c8/py4j-0.10.9.5-py2.py3-none-any.whl"
+              "hash": "04f5b06917c0c8a81ab34121dda09a2ba1f74e96d59203c821d5cb7d28c35363",
+              "url": "https://files.pythonhosted.org/packages/5e/e6/68db58a1d94d41ae042400f7965ed6a2c30e4108f77b54672d6451f86ebd/py4j-0.10.9.3-py2.py3-none-any.whl"
             },
             {
               "algorithm": "sha256",
-              "hash": "276a4a3c5a2154df1860ef3303a927460e02e97b047dc0a47c1c3fb8cce34db6",
-              "url": "https://files.pythonhosted.org/packages/ce/1f/b00295b6da3bd2f050912b9f71fdb436ae8f1601cf161365937d8553e24b/py4j-0.10.9.5.tar.gz"
+              "hash": "0d92844da4cb747155b9563c44fc322c9a1562b3ef0979ae692dbde732d784dd",
+              "url": "https://files.pythonhosted.org/packages/d1/c4/9674152db7bb6dd67e5c93eeb48b727a840551932c88a44e20143cb661c1/py4j-0.10.9.3.tar.gz"
             }
           ],
           "project_name": "py4j",
           "requires_dists": [],
           "requires_python": null,
-          "version": "0.10.9.5"
+          "version": "0.10.9.3"
         },
         {
           "artifacts": [
@@ -3648,23 +3668,23 @@
           "artifacts": [
             {
               "algorithm": "sha256",
-              "hash": "e99fa7de92be406884bfd831c32b9306a3a99de44cfc39a2eefb6ed07445d5fa",
-              "url": "https://files.pythonhosted.org/packages/d1/48/cc321e742a93320c681b3c7a9fd405d518c6326c89da3d67e35b9868e941/pyspark-3.3.1.tar.gz"
+              "hash": "0b81359262ec6e9ac78c353344e7de026027d140c6def949ff0d80ab70f89a54",
+              "url": "https://files.pythonhosted.org/packages/f4/65/41eb22b7b4623d9f4560526cc456cb6425770c098a9dff6763111c4455cc/pyspark-3.2.1.tar.gz"
             }
           ],
           "project_name": "pyspark",
           "requires_dists": [
-            "numpy>=1.15; extra == \"ml\"",
-            "numpy>=1.15; extra == \"mllib\"",
-            "numpy>=1.15; extra == \"pandas_on_spark\"",
-            "pandas>=1.0.5; extra == \"pandas_on_spark\"",
-            "pandas>=1.0.5; extra == \"sql\"",
-            "py4j==0.10.9.5",
+            "numpy>=1.14; extra == \"pandas_on_spark\"",
+            "numpy>=1.7; extra == \"ml\"",
+            "numpy>=1.7; extra == \"mllib\"",
+            "pandas>=0.23.2; extra == \"pandas_on_spark\"",
+            "pandas>=0.23.2; extra == \"sql\"",
+            "py4j==0.10.9.3",
             "pyarrow>=1.0.0; extra == \"pandas_on_spark\"",
             "pyarrow>=1.0.0; extra == \"sql\""
           ],
-          "requires_python": ">=3.7",
-          "version": "3.3.1"
+          "requires_python": ">=3.6",
+          "version": "3.2.1"
         },
         {
           "artifacts": [
@@ -4865,7 +4885,7 @@
     "pandas",
     "py4j",
     "pyarrow>=6.0",
-    "pyspark==3.3.1",
+    "pyspark==3.2.1",
     "pyyaml",
     "requests",
     "scikit-learn"

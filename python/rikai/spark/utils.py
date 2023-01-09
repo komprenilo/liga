@@ -37,11 +37,18 @@ def get_default_jar_version(use_snapshot=True):
     return match_str
 
 
-def _liga_assembly_jar(scala_version: str):
+def _liga_assembly_jar(jar_type: str, scala_version: str):
     spark_version = find_version("pyspark")
-    url = "https://github.com/liga-ai/liga/releases/download"
-    name = f"liga-spark{spark_version.replace('.', '')}"
-    return f"{url}/v{version}/{name}-assembly_{scala_version}-{version}.jar"
+    name = f"liga-spark{spark_version.replace('.', '')}-assembly_{scala_version}"
+    if jar_type == "github":
+        url = "https://github.com/liga-ai/liga/releases/download"
+        return f"{url}/v{version}/{name}-{version}.jar"
+    elif jar_type == "local":
+        import os
+        project_path = os.environ["ROOTDIR"]
+        return f"{project_path}/target/scala-{scala_version}/{name}-{get_default_jar_version()}.jar"
+    else:
+        raise ValueError(f"Invalid jar_type ({jar_type})!")
 
 
 def init_spark_session(
@@ -49,6 +56,7 @@ def init_spark_session(
     app_name="rikai",
     scala_version="2.12",
     num_cores=2,
+    jar_type="github",
 ):
     from pyspark.sql import SparkSession
     import os
@@ -72,7 +80,7 @@ def init_spark_session(
 
     builder = (
         SparkSession.builder.appName(app_name)
-        .config("spark.jars", _liga_assembly_jar(scala_version))
+        .config("spark.jars", _liga_assembly_jar(jar_type, scala_version))
         .config(
             "spark.sql.extensions",
             "ai.eto.rikai.sql.spark.RikaiSparkSessionExtensions",
