@@ -1380,13 +1380,13 @@
           "artifacts": [
             {
               "algorithm": "sha256",
-              "hash": "0ecdae0060da61c5222ad221681f3b99b5bef739e11a3b1eb5778aa47f056f1f",
-              "url": "https://files.pythonhosted.org/packages/b6/e1/d72aa965fe73fa90142971f8b0574075d19f97f7ad4f223c6371244da29b/ipykernel-6.19.4-py3-none-any.whl"
+              "hash": "a314e6782a4f9e277783382976b3a93608a3787cd70a235b558b47f875134be1",
+              "url": "https://files.pythonhosted.org/packages/2f/3d/eb5ea4b365b2d03e76da498e31660ef3e7465dce720783eabc5092cd0d57/ipykernel-6.20.1-py3-none-any.whl"
             },
             {
               "algorithm": "sha256",
-              "hash": "4140c282a6c71cdde59abe5eae2c71bf1eeb4a69316ab76e1c4c25150a49722b",
-              "url": "https://files.pythonhosted.org/packages/38/89/01fd5aad4a9c5da09c29ba39d7679b1889a25a484da5df05a6faccadc1d6/ipykernel-6.19.4.tar.gz"
+              "hash": "f6016ecbf581d0ea6e29ba16cee6cc1a9bbde3835900c46c6571a791692f4139",
+              "url": "https://files.pythonhosted.org/packages/a4/a0/81fd87e47e9322b138e88913bc62e3b08c8ecb6df739a9c9e3d0f3a13862/ipykernel-6.20.1.tar.gz"
             }
           ],
           "project_name": "ipykernel",
@@ -1408,20 +1408,25 @@
             "pre-commit; extra == \"test\"",
             "psutil",
             "pydata-sphinx-theme; extra == \"docs\"",
+            "pyqt5; extra == \"pyqt5\"",
+            "pyside6; extra == \"pyside6\"",
             "pytest-asyncio; extra == \"test\"",
             "pytest-cov; extra == \"cov\"",
             "pytest-cov; extra == \"test\"",
             "pytest-timeout; extra == \"test\"",
             "pytest>=7.0; extra == \"test\"",
             "pyzmq>=17",
+            "sphinx-autodoc-typehints; extra == \"docs\"",
             "sphinx; extra == \"docs\"",
             "sphinxcontrib-github-alt; extra == \"docs\"",
+            "sphinxcontrib-spelling; extra == \"docs\"",
             "tornado>=6.1",
             "traitlets>=5.4.0",
-            "trio; extra == \"cov\""
+            "trio; extra == \"cov\"",
+            "trio; extra == \"docs\""
           ],
           "requires_python": ">=3.8",
-          "version": "6.19.4"
+          "version": "6.20.1"
         },
         {
           "artifacts": [
@@ -1781,13 +1786,13 @@
           "artifacts": [
             {
               "algorithm": "sha256",
-              "hash": "0f99cc639c8d00d591acfcc028aeea81473ea6c72fabe86426398220e2d91b1d",
-              "url": "https://files.pythonhosted.org/packages/30/4d/8d6c7de0899bdadb0be2f1d2ed995bcf29b3c94248d3f4a4cb5a078bad08/jupyter_core-5.1.2-py3-none-any.whl"
+              "hash": "d23ab7db81ca1759f13780cd6b65f37f59bf8e0186ac422d5ca4982cc7d56716",
+              "url": "https://files.pythonhosted.org/packages/71/9e/0f10d4e7a634ae7afea30ff5aac281d84c5e03ceae8ea3bb670097c6ac11/jupyter_core-5.1.3-py3-none-any.whl"
             },
             {
               "algorithm": "sha256",
-              "hash": "62b00d52f030643d29f86aafdfd9b36d42421823599a272eb4c2df1d1cc7f723",
-              "url": "https://files.pythonhosted.org/packages/ed/b8/75360f262cc391f3d06d73b1e40d40a4bc7aaf6a4b8b0cb2452ae753c58e/jupyter_core-5.1.2.tar.gz"
+              "hash": "82e1cff0ef804c38677eff7070d5ff1d45037fef01a2d9ba9e6b7b8201831e9f",
+              "url": "https://files.pythonhosted.org/packages/1f/05/7c8e5e534f1c0833512fa82f47d50733043b11adb4688d33dfbf89a645a6/jupyter_core-5.1.3.tar.gz"
             }
           ],
           "project_name": "jupyter-core",
@@ -1807,19 +1812,19 @@
             "traitlets>=5.3"
           ],
           "requires_python": ">=3.8",
-          "version": "5.1.2"
+          "version": "5.1.3"
         },
         {
           "artifacts": [
             {
               "algorithm": "sha256",
-              "hash": "6f7b67bf42b8a370c992187194ed02847dfa02307a7aebe9913e2d3979b9b6b8",
-              "url": "https://files.pythonhosted.org/packages/db/ca/5417fe822262649957f3447de549f918cda0eb65ae3e44ce33cf86806de3/jupyter_events-0.5.0-py3-none-any.whl"
+              "hash": "587f3055fe965f023b23b9929b22d2070e8b5c79ef0a42e37bdb12199862f63c",
+              "url": "https://files.pythonhosted.org/packages/da/0c/3dcfc130ec1f66f2dec960f3c96e2fbb54ef84e4845e1a821c928a8a6aa7/jupyter_events-0.6.0-py3-none-any.whl"
             },
             {
               "algorithm": "sha256",
-              "hash": "e27ffdd6138699d47d42cb65ae6d79334ff7c0d923694381c991ce56a140f2cd",
-              "url": "https://files.pythonhosted.org/packages/30/28/aa50f16c06d2c4c945766e0453ba67fc0f0c89560a0809edda1a33c4aae0/jupyter_events-0.5.0.tar.gz"
+              "hash": "bee793d06e124c5a80da3346f96f17aec5e0f28b632a514682b2a18ff548c69a",
+              "url": "https://files.pythonhosted.org/packages/5c/0d/cd700d9e3c7954d49b806be35eae6c311e0da7374ba2b5521b6af2da9ae9/jupyter_events-0.6.0.tar.gz"
             }
           ],
           "project_name": "jupyter-events",
@@ -1828,19 +1833,23 @@
             "click; extra == \"test\"",
             "coverage; extra == \"test\"",
             "jsonschema[format-nongpl]>=4.3.0",
+            "jupyterlite-sphinx; extra == \"docs\"",
+            "myst-parser; extra == \"docs\"",
             "pre-commit; extra == \"test\"",
+            "pydata-sphinx-theme; extra == \"docs\"",
             "pytest-asyncio>=0.19.0; extra == \"test\"",
             "pytest-console-scripts; extra == \"test\"",
             "pytest-cov; extra == \"test\"",
-            "pytest>=6.1.0; extra == \"test\"",
-            "python-json-logger",
-            "pyyaml",
+            "pytest>=7.0; extra == \"test\"",
+            "python-json-logger>=2.0.4",
+            "pyyaml>=6.0",
             "rich; extra == \"cli\"",
             "rich; extra == \"test\"",
-            "traitlets"
+            "sphinxcontrib-spelling; extra == \"docs\"",
+            "traitlets>=5.3"
           ],
           "requires_python": ">=3.7",
-          "version": "0.5"
+          "version": "0.6"
         },
         {
           "artifacts": [
@@ -1906,13 +1915,13 @@
           "artifacts": [
             {
               "algorithm": "sha256",
-              "hash": "ec67d3f1895d25cfb586a87a50b8eee13b709898a4afd721058e551e0a0f480d",
-              "url": "https://files.pythonhosted.org/packages/c3/5e/c8433b8c9b9f5638c1f4f11d75cddb7e5819f3742d7f7a4bfff8aee664d3/jupyter_server_terminals-0.4.3-py3-none-any.whl"
+              "hash": "75779164661cec02a8758a5311e18bb8eb70c4e86c6b699403100f1585a12a36",
+              "url": "https://files.pythonhosted.org/packages/ea/7f/36db12bdb90f5237766dcbf59892198daab7260acbcf03fc75e2a2a82672/jupyter_server_terminals-0.4.4-py3-none-any.whl"
             },
             {
               "algorithm": "sha256",
-              "hash": "8421438d95a1f1f6994c48dd5dc10ad167ea7c196972bb5d1d7a9da1e30fde02",
-              "url": "https://files.pythonhosted.org/packages/7b/91/5d21682a41496a4150d120eea74b2b4c6b3dc2401d3aebe1e5cbd87e1889/jupyter_server_terminals-0.4.3.tar.gz"
+              "hash": "57ab779797c25a7ba68e97bcfb5d7740f2b5e8a83b5e8102b10438041a7eac5d",
+              "url": "https://files.pythonhosted.org/packages/54/e1/6bc19392e6957356f085b8d7ec33d6d0d721e646b7576c1c6758dd264c64/jupyter_server_terminals-0.4.4.tar.gz"
             }
           ],
           "project_name": "jupyter-server-terminals",
@@ -1933,12 +1942,13 @@
             "pywinpty>=2.0.3; os_name == \"nt\"",
             "sphinxcontrib-github-alt; extra == \"docs\"",
             "sphinxcontrib-openapi; extra == \"docs\"",
+            "sphinxcontrib-spelling; extra == \"docs\"",
             "sphinxemoji; extra == \"docs\"",
             "terminado>=0.8.3",
             "tornado; extra == \"docs\""
           ],
           "requires_python": ">=3.8",
-          "version": "0.4.3"
+          "version": "0.4.4"
         },
         {
           "artifacts": [
@@ -4643,13 +4653,13 @@
           "artifacts": [
             {
               "algorithm": "sha256",
-              "hash": "c864831efa0ba6576d09b44884b34e41defc18c0d7e720b4a2d6698c842cab3e",
-              "url": "https://files.pythonhosted.org/packages/44/2d/76503546de9c5eaf70a5864288e9b3eb4d017c7bd7800b5fd6e93d1d4ab0/traitlets-5.8.0-py3-none-any.whl"
+              "hash": "a1ca5df6414f8b5760f7c5f256e326ee21b581742114545b462b35ffe3f04861",
+              "url": "https://files.pythonhosted.org/packages/76/fa/bd160e08ac7f656d818a0e40ff88e1a302b07ad2384864fb288db3c812fa/traitlets-5.8.1-py3-none-any.whl"
             },
             {
               "algorithm": "sha256",
-              "hash": "6cc57d6dc28c85d5365961726ffd19b538739347749e13ebe34e03323a0e8f84",
-              "url": "https://files.pythonhosted.org/packages/56/48/0eb99357330a02974d537be8e4096bc58cfac1089e3153570119ccea7a40/traitlets-5.8.0.tar.gz"
+              "hash": "32500888f5ff7bbf3b9267ea31748fa657aaf34d56d85e60f91dda7dc7f5785b",
+              "url": "https://files.pythonhosted.org/packages/be/58/2d930cfab2caca22c827229ca61aabd8102423f7e817805cba706dce1598/traitlets-5.8.1.tar.gz"
             }
           ],
           "project_name": "traitlets",
@@ -4663,7 +4673,7 @@
             "sphinx; extra == \"docs\""
           ],
           "requires_python": ">=3.7",
-          "version": "5.8"
+          "version": "5.8.1"
         },
         {
           "artifacts": [

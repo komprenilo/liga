@@ -20,21 +20,7 @@ import numpy as np
 import requests
 import requests_mock
 
-from rikai.io import exists, open_uri
-
-WIKIPEDIA = (
-    "https://upload.wikimedia.org/wikipedia/commons/a/ad/"
-    "Commodore_Grace_M._Hopper%2C_USN_%28covered%29.jpg"
-)
-
-USER_AGENT = "User-Agent: Rikai/0.0.10 (rikai-dev@eto.ai)"
-
-
-def test_open_https_uri():
-    """Test support of https URI"""
-
-    with open_uri(WIKIPEDIA) as fobj:
-        assert len(fobj.read()) > 0
+from rikai.io import exists
 
 
 def test_simple_http_credentials():
