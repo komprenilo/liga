@@ -1,3 +1,3 @@
-from rikai.spark.utils import init_spark_session
+from liga.spark import init 
 
-spark = init_spark_session(jar_type="local")
+spark = init(jar_type="local")
