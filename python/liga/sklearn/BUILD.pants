@@ -1,11 +1,11 @@
 python_requirement(
     name="sklearn",
-    requirements=["scikit-learn"],
-    resolve=parametrize("spark_3_2_1", "spark_3_3_1", "sklearn"),
+    requirements=["liga==0.2.0.dev2", "scikit-learn"],
+    resolve="sklearn",
 )
 
 python_sources(
     name="sources",
-    sources=["**/*.py"],
-    resolve=parametrize("spark_3_2_1", "spark_3_3_1", "sklearn"),
+    sources=["**/*.py", "!*_test.py"],
+    resolve=parametrize("sklearn", "spark_3_2_1", "spark_3_3_1"),
 )

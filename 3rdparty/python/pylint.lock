@@ -31,25 +31,25 @@
           "artifacts": [
             {
               "algorithm": "sha256",
-              "hash": "a1fbaad9d3e5f2eeb8e3a1d1d6008a081b1aac33ef86ff7742ae0714d92e9cf2",
-              "url": "https://files.pythonhosted.org/packages/f3/6f/7cf5fc9f693d2de7af48946f179ee835825a73340112b93e5b28305844d5/astroid-2.12.14-py3-none-any.whl"
+              "hash": "8f6a8d40c4ad161d6fc419545ae4b2f275ed86d1c989c97825772120842ee0d2",
+              "url": "https://files.pythonhosted.org/packages/1b/1a/b39c78909f72793ae75fb2daaecfd0393f413448ce30381f5052c2a7ce31/astroid-2.13.2-py3-none-any.whl"
             },
             {
               "algorithm": "sha256",
-              "hash": "b573ed96112061150eade70851c277a92fba544812b781836ab16fedbbddb497",
-              "url": "https://files.pythonhosted.org/packages/cd/21/d653258a28bc7cb26b57d63d26cdd3f40501a6179954121fc9c29f06cbd7/astroid-2.12.14.tar.gz"
+              "hash": "3bc7834720e1a24ca797fd785d77efb14f7a28ee8e635ef040b6e2d80ccb3303",
+              "url": "https://files.pythonhosted.org/packages/c2/49/5dd5f36b2cd2b315d45023ed4e2d6f1ba57d054ea9a1378f91f093ec57bb/astroid-2.13.2.tar.gz"
             }
           ],
           "project_name": "astroid",
           "requires_dists": [
             "lazy-object-proxy>=1.4.0",
             "typed-ast<2.0,>=1.4.0; implementation_name == \"cpython\" and python_version < \"3.8\"",
-            "typing-extensions>=3.10; python_version < \"3.10\"",
+            "typing-extensions>=4.0.0",
             "wrapt<2,>=1.11; python_version < \"3.11\"",
             "wrapt<2,>=1.14; python_version >= \"3.11\""
           ],
           "requires_python": ">=3.7.2",
-          "version": "2.12.14"
+          "version": "2.13.2"
         },
         {
           "artifacts": [
