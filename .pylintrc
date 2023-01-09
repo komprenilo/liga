@@ -63,7 +63,10 @@ confidence=
 disable=
         import-outside-toplevel,
         no-else-return,
-        no-member
+        no-member,
+        missing-module-docstring,
+        missing-function-docstring,
+        missing-class-docstring
 
 # Enable the message, report, category or checker with the given id(s). You can
 # either give multiple identifier separated by comma (,) or put this option

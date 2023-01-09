@@ -61,10 +61,6 @@ SPEC_PAYLOAD_SCHEMA = gen_schema_spec(["uri"])
 NOURI_SPEC_SCHEMA = gen_schema_spec(["flavor", "type"])
 
 
-def _identity(x):
-    return x
-
-
 def is_fully_qualified_name(name: str) -> bool:
     return "." in name
 
@@ -110,13 +106,19 @@ class ModelSpec(ABC):
         Validate the spec during construction. Default ``True``.
     """
 
-    def __init__(self, spec: Dict[str, Any], validate: bool = True):
+    def __init__(
+        self,
+        spec: Dict[str, Any],
+        validate: bool = True,
+        spec_schema=SPEC_PAYLOAD_SCHEMA,
+    ):
         self._spec = spec
         self._spec["options"] = self._spec.get("options", {})
+        self._spec_schema = spec_schema
         if validate:
             self.validate()
 
-    def validate(self, schema=SPEC_PAYLOAD_SCHEMA):
+    def validate(self):
         """Validate model spec
 
         Raises
@@ -126,7 +128,7 @@ class ModelSpec(ABC):
         """
         logger.debug("Validating spec: %s", self._spec)
         try:
-            validate(instance=self._spec, schema=schema)
+            validate(instance=self._spec, schema=self._spec_schema)
         except ValidationError as e:
             raise SpecError(e.message) from e
         if not self.flavor or not self.model_type:

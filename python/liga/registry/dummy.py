@@ -13,9 +13,10 @@
 #  limitations under the License.
 
 from rikai.mixin import Pretrained
-from rikai.spark.sql.codegen.base import ModelSpec, Registry
 from rikai.spark.sql.exceptions import SpecError
 from rikai.spark.sql.model import NOURI_SPEC_SCHEMA
+
+from liga.registry.base import ModelSpec, Registry
 
 __all__ = ["DummyModelSpec", "DummyRegistry"]
 
@@ -37,10 +38,12 @@ class DummyModelSpec(ModelSpec):
         }
         if not spec["schema"]:
             del spec["schema"]
-        super().__init__(spec, validate=validate)
+        super().__init__(
+            spec, validate=validate, spec_schema=NOURI_SPEC_SCHEMA
+        )
 
-    def validate(self):
-        super().validate(NOURI_SPEC_SCHEMA)
+    def validate_spec_schema(self):
+        super().validate_spec_schema()
         if not isinstance(self.model_type, Pretrained):
             raise SpecError(
                 "ModelType with Pretrained mixin required if no URI is specified"  # noqa E501

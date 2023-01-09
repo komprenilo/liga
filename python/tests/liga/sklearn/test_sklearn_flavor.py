@@ -12,9 +12,6 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 
-import pickle
-from pathlib import Path
-
 import mlflow
 import numpy as np
 import pytest
@@ -25,8 +22,6 @@ from sklearn.decomposition import PCA
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LinearRegression
 from liga.sklearn.mlflow import log_model
-
-import rikai
 
 
 def test_sklearn_linear_regression(

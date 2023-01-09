@@ -86,7 +86,7 @@ object ModelResolver {
            |import json
            |import base64
            |spec = json.load(open("${specPath}", "r"))
-           |from rikai.spark.sql.codegen import command_from_spec
+           |from liga.registry import command_from_spec
            |serialize_func, func, deserialize_func, dataType = command_from_spec("${registryClassName}", spec)
            |pickle = CloudPickleSerializer()
            |with open("${path}", "w") as fobj:

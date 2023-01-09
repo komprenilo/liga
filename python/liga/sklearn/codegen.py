@@ -26,7 +26,7 @@ from pyspark.sql.functions import pandas_udf
 from pyspark.sql.types import BinaryType
 
 from rikai.io import open_uri
-from rikai.spark.sql.codegen.base import ModelSpec
+from liga.registry.base import ModelSpec
 
 __all__ = ["generate_udf"]
 
