@@ -79,7 +79,8 @@ def spark(mlflow_tracking_uri: str, tmp_path_factory) -> SparkSession:
                     "ai.eto.rikai.sql.model.SimpleCatalog",
                 ),
             ]
-        )
+        ),
+        jar_type="local"
     )
 
 
