@@ -49,7 +49,7 @@ trait Registry {
 
 object DummyRegistry extends Registry with LazyLogging {
   val pyClass: String =
-    "rikai.spark.sql.codegen.dummy.DummyRegistry"
+    "liga.registry.dummy.DummyRegistry"
 
   override def resolve(
       session: SparkSession,
@@ -98,7 +98,7 @@ private[rikai] object Registry {
   /** Automatically configure registries for file:/ and mlflow:/ model uri's.
     */
   val DEFAULT_REGISTRIES = Map(
-    "spark.rikai.sql.ml.registry.file.impl" -> "rikai.spark.sql.codegen.fs.FileSystemRegistry",
+    "spark.rikai.sql.ml.registry.file.impl" -> "liga.registry.fs.FileSystemRegistry",
     "spark.rikai.sql.ml.registry.mlflow.impl" -> "liga.mlflow.registry.MlflowRegistry"
   )
   private val logger = Logger.getLogger(Registry.getClass)

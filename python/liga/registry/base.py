@@ -52,7 +52,7 @@ class Registry(ABC):
         """
         name = raw_spec["name"]
         uri = raw_spec["uri"]
-        logger.info("Resolving model {} from {}" % (name, uri))
+        logger.info("Resolving model %s from %s" % (name, uri))
         return udf_from_spec(self.make_model_spec(raw_spec))
 
 

@@ -17,8 +17,8 @@ from urllib.parse import urlparse
 
 import pandas as pd
 
-from rikai.spark.sql.codegen.base import codegen_from_spec
-from rikai.spark.sql.codegen.fs import FileSystemRegistry
+from liga.registry import codegen_from_spec
+from liga.registry.fs import FileSystemRegistry
 from rikai.spark.sql.model import ModelSpec
 
 
@@ -29,7 +29,7 @@ def _make_model_spec(raw_spec: "ModelSpec") -> ModelSpec:
     if scheme == "file":
         reg = FileSystemRegistry()
     elif scheme == "mlflow":
-        from rikai.spark.sql.codegen.mlflow_registry import MlflowRegistry
+        from liga.registry.mlflow_registry import MlflowRegistry
 
         reg = MlflowRegistry()
     elif scheme == "torchhub":
