@@ -12,13 +12,7 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 
-import logging
-import os
-import random
-import string
-import uuid
 import warnings
-import sklearn
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -30,9 +24,8 @@ import pytest
 from mlflow.tracking import MlflowClient
 from pyspark.sql import Row, SparkSession
 
-import rikai
+import liga
 from liga.mlflow.registry import CONF_MLFLOW_TRACKING_URI
-from rikai.spark.utils import get_default_jar_version, init_spark_session
 
 
 @pytest.fixture(scope="session")
@@ -59,9 +52,8 @@ def mlflow_tracking_uri(mlflow_client_with_tracking_uri):
 def spark(mlflow_tracking_uri: str, tmp_path_factory) -> SparkSession:
     print(f"mlflow tracking uri for spark: ${mlflow_tracking_uri}")
     warehouse_path = tmp_path_factory.mktemp("warehouse")
-    rikai_version = get_default_jar_version(use_snapshot=True)
 
-    return init_spark_session(
+    return liga.spark.init(
         dict(
             [
                 ("spark.port.maxRetries", 128),
@@ -91,7 +83,6 @@ def asset_path() -> Path:
 
 @pytest.fixture(scope="session")
 def sklearn_lr_uri(mlflow_tracking_uri, tmp_path_factory):
-    import mlflow
     from sklearn.datasets import load_diabetes
     from sklearn.linear_model import LinearRegression
     from liga.sklearn.mlflow import log_model
