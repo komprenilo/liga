@@ -31,10 +31,6 @@ from rikai.spark.sql.model import ModelSpec, is_fully_qualified_name
 _pickler = CloudPickleSerializer()
 
 
-def _identity(x):
-    return x
-
-
 class Registry(ABC):
     """Base class of a Model Registry"""
 
@@ -56,7 +52,7 @@ class Registry(ABC):
         """
         name = raw_spec["name"]
         uri = raw_spec["uri"]
-        logger.info(f"Resolving model {name} from {uri}")
+        logger.info("Resolving model {} from {}" % (name, uri))
         return udf_from_spec(self.make_model_spec(raw_spec))
 
 

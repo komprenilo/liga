@@ -61,10 +61,6 @@ SPEC_PAYLOAD_SCHEMA = gen_schema_spec(["uri"])
 NOURI_SPEC_SCHEMA = gen_schema_spec(["flavor", "type"])
 
 
-def _identity(x):
-    return x
-
-
 def is_fully_qualified_name(name: str) -> bool:
     return "." in name
 

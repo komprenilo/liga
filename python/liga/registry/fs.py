@@ -20,7 +20,7 @@ from urllib.parse import urlparse
 import yaml
 
 from rikai.io import open_uri
-from rikai.spark.sql.codegen.base import ModelSpec, Registry
+from liga.registry.base import ModelSpec, Registry
 from rikai.spark.sql.exceptions import SpecError
 
 __all__ = ["FileSystemRegistry"]
@@ -101,16 +101,8 @@ class FileModelSpec(ModelSpec):
         return spec
 
     def load_model(self):
-        if self.flavor == "pytorch":
-            from rikai.spark.sql.codegen.pytorch import load_model_from_uri
-
-            return load_model_from_uri(self.model_uri)
-        elif self.flavor == "tensorflow":
-            from rikai.spark.sql.codegen.tensorflow import load_model_from_uri
-
-            return load_model_from_uri(self.model_uri)
-        elif self.flavor == "sklearn":
-            from rikai.spark.sql.codegen.sklearn import load_model_from_uri
+        if self.flavor == "sklearn":
+            from liga.sklearn.codegen import load_model_from_uri
 
             return load_model_from_uri(self.model_uri)
         else:
