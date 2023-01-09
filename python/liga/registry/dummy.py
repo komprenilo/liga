@@ -14,9 +14,10 @@
 
 from rikai.mixin import Pretrained
 from rikai.spark.sql.exceptions import SpecError
-from rikai.spark.sql.model import NOURI_SPEC_SCHEMA
 
 from liga.registry.base import ModelSpec, Registry
+from liga.registry.model import NOURI_SPEC_SCHEMA
+
 
 __all__ = ["DummyModelSpec", "DummyRegistry"]
 
@@ -25,7 +26,7 @@ class DummyModelSpec(ModelSpec):
     def __init__(
         self,
         raw_spec: "ModelSpec",
-        validate: bool = True,
+        need_validate: bool = True,
     ):
         spec = {
             "version": "1.0",
@@ -39,7 +40,7 @@ class DummyModelSpec(ModelSpec):
         if not spec["schema"]:
             del spec["schema"]
         super().__init__(
-            spec, validate=validate, spec_schema=NOURI_SPEC_SCHEMA
+            spec, need_validate=need_validate, spec_schema=NOURI_SPEC_SCHEMA
         )
 
     def validate_spec_schema(self):

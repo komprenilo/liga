@@ -47,7 +47,7 @@ class FileModelSpec(ModelSpec):
     def __init__(
         self,
         raw_spec: Dict,
-        validate: bool = True,
+        need_validate: bool = True,
     ):
         self.base_dir: Optional[str] = None
 
@@ -74,7 +74,7 @@ class FileModelSpec(ModelSpec):
         else:
             spec["version"] = self.VERSION
 
-        super().__init__(spec, validate=validate)
+        super().__init__(spec, need_validate=need_validate)
 
     @staticmethod
     def _merge_spec(
