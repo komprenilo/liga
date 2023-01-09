@@ -20,8 +20,8 @@ from urllib.parse import urlparse
 import yaml
 
 from rikai.io import open_uri
-from liga.registry.base import ModelSpec, Registry
 from rikai.spark.sql.exceptions import SpecError
+from liga.registry.base import ModelSpec, Registry
 
 __all__ = ["FileSystemRegistry"]
 
@@ -106,7 +106,7 @@ class FileModelSpec(ModelSpec):
 
             return load_model_from_uri(self.model_uri)
         else:
-            raise SpecError("Unsupported flavor {}".format(self.flavor))
+            raise SpecError(f"Unsupported flavor {self.flavor}")
 
     @property
     def model_uri(self):

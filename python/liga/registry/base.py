@@ -52,7 +52,7 @@ class Registry(ABC):
         """
         name = raw_spec["name"]
         uri = raw_spec["uri"]
-        logger.info("Resolving model %s from %s" % (name, uri))
+        logger.info("Resolving model %s from %s", name, uri)
         return udf_from_spec(self.make_model_spec(raw_spec))
 
 
@@ -77,7 +77,7 @@ def codegen_from_spec(spec: ModelSpec):
         codegen = importlib.import_module(codegen_module)
         return codegen
     except ModuleNotFoundError:
-        logger.error(f"Unsupported model flavor: {spec.flavor}")
+        logger.error("Unsupported model flavor: %s", spec.flavor)
         raise
 
 
@@ -121,8 +121,8 @@ def command_from_spec(registry_class: str, row_spec: dict):
 
 
 @udf(returnType=BinaryType())
-def pickle_udt(input):
-    return _pickler.dumps(input)
+def pickle_udt(data):
+    return _pickler.dumps(data)
 
 
 def unpickle_transform(data: bytes) -> Any:
