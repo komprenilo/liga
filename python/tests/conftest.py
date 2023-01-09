@@ -36,38 +36,12 @@ from rikai.spark.utils import get_default_jar_version, init_spark_session
 
 @pytest.fixture(scope="session")
 def mlflow_client_with_tracking_uri(
-        tmp_path_factory, resnet_model_uri: str
+        tmp_path_factory
 ) -> (MlflowClient, str):
     tmp_path = tmp_path_factory.mktemp("mlflow")
     tmp_path.mkdir(parents=True, exist_ok=True)
     tracking_uri = "sqlite:///" + str(tmp_path / "tracking.db")
     mlflow.set_tracking_uri(tracking_uri)
-    experiment_id = mlflow.create_experiment("rikai-test", str(tmp_path))
-    # simpliest
-    with mlflow.start_run(experiment_id=experiment_id):
-        mlflow.log_param("optimizer", "Adam")
-        # Fake training loop
-        model = torch.load(resnet_model_uri)
-        artifact_path = "model"
-        rikai.mlflow.pytorch.log_model(
-            model,  # same as vanilla mlflow
-            artifact_path,  # same as vanilla mlflow
-            OUTPUT_SCHEMA,
-            model_type="resnet",
-            registered_model_name="rikai-test",  # same as vanilla mlflow
-        )
-
-    # vanilla mlflow
-    with mlflow.start_run():
-        mlflow.pytorch.log_model(
-            model, artifact_path, registered_model_name="vanilla-mlflow"
-        )
-        mlflow.set_tags(
-            {
-                "rikai.model.flavor": "pytorch",
-                "rikai.output.schema": OUTPUT_SCHEMA,
-            }
-        )
 
     return mlflow.tracking.MlflowClient(tracking_uri), tracking_uri
 
@@ -123,15 +97,39 @@ def asset_path() -> Path:
 
 @pytest.fixture(scope="session")
 def resnet_model_uri(tmp_path_factory):
+    from sklearn.datasets import load_diabetes
+    X, y = load_diabetes(return_X_y=True)
+    (X.shape, y.shape)
+    import getpass
+
+    import mlflow
+    from liga.sklearn.mlflow import log_model
+    from sklearn.linear_model import LinearRegression
+
+
+    mlflow_tracking_uri = "sqlite:///mlruns.db"
+    mlflow.set_tracking_uri(mlflow_tracking_uri)
+
+    # train a model
+    model = LinearRegression()
+    with mlflow.start_run() as run:
+        ####
+        # Part 1: Train the model and register it on MLflow
+        ####
+        model.fit(X, y)
+
+        registered_model_name = f"{getpass.getuser()}_sklearn_lr"
+        log_model(model, registered_model_name)
+
     # Prepare model
-    tmp_path = tmp_path_factory.mktemp(str(uuid.uuid4()))
-    resnet = sklearn.models.detection.fasterrcnn_resnet50_fpn(
-        pretrained=True,
-        progress=False,
-    )
-    model_uri = tmp_path / "resnet.pth"
-    sklearn.save(resnet, model_uri)
-    return model_uri
+    # tmp_path = tmp_path_factory.mktemp(str(uuid.uuid4()))
+    # resnet = sklearn.models.detection.fasterrcnn_resnet50_fpn(
+    #     pretrained=True,
+    #     progress=False,
+    # )
+    # model_uri = tmp_path / "resnet.pth"
+    # sklearn.save(resnet, model_uri)
+    # return model_uri
 
 @pytest.fixture
 def s3_tmpdir() -> str:
