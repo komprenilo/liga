@@ -72,10 +72,10 @@ def _liga_assembly_jar(jar_type: str, scala_version: str) -> str:
 
 def init(
     conf: Optional[dict] = None,
-    app_name: str ="Liga",
-    scala_version: str ="2.12",
-    num_cores: int =2,
-    jar_type: str ="github",
+    app_name: str = "Liga",
+    scala_version: str = "2.12",
+    num_cores: int = 2,
+    jar_type: str = "github",
 ) -> SparkSession:
     import os
     import sys

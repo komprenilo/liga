@@ -20,14 +20,7 @@ import tempfile
 import warnings
 from typing import Any, Optional
 
-CONF_MLFLOW_TRACKING_URI = "spark.rikai.sql.ml.registry.mlflow.tracking_uri"
-CONF_MLFLOW_OUTPUT_SCHEMA = "rikai.output.schema"
-CONF_MLFLOW_SPEC_VERSION = "rikai.spec.version"
-CONF_MLFLOW_MODEL_FLAVOR = "rikai.model.flavor"
-CONF_MLFLOW_MODEL_TYPE = "rikai.model.type"
-CONF_MLFLOW_ARTIFACT_PATH = "rikai.model.artifact_path"
-CONF_MLFLOW_LABEL_FUNC = "rikai.model.label_func"
-CONF_MLFLOW_LABEL_URI = "rikai.model.label_uri"
+from liga.mlflow import *
 
 
 class MlflowLogger:

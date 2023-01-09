@@ -25,7 +25,7 @@ from mlflow.tracking import MlflowClient
 from pyspark.sql import Row, SparkSession
 
 import liga
-from liga.mlflow.registry import CONF_MLFLOW_TRACKING_URI
+from liga.mlflow import CONF_MLFLOW_TRACKING_URI
 
 
 @pytest.fixture(scope="session")
