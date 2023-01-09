@@ -67,8 +67,8 @@ jobs:
           ~/.ivy2/cache
           ~/.sbt
         key: ${{ matrix.spark-version }}-sbt-${{ hashFiles('**/build.sbt') }}
-    - name: sbt install
-      run: sbt publishLocal
+    - name: sbt assembly
+      run: sbt assembly
       env:
         SPARK_VERSION: ${{ matrix.spark-version }}
     - name: Run python tests
