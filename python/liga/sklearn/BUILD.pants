@@ -6,6 +6,6 @@ python_requirement(
 
 python_sources(
     name="sources",
-    sources=["**/*.py", "!*_test.py"],
+    sources=["**/*.py"],
     resolve=parametrize("sklearn", "spark_3_2_1", "spark_3_3_1"),
 )

@@ -1,33 +1,13 @@
 python_distribution(
     name="liga",
     dependencies=[
-        "python/rikai:sources@resolve=liga",
-        "python/liga:sources@resolve=liga",
+        "python/rikai:sources@resolve=spark_3_2_1",
+        "python/liga:sources@resolve=spark_3_2_1",
+        "python/liga/mlflow:sources@resolve=spark_3_2_1",
+        "python/liga/sklearn:sources@resolve=spark_3_2_1",
     ],
     provides=python_artifact(
         name="liga",
-        version="0.2.0.dev2",
-    ),
-)
-
-python_distribution(
-    name="liga-mlflow",
-    dependencies=[
-        "python/liga/mlflow:sources@resolve=mlflow",
-    ],
-    provides=python_artifact(
-        name="liga-mlflow",
-        version="0.2.0.dev2",
-    ),
-)
-
-python_distribution(
-    name="liga-sklearn",
-    dependencies=[
-        "python/liga/sklearn:sources@resolve=sklearn",
-    ],
-    provides=python_artifact(
-        name="liga-sklearn",
-        version="0.2.0.dev2",
+        version="0.2.0.dev3",
     ),
 )
