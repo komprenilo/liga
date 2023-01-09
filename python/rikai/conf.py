@@ -38,7 +38,7 @@ except ModuleNotFoundError:
         set_option,
     )
 
-from rikai.__version__ import version as _rikai_version
+from liga.__version__ import version as _rikai_version
 
 options = pd.options
 
@@ -46,10 +46,6 @@ CONF_RIKAI_CACHEURI = "rikai.cache_uri"
 DEFAULT_RIKAI_CACHEURI = os.path.join(tempfile.gettempdir(), "rikai")
 os.makedirs(DEFAULT_RIKAI_CACHEURI, exist_ok=True)
 register_option(CONF_RIKAI_CACHEURI, DEFAULT_RIKAI_CACHEURI)
-
-CONF_PARQUET_BLOCK_SIZE = "parquet.block.size"
-DEFAULT_ROW_GROUP_SIZE_BYTES = 32 * 1024 * 1024
-register_option(CONF_PARQUET_BLOCK_SIZE, DEFAULT_ROW_GROUP_SIZE_BYTES)
 
 CONF_RIKAI_IMAGE_DEFAULT_FORMAT = "rikai.image.default.format"
 DEFAULT_IMAGE_DEFAULT_FORMAT = "PNG"

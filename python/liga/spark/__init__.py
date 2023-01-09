@@ -31,7 +31,7 @@ def get_default_jar_version(use_snapshot=True):
     pattern = re.compile(r"([\d]+.[\d]+.[\d]+)")
     match = re.search(pattern, version)
     if not match:
-        raise ValueError("Ill-formed version string {}".format(version))
+        raise ValueError(f"Ill-formed version string {version}")
     match_str = match.group(1)
     if use_snapshot and (len(match_str) < len(version)):
         return match_str + "-SNAPSHOT"
@@ -53,7 +53,8 @@ def _liga_assembly_jar(jar_type: str, scala_version: str):
             import os
 
             project_path = os.environ["ROOTDIR"]
-            return f"{project_path}/target/scala-{scala_version}/{name}-{get_default_jar_version()}.jar"
+            local_jar_path = f"{project_path}/target/scala-{scala_version}"
+            return f"{local_jar_path}/{name}-{get_default_jar_version()}.jar"
     else:
         raise ValueError(f"Invalid jar_type ({jar_type})!")
 
