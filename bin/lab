@@ -2,4 +2,4 @@
 
 set -x
 
-ROOTDIR=`pwd` ./pants run notebooks/lab.py:$1  -- --notebook-dir notebooks/$1
+ROOTDIR=`pwd` ./pants run notebooks/lab.py:sklearn  -- --notebook-dir notebooks
