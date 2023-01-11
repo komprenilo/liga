@@ -29,7 +29,7 @@ Thanks to the ML Model Registries, the training and the prediction can be separa
 </dd>
 <dt><b>General Purpose but not Domain Specific</b></dt>
 <dd>
-Integration with a specific model, a specific ML framework or a specific domain like vision or audio should not be maintained in this repository. They should be maintained in separate projects depending on Liga. eg. A separate project `liga-vision` for integrating the computer vision related UDF and UDT (eg. Image, Box2d) or a separeate project `liga-pytorch` for integrating the PyTorch framework. Scikit-learn integration and Spark ML integration are the reference implementation. That's why they are maintained in Liga.
+Integration with a specific model, a specific ML framework or a specific domain like vision or audio should not be maintained in this repository. They should be maintained in separate projects depending on Liga. eg. A separate project `liga-vision` for integrating the computer vision related UDF and UDT (eg. Image, Box2d) or a separate project `liga-pytorch` for integrating the PyTorch framework. Scikit-learn integration and Spark ML integration are the reference implementation. That's why they are maintained in Liga.
 </dd>
 </dl>
 
@@ -48,9 +48,9 @@ Google Colab Notebook is the notebook depends on the latest stable release of Li
 
 Try the latest notebooks:
 ```
-# Please install JDK 8/11, Python 3.8/3.9 locally
+# Please install JDK 8/11, SBT, Python 3.8/3.9 locally
 git clone https://github.com/liga-ai/liga.git
-bin/lab
+cd liga && sbt assembly && bin/lab
 ```
 
 Preview the notebooks on Github or Try the live notebook on Google Colab:

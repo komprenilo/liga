@@ -24,10 +24,10 @@ def versionFmt(out: sbtdynver.GitDescribeOutput): String = {
 
   if (major == "0" && minor == "1")
     s"0.2.0-SNAPSHOT"
-  else if (out.isSnapshot)
-    s"$major.$minor.$nextPatchInt-SNAPSHOT"
+  else if (rest.size > 0 && rest.head.startsWith("dev"))
+    s"$major.$minor.$patch-SNAPSHOT"
   else
-    out.ref.dropPrefix
+    s"$major.$minor.$nextPatchInt-SNAPSHOT"
 }
 
 def fallbackVersion(d: java.util.Date): String =

@@ -13,6 +13,7 @@
 #  limitations under the License.
 
 import re
+import os
 from importlib.metadata import version as find_version
 from typing import Optional
 
@@ -54,15 +55,13 @@ def _liga_assembly_jar(jar_type: str, scala_version: str) -> str:
             )
         return github_jar
     elif jar_type == "local":
-        if "dev" not in version:
+        if "dev" not in version and os.environ.get("ROOTDIR") is None:
             logger.warning(
                 "Jar type `local` is for developing purpose, "
                 "use Jar on Github instead"
             )
             return github_jar
         else:
-            import os
-
             project_path = os.environ["ROOTDIR"]
             local_jar_path = f"{project_path}/target/scala-{scala_version}"
             return f"{local_jar_path}/{name}-{get_default_jar_version()}.jar"
@@ -77,7 +76,6 @@ def init(
     num_cores: int = 2,
     jar_type: str = "github",
 ) -> SparkSession:
-    import os
     import sys
 
     os.environ["PYSPARK_PYTHON"] = sys.executable
