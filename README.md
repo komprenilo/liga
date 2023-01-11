@@ -1,7 +1,23 @@
 # Liga: the ML-Enhanced Spark SQL
-## Design
+
 Liga is general-purpose ML-enhanced SQL framework designed to be modular, extensible and scalable.
 
+## Table of Contents
+* [Design](#design)
+* [Live Notebooks](#live-notebooks)
+* [Liga SQL References](#liga-sql-references)
+   * [SQL: ML_PREDICT for small models](#sql-ml_predict-for-small-models)
+   * [SQL: ML_TRANSFORM for big models](#sql-ml_transform-for-big-models)
+   * [SQL: Model Creation](#sql-model-creation)
+   * [SQL: Model Catalog](#sql-model-catalog)
+* [Python API](#python-api)
+   * [Model Type](#model-type)
+   * [Model Flavor](#model-flavor)
+   * [Model Registry](#model-registry)
+   * [Model Catalog](#model-catalog)
+* [History](#history)
+
+## Design
 <dl>
 <dt><b>Spark SQL and MLflow</b></dt>
 <dd>
@@ -32,6 +48,7 @@ Google Colab Notebook is the notebook depends on the latest stable release of Li
 
 Try the latest notebooks:
 ```
+# Please install JDK 8/11, Python 3.8/3.9 locally
 git clone https://github.com/liga-ai/liga.git
 bin/lab
 ```
