@@ -86,7 +86,7 @@ FROM cocodataset
 
 
 ### SQL: `ML_TRANSFORM` for big models
-TODO (see #9 )
+TODO (see [#9](https://github.com/liga-ai/liga/issues/10) )
 
 ### SQL: Model Creation
 A Model instance is created by specifying the model flavor, type and options on the uri.
@@ -165,4 +165,4 @@ Currently, only a in-memory model catalog is available in Liga. Via Model Catalo
 
 
 ## History
-Liga is the ML-enhanced SQL part of [Rikai](https://github.com/eto-ai/rikai). Rikai is created by @changhiskhan and @eddyxu and [the first release](https://github.com/eto-ai/rikai/releases/tag/v0.0.4) of Rikai dates back to 2021/04/04. @da-tubi and @Renkai created the Liga fork of Rikai as a project of the 4th Tubi Hackathon (#4).
+Liga is the ML-enhanced SQL part of [Rikai](https://github.com/eto-ai/rikai). Rikai is created by [@changhiskhan](https://github.com/changhiskhan) and [@eddyxu](https://github.com/eddyxu) and [the first release](https://github.com/eto-ai/rikai/releases/tag/v0.0.4) of Rikai dates back to 2021/04/04. [@da-tubi](https://github.com/da-tubi) and [@Renkai](https://github.com/Renkai) created the Liga fork of Rikai as a project of the 4th Tubi Hackathon ([#4](https://github.com/liga-ai/liga/issues/4)).
