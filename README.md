@@ -86,7 +86,7 @@ FROM cocodataset
 
 
 ### SQL: `ML_TRANSFORM` for big models
-TODO (see [#9](https://github.com/liga-ai/liga/issues/10) )
+TODO (see [#9](https://github.com/liga-ai/liga/issues/16) )
 
 ### SQL: Model Creation
 A Model instance is created by specifying the model flavor, type and options on the uri.
