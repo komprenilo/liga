@@ -165,4 +165,4 @@ Currently, only a in-memory model catalog is available in Liga. Via Model Catalo
 
 
 ## History
-Liga is the ML-enhanced SQL part of [Rikai](https://github.com/eto-ai/rikai). Rikai is created by [@changhiskhan](https://github.com/changhiskhan) and [@eddyxu](https://github.com/eddyxu) and [the first release](https://github.com/eto-ai/rikai/releases/tag/v0.0.4) of Rikai dates back to 2021/04/04. [@da-tubi](https://github.com/da-tubi) and [@Renkai](https://github.com/Renkai) created the Liga fork of Rikai as a project of the 4th Tubi Hackathon ([#4](https://github.com/liga-ai/liga/issues/13)).
+Liga is the ML-enhanced SQL part of [Rikai](https://github.com/eto-ai/rikai). Rikai is created by [@changhiskhan](https://github.com/changhiskhan) and [@eddyxu](https://github.com/eddyxu) and [the first release](https://github.com/eto-ai/rikai/releases/tag/v0.0.4) of Rikai dates back to 2021/04/04. [@da-tubi](https://github.com/da-tubi) and [@Renkai](https://github.com/Renkai) created the Liga fork of Rikai as a [project](https://github.com/liga-ai/liga/issues/13) of the 4th Tubi Hackathon.
