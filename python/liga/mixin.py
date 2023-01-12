@@ -44,22 +44,6 @@ class ToNumpy(ABC):
         """Returns the content as a numpy ndarray."""
 
 
-class ToPIL(ABC):
-    """ToPIL Mixin."""
-
-    @abstractmethod
-    def to_pil(self) -> "PIL.Image.Image":
-        pass
-
-
-class ToDict(ABC):
-    """ToDict Mixin"""
-
-    @abstractmethod
-    def to_dict(self) -> dict:
-        pass
-
-
 class Asset(ABC):
     """cloud asset Mixin.
 

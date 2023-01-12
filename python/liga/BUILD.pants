@@ -1,5 +1,14 @@
 python_sources(
     name="sources",
-    sources=["*.py", "registry/*.py", "spark/*.py", "numpy/*.py"],
+    sources=["*.py", "internal/*.py", "registry/*.py", "spark/*.py", "numpy/*.py"],
+        overrides={
+        (
+            "spark/sql/generated/*.py",
+        ): {
+            "skip_black": True,
+            "skip_pylint": True,
+            "skip_mypy": True,
+        },
+    },
     resolve=parametrize("spark_3_2_1", "spark_3_3_1", "sklearn"),
 )
