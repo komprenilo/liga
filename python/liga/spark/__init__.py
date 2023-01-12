@@ -71,7 +71,7 @@ def _liga_assembly_jar(jar_type: str, scala_version: str) -> str:
         else:
             logger.warning(
                 "Jar type `local` is for developing purpose, fallback to Jar"
-                " type `github` instead because no project root is specified"
+                " type `github` because no project root is specified"
             )
             return github_jar
     else:
