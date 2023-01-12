@@ -70,8 +70,8 @@ def _liga_assembly_jar(jar_type: str, scala_version: str) -> str:
                 raise ValueError("Please run `sbt clean assembly` first")
         else:
             logger.warning(
-                "Jar type `local` is for developing purpose, "
-                "use Jar on Github instead"
+                "Jar type `local` is for developing purpose, fallback to Jar"
+                " type `github` instead because no project root is specified"
             )
             return github_jar
     else:
