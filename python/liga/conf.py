@@ -23,10 +23,12 @@ import pandas as pd
 
 try:
     from pandas._config.config import (
+        get_option,
         register_option,
     )
 except ModuleNotFoundError:
     from pandas.core.config import (
+        get_option,
         register_option,
     )
 

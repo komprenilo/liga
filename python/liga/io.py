@@ -50,7 +50,7 @@ def _normalize_uri(uri: str) -> str:
 
 
 @functools.lru_cache(maxsize=1)
-def _gcsfs(project="", token=None, block_size=None) -> "GCSFileSystem":
+def _gcsfs(project: str = "", token: Optional[str] = None, block_size: Optional[int] = None) -> "GCSFileSystem":  # type: ignore[name-defined]
     try:
         import gcsfs
     except ImportError as e:

@@ -12,6 +12,8 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 
+from typing import Any
+
 from antlr4 import CommonTokenStream, InputStream
 from pyspark.sql.types import (
     ArrayType,
@@ -57,7 +59,7 @@ _SPARK_TYPE_MAPPING = {
     "binary": BinaryType(),
 }
 _SPARK_TYPE_MAPPING.update(
-    {udt().simpleString(): udt() for udt in UserDefinedType.__subclasses__()}
+    {udt().simpleString(): udt() for udt in UserDefinedType.__subclasses__()}  # type: ignore[misc]
 )
 
 
@@ -109,7 +111,7 @@ class SparkDataTypeVisitor(RikaiModelSchemaVisitor):
 
 def parse_schema(
     schema_str: str, visitor: RikaiModelSchemaVisitor = SparkDataTypeVisitor()
-):
+) -> Any:
     """Parse schema and returns the data type for the runtime"""
     # input_stream = InputStream(schema_str)
     upper = CaseChangingStream(InputStream(schema_str), True)
@@ -125,14 +127,14 @@ def parse_schema(
 
 
 class CaseChangingStream:
-    def __init__(self, stream, upper=False):
+    def __init__(self, stream: Any, upper: bool = False) -> None:
         self._stream = stream
         self._upper = upper
 
-    def __getattr__(self, name):
+    def __getattr__(self, name: str) -> Any:
         return self._stream.__getattribute__(name)
 
-    def LA(self, offset):
+    def LA(self, offset: int) -> int:
         c = self._stream.LA(offset)
         if c <= 0:
             return c

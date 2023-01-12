@@ -1,6 +1,6 @@
 python_sources(
     name="sources",
-    sources=["*.py", "internal/*.py", "registry/*.py", "spark/sql/*.py", "spark/types/*.py", "numpy/*.py"],
+    sources=["*.py", "internal/*.py", "registry/*.py", "spark/*.py", "spark/sql/*.py", "spark/types/*.py", "numpy/*.py"],
     resolve=parametrize("spark_3_2_1", "spark_3_3_1", "sklearn"),
 )
 
