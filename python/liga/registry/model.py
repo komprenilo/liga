@@ -19,9 +19,8 @@ from typing import Any, Callable, Dict, Optional, TypeVar, List
 from jsonschema.exceptions import ValidationError
 from jsonschema.validators import validate
 
-from rikai.internal.reflection import find_func
-from rikai.spark.sql.schema import parse_schema
-
+from liga.internal.reflection import find_func
+from liga.spark.sql.schema import parse_schema
 from liga.exceptions import SpecError
 from liga.logging import logger
 

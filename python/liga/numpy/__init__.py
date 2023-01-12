@@ -35,7 +35,7 @@ automatically converted into the appropriate format, i.e.,
 import numpy as np
 
 # Rikai
-from python.liga.mixin import ToNumpy
+from liga.mixin import ToNumpy
 from liga.spark.types import NDArrayType
 
 __all__ = ["view", "array", "empty"]
