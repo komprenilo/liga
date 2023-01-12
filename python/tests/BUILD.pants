@@ -11,6 +11,7 @@ python_tests(name = "tests",
     dependencies=[
         "//python/rikai:sources",
         "//python/liga:sources",
+        "//python/liga/spark/sql/generated:sources",
         "//python/liga/sklearn:sources",
         "//python/liga/mlflow:sources",
         "//python/tests:sources",
