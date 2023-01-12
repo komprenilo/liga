@@ -58,14 +58,16 @@ def _liga_assembly_jar(jar_type: str, scala_version: str) -> str:
         project_path = os.environ["ROOTDIR"]
         if project_path:
             local_jar_path = f"{project_path}/target/scala-{scala_version}"
-            snapshot = f"{local_jar_path}/{name}-{get_default_jar_version()}.jar"
+            snapshot = (
+                f"{local_jar_path}/{name}-{get_default_jar_version()}.jar"
+            )
             dev = f"{local_jar_path}/{name}-{version}.jar"
             if os.path.exists(snapshot):
                 return snapshot
             elif os.path.exists(dev):
                 return dev
             else:
-                raise ValueError(f"Please run `sbt clean assembly` first")
+                raise ValueError("Please run `sbt clean assembly` first")
         else:
             logger.warning(
                 "Jar type `local` is for developing purpose, "
