@@ -55,7 +55,7 @@ def _liga_assembly_jar(jar_type: str, scala_version: str) -> str:
             )
         return github_jar
     elif jar_type == "local":
-        project_path = os.environ["ROOTDIR"]
+        project_path = os.environ.get("ROOTDIR")
         if project_path:
             local_jar_path = f"{project_path}/target/scala-{scala_version}"
             snapshot = (
