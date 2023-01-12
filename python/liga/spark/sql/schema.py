@@ -30,13 +30,13 @@ from pyspark.sql.types import (
     UserDefinedType,
 )
 
-from rikai.spark.sql.generated.RikaiModelSchemaLexer import (
+from liga.spark.sql.generated.RikaiModelSchemaLexer import (
     RikaiModelSchemaLexer,
 )
-from rikai.spark.sql.generated.RikaiModelSchemaParser import (
+from liga.spark.sql.generated.RikaiModelSchemaParser import (
     RikaiModelSchemaParser,
 )
-from rikai.spark.sql.generated.RikaiModelSchemaVisitor import (
+from liga.spark.sql.generated.RikaiModelSchemaVisitor import (
     RikaiModelSchemaVisitor,
 )
 

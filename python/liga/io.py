@@ -168,8 +168,8 @@ def open_uri(
         if http_headers is None:
             http_headers = {}
         if "User-Agent" not in http_headers:
-            http_headers["User-Agent"] = python.liga.conf.get_option(
-                python.liga.conf.CONF_RIKAI_IO_HTTP_AGENT
+            http_headers["User-Agent"] = liga.conf.get_option(
+                liga.conf.CONF_RIKAI_IO_HTTP_AGENT
             )
         resp = requests.get(uri, auth=http_auth, headers=http_headers)
         return BytesIO(resp.content)
@@ -193,8 +193,8 @@ def exists(
         if http_headers is None:
             http_headers = {}
         if "User-Agent" not in http_headers:
-            http_headers["User-Agent"] = python.liga.conf.get_option(
-                python.liga.conf.CONF_RIKAI_IO_HTTP_AGENT
+            http_headers["User-Agent"] = liga.conf.get_option(
+                liga.conf.CONF_RIKAI_IO_HTTP_AGENT
             )
         resp = requests.head(uri, auth=http_auth, headers=http_headers)
         return resp.status_code == 200

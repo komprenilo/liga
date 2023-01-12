@@ -17,21 +17,14 @@
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from io import BytesIO
-from pathlib import Path
-from typing import BinaryIO, Mapping, Optional, Union
+from typing import Any
 
 # Third Party
 import numpy as np
 
-# Rikai
-from liga.internal.uri_utils import uri_equal
-from liga.io import open_uri
 
 __all__ = [
     "ToNumpy",
-    "Asset",
-    "ToDict",
     "Pretrained",
 ]
 
@@ -42,51 +35,6 @@ class ToNumpy(ABC):
     @abstractmethod
     def to_numpy(self) -> np.ndarray:
         """Returns the content as a numpy ndarray."""
-
-
-class Asset(ABC):
-    """cloud asset Mixin.
-
-    Rikai uses asset to store certain blob on the cloud storage, to facilitate
-    the functionality like fast query, example inspections, and etc.
-
-    An asset is also a cell in a DataFrame for analytics. It offers both fast
-    query on columnar format and easy tooling to access the actual data.
-
-    Attributes
-    ----------
-    data : bytes, optional
-        Embedded data
-    uri : str
-        URI of the external storage.
-    """
-
-    def __init__(
-        self, data: Optional[bytes] = None, uri: Union[str, Path] = None
-    ) -> None:
-        assert (data is None) ^ (uri is None)
-        assert data is None or isinstance(
-            data, (bytes, bytearray)
-        ), f"Expect bytes got {type(data)}"
-        assert uri is None or isinstance(
-            uri, (str, Path)
-        ), f"Expect str/Path for uri, got {type(uri)}"
-        self.data = data
-        self.uri = str(uri) if uri is not None else None
-
-    def __eq__(self, o: object) -> bool:
-        return isinstance(o, Asset) and uri_equal(self.uri, o.uri)
-
-    @property
-    def is_embedded(self) -> bool:
-        """Returns True if this Asset has embedded data."""
-        return self.data is not None
-
-    def open(self, mode="rb") -> BinaryIO:
-        """Open the asset and returned as random-accessible file object."""
-        if self.is_embedded:
-            return BytesIO(self.data)
-        return open_uri(self.uri, mode=mode)
 
 
 class Pretrained(ABC):
