@@ -1,6 +1,6 @@
 python_sources(
     name="sources",
-    sources=["*.py", "internal/*.py", "registry/*.py", "spark/*.py", "numpy/*.py"],
+    sources=["*.py", "internal/*.py", "registry/*.py", "spark/**/*.py", "numpy/*.py"],
         overrides={
         (
             "spark/sql/generated/*.py",
