@@ -25,36 +25,17 @@ import pandas as pd
 
 try:
     from pandas._config.config import (
-        get_option,
         register_option,
-        reset_option,
-        set_option,
     )
 except ModuleNotFoundError:
     from pandas.core.config import (
-        get_option,
         register_option,
-        reset_option,
-        set_option,
     )
 
 from liga.__version__ import version as _rikai_version
 
 options = pd.options
 
-CONF_RIKAI_CACHEURI = "rikai.cache_uri"
-DEFAULT_RIKAI_CACHEURI = os.path.join(tempfile.gettempdir(), "rikai")
-os.makedirs(DEFAULT_RIKAI_CACHEURI, exist_ok=True)
-register_option(CONF_RIKAI_CACHEURI, DEFAULT_RIKAI_CACHEURI)
-
-CONF_RIKAI_IMAGE_DEFAULT_FORMAT = "rikai.image.default.format"
-DEFAULT_IMAGE_DEFAULT_FORMAT = "PNG"
-register_option(CONF_RIKAI_IMAGE_DEFAULT_FORMAT, DEFAULT_IMAGE_DEFAULT_FORMAT)
-
 CONF_RIKAI_IO_HTTP_AGENT = "rikai.io.http_agent"
 DEFAULT_RIKAI_IO_HTTP_AGENT = f"rikai/{_rikai_version}"
 register_option(CONF_RIKAI_IO_HTTP_AGENT, DEFAULT_RIKAI_IO_HTTP_AGENT)
-
-CONF_RIKAI_VIZ_COLOR = "rikai.viz.color"
-DEFAULT_RIKAI_VIZ_COLOR = "red"
-register_option(CONF_RIKAI_VIZ_COLOR, DEFAULT_RIKAI_VIZ_COLOR)
