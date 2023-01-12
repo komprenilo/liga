@@ -50,7 +50,7 @@ Try the latest notebooks:
 ```
 # Please install JDK 8/11, SBT, Python 3.8/3.9 locally
 git clone https://github.com/liga-ai/liga.git
-cd liga && sbt assembly && bin/lab
+cd liga && sbt clean assembly && bin/lab
 ```
 
 Preview the notebooks on Github or Try the live notebook on Google Colab:

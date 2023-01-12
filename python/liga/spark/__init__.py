@@ -101,9 +101,11 @@ def init(
                 active_session.stop()
                 break
 
+    jar_uri = _liga_assembly_jar(jar_type, scala_version)
+    logger.info("Set `spark.jars` to %s", jar_uri)
     builder = (
         SparkSession.builder.appName(app_name)
-        .config("spark.jars", _liga_assembly_jar(jar_type, scala_version))
+        .config("spark.jars", jar_uri)
         .config(
             "spark.sql.extensions",
             "ai.eto.rikai.sql.spark.RikaiSparkSessionExtensions",
