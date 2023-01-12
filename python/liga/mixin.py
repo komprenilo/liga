@@ -25,8 +25,8 @@ from typing import BinaryIO, Mapping, Optional, Union
 import numpy as np
 
 # Rikai
-from rikai.internal.uri_utils import uri_equal
-from rikai.io import open_uri
+from liga.internal.uri_utils import uri_equal
+from liga.io import open_uri
 
 __all__ = [
     "ToNumpy",

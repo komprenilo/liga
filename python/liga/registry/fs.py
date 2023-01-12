@@ -19,7 +19,7 @@ from urllib.parse import urlparse
 
 import yaml
 
-from rikai.io import open_uri
+from liga.io import open_uri
 from liga.exceptions import SpecError
 from liga.registry.base import ModelSpec, Registry
 
