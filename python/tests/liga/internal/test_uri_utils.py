@@ -13,7 +13,7 @@
 #  limitations under the License.
 
 
-from rikai.internal.uri_utils import uri_equal
+from liga.internal.uri_utils import uri_equal
 
 
 def test_uri_equal():
