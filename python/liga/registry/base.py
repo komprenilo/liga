@@ -21,9 +21,8 @@ from pyspark.serializers import CloudPickleSerializer
 from pyspark.sql.functions import udf
 from pyspark.sql.types import BinaryType
 
-from rikai.internal.reflection import find_class
+from liga.internal.reflection import find_class
 from liga.exceptions import SpecError
-
 from liga.registry.model import ModelSpec, is_fully_qualified_name
 from liga.logging import logger
 
@@ -74,7 +73,7 @@ def codegen_from_spec(spec: ModelSpec) -> ModuleType:
     if is_fully_qualified_name(spec.flavor):
         codegen_module = f"{spec.flavor}.codegen"
     else:
-        codegen_module = f"rikai.contrib.{spec.flavor}.codegen"
+        codegen_module = f"liga.contrib.{spec.flavor}.codegen"
 
     try:
         codegen = importlib.import_module(codegen_module)

@@ -12,7 +12,7 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 
-from rikai.mixin import Pretrained
+from liga.mixin import Pretrained
 from liga.exceptions import SpecError
 
 from liga.registry.base import ModelSpec, Registry

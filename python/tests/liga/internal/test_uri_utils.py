@@ -12,14 +12,11 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 
-"""Rikai Feature Store
-"""
-from rikai.conf import *
 
-__all__ = [
-    "get_option",
-    "options",
-    "option_context",
-    "reset_option",
-    "set_option",
-]
+from liga.internal.uri_utils import uri_equal
+
+
+def test_uri_equal():
+    assert uri_equal("/abc/def", "file:///abc/def")
+    assert uri_equal("s3://abc/bar", "s3://abc/bar")
+    assert not uri_equal("s3://foo/bar", "gs://foo/bar")

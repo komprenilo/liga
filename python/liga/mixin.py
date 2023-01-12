@@ -12,11 +12,34 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 
+"""Mixins
+"""
+from __future__ import annotations
 
-from rikai.internal.uri_utils import uri_equal
+from abc import ABC, abstractmethod
+from typing import Any
+
+# Third Party
+import numpy as np
 
 
-def test_uri_equal():
-    assert uri_equal("/abc/def", "file:///abc/def")
-    assert uri_equal("s3://abc/bar", "s3://abc/bar")
-    assert not uri_equal("s3://foo/bar", "gs://foo/bar")
+__all__ = [
+    "ToNumpy",
+    "Pretrained",
+]
+
+
+class ToNumpy(ABC):
+    """ToNumpy Mixin."""
+
+    @abstractmethod
+    def to_numpy(self) -> np.ndarray:
+        """Returns the content as a numpy ndarray."""
+
+
+class Pretrained(ABC):
+    """Mixin for pretrained model"""
+
+    @abstractmethod
+    def pretrained_model(self) -> Any:
+        pass

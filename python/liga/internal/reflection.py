@@ -15,10 +15,11 @@
 """Helper functions for python reflections.
 """
 
+from typing import Any
 import importlib
 
 
-def find_class(class_name: str):
+def find_class(class_name: str) -> Any:
     module, cls = class_name.rsplit(".", 1)
     mod = importlib.import_module(module)
     return getattr(mod, cls)
@@ -44,7 +45,7 @@ def has_func(func_name: str) -> bool:
         return False
 
 
-def find_func(func_name: str):
+def find_func(func_name: str) -> Any:
     """
     Assuming `x.y.z.name` as func_name
     Try `from x.y import z; z.name` first, and then `from x.y.z import name`

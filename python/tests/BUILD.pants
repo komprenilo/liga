@@ -9,8 +9,8 @@ python_sources(
 python_tests(name = "tests",
     sources=["**/*.py", "!**/conftest.py"],
     dependencies=[
-        "//python/rikai:sources",
         "//python/liga:sources",
+        "//python/liga/spark/sql/generated:sources",
         "//python/liga/sklearn:sources",
         "//python/liga/mlflow:sources",
         "//python/tests:sources",

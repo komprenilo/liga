@@ -26,7 +26,7 @@ import requests
 from pyarrow import fs
 
 # Rikai
-import rikai.conf
+import liga.conf
 from liga.logging import logger
 
 __all__ = ["copy", "open_uri", "open_output_stream", "exists"]
@@ -50,7 +50,7 @@ def _normalize_uri(uri: str) -> str:
 
 
 @functools.lru_cache(maxsize=1)
-def _gcsfs(project="", token=None, block_size=None) -> "GCSFileSystem":
+def _gcsfs(project: str = "", token: Optional[str] = None, block_size: Optional[int] = None) -> "GCSFileSystem":  # type: ignore[name-defined]
     try:
         import gcsfs
     except ImportError as e:
@@ -168,8 +168,8 @@ def open_uri(
         if http_headers is None:
             http_headers = {}
         if "User-Agent" not in http_headers:
-            http_headers["User-Agent"] = rikai.conf.get_option(
-                rikai.conf.CONF_RIKAI_IO_HTTP_AGENT
+            http_headers["User-Agent"] = liga.conf.get_option(
+                liga.conf.CONF_RIKAI_IO_HTTP_AGENT
             )
         resp = requests.get(uri, auth=http_auth, headers=http_headers)
         return BytesIO(resp.content)
@@ -193,8 +193,8 @@ def exists(
         if http_headers is None:
             http_headers = {}
         if "User-Agent" not in http_headers:
-            http_headers["User-Agent"] = rikai.conf.get_option(
-                rikai.conf.CONF_RIKAI_IO_HTTP_AGENT
+            http_headers["User-Agent"] = liga.conf.get_option(
+                liga.conf.CONF_RIKAI_IO_HTTP_AGENT
             )
         resp = requests.head(uri, auth=http_auth, headers=http_headers)
         return resp.status_code == 200

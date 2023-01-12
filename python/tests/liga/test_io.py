@@ -20,7 +20,7 @@ import numpy as np
 import requests
 import requests_mock
 
-from rikai.io import exists
+from liga.io import exists
 
 
 def test_simple_http_credentials():

@@ -22,8 +22,6 @@ notebooks/out
 **/.ipynb_checkpoints
 project/project
 
-python/rikai/jars/
-
 .idea/
 .vscode/
 .DS_Store
