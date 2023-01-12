@@ -25,7 +25,7 @@ def versionFmt(out: sbtdynver.GitDescribeOutput): String = {
   if (major == "0" && minor == "1")
     s"0.2.0-SNAPSHOT"
   else if (out.commitSuffix.distance == 0)
-    out.ref.value
+    out.ref.dropPrefix
   else if (rest.size > 0 && rest.head.startsWith("dev"))
     s"$major.$minor.$patch-SNAPSHOT"
   else
