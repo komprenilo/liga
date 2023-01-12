@@ -18,7 +18,7 @@ in Tensorflow and Pytorch.
 >>> # Feature Engineering in Spark
 >>> from rikai import numpy as np
 >>> df = spark.createDataFrame([Row(mask=np.array([1, 2, 3, 4]))])
->>> df.write.format("rikai").save("s3://path/to/features")
+>>> df.write.format("parquet").save("s3://path/to/features")
 
 When use the rikai data in training, the serialized numpy data will be
 automatically converted into the appropriate format, i.e.,

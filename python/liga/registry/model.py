@@ -73,15 +73,15 @@ def parse_model_type(flavor: str, model_type: str) -> "ModelType":
     else:
         # Try registered models first
         try:
-            registered_models = find_func(f"rikai.{flavor}.models.MODEL_TYPES")
+            registered_models = find_func(f"liga.{flavor}.models.MODEL_TYPES")
             if registered_models:
                 return registered_models[model_type]
         except (ModuleNotFoundError, KeyError):
             pass
         model_modules_candidates.extend(
             [
-                f"rikai.{flavor}.models.{model_type}",
-                f"rikai.contrib.{flavor}.models.{model_type}",
+                f"liga.{flavor}.models.{model_type}",
+                f"liga.contrib.{flavor}.models.{model_type}",
             ]
         )
     for model_module in model_modules_candidates:

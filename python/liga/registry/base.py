@@ -73,7 +73,7 @@ def codegen_from_spec(spec: ModelSpec) -> ModuleType:
     if is_fully_qualified_name(spec.flavor):
         codegen_module = f"{spec.flavor}.codegen"
     else:
-        codegen_module = f"rikai.contrib.{spec.flavor}.codegen"
+        codegen_module = f"liga.contrib.{spec.flavor}.codegen"
 
     try:
         codegen = importlib.import_module(codegen_module)
