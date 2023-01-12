@@ -55,16 +55,23 @@ def _liga_assembly_jar(jar_type: str, scala_version: str) -> str:
             )
         return github_jar
     elif jar_type == "local":
-        if "dev" not in version and os.environ.get("ROOTDIR") is None:
+        project_path = os.environ["ROOTDIR"]
+        if project_path:
+            local_jar_path = f"{project_path}/target/scala-{scala_version}"
+            snapshot = f"{local_jar_path}/{name}-{get_default_jar_version()}.jar"
+            dev = f"{local_jar_path}/{name}-{version}.jar"
+            if os.path.exists(snapshot):
+                return snapshot
+            elif os.path.exists(dev):
+                return dev
+            else:
+                raise ValueError(f"Please run `sbt clean assembly` first")
+        else:
             logger.warning(
                 "Jar type `local` is for developing purpose, "
                 "use Jar on Github instead"
             )
             return github_jar
-        else:
-            project_path = os.environ["ROOTDIR"]
-            local_jar_path = f"{project_path}/target/scala-{scala_version}"
-            return f"{local_jar_path}/{name}-{get_default_jar_version()}.jar"
     else:
         raise ValueError(f"Invalid jar_type ({jar_type})!")
 
