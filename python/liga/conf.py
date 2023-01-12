@@ -18,8 +18,6 @@ We'll need a permanent solution later on for two main reasons:
 1. Users can accidentally clear options via pandas api
 2. We need better type handling to help bridge jvm-python communication (GH134)
 """
-import os
-import tempfile
 
 import pandas as pd
 
