@@ -55,16 +55,25 @@ def _liga_assembly_jar(jar_type: str, scala_version: str) -> str:
             )
         return github_jar
     elif jar_type == "local":
-        if "dev" not in version and os.environ.get("ROOTDIR") is None:
+        project_path = os.environ.get("ROOTDIR")
+        if project_path:
+            local_jar_path = f"{project_path}/target/scala-{scala_version}"
+            snapshot = (
+                f"{local_jar_path}/{name}-{get_default_jar_version()}.jar"
+            )
+            dev = f"{local_jar_path}/{name}-{version}.jar"
+            if os.path.exists(snapshot):
+                return snapshot
+            elif os.path.exists(dev):
+                return dev
+            else:
+                raise ValueError("Please run `sbt clean assembly` first")
+        else:
             logger.warning(
-                "Jar type `local` is for developing purpose, "
-                "use Jar on Github instead"
+                "Jar type `local` is for developing purpose, fallback to Jar"
+                " type `github` because no project root is specified"
             )
             return github_jar
-        else:
-            project_path = os.environ["ROOTDIR"]
-            local_jar_path = f"{project_path}/target/scala-{scala_version}"
-            return f"{local_jar_path}/{name}-{get_default_jar_version()}.jar"
     else:
         raise ValueError(f"Invalid jar_type ({jar_type})!")
 
@@ -94,9 +103,11 @@ def init(
                 active_session.stop()
                 break
 
+    jar_uri = _liga_assembly_jar(jar_type, scala_version)
+    logger.info("Set `spark.jars` to %s", jar_uri)
     builder = (
         SparkSession.builder.appName(app_name)
-        .config("spark.jars", _liga_assembly_jar(jar_type, scala_version))
+        .config("spark.jars", jar_uri)
         .config(
             "spark.sql.extensions",
             "ai.eto.rikai.sql.spark.RikaiSparkSessionExtensions",
