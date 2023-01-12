@@ -21,9 +21,8 @@ from pyspark.serializers import CloudPickleSerializer
 from pyspark.sql.functions import udf
 from pyspark.sql.types import BinaryType
 
-from rikai.internal.reflection import find_class
+from liga.internal.reflection import find_class
 from liga.exceptions import SpecError
-
 from liga.registry.model import ModelSpec, is_fully_qualified_name
 from liga.logging import logger
 
