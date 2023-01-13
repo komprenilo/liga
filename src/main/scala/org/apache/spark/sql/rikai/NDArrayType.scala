@@ -52,7 +52,7 @@ private[spark] class NDArrayType extends UserDefinedType[NDArray] {
       )
     )
 
-  override def pyUDT: String = "rikai.spark.types.NDArrayType"
+  override def pyUDT: String = "liga.spark.types.NDArrayType"
 
   override def serialize(obj: NDArray): Any = {
     val row = new GenericInternalRow(3)
