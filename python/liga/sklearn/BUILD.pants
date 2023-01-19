@@ -4,8 +4,19 @@ python_requirement(
     resolve=parametrize("sklearn", "spark_3_2_1", "spark_3_3_1"),
 )
 
+python_requirement(
+    name="liga",
+    requirements=["liga==0.2.0.dev10"],
+    resolve="sklearn",
+)
+
 python_sources(
     name="sources",
-    sources=["**/*.py"],
+    sources=["**/*.py", "!*_test.py"],
     resolve=parametrize("sklearn", "spark_3_2_1", "spark_3_3_1"),
+)
+
+python_tests(
+    name="tests",
+    resolve="sklearn",
 )
