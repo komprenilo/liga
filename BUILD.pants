@@ -3,11 +3,9 @@ python_distribution(
     dependencies=[
         "python/liga:sources@resolve=spark_3_2_1",
         "python/liga/spark/sql/generated:sources@resolve=spark_3_2_1",
-        "python/liga/mlflow:sources@resolve=spark_3_2_1",
-        "python/liga/sklearn:sources@resolve=spark_3_2_1",
     ],
     provides=python_artifact(
         name="liga",
-        version="0.2.0.dev8",
+        version="0.2.0.dev9",
     ),
 )
