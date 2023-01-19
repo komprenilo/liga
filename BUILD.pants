@@ -9,3 +9,14 @@ python_distribution(
         version="0.2.0.dev9",
     ),
 )
+
+python_distribution(
+    name="liga-mlflow",
+    dependencies=[
+        "python/liga/mlflow:sources@resolve=mlflow",
+    ],
+    provides=python_artifact(
+        name="liga-mlflow",
+        version="0.2.0.dev9",
+    ),
+)
