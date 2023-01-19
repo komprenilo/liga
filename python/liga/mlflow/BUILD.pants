@@ -3,13 +3,13 @@ python_requirement(
     requirements=[
         "mlflow==1.26.1",
     ],
-    resolve=parametrize("spark_3_2_1", "spark_3_3_1", "sklearn"),
+    resolve=parametrize("spark_3_2_1", "spark_3_3_1", "sklearn", "mlflow"),
 )
 
 python_requirement(
     name="liga",
     requirements=[
-        "liga==0.2.0.dev9",
+        "liga==0.2.0.dev10",
     ],
     resolve="mlflow",
 )
