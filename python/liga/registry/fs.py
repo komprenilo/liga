@@ -21,7 +21,7 @@ import yaml
 
 from liga.io import open_uri
 from liga.exceptions import SpecError
-from liga.registry.base import ModelSpec, Registry
+from liga.registry.base import ModelSpec, Registry, codegen_from_spec
 
 __all__ = ["FileSystemRegistry"]
 
@@ -101,12 +101,8 @@ class FileModelSpec(ModelSpec):
         return spec
 
     def load_model(self):
-        if self.flavor == "sklearn":
-            from liga.sklearn.codegen import load_model_from_uri
-
-            return load_model_from_uri(self.model_uri)
-        else:
-            raise SpecError(f"Unsupported flavor {self.flavor}")
+        codegen = codegen_from_spec(self)
+        return codegen.load_model_from_uri(self.model_uri)
 
     @property
     def model_uri(self):
