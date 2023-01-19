@@ -15,7 +15,7 @@
 import importlib
 from abc import ABC, abstractmethod
 from typing import Any, Tuple
-from types import ModuleType
+from types import ModuleType, FunctionType
 
 from pyspark.serializers import CloudPickleSerializer
 from pyspark.sql.functions import udf
