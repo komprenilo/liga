@@ -1,13 +1,13 @@
 python_sources(
     name="sources",
     sources=["**/conftest.py", "spark/sql/codegen/utils.py"],
-    resolve=parametrize("spark_3_2_1", "spark_3_3_1"),
+    resolve=parametrize("spark_3_2_1", "spark_3_3_1", "sklearn"),
     skip_pylint=True,
     skip_mypy=True,
 )
 
 python_tests(name = "liga",
-    sources=["*.py", "internal/*.py", "spark/*.py", "!**/conftest.py"],
+    sources=["liga/*.py", "liga/internal/*.py", "liga/spark/*.py", "!**/conftest.py"],
     dependencies=[
         "//python/liga:sources",
         "//python/liga/spark/sql/generated:sources",
@@ -22,9 +22,10 @@ python_tests(name = "liga",
 )
 
 python_tests(name = "sklearn",
-    sources=["sklearn/*.py", "!**/conftest.py"],
+    sources=["liga/sklearn/*.py", "!**/conftest.py"],
     dependencies=[
         "//python/liga/sklearn:sources",
+        "//python/liga/sklearn:liga-mlflow",
         ":sources",
     ],
     extra_env_vars=["ROOTDIR"],
@@ -32,4 +33,3 @@ python_tests(name = "sklearn",
     skip_pylint=True,
     skip_mypy=True,
 )
-

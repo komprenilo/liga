@@ -10,6 +10,12 @@ python_requirement(
     resolve="sklearn",
 )
 
+python_requirement(
+    name="liga-mlflow",
+    requirements=["liga-mlflow==0.2.0.dev10"],
+    resolve="sklearn",
+)
+
 python_sources(
     name="sources",
     sources=["**/*.py", "!*_test.py"],

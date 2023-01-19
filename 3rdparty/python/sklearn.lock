@@ -10,6 +10,7 @@
 //   ],
 //   "generated_with_requirements": [
 //     "jupyterlab",
+//     "liga-mlflow==0.2.0.dev10",
 //     "liga==0.2.0.dev10",
 //     "matplotlib",
 //     "mlflow==1.26.1",
@@ -2342,6 +2343,27 @@
             "pyspark==3.2.1",
             "pyyaml",
             "requests"
+          ],
+          "requires_python": "<3.10,>=3.8",
+          "version": "0.2.dev10"
+        },
+        {
+          "artifacts": [
+            {
+              "algorithm": "sha256",
+              "hash": "04e29695eea5c403d9b82500997a6a2ac27e504d10a3c0e469f31d6f01a425a8",
+              "url": "https://files.pythonhosted.org/packages/28/fd/a44f8eddf212fe50115125fc573bd4a2ad6161869826fe7dc45becebe7f7/liga_mlflow-0.2.0.dev10-py3-none-any.whl"
+            },
+            {
+              "algorithm": "sha256",
+              "hash": "823b8057b0af23cf6a5ce85a57c36a80ba8328f336db91b6c1aa5e4924510a44",
+              "url": "https://files.pythonhosted.org/packages/44/e8/6308adf988292d8babec6e4490d38d07dbea594c883c61c4125e0d7bff7e/liga-mlflow-0.2.0.dev10.tar.gz"
+            }
+          ],
+          "project_name": "liga-mlflow",
+          "requires_dists": [
+            "liga==0.2.0.dev10",
+            "mlflow==1.26.1"
           ],
           "requires_python": "<3.10,>=3.8",
           "version": "0.2.dev10"
@@ -5045,6 +5067,7 @@
   "prefer_older_binary": false,
   "requirements": [
     "jupyterlab",
+    "liga-mlflow==0.2.0.dev10",
     "liga==0.2.0.dev10",
     "matplotlib",
     "mlflow==1.26.1",
