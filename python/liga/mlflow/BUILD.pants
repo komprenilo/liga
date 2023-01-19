@@ -6,9 +6,17 @@ python_requirement(
     resolve=parametrize("spark_3_2_1", "spark_3_3_1", "sklearn"),
 )
 
+python_requirement(
+    name="liga",
+    requirements=[
+        "liga==0.2.0.dev9",
+    ],
+    resolve="mlflow",
+)
+
 python_sources(
     name="sources",
-    resolve=parametrize("spark_3_2_1", "spark_3_3_1", "sklearn"),
+    resolve=parametrize("spark_3_2_1", "spark_3_3_1", "sklearn", "mlflow"),
     skip_pylint=True,
     skip_mypy=True,
 )
