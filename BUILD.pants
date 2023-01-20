@@ -20,3 +20,14 @@ python_distribution(
         version="0.2.0.dev11",
     ),
 )
+
+python_distribution(
+    name="liga-sklearn",
+    dependencies=[
+        "python/liga/sklearn:sources@resolve=sklearn",
+    ],
+    provides=python_artifact(
+        name="liga-sklearn",
+        version="0.2.0.dev11",
+    ),
+)
