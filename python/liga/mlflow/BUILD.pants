@@ -9,7 +9,7 @@ python_requirement(
 python_requirement(
     name="liga",
     requirements=[
-        "liga==0.2.0.dev10",
+        "liga==0.2.0.dev11",
     ],
     resolve="mlflow",
 )
