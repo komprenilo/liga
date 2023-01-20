@@ -9,7 +9,7 @@
 //     "CPython<3.10,>=3.8"
 //   ],
 //   "generated_with_requirements": [
-//     "liga==0.2.0.dev10",
+//     "liga==0.2.0.dev11",
 //     "mlflow==1.26.1"
 //   ],
 //   "manylinux": "manylinux2014",
@@ -787,13 +787,13 @@
           "artifacts": [
             {
               "algorithm": "sha256",
-              "hash": "74f5024a4bf61d505fbebb177800a121a3a12a222584ba19fe4cc46e6dd7ad9d",
-              "url": "https://files.pythonhosted.org/packages/24/48/cce8b888351e53bfb3ae02741f907479088754e1ef87926a1444ac0aa90d/liga-0.2.0.dev10-py3-none-any.whl"
+              "hash": "96c7d96fedf523512bad8b57d2afa68b298d90fe59147f155efedf42eadb5a79",
+              "url": "https://files.pythonhosted.org/packages/aa/be/b886731f632bae5e7979b9a8d2f81bf8e4a069371ecdedda325389b3dbaf/liga-0.2.0.dev11-py3-none-any.whl"
             },
             {
               "algorithm": "sha256",
-              "hash": "425f57988c7d1ba909d7731d141886761c702e4eeb36a9c1332d8eeb52625964",
-              "url": "https://files.pythonhosted.org/packages/58/e8/e3978159b7cf01b3cd1342cae79d9cacf604ca6fab4eb0df121234e770df/liga-0.2.0.dev10.tar.gz"
+              "hash": "a6ba6462e2f0872283d128362d1273220759ce58737d74998cab1b5003c94cc7",
+              "url": "https://files.pythonhosted.org/packages/f8/8a/564e5f91e285f18df9f1ed705905307c01169cd625ce2088591bb68c5c73/liga-0.2.0.dev11.tar.gz"
             }
           ],
           "project_name": "liga",
@@ -810,7 +810,7 @@
             "requests"
           ],
           "requires_python": "<3.10,>=3.8",
-          "version": "0.2.dev10"
+          "version": "0.2.dev11"
         },
         {
           "artifacts": [
@@ -1991,7 +1991,7 @@
   "pip_version": "20.3.4-patched",
   "prefer_older_binary": false,
   "requirements": [
-    "liga==0.2.0.dev10",
+    "liga==0.2.0.dev11",
     "mlflow==1.26.1"
   ],
   "requires_python": [
