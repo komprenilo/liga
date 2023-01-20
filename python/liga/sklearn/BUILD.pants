@@ -21,6 +21,7 @@ python_sources(
     sources=["**/*.py", "!*_test.py"],
     resolve=parametrize("sklearn", "spark_3_2_1", "spark_3_3_1"),
     skip_pylint=True,
+    skip_mypy=True,
 )
 
 python_tests(
