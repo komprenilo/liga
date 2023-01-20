@@ -1,3 +1,3 @@
-import liga
+from liga.spark import init as init_spark
 
-spark = liga.init_spark(jar_type="local")
+spark = init_spark(jar_type="local")

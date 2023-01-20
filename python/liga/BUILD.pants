@@ -1,7 +1,7 @@
 python_sources(
     name="sources",
     sources=["*.py", "internal/*.py", "registry/*.py", "spark/*.py", "spark/sql/*.py", "spark/types/*.py", "numpy/*.py"],
-    resolve=parametrize("spark_3_2_1", "spark_3_3_1", "sklearn"),
+    resolve=parametrize("spark_3_2_1", "spark_3_3_1"),
 )
 
 python_requirement(
@@ -17,7 +17,7 @@ python_requirement(
     requirements=[
         "pyspark==3.2.1",
     ],
-    resolve=parametrize("spark_3_2_1", "sklearn"),
+    resolve="spark_3_2_1",
 )
 
 python_requirement(
@@ -36,5 +36,5 @@ python_requirement(
         "requests",
         "fsspec==2022.1.0",
     ],
-    resolve=parametrize("spark_3_2_1", "spark_3_3_1", "sklearn")
+    resolve=parametrize("spark_3_2_1", "spark_3_3_1")
 )

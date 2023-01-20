@@ -1,10 +1,10 @@
 #!/bin/bash
 
 if [[ "${SPARK_VERSION}" == "3.2.1" ]];then
-  ROOTDIR=`pwd` ./pants test  python/tests:tests@resolve=spark_3_2_1
+  ROOTDIR=`pwd` ./pants test  python/tests:liga@resolve=spark_3_2_1
 elif [[ "${SPARK_VERSION}" == "3.3.1" ]];then
-  ROOTDIR=`pwd` ./pants test  python/tests:tests@resolve=spark_3_3_1
+  ROOTDIR=`pwd` ./pants test  python/tests:liga@resolve=spark_3_3_1
 else
-  ROOTDIR=`pwd` ./pants test  python/tests:tests@resolve=spark_3_2_1
+  ROOTDIR=`pwd` ./pants test  python/tests:liga@resolve=spark_3_2_1
 fi
 
