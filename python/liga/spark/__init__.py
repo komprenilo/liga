@@ -91,15 +91,14 @@ def init_session(
     os.environ["PYSPARK_DRIVER_PYTHON"] = sys.executable
 
     default_conf = {
-        "spark.sql.extensions":
-          "ai.eto.rikai.sql.spark.RikaiSparkSessionExtensions",
-        "spark.driver.extraJavaOptions":
-          "-Dio.netty.tryReflectionSetAccessible=true",
-        "spark.executor.extraJavaOptions":
-          "-Dio.netty.tryReflectionSetAccessible=true",
+        "spark.sql.extensions": "ai.eto.rikai.sql.spark.RikaiSparkSessionExtensions",
+        "spark.driver.extraJavaOptions": "-Dio.netty.tryReflectionSetAccessible=true",
+        "spark.executor.extraJavaOptions": "-Dio.netty.tryReflectionSetAccessible=true",
     }
     if conf and (not "spark.jars" in conf.keys()):
-        default_conf["spark.jars"] = get_liga_assembly_jar(jar_type, scala_version)
+        default_conf["spark.jars"] = get_liga_assembly_jar(
+            jar_type, scala_version
+        )
     for k, v in conf.items():
         default_conf[k] = v
 
