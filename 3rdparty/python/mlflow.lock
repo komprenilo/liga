@@ -9,7 +9,7 @@
 //     "CPython<3.10,>=3.8"
 //   ],
 //   "generated_with_requirements": [
-//     "liga==0.2.0.dev11",
+//     "liga==0.2.0.dev12",
 //     "mlflow==1.26.1"
 //   ],
 //   "manylinux": "manylinux2014",
@@ -787,13 +787,13 @@
           "artifacts": [
             {
               "algorithm": "sha256",
-              "hash": "96c7d96fedf523512bad8b57d2afa68b298d90fe59147f155efedf42eadb5a79",
-              "url": "https://files.pythonhosted.org/packages/aa/be/b886731f632bae5e7979b9a8d2f81bf8e4a069371ecdedda325389b3dbaf/liga-0.2.0.dev11-py3-none-any.whl"
+              "hash": "dede9f7ed21e4d337fe13d57a90d4c0f519240df27be7bb21d6d057c1c14d049",
+              "url": "https://files.pythonhosted.org/packages/cf/ae/3f34b7e2c634fa3302afcb82786ffe129d4f10a5ec66e06bb96da456e2dd/liga-0.2.0.dev12-py3-none-any.whl"
             },
             {
               "algorithm": "sha256",
-              "hash": "a6ba6462e2f0872283d128362d1273220759ce58737d74998cab1b5003c94cc7",
-              "url": "https://files.pythonhosted.org/packages/f8/8a/564e5f91e285f18df9f1ed705905307c01169cd625ce2088591bb68c5c73/liga-0.2.0.dev11.tar.gz"
+              "hash": "8dfd883ced0439609fdce8a9263c9ac79acd927ab291438175a2c425a7571b73",
+              "url": "https://files.pythonhosted.org/packages/08/49/7056a0cfdb723fd25347d98c26630af2d8931f97aea7d7f42820c8847e1c/liga-0.2.0.dev12.tar.gz"
             }
           ],
           "project_name": "liga",
@@ -810,7 +810,7 @@
             "requests"
           ],
           "requires_python": "<3.10,>=3.8",
-          "version": "0.2.dev11"
+          "version": "0.2.dev12"
         },
         {
           "artifacts": [
@@ -1181,13 +1181,13 @@
           "artifacts": [
             {
               "algorithm": "sha256",
-              "hash": "db7c05cbd13a0f79975592d112320f2605a325969b270a94b71dcabc47b931d2",
-              "url": "https://files.pythonhosted.org/packages/2e/5e/4225463cdac1098aac718b1d8adf8f9dc3d6aaea55f4f85a2f7d572b4f7c/prometheus_client-0.15.0-py3-none-any.whl"
+              "hash": "0836af6eb2c8f4fed712b2f279f6c0a8bbab29f9f4aa15276b91c7cb0d1616ab",
+              "url": "https://files.pythonhosted.org/packages/5b/8e/6a546e439b4366ab9eab0a736876eb1e1916dd93b4a1fa560ef711d24f8c/prometheus_client-0.16.0-py3-none-any.whl"
             },
             {
               "algorithm": "sha256",
-              "hash": "be26aa452490cfcf6da953f9436e95a9f2b4d578ca80094b4458930e5f584ab1",
-              "url": "https://files.pythonhosted.org/packages/ae/ae/04b27ea04f67f91f10b1379d8fd6729c41ac0bcefbb0af603850b3fa32e0/prometheus_client-0.15.0.tar.gz"
+              "hash": "a03e35b359f14dd1630898543e2120addfdeacd1a6069c1367ae90fd93ad3f48",
+              "url": "https://files.pythonhosted.org/packages/d0/55/9e34c73e1e490b105b4cd13d08497b1f7cb086a260e4161b7b7c2928b196/prometheus_client-0.16.0.tar.gz"
             }
           ],
           "project_name": "prometheus-client",
@@ -1195,7 +1195,7 @@
             "twisted; extra == \"twisted\""
           ],
           "requires_python": ">=3.6",
-          "version": "0.15"
+          "version": "0.16"
         },
         {
           "artifacts": [
@@ -1278,48 +1278,48 @@
           "artifacts": [
             {
               "algorithm": "sha256",
-              "hash": "db0c5986bf0808927f49640582d2032a07aa49828f14e51f362075f03747d198",
-              "url": "https://files.pythonhosted.org/packages/b2/d2/77f002c442ed75f0cd19b744e34894544d25fc34bbdc8efeb33bd52d8de0/pyarrow-10.0.1-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+              "hash": "da93340fbf6f4e2a62815064383605b7ffa3e9eeb320ec839995b1660d69f89b",
+              "url": "https://files.pythonhosted.org/packages/cd/8d/a7068195f2668fecbd31b144efe32f48953b876396cceb01c1cd2a0cefbc/pyarrow-11.0.0-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
             },
             {
               "algorithm": "sha256",
-              "hash": "1a14f57a5f472ce8234f2964cd5184cccaa8df7e04568c64edc33b23eb285dd5",
-              "url": "https://files.pythonhosted.org/packages/11/71/dd884e86aa92b2d602ee2064a485106ce5b447f8cae644f1a6f6a2e72016/pyarrow-10.0.1.tar.gz"
+              "hash": "f12932e5a6feb5c58192209af1d2607d488cb1d404fbc038ac12ada60327fa34",
+              "url": "https://files.pythonhosted.org/packages/01/a3/471746d52e4be2ef6d9bb040b68983955f32d04b6c8a7b3b442407cebd7d/pyarrow-11.0.0-cp38-cp38-macosx_10_14_x86_64.whl"
             },
             {
               "algorithm": "sha256",
-              "hash": "f2d00aa481becf57098e85d99e34a25dba5a9ade2f44eb0b7d80c80f2984fc03",
-              "url": "https://files.pythonhosted.org/packages/61/a7/c6b4ce8fefda1a89083dc25bbd8da0200194779640e146b18abe742551d7/pyarrow-10.0.1-cp38-cp38-macosx_10_14_x86_64.whl"
+              "hash": "3e99be85973592051e46412accea31828da324531a060bd4585046a74ba45854",
+              "url": "https://files.pythonhosted.org/packages/26/48/ed94e31a54359a5c6ce9cb2e1db03ac8255576dcb8692ffb048323e10f1a/pyarrow-11.0.0-cp39-cp39-macosx_11_0_arm64.whl"
             },
             {
               "algorithm": "sha256",
-              "hash": "efa59933b20183c1c13efc34bd91efc6b2997377c4c6ad9272da92d224e3beb1",
-              "url": "https://files.pythonhosted.org/packages/6a/d3/cdaa61af13c323d33d2950126ecab641524174d71474a2b8450ab6f15ef6/pyarrow-10.0.1-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl"
+              "hash": "5461c57dbdb211a632a48facb9b39bbeb8a7905ec95d768078525283caef5f6d",
+              "url": "https://files.pythonhosted.org/packages/2c/e7/49cc11436f92a6a9001e4002fb8e5cd6733fc15a89a354cbc22b206a8171/pyarrow-11.0.0.tar.gz"
             },
             {
               "algorithm": "sha256",
-              "hash": "b1fc226d28c7783b52a84d03a66573d5a22e63f8a24b841d5fc68caeed6784d4",
-              "url": "https://files.pythonhosted.org/packages/85/37/c66886e2b479018d1a5ed11c77913325f5482f60e5217c2f4182b15a5d25/pyarrow-10.0.1-cp38-cp38-macosx_11_0_arm64.whl"
+              "hash": "8f40be0d7381112a398b93c45a7e69f60261e7b0269cc324e9f739ce272f4f70",
+              "url": "https://files.pythonhosted.org/packages/5d/91/708bcf6e636fc4f1a07bdb704c0a320bafe9b83919cd501648307b31f555/pyarrow-11.0.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
             },
             {
               "algorithm": "sha256",
-              "hash": "668e00e3b19f183394388a687d29c443eb000fb3fe25599c9b4762a0afd37775",
-              "url": "https://files.pythonhosted.org/packages/89/b4/04ae9d39130d0dc40803eb6fbe84873c247f9c8e8111ac9b2cb30c35b515/pyarrow-10.0.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+              "hash": "69309be84dcc36422574d19c7d3a30a7ea43804f12552356d1ab2a82a713c418",
+              "url": "https://files.pythonhosted.org/packages/5e/f5/4e98a339db32e72e75c081552a2191330e78f11d1e443ab4384cca315615/pyarrow-11.0.0-cp39-cp39-manylinux_2_17_aarch64.manylinux2014_aarch64.whl"
             },
             {
               "algorithm": "sha256",
-              "hash": "94fb4a0c12a2ac1ed8e7e2aa52aade833772cf2d3de9dde685401b22cec30002",
-              "url": "https://files.pythonhosted.org/packages/a4/48/19c8b4892d2d574dfbefa7065600aa4d7d8e8b864f7be5f58105c3fc0448/pyarrow-10.0.1-cp39-cp39-manylinux_2_17_aarch64.manylinux2014_aarch64.whl"
+              "hash": "becc2344be80e5dce4e1b80b7c650d2fc2061b9eb339045035a1baa34d5b8f1c",
+              "url": "https://files.pythonhosted.org/packages/6f/c5/ed05347b64c05d91d6456ad6c3c21d9e17c75d73727b92fd88078a3d9501/pyarrow-11.0.0-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl"
             },
             {
               "algorithm": "sha256",
-              "hash": "b069602eb1fc09f1adec0a7bdd7897f4d25575611dfa43543c8b8a75d99d6874",
-              "url": "https://files.pythonhosted.org/packages/b6/14/208f66e1c2f213ffc053e3d37b10ba41d0580654501dcd620ad5d32d056e/pyarrow-10.0.1-cp39-cp39-macosx_11_0_arm64.whl"
+              "hash": "ccbf29a0dadfcdd97632b4f7cca20a966bb552853ba254e874c66934931b9841",
+              "url": "https://files.pythonhosted.org/packages/a8/38/5938d00a75068827626d18d0681967d07dd98b653099423b11272dbdca2d/pyarrow-11.0.0-cp39-cp39-macosx_10_14_x86_64.whl"
             },
             {
               "algorithm": "sha256",
-              "hash": "42ba7c5347ce665338f2bc64685d74855900200dac81a972d49fe127e8132f75",
-              "url": "https://files.pythonhosted.org/packages/b9/46/0050ff96706f27b766497d63ad60f8bace6a4e61565594bd8079b33e81af/pyarrow-10.0.1-cp39-cp39-macosx_10_14_x86_64.whl"
+              "hash": "41a1451dd895c0b2964b83d91019e46f15b5564c7ecd5dcb812dadd3f05acc97",
+              "url": "https://files.pythonhosted.org/packages/c2/49/b7f58a23bd2bce32ba021e35c760fcf5785a4676170b4c1b997bc91044f6/pyarrow-11.0.0-cp38-cp38-macosx_11_0_arm64.whl"
             }
           ],
           "project_name": "pyarrow",
@@ -1327,7 +1327,7 @@
             "numpy>=1.16.6"
           ],
           "requires_python": ">=3.7",
-          "version": "10.0.1"
+          "version": "11"
         },
         {
           "artifacts": [
@@ -1654,13 +1654,13 @@
           "artifacts": [
             {
               "algorithm": "sha256",
-              "hash": "a78d01d1e2c175c474884671dde039962c9d74c7223db7369771fcf6e29ceeab",
-              "url": "https://files.pythonhosted.org/packages/bd/ef/76cffd20061a0c6512dad4ba3537314904c6350738b99526c2f48992ff58/setuptools-66.0.0-py3-none-any.whl"
+              "hash": "6f590d76b713d5de4e49fe4fbca24474469f53c83632d5d0fd056f7ff7e8112b",
+              "url": "https://files.pythonhosted.org/packages/c2/8b/abb577ca6ab2c71814d535b1ed1464c5f4aaefe1a31bbeb85013eb9b2401/setuptools-66.1.1-py3-none-any.whl"
             },
             {
               "algorithm": "sha256",
-              "hash": "bd6eb2d6722568de6d14b87c44a96fac54b2a45ff5e940e639979a3d1792adb6",
-              "url": "https://files.pythonhosted.org/packages/67/ba/27235b9eebee2492fbf03ac1828a997d3d686031445d491f9cfa36a7085e/setuptools-66.0.0.tar.gz"
+              "hash": "ac4008d396bc9cd983ea483cb7139c0240a07bbc74ffb6232fceffedc6cf03a8",
+              "url": "https://files.pythonhosted.org/packages/3c/7b/00030a938499c8f8345be02ab5b7d748d359ea59c2f020b7b0a21b82f832/setuptools-66.1.1.tar.gz"
             }
           ],
           "project_name": "setuptools",
@@ -1712,7 +1712,7 @@
             "wheel; extra == \"testing-integration\""
           ],
           "requires_python": ">=3.7",
-          "version": "66"
+          "version": "66.1.1"
         },
         {
           "artifacts": [
@@ -1754,85 +1754,109 @@
           "artifacts": [
             {
               "algorithm": "sha256",
-              "hash": "b6e4cb5c63f705c9d546a054c60d326cbde7421421e2d2565ce3e2eee4e1a01f",
-              "url": "https://files.pythonhosted.org/packages/73/3e/b82293fc17612488ff068c5235e743ebfe05310301984ca0467f88237572/SQLAlchemy-1.4.46-cp39-cp39-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+              "hash": "192210daec1062e93fcc732de0c602c4b58097257c56874baa6e491849e82ceb",
+              "url": "https://files.pythonhosted.org/packages/00/c9/4fab29c5efaf72df0ad9b46f783197f35b66ddaad62db26c69befb504830/SQLAlchemy-2.0.0-py3-none-any.whl"
             },
             {
               "algorithm": "sha256",
-              "hash": "a3714e5b33226131ac0da60d18995a102a17dddd42368b7bdd206737297823ad",
-              "url": "https://files.pythonhosted.org/packages/38/28/621616b6d80cead1efd6a50913a83bb263caed2c532e0084f7ff09c80b3d/SQLAlchemy-1.4.46-cp39-cp39-manylinux_2_17_aarch64.manylinux2014_aarch64.whl"
+              "hash": "0fb3b58ba21898b94255e86da5e3bfc15cf99e039babcaccaa2ce10b6322929e",
+              "url": "https://files.pythonhosted.org/packages/11/23/de68f34b73efa197b0e7a943aa93f2a6504a0492a72ac6dc699dc984d1d3/SQLAlchemy-2.0.0-cp39-cp39-macosx_10_9_x86_64.whl"
             },
             {
               "algorithm": "sha256",
-              "hash": "955162ad1a931fe416eded6bb144ba891ccbf9b2e49dc7ded39274dd9c5affc5",
-              "url": "https://files.pythonhosted.org/packages/6c/d9/b1718d3a189d34fc018ace5caeb965370b509f760e7b661b12f2238a21ca/SQLAlchemy-1.4.46-cp39-cp39-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl"
+              "hash": "1b17bc162c317973d87613eac869cc50c1fef7a8b9d657b7d7f764ab5d9fee72",
+              "url": "https://files.pythonhosted.org/packages/18/09/64ef2927615654cd98b05315a443f516f851342afeac5ae817cfb3c0920a/SQLAlchemy-2.0.0-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
             },
             {
               "algorithm": "sha256",
-              "hash": "d4d164df3d83d204c69f840da30b292ac7dc54285096c6171245b8d7807185aa",
-              "url": "https://files.pythonhosted.org/packages/a4/b8/2f83a1f8bef7208b8a3d342399c4fe39cc924f73dcaa325a44fcc86df927/SQLAlchemy-1.4.46-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl"
+              "hash": "2dc81c03d4bccc82c81e4e21da5cea2071eca2fcddb248b462b151911c4b47b8",
+              "url": "https://files.pythonhosted.org/packages/1d/1d/f0adb3dc2bf734b966e212bda7ccbe521df1b9c320c97ba03b9c514182bb/SQLAlchemy-2.0.0-cp39-cp39-manylinux_2_17_aarch64.manylinux2014_aarch64.whl"
             },
             {
               "algorithm": "sha256",
-              "hash": "1b1e5e96e2789d89f023d080bee432e2fef64d95857969e70d3cadec80bd26f0",
-              "url": "https://files.pythonhosted.org/packages/a6/81/6ffe04515b539f001168b3d63ff5305fdc2db90696d18ba1be7ab340cde2/SQLAlchemy-1.4.46-cp39-cp39-macosx_11_0_x86_64.whl"
+              "hash": "c6e4a17bbcb882fcff597d6ffdf113144383ea346bcae97079b96faaf7d460fb",
+              "url": "https://files.pythonhosted.org/packages/22/37/81a9e5be2aabcf7eeb63634d2afa14339e9abf4edcaee927d33bc372c377/SQLAlchemy-2.0.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
             },
             {
               "algorithm": "sha256",
-              "hash": "6913b8247d8a292ef8315162a51931e2b40ce91681f1b6f18f697045200c4a30",
-              "url": "https://files.pythonhosted.org/packages/af/ae/8d8e67f2691f0fdb845df90013d68c12a9127e009b4dedc34a3228f4e5ad/SQLAlchemy-1.4.46.tar.gz"
+              "hash": "05923707b416b7034c0b14e59e14614cb1432647188ba46bcfd911998cdea48d",
+              "url": "https://files.pythonhosted.org/packages/29/9c/cbe31b50fe0a21c32d182d1e2ddeb7787a1dbb9693aac6062dd915107ebe/SQLAlchemy-2.0.0-cp38-cp38-macosx_11_0_arm64.whl"
             },
             {
               "algorithm": "sha256",
-              "hash": "b33ffbdbbf5446cf36cd4cc530c9d9905d3c2fe56ed09e25c22c850cdb9fac92",
-              "url": "https://files.pythonhosted.org/packages/b3/c0/a4fc7abdddbffe8e2f1c5300fa7f89c0a514f7944885d424d547ad607c37/SQLAlchemy-1.4.46-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl"
+              "hash": "7809546951b4a5ad1f0b5d5c87b42218af8c0574f50e89d141dfff531c069389",
+              "url": "https://files.pythonhosted.org/packages/52/e4/75f3dec7bcadd23f095b02de99bd4ea3798ac1153ac4a5f05681abf0349c/SQLAlchemy-2.0.0-cp39-cp39-musllinux_1_1_aarch64.whl"
             },
             {
               "algorithm": "sha256",
-              "hash": "e3c1808008124850115a3f7e793a975cfa5c8a26ceeeb9ff9cbb4485cac556df",
-              "url": "https://files.pythonhosted.org/packages/d1/df/84451523051fc2c56f01c653052a962e15670a26ae84aeeaf881e3c64d83/SQLAlchemy-1.4.46-cp38-cp38-macosx_10_15_x86_64.whl"
+              "hash": "92388d03220eda6d744277a4d2cbcbb557509c7f7582215f61f8a04ec264be59",
+              "url": "https://files.pythonhosted.org/packages/54/55/a475df74f583b4ceeefd5a121fd28045af54efe204863de1e3b154385674/SQLAlchemy-2.0.0.tar.gz"
             },
             {
               "algorithm": "sha256",
-              "hash": "3d94682732d1a0def5672471ba42a29ff5e21bb0aae0afa00bb10796fc1e28dd",
-              "url": "https://files.pythonhosted.org/packages/e6/63/6955303508cfcf1c69428071eaf33eebcda1d6ed2fdade92617355053815/SQLAlchemy-1.4.46-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+              "hash": "54fa0308430ea13239557b6b38a41988ab9d0356420879b2e8b976f58c8b8229",
+              "url": "https://files.pythonhosted.org/packages/5b/38/d6887548d1d2626cc756430bacb4016249442bdd4898d1f181f7e2fef35f/SQLAlchemy-2.0.0-cp38-cp38-musllinux_1_1_aarch64.whl"
+            },
+            {
+              "algorithm": "sha256",
+              "hash": "6c75b77de2fd99bd19a609c00e870325574000c441f7bdb0cd33d15961ed93bc",
+              "url": "https://files.pythonhosted.org/packages/73/51/d86ad02768ee26932ab6017d93f273b05c158dbde6b1ce2c21fb1ff54cbd/SQLAlchemy-2.0.0-cp38-cp38-musllinux_1_1_x86_64.whl"
+            },
+            {
+              "algorithm": "sha256",
+              "hash": "77666361fdd70868a414762d0eead141183caf1e0cb6735484c0cad6d41ac869",
+              "url": "https://files.pythonhosted.org/packages/74/55/2c1dfa43c7e421ed8cbcd3ded244ae42c9bfd33b0f806218f36d1df0ff4d/SQLAlchemy-2.0.0-cp39-cp39-macosx_11_0_arm64.whl"
+            },
+            {
+              "algorithm": "sha256",
+              "hash": "7c6934dfa9ab53853b1d31723ea2b8ea494de73ad3f36ea42f5859b74cb3afc3",
+              "url": "https://files.pythonhosted.org/packages/8f/e9/6822c15d63ce8ede75e9ff6b1254f7fbfab5fa644daed24d7b2ca4089310/SQLAlchemy-2.0.0-cp38-cp38-macosx_10_9_x86_64.whl"
+            },
+            {
+              "algorithm": "sha256",
+              "hash": "606f55614af6777261e54cb5d541a5c555539c5abc5e0b40d299c9a3bd06fae5",
+              "url": "https://files.pythonhosted.org/packages/92/ea/808db76eb040e558a5b000143214a21fc5f3a09e8e03453cfe9b1b3b19cf/SQLAlchemy-2.0.0-cp39-cp39-musllinux_1_1_x86_64.whl"
+            },
+            {
+              "algorithm": "sha256",
+              "hash": "33a05cc9533a580f94a69852c8dea26d7dec0bc8182bb8d68180a5103c0b0add",
+              "url": "https://files.pythonhosted.org/packages/ae/73/4b76cacc21143ec3678747d2738d073bfd4ec4d399081fead8fa888c4dcd/SQLAlchemy-2.0.0-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl"
             }
           ],
           "project_name": "sqlalchemy",
           "requires_dists": [
-            "aiomysql; python_version >= \"3\" and extra == \"aiomysql\"",
-            "aiosqlite; python_version >= \"3\" and extra == \"aiosqlite\"",
-            "asyncmy!=0.2.4,>=0.2.3; python_version >= \"3\" and extra == \"asyncmy\"",
-            "asyncpg; python_version >= \"3\" and extra == \"postgresql_asyncpg\"",
-            "cx-oracle<8,>=7; python_version < \"3\" and extra == \"oracle\"",
-            "cx-oracle>=7; python_version >= \"3\" and extra == \"oracle\"",
-            "greenlet!=0.4.17; python_version >= \"3\" and (platform_machine == \"aarch64\" or (platform_machine == \"ppc64le\" or (platform_machine == \"x86_64\" or (platform_machine == \"amd64\" or (platform_machine == \"AMD64\" or (platform_machine == \"win32\" or platform_machine == \"WIN32\"))))))",
-            "greenlet!=0.4.17; python_version >= \"3\" and extra == \"aiomysql\"",
-            "greenlet!=0.4.17; python_version >= \"3\" and extra == \"aiosqlite\"",
-            "greenlet!=0.4.17; python_version >= \"3\" and extra == \"asyncio\"",
-            "greenlet!=0.4.17; python_version >= \"3\" and extra == \"asyncmy\"",
-            "greenlet!=0.4.17; python_version >= \"3\" and extra == \"postgresql_asyncpg\"",
+            "aiomysql; extra == \"aiomysql\"",
+            "aiosqlite; extra == \"aiosqlite\"",
+            "asyncmy!=0.2.4,>=0.2.3; extra == \"asyncmy\"",
+            "asyncpg; extra == \"postgresql_asyncpg\"",
+            "cx-oracle>=7; extra == \"oracle\"",
+            "greenlet!=0.4.17; extra == \"aiomysql\"",
+            "greenlet!=0.4.17; extra == \"aiosqlite\"",
+            "greenlet!=0.4.17; extra == \"asyncio\"",
+            "greenlet!=0.4.17; extra == \"asyncmy\"",
+            "greenlet!=0.4.17; extra == \"postgresql_asyncpg\"",
+            "greenlet!=0.4.17; platform_machine == \"aarch64\" or (platform_machine == \"ppc64le\" or (platform_machine == \"x86_64\" or (platform_machine == \"amd64\" or (platform_machine == \"AMD64\" or (platform_machine == \"win32\" or platform_machine == \"WIN32\")))))",
             "importlib-metadata; python_version < \"3.8\"",
-            "mariadb!=1.1.2,>=1.0.1; python_version >= \"3\" and extra == \"mariadb_connector\"",
-            "mypy>=0.910; python_version >= \"3\" and extra == \"mypy\"",
+            "mariadb!=1.1.2,!=1.1.5,>=1.0.1; extra == \"mariadb_connector\"",
+            "mypy>=0.910; extra == \"mypy\"",
             "mysql-connector-python; extra == \"mysql_connector\"",
-            "mysqlclient<2,>=1.4.0; python_version < \"3\" and extra == \"mysql\"",
-            "mysqlclient>=1.4.0; python_version >= \"3\" and extra == \"mysql\"",
-            "pg8000!=1.29.0,>=1.16.6; extra == \"postgresql_pg8000\"",
+            "mysqlclient>=1.4.0; extra == \"mysql\"",
+            "oracledb>=1.0.1; extra == \"oracle_oracledb\"",
+            "pg8000>=1.29.1; extra == \"postgresql_pg8000\"",
             "psycopg2-binary; extra == \"postgresql_psycopg2binary\"",
             "psycopg2>=2.7; extra == \"postgresql\"",
             "psycopg2cffi; extra == \"postgresql_psycopg2cffi\"",
+            "psycopg>=3.0.7; extra == \"postgresql_psycopg\"",
             "pymssql; extra == \"mssql_pymssql\"",
-            "pymysql; python_version >= \"3\" and extra == \"pymysql\"",
-            "pymysql<1; python_version < \"3\" and extra == \"pymysql\"",
+            "pymysql; extra == \"pymysql\"",
             "pyodbc; extra == \"mssql\"",
             "pyodbc; extra == \"mssql_pyodbc\"",
-            "sqlalchemy2-stubs; extra == \"mypy\"",
-            "sqlcipher3-binary; python_version >= \"3\" and extra == \"sqlcipher\"",
-            "typing-extensions!=3.10.0.1; extra == \"aiosqlite\""
+            "sqlcipher3-binary; extra == \"sqlcipher\"",
+            "typing-extensions!=3.10.0.1; extra == \"aiosqlite\"",
+            "typing-extensions>=4.2.0"
           ],
-          "requires_python": "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,!=3.5.*,>=2.7",
-          "version": "1.4.46"
+          "requires_python": ">=3.7",
+          "version": "2"
         },
         {
           "artifacts": [
@@ -1876,6 +1900,24 @@
           "artifacts": [
             {
               "algorithm": "sha256",
+              "hash": "16fa4864408f655d35ec496218b85f79b3437c829e93320c7c9215ccfd92489e",
+              "url": "https://files.pythonhosted.org/packages/0b/8e/f1a0a5a76cfef77e1eb6004cb49e5f8d72634da638420b9ea492ce8305e8/typing_extensions-4.4.0-py3-none-any.whl"
+            },
+            {
+              "algorithm": "sha256",
+              "hash": "1511434bb92bf8dd198c12b1cc812e800d4181cfcb867674e0f8279cc93087aa",
+              "url": "https://files.pythonhosted.org/packages/e3/a7/8f4e456ef0adac43f452efc2d0e4b242ab831297f1bac60ac815d37eb9cf/typing_extensions-4.4.0.tar.gz"
+            }
+          ],
+          "project_name": "typing-extensions",
+          "requires_dists": [],
+          "requires_python": ">=3.7",
+          "version": "4.4"
+        },
+        {
+          "artifacts": [
+            {
+              "algorithm": "sha256",
               "hash": "75edcdc2f7d85b137124a6c3c9fc3933cdeaa12ecb9a6a959f22797a0feca7e1",
               "url": "https://files.pythonhosted.org/packages/fe/ca/466766e20b767ddb9b951202542310cba37ea5f2d792dae7589f1741af58/urllib3-1.26.14-py2.py3-none-any.whl"
             },
@@ -1905,13 +1947,13 @@
           "artifacts": [
             {
               "algorithm": "sha256",
-              "hash": "d6b06432f184438d99ac1f456eaf22fe1ade524c3dd16e661142dc54e9cba574",
-              "url": "https://files.pythonhosted.org/packages/78/d5/2b5719b738791cd798e8f097eba4bb093ff5efca5cef2f3d37a72daa111f/websocket_client-1.4.2-py3-none-any.whl"
+              "hash": "fb5d81b95d350f3a54838ebcb4c68a5353bbd1412ae8f068b1e5280faeb13074",
+              "url": "https://files.pythonhosted.org/packages/62/38/62b0f0bc9bfde55f0a5611ee0a6136ed965513bbae62a74b670e54469171/websocket_client-1.5.0-py3-none-any.whl"
             },
             {
               "algorithm": "sha256",
-              "hash": "d6e8f90ca8e2dd4e8027c4561adeb9456b54044312dba655e7cae652ceb9ae59",
-              "url": "https://files.pythonhosted.org/packages/75/af/1d13b93e7a21aca7f8ab8645fcfcfad21fc39716dc9dce5dc2a97f73ff78/websocket-client-1.4.2.tar.gz"
+              "hash": "561ca949e5bbb5d33409a37235db55c279235c78ee407802f1d2314fff8a8536",
+              "url": "https://files.pythonhosted.org/packages/02/cd/1adc1276f1e8f6a929783f4c2992ec7a4934a81f8ced3d4a87191cc168c2/websocket-client-1.5.0.tar.gz"
             }
           ],
           "project_name": "websocket-client",
@@ -1923,7 +1965,7 @@
             "wsaccel; extra == \"optional\""
           ],
           "requires_python": ">=3.7",
-          "version": "1.4.2"
+          "version": "1.5"
         },
         {
           "artifacts": [
@@ -1950,13 +1992,13 @@
           "artifacts": [
             {
               "algorithm": "sha256",
-              "hash": "83a28fcb75844b5c0cdaf5aa4003c2d728c77e05f5aeabe8e95e56727005fbaa",
-              "url": "https://files.pythonhosted.org/packages/d8/20/256eb3f3f437c575fb1a2efdce5e801a5ce3162ea8117da96c43e6ee97d8/zipp-3.11.0-py3-none-any.whl"
+              "hash": "9eb0a4c5feab9b08871db0d672745b53450d7f26992fd1e4653aa43345e97b86",
+              "url": "https://files.pythonhosted.org/packages/01/3c/9d84fc1dbac1c5103bf3cd994e4895642001f75eb2139bddbc02aa1906e5/zipp-3.12.0-py3-none-any.whl"
             },
             {
               "algorithm": "sha256",
-              "hash": "a7a22e05929290a67401440b39690ae6563279bced5f314609d9d03798f56766",
-              "url": "https://files.pythonhosted.org/packages/8e/b3/8b16a007184714f71157b1a71bbe632c5d66dd43bc8152b3c799b13881e1/zipp-3.11.0.tar.gz"
+              "hash": "73efd63936398aac78fd92b6f4865190119d6c91b531532e798977ea8dd402eb",
+              "url": "https://files.pythonhosted.org/packages/35/05/f81a74656c04e94f05c1ef186127cceb913493f1f8a21bb142a93c786ee8/zipp-3.12.0.tar.gz"
             }
           ],
           "project_name": "zipp",
@@ -1977,10 +2019,11 @@
             "pytest-mypy>=0.9.1; platform_python_implementation != \"PyPy\" and extra == \"testing\"",
             "pytest>=6; extra == \"testing\"",
             "rst.linker>=1.9; extra == \"docs\"",
+            "sphinx-lint; extra == \"docs\"",
             "sphinx>=3.5; extra == \"docs\""
           ],
           "requires_python": ">=3.7",
-          "version": "3.11"
+          "version": "3.12"
         }
       ],
       "platform_tag": null
@@ -1991,7 +2034,7 @@
   "pip_version": "20.3.4-patched",
   "prefer_older_binary": false,
   "requirements": [
-    "liga==0.2.0.dev11",
+    "liga==0.2.0.dev12",
     "mlflow==1.26.1"
   ],
   "requires_python": [
