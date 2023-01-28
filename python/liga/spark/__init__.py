@@ -81,9 +81,9 @@ def get_liga_assembly_jar(jar_type: str, scala_version: str) -> str:
 def init_session(
     conf: Optional[dict] = None,
     app_name: str = "Liga",
-    scala_version: str = "2.12",
     num_cores: int = 2,
     jar_type: str = "github",
+    scala_version: str = "2.12",
 ) -> SparkSession:
     import sys
 
@@ -96,7 +96,9 @@ def init_session(
         "spark.executor.extraJavaOptions": "-Dio.netty.tryReflectionSetAccessible=true",
     }
 
-    if (conf and (not "spark.jars" in conf.keys())) or (conf is None):
+    if conf and "spark.jars" in conf.keys():
+        pass
+    else:
         default_conf["spark.jars"] = get_liga_assembly_jar(
             jar_type, scala_version
         )
@@ -122,5 +124,10 @@ def init_session(
     for k, v in default_conf.items():
         if v is not None:
             builder = builder.config(k, v)
+            logger.info(f"setting {k} to {v}")
     session = builder.master(f"local[{num_cores}]").getOrCreate()
     return session
+
+
+def init_dbr_session(app_name="Liga on Databricks"):
+    return init_session(conf={"spark.jars": None}, app_name=app_name)
