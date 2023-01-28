@@ -26,6 +26,7 @@ from pyspark.sql import Row, SparkSession
 
 from liga.spark import init_session
 from liga.mlflow import CONF_MLFLOW_TRACKING_URI
+from liga.__version__ import version
 
 
 @pytest.fixture(scope="session")
@@ -72,7 +73,7 @@ def spark(mlflow_tracking_uri: str, tmp_path_factory) -> SparkSession:
                 ),
             ]
         ),
-        jar_type="local",
+        jar_type="local" if "dev" in version else "github",
     )
 
 
