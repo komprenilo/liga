@@ -1,7 +1,8 @@
 python_requirement(
     name="mlflow",
     requirements=[
-        "mlflow==1.26.1",
+        "mlflow>=1.24.0,<2.0.0",
+        "SQLAlchemy<2.0.0",
     ],
     resolve=parametrize("spark_3_2_1", "spark_3_3_1", "sklearn", "mlflow"),
 )
@@ -9,7 +10,7 @@ python_requirement(
 python_requirement(
     name="liga",
     requirements=[
-        "liga==0.2.0.dev12",
+        "liga>=0.2.0,<0.3.0",
     ],
     resolve="mlflow",
 )
