@@ -28,6 +28,6 @@ python_distribution(
     ],
     provides=python_artifact(
         name="liga-sklearn",
-        version="0.2.0.dev12",
+        version="0.2.0",
     ),
 )
