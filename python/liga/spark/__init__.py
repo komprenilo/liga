@@ -42,7 +42,7 @@ def get_default_jar_version(use_snapshot: bool = True) -> str:
     return match_str
 
 
-def _liga_assembly_jar(jar_type: str, scala_version: str) -> str:
+def get_liga_assembly_jar(jar_type: str, scala_version: str) -> str:
     spark_version = find_version("pyspark").replace(".", "")
     name = f"liga-spark{spark_version}-assembly_{scala_version}"
     url = "https://github.com/liga-ai/liga/releases/download"
@@ -78,7 +78,7 @@ def _liga_assembly_jar(jar_type: str, scala_version: str) -> str:
         raise ValueError(f"Invalid jar_type ({jar_type})!")
 
 
-def init(
+def init_session(
     conf: Optional[dict] = None,
     app_name: str = "Liga",
     scala_version: str = "2.12",
@@ -90,11 +90,23 @@ def init(
     os.environ["PYSPARK_PYTHON"] = sys.executable
     os.environ["PYSPARK_DRIVER_PYTHON"] = sys.executable
 
+    default_conf = {
+        "spark.sql.extensions": "ai.eto.rikai.sql.spark.RikaiSparkSessionExtensions",
+        "spark.driver.extraJavaOptions": "-Dio.netty.tryReflectionSetAccessible=true",
+        "spark.executor.extraJavaOptions": "-Dio.netty.tryReflectionSetAccessible=true",
+    }
+    if conf and (not "spark.jars" in conf.keys()):
+        default_conf["spark.jars"] = get_liga_assembly_jar(
+            jar_type, scala_version
+        )
+    for k, v in conf.items():
+        default_conf[k] = v
+
     # Avoid reused session polluting configs
     active_session = SparkSession.getActiveSession()
     if active_session and conf:
-        for k, v in conf.items():
-            if str(active_session.conf.get(k)) != str(v):
+        for k, v in default_conf.items():
+            if v is not None and str(active_session.conf.get(k)) != str(v):
                 print(
                     f"active session: want {v} for {k}"
                     f" but got {active_session.conf.get(k)},"
@@ -103,26 +115,9 @@ def init(
                 active_session.stop()
                 break
 
-    jar_uri = _liga_assembly_jar(jar_type, scala_version)
-    logger.info("Set `spark.jars` to %s", jar_uri)
-    builder = (
-        SparkSession.builder.appName(app_name)
-        .config("spark.jars", jar_uri)
-        .config(
-            "spark.sql.extensions",
-            "ai.eto.rikai.sql.spark.RikaiSparkSessionExtensions",
-        )
-        .config(
-            "spark.driver.extraJavaOptions",
-            "-Dio.netty.tryReflectionSetAccessible=true",
-        )
-        .config(
-            "spark.executor.extraJavaOptions",
-            "-Dio.netty.tryReflectionSetAccessible=true",
-        )
-    )
-    conf = conf or {}
-    for k, v in conf.items():
-        builder = builder.config(k, v)
+    builder = SparkSession.builder.appName(app_name)
+    for k, v in default_conf.items():
+        if v is not None:
+            builder = builder.config(k, v)
     session = builder.master(f"local[{num_cores}]").getOrCreate()
     return session
