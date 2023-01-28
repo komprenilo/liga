@@ -107,7 +107,7 @@ def init(
     active_session = SparkSession.getActiveSession()
     if active_session and conf:
         for k, v in default_conf.items():
-            if str(active_session.conf.get(k)) != str(v):
+            if v is not None and str(active_session.conf.get(k)) != str(v):
                 print(
                     f"active session: want {v} for {k}"
                     f" but got {active_session.conf.get(k)},"
@@ -118,6 +118,7 @@ def init(
 
     builder = SparkSession.builder.appName(app_name)
     for k, v in default_conf.items():
-        builder = builder.config(k, v)
+        if v is not None:
+            builder = builder.config(k, v)
     session = builder.master(f"local[{num_cores}]").getOrCreate()
     return session
