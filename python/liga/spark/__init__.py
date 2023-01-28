@@ -78,7 +78,7 @@ def get_liga_assembly_jar(jar_type: str, scala_version: str) -> str:
         raise ValueError(f"Invalid jar_type ({jar_type})!")
 
 
-def init(
+def init_session(
     conf: Optional[dict] = None,
     app_name: str = "Liga",
     scala_version: str = "2.12",
@@ -98,7 +98,7 @@ def init(
         "spark.executor.extraJavaOptions":
           "-Dio.netty.tryReflectionSetAccessible=true",
     }
-    if not "spark.jars" in conf.keys():
+    if conf and (not "spark.jars" in conf.keys()):
         default_conf["spark.jars"] = get_liga_assembly_jar(jar_type, scala_version)
     for k, v in conf.items():
         default_conf[k] = v

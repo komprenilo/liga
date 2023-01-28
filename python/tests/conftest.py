@@ -24,7 +24,7 @@ import pytest
 from mlflow.tracking import MlflowClient
 from pyspark.sql import Row, SparkSession
 
-from liga.spark import init as init_spark
+from liga.spark import init_session
 from liga.mlflow import CONF_MLFLOW_TRACKING_URI
 
 
@@ -53,7 +53,7 @@ def spark(mlflow_tracking_uri: str, tmp_path_factory) -> SparkSession:
     print(f"mlflow tracking uri for spark: ${mlflow_tracking_uri}")
     warehouse_path = tmp_path_factory.mktemp("warehouse")
 
-    return init_spark(
+    return init_session(
         dict(
             [
                 ("spark.port.maxRetries", 128),
