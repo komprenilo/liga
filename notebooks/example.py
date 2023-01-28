@@ -1,3 +1,3 @@
-from liga.spark import init as init_spark
+from liga.spark import init_session
 
-spark = init_spark(jar_type="local")
+spark = init_session(conf={"spark.port.maxRetries": 128}, jar_type="local")

@@ -11,10 +11,8 @@ python_sources(
     name="sklearn",
     sources=["lab.py"],
     dependencies=[
-        "//python/liga:sources@resolve=sklearn",
-        "//python/liga/spark/sql/generated:sources@resolve=sklearn",
-        "//python/liga/mlflow:sources@resolve=sklearn",
         "//python/liga/sklearn:sources@resolve=sklearn",
+        "//python/liga/sklearn:liga-mlflow",
     ],
     resolve="sklearn",
     skip_mypy=True,
