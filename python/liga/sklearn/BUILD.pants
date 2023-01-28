@@ -6,15 +6,14 @@ python_requirement(
 
 python_requirement(
     name="liga",
-    requirements=["liga==0.2.0.dev12"],
+    requirements=["liga>=0.2.0,<0.3.0"],
     resolve="sklearn",
 )
 
 python_requirement(
     name="liga-mlflow",
     requirements=[
-        "liga-mlflow==0.2.0.dev12",
-        "SQLAlchemy<2.0.0",
+        "liga-mlflow>=0.2.0,<0.3.0",
     ],
     resolve="sklearn",
 )
