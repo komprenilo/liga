@@ -95,16 +95,19 @@ def init_session(
         "spark.driver.extraJavaOptions": "-Dio.netty.tryReflectionSetAccessible=true",
         "spark.executor.extraJavaOptions": "-Dio.netty.tryReflectionSetAccessible=true",
     }
-    if conf and (not "spark.jars" in conf.keys()):
+
+    if (conf and (not "spark.jars" in conf.keys())) or (conf is None):
         default_conf["spark.jars"] = get_liga_assembly_jar(
             jar_type, scala_version
         )
-    for k, v in conf.items():
-        default_conf[k] = v
+
+    if conf:
+        for k, v in conf.items():
+            default_conf[k] = v
 
     # Avoid reused session polluting configs
     active_session = SparkSession.getActiveSession()
-    if active_session and conf:
+    if active_session:
         for k, v in default_conf.items():
             if v is not None and str(active_session.conf.get(k)) != str(v):
                 print(
