@@ -22,17 +22,12 @@ import ai.eto.rikai.sql.spark.parser.{RikaiExtSqlParser, RikaiSparkSQLParser}
 import com.thoughtworks.enableIf
 import com.thoughtworks.enableIf.classpathMatches
 import org.apache.spark.sql.catalyst.FunctionIdentifier
-import org.apache.spark.sql.catalyst.analysis.{
-  UnresolvedAttribute,
-  UnresolvedFunction
-}
-import org.apache.spark.sql.catalyst.expressions.{
-  Expression,
-  ExpressionInfo,
-  Literal
-}
+import org.apache.spark.sql.catalyst.analysis.{UnresolvedAttribute, UnresolvedFunction}
+import org.apache.spark.sql.catalyst.expressions.{Expression, ExpressionInfo, Literal}
 import org.apache.spark.sql.catalyst.plans.logical.LogicalPlan
 import org.apache.spark.sql.catalyst.rules.Rule
+import org.apache.spark.sql.rikai.RikaiUDTRegistration
+import org.apache.spark.sql.types.UDTRegistration
 import org.apache.spark.sql.{SparkSession, SparkSessionExtensions}
 
 private class MlPredictRule(val session: SparkSession)
@@ -102,6 +97,11 @@ private class MlPredictRule(val session: SparkSession)
 class RikaiSparkSessionExtensions extends (SparkSessionExtensions => Unit) {
 
   override def apply(extensions: SparkSessionExtensions): Unit = {
+    UDTRegistration.register(
+      "org.apache.spark.sql.rikai.NDArray",
+      "org.apache.spark.sql.rikai.NDArrayType"
+    )
+    RikaiUDTRegistration.register("ndarray", org.apache.spark.sql.rikai.NDArrayType)
 
     extensions.injectParser((session, parser) => {
       new RikaiExtSqlParser(
@@ -117,6 +117,5 @@ class RikaiSparkSessionExtensions extends (SparkSessionExtensions => Unit) {
     extensions.injectResolutionRule(session => {
       new MlPredictRule(session)
     })
-
   }
 }

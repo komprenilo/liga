@@ -183,8 +183,8 @@ class ModelSpec(ABC):
     def schema(self) -> str:
         """Return the output schema of the model."""
         if "schema" in self._spec:
-            return parse_schema(self._spec["schema"])
-        return parse_schema(self.model_type.schema())
+            return self._spec["schema"]
+        return self.model_type.schema()
 
     @property
     def options(self) -> Dict[str, Any]:
