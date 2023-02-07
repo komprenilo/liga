@@ -31,7 +31,6 @@ import org.apache.spark.unsafe.types.UTF8String
   *
   * @param dtype
   */
-@SQLUserDefinedType(udt = classOf[NDArrayType])
 @SerialVersionUID(1L)
 class NDArray(val dtype: String) extends Serializable {
 
