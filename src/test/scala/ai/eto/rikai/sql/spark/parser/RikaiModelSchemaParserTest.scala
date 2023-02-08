@@ -2,7 +2,7 @@ package ai.eto.rikai.sql.spark.parser
 
 import ai.eto.rikai.SparkTestSession
 import org.antlr.v4.runtime.{CharStreams, CommonTokenStream}
-import org.apache.spark.sql.types.DataType
+import org.apache.spark.sql.types.{ArrayType, BooleanType, DataType, IntegerType, StructField, StructType}
 import org.scalatest.funsuite.AnyFunSuite
 
 class RikaiModelSchemaParserTest extends AnyFunSuite with SparkTestSession {
@@ -17,11 +17,25 @@ class RikaiModelSchemaParserTest extends AnyFunSuite with SparkTestSession {
   }
 
   test("test") {
-    println(parse_schema("bool").json)
-    println(parse_schema("struct<a:bool, b:int>").json)
-    println(parse_schema("STRUCT<a:bool, b:int>").json)
-    println(parse_schema("array<int>").json)
-    println(parse_schema("ARRAY<int>").json)
-    println(parse_schema("ndarray").json)
+    assert {
+      parse_schema("bool") === BooleanType
+    }
+    assert {
+      parse_schema("struct<a:bool, b:int>") ===
+        StructType(Seq(StructField("a", BooleanType, true), StructField("b", IntegerType, true)))
+    }
+    assert {
+      parse_schema("STRUCT<a:bool, b:int>") ===
+        StructType(Seq(StructField("a", BooleanType, true), StructField("b", IntegerType, true)))
+    }
+    assert {
+      parse_schema("array<int>") ===
+        ArrayType(IntegerType, true)
+    }
+    assert {
+      parse_schema("ARRAY<int>") ===
+        ArrayType(IntegerType, true)
+    }
+    println(parse_schema("ndarray"))
   }
 }
