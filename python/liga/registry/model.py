@@ -20,7 +20,6 @@ from jsonschema.exceptions import ValidationError
 from jsonschema.validators import validate
 
 from liga.internal.reflection import find_func
-from liga.spark.sql.schema import parse_schema
 from liga.exceptions import SpecError
 from liga.logging import logger
 
@@ -219,10 +218,6 @@ class ModelType(ABC):
         ... "array<struct<box:box2d, score:float, label_id:int>>"
         """
         pass
-
-    def dataType(self) -> "pyspark.sql.types.DataType":  # type: ignore[name-defined]
-        """Returns schema as :py:class:`pyspark.sql.types.DataType`."""
-        return parse_schema(self.schema())
 
     @abstractmethod
     def transform(self) -> Callable:
