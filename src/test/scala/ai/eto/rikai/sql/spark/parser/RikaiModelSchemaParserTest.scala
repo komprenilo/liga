@@ -1,21 +1,12 @@
 package ai.eto.rikai.sql.spark.parser
 
 import ai.eto.rikai.SparkTestSession
-import org.antlr.v4.runtime.{CharStreams, CommonTokenStream}
 import org.apache.spark.sql.rikai.NDArrayType
-import org.apache.spark.sql.types.{ArrayType, BooleanType, DataType, IntegerType, StructField, StructType}
+import org.apache.spark.sql.types.{ArrayType, BooleanType, IntegerType, StructField, StructType}
 import org.scalatest.funsuite.AnyFunSuite
 
 class RikaiModelSchemaParserTest extends AnyFunSuite with SparkTestSession {
-  def parse_schema(schema: String): DataType = {
-    val lexer = new RikaiModelSchemaLexer(
-      new UpperCaseCharStream(CharStreams.fromString(schema))
-    )
-    val tokens = new CommonTokenStream(lexer)
-    val parser = new RikaiModelSchemaParser(tokens)
-    val visitor = new SparkDataTypeVisitor
-    visitor.visitSchema(parser.schema())
-  }
+  import ai.eto.rikai.sql.spark.parser.ModelSchemaParser.parse_schema
 
   test("test") {
     assert {
