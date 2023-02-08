@@ -18,6 +18,7 @@ package org.apache.spark.sql.rikai.model
 
 import ai.eto.rikai.sql.model.{ModelSpec, SparkUDFModel}
 import ai.eto.rikai.sql.spark.Python
+import ai.eto.rikai.sql.spark.parser.ModelSchemaParser
 import org.apache.spark.api.python.{PythonEvalType, PythonFunction}
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.execution.python.UserDefinedPythonFunction
@@ -87,7 +88,7 @@ object ModelResolver {
            |import base64
            |spec = json.load(open("${specPath}", "r"))
            |from liga.registry import command_from_spec
-           |serialize_func, func, deserialize_func, dataType = command_from_spec("${registryClassName}", spec)
+           |serialize_func, func, deserialize_func, schema = command_from_spec("${registryClassName}", spec)
            |pickle = CloudPickleSerializer()
            |with open("${path}", "w") as fobj:
            |    json.dump({
@@ -96,15 +97,15 @@ object ModelResolver {
            |        "deserializer": base64.b64encode(pickle.dumps((deserialize_func.func, deserialize_func.returnType))).decode('utf-8'),
            |    }, fobj)
            |with open("${dataTypePath}", "w") as fobj:
-           |    fobj.write(dataType.json())
+           |    fobj.write(schema)
            |""".stripMargin,
         session
       )
       val cmdJson = Files.readAllLines(path).asScala.mkString("\n")
       implicit val extractFormat = Serialization.formats(NoTypeHints)
       val cmdMap = parse(cmdJson).extract[FuncDesc]
-      val dataTypeJson = Files.readAllLines(dataTypePath).asScala.mkString("\n")
-      val returnType = DataType.fromJson(dataTypeJson)
+      val schema = Files.readAllLines(dataTypePath).asScala.mkString("\n")
+      val returnType = ModelSchemaParser.parse_schema(schema)
       val suffix: String = Random.alphanumeric.take(6).mkString.toLowerCase
       val udfName = s"${spec.name.getOrElse("model")}_${suffix}"
       val preUdfName = s"${udfName}_pre"
