@@ -10,7 +10,6 @@ python_tests(name = "liga",
     sources=["liga/*.py", "liga/internal/*.py", "liga/spark/*.py", "!**/conftest.py"],
     dependencies=[
         "//python/liga:sources",
-        "//python/liga/spark/sql/generated:sources",
         "//python/liga/sklearn:sources",
         "//python/liga/mlflow:sources",
         ":sources",
