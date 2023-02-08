@@ -24,7 +24,6 @@ python_requirement(
     name="requirements",
     requirements=[
         # Apache Spark
-        "antlr4-python3-runtime==4.11.1",
         "numpy",
         "pyarrow>=6.0",
         "pandas",
