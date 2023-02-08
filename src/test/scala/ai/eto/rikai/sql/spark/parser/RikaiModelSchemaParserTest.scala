@@ -2,6 +2,7 @@ package ai.eto.rikai.sql.spark.parser
 
 import ai.eto.rikai.SparkTestSession
 import org.antlr.v4.runtime.{CharStreams, CommonTokenStream}
+import org.apache.spark.sql.rikai.NDArrayType
 import org.apache.spark.sql.types.{ArrayType, BooleanType, DataType, IntegerType, StructField, StructType}
 import org.scalatest.funsuite.AnyFunSuite
 
@@ -36,6 +37,11 @@ class RikaiModelSchemaParserTest extends AnyFunSuite with SparkTestSession {
       parse_schema("ARRAY<int>") ===
         ArrayType(IntegerType, true)
     }
-    println(parse_schema("ndarray"))
+    assert {
+      parse_schema("ndarray") === NDArrayType
+    }
+    assert {
+      parse_schema("array<ndarray>") === ArrayType(NDArrayType, true)
+    }
   }
 }

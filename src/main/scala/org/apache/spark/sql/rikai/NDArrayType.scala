@@ -73,4 +73,4 @@ private[spark] class NDArrayType extends UserDefinedType[NDArray] {
   override def typeName: String = "ndarray"
 }
 
-object NDArrayType extends NDArrayType
+case object NDArrayType extends NDArrayType
