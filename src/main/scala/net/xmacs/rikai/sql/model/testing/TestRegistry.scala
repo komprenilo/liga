@@ -19,7 +19,13 @@ package net.xmacs.rikai.sql.model.testing
 import java.io.File
 import java.net.URI
 import com.typesafe.scalalogging.LazyLogging
-import net.xmacs.rikai.sql.model.{Model, ModelNotFoundException, ModelSpec, Registry, SparkUDFModel}
+import net.xmacs.rikai.sql.model.{
+  Model,
+  ModelNotFoundException,
+  ModelSpec,
+  Registry,
+  SparkUDFModel
+}
 import org.apache.spark.sql.SparkSession
 
 /** [[TestRegistry]] is a Registry for the testing purpose.

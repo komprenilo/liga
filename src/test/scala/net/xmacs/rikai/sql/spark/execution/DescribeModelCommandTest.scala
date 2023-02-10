@@ -17,7 +17,11 @@
 package net.xmacs.rikai.sql.spark.execution
 
 import net.xmacs.rikai.SparkTestSession
-import net.xmacs.rikai.sql.model.{Catalog, ModelNotFoundException, SparkUDFModel}
+import net.xmacs.rikai.sql.model.{
+  Catalog,
+  ModelNotFoundException,
+  SparkUDFModel
+}
 import org.scalatest.funsuite.AnyFunSuite
 
 class DescribeModelCommandTest extends AnyFunSuite with SparkTestSession {

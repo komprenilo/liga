@@ -19,7 +19,12 @@ package net.xmacs.rikai.sql.spark.parser
 import scala.collection.JavaConverters._
 import org.apache.spark.sql.types._
 import RikaiModelSchemaParser._
-import net.xmacs.rikai.sql.spark.parser.RikaiModelSchemaParser.{ArrayTypeContext, StructFieldContext, StructTypeContext, UnquotedIdentifierContext}
+import net.xmacs.rikai.sql.spark.parser.RikaiModelSchemaParser.{
+  ArrayTypeContext,
+  StructFieldContext,
+  StructTypeContext,
+  UnquotedIdentifierContext
+}
 import org.antlr.v4.runtime.{CharStreams, CommonTokenStream}
 import org.apache.spark.sql.rikai.RikaiUDTRegistration
 

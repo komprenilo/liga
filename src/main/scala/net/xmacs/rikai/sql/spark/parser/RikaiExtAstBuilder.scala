@@ -18,7 +18,12 @@ package net.xmacs.rikai.sql.spark.parser
 
 import RikaiExtSqlBaseParser._
 import net.xmacs.rikai.sql.model.Model
-import net.xmacs.rikai.sql.spark.execution.{CreateModelCommand, DescribeModelCommand, DropModelCommand, ShowModelsCommand}
+import net.xmacs.rikai.sql.spark.execution.{
+  CreateModelCommand,
+  DescribeModelCommand,
+  DropModelCommand,
+  ShowModelsCommand
+}
 import org.antlr.v4.runtime.ParserRuleContext
 import org.apache.spark.sql.catalyst.TableIdentifier
 import org.apache.spark.sql.catalyst.parser.{ParseException, ParserUtils}

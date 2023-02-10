@@ -18,7 +18,13 @@ package net.xmacs.rikai.sql.spark.parser
 
 import net.xmacs.rikai.SparkTestSession
 import org.apache.spark.sql.rikai.NDArrayType
-import org.apache.spark.sql.types.{ArrayType, BooleanType, IntegerType, StructField, StructType}
+import org.apache.spark.sql.types.{
+  ArrayType,
+  BooleanType,
+  IntegerType,
+  StructField,
+  StructType
+}
 import org.scalatest.funsuite.AnyFunSuite
 
 class RikaiModelSchemaParserTest extends AnyFunSuite with SparkTestSession {
@@ -30,11 +36,21 @@ class RikaiModelSchemaParserTest extends AnyFunSuite with SparkTestSession {
     }
     assert {
       parse_schema("struct<a:bool, b:int>") ===
-        StructType(Seq(StructField("a", BooleanType, true), StructField("b", IntegerType, true)))
+        StructType(
+          Seq(
+            StructField("a", BooleanType, true),
+            StructField("b", IntegerType, true)
+          )
+        )
     }
     assert {
       parse_schema("STRUCT<a:bool, b:int>") ===
-        StructType(Seq(StructField("a", BooleanType, true), StructField("b", IntegerType, true)))
+        StructType(
+          Seq(
+            StructField("a", BooleanType, true),
+            StructField("b", IntegerType, true)
+          )
+        )
     }
     assert {
       parse_schema("array<int>") ===

@@ -17,7 +17,12 @@
 package net.xmacs.rikai.sql.spark.execution
 
 import com.typesafe.scalalogging.LazyLogging
-import net.xmacs.rikai.sql.model.{ModelAlreadyExistException, ModelResolveException, ModelSpec, Registry}
+import net.xmacs.rikai.sql.model.{
+  ModelAlreadyExistException,
+  ModelResolveException,
+  ModelSpec,
+  Registry
+}
 import org.apache.spark.sql.catalyst.TableIdentifier
 import org.apache.spark.sql.{Row, SparkSession}
 
