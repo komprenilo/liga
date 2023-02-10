@@ -37,7 +37,7 @@ def fallbackVersion(d: java.util.Date): String =
 
 inThisBuild(
   List(
-    organization := "ai.eto",
+    organization := "net.xmacs",
     homepage := Some(url("https://github.com/eto-ai/rikai")),
     licenses := List(
       "Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0")
@@ -156,7 +156,7 @@ import Tests._
   Test / testGrouping := groupByFirst( (Test / definedTests).value )
 }
 
-Antlr4 / antlr4PackageName := Some("ai.eto.rikai.sql.spark.parser")
+Antlr4 / antlr4PackageName := Some("net.xmacs.rikai.sql.spark.parser")
 Antlr4 / antlr4GenVisitor := true
 Antlr4 / antlr4Version := {
   if ("3.1.2".equals(sparkVersion.value)) "4.8-1"
@@ -167,7 +167,7 @@ enablePlugins(Antlr4Plugin)
 
 Compile / doc / scalacOptions ++= Seq(
   "-skip-packages",
-  "ai.eto.rikai.sql.spark.parser"
+  "net.xmacs.rikai.sql.spark.parser"
 )
 
 assembly / assemblyJarName := s"${name.value}-${sparkVerStr.value}-assembly_${scalaBinaryVersion.value}-${version.value}.jar"

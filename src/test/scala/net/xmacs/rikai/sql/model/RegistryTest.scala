@@ -25,7 +25,7 @@ class RegistryTest extends AnyFunSuite with BeforeAndAfter {
   before {
     Registry.registerAll(
       Map(
-        Registry.REGISTRY_IMPL_PREFIX + "test.impl" -> "ai.eto.rikai.sql.model.testing.TestRegistry",
+        Registry.REGISTRY_IMPL_PREFIX + "test.impl" -> "net.xmacs.rikai.sql.model.testing.TestRegistry",
         Registry.DEFAULT_URI_ROOT_KEY -> "test:/"
       )
     )

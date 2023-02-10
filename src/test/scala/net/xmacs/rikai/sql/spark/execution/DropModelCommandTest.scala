@@ -16,7 +16,7 @@
 
 package net.xmacs.rikai.sql.spark.execution
 
-import ai.eto.rikai.SparkTestSession
+import net.xmacs.rikai.SparkTestSession
 import net.xmacs.rikai.sql.model.{Catalog, ModelNotFoundException, SimpleCatalog, SparkUDFModel}
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.catalyst.parser.ParseException

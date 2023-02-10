@@ -17,7 +17,7 @@
 package net.xmacs.rikai.sql.spark.execution
 
 import org.scalatest.funsuite.AnyFunSuite
-import ai.eto.rikai.SparkTestSession
+import net.xmacs.rikai.SparkTestSession
 import net.xmacs.rikai.sql.model.{Model, ModelAlreadyExistException}
 
 class ShowModelsCommandTest extends AnyFunSuite with SparkTestSession {

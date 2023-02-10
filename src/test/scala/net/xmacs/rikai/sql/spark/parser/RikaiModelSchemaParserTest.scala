@@ -16,7 +16,7 @@
 
 package net.xmacs.rikai.sql.spark.parser
 
-import ai.eto.rikai.SparkTestSession
+import net.xmacs.rikai.SparkTestSession
 import org.apache.spark.sql.rikai.NDArrayType
 import org.apache.spark.sql.types.{ArrayType, BooleanType, IntegerType, StructField, StructType}
 import org.scalatest.funsuite.AnyFunSuite

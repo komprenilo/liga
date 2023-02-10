@@ -16,7 +16,7 @@
 
 package net.xmacs.rikai.sql.spark.execution
 
-import ai.eto.rikai.SparkTestSession
+import net.xmacs.rikai.SparkTestSession
 import net.xmacs.rikai.sql.model.{Catalog, ModelNotFoundException, SparkUDFModel}
 import org.scalatest.funsuite.AnyFunSuite
 

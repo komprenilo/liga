@@ -55,7 +55,7 @@ trait Catalog {
 object Catalog extends LazyLogging {
 
   val SQL_ML_CATALOG_IMPL_KEY = "spark.rikai.sql.ml.catalog.impl"
-  val SQL_ML_CATALOG_IMPL_DEFAULT = "ai.eto.rikai.sql.model.SimpleCatalog"
+  val SQL_ML_CATALOG_IMPL_DEFAULT = "net.xmacs.rikai.sql.model.SimpleCatalog"
 
   /** A Catalog for local testing. */
   private[rikai] def testing: SimpleCatalog = {

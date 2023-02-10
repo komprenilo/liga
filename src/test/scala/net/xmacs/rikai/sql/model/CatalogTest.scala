@@ -16,7 +16,7 @@
 
 package net.xmacs.rikai.sql.model
 
-import ai.eto.rikai.SparkTestSession
+import net.xmacs.rikai.SparkTestSession
 import org.scalatest.funsuite.AnyFunSuite
 
 class CatalogTest extends AnyFunSuite with SparkTestSession {
