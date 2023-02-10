@@ -16,9 +16,9 @@
 
 package org.apache.spark.sql.rikai.model
 
-import ai.eto.rikai.sql.model.{ModelSpec, SparkUDFModel}
-import ai.eto.rikai.sql.spark.Python
-import ai.eto.rikai.sql.spark.parser.ModelSchemaParser
+import net.xmacs.rikai.sql.model.{ModelSpec, SparkUDFModel}
+import net.xmacs.rikai.sql.spark.Python
+import net.xmacs.rikai.sql.spark.parser.ModelSchemaParser
 import org.apache.spark.api.python.{PythonEvalType, PythonFunction}
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.execution.python.UserDefinedPythonFunction
