@@ -16,7 +16,7 @@
 
 package net.xmacs.liga.model
 
-import net.xmacs.rikai.SparkTestSession
+import net.xmacs.liga.SparkTestSession
 import org.scalatest.funsuite.AnyFunSuite
 
 class CatalogTest extends AnyFunSuite with SparkTestSession {

@@ -16,9 +16,9 @@
 
 package net.xmacs.liga.spark.execution
 
+import net.xmacs.liga.SparkTestSession
 import net.xmacs.liga.model.{Model, ModelAlreadyExistException}
 import org.scalatest.funsuite.AnyFunSuite
-import net.xmacs.rikai.SparkTestSession
 
 class ShowModelsCommandTest extends AnyFunSuite with SparkTestSession {
 

@@ -16,8 +16,8 @@
 
 package net.xmacs.liga.spark.execution
 
+import net.xmacs.liga.SparkTestSession
 import net.xmacs.liga.model.{Catalog, ModelNotFoundException, SparkUDFModel}
-import net.xmacs.rikai.SparkTestSession
 import org.scalatest.funsuite.AnyFunSuite
 
 class DescribeModelCommandTest extends AnyFunSuite with SparkTestSession {

@@ -16,7 +16,7 @@
 
 package net.xmacs.liga.spark.parser
 
-import net.xmacs.rikai.SparkTestSession
+import net.xmacs.liga.SparkTestSession
 import org.apache.spark.sql.rikai.NDArrayType
 import org.apache.spark.sql.types.{
   ArrayType,

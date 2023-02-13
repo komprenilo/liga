@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package net.xmacs.rikai
+package net.xmacs.liga
 
 import net.xmacs.liga.model.{Catalog, Registry}
 import org.apache.spark.sql.{DataFrame, SparkSession}
@@ -26,7 +26,7 @@ trait SparkTestSession extends BeforeAndAfterEach with BeforeAndAfterAll {
   lazy val spark: SparkSession = SparkSession.builder
     .config(
       "spark.sql.extensions",
-      "net.xmacs.rikai.sql.spark.RikaiSparkSessionExtensions"
+      "net.xmacs.liga.spark.RikaiSparkSessionExtensions"
     )
     .config(
       Catalog.SQL_ML_CATALOG_IMPL_KEY,
@@ -34,7 +34,7 @@ trait SparkTestSession extends BeforeAndAfterEach with BeforeAndAfterAll {
     )
     .config(
       Registry.REGISTRY_IMPL_PREFIX + "test.impl",
-      "net.xmacs.rikai.sql.model.testing.TestRegistry"
+      "net.xmacs.liga.model.testing.TestRegistry"
     )
     .config("spark.port.maxRetries", 128)
     .master("local[*]")
