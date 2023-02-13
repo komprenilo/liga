@@ -62,6 +62,7 @@ class Registry(ABC):
         """
         name = raw_spec["name"]  # type: ignore[index]
         uri = raw_spec["uri"]  # type: ignore[index]
+        logger.info("Resolving schema of model %s from %s", name, uri)
         spec = self.make_model_spec(raw_spec)
         return spec.schema
 
