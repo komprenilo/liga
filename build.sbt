@@ -162,7 +162,7 @@ Compile / doc / scalacOptions ++= Seq(
   "net.xmacs.liga.spark.parser"
 )
 
-assembly / assemblyJarName := s"${name.value}-${sparkVerStr.value}-assembly_${scalaBinaryVersion.value}-${version.value}.jar"
+assembly / assemblyJarName := s"liga-${sparkVerStr.value}-assembly_${scalaBinaryVersion.value}-${version.value}.jar"
 // Excluding Scala library jars, see https://github.com/sbt/sbt-assembly/tree/v1.2.0#excluding-scala-library-jars
 assemblyPackageScala / assembleArtifact := false
 
