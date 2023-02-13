@@ -38,7 +38,7 @@ def fallbackVersion(d: java.util.Date): String =
 inThisBuild(
   List(
     organization := "net.xmacs.liga",
-    homepage := Some(url("https://github.com/eto-ai/rikai")),
+    homepage := Some(url("https://github.com/liga-ai/liga")),
     licenses := List(
       "Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0")
     ),
@@ -55,14 +55,14 @@ inThisBuild(
 
 scmInfo := Some(
   ScmInfo(
-    url("https://github.com/eto-ai/rikai"),
-    "git@github.com:eto-ai/rikai.git"
+    url("https://github.com/liga-ai/liga"),
+    "git@github.com:liga-ai/liga.git"
   )
 )
 
 libraryDependencies ++= {
   val log = sLog.value
-  log.warn(s"Compiling Rikai with Spark version ${sparkVersion.value}")
+  log.warn(s"Compiling Liga with Spark version ${sparkVersion.value}")
 
   val awsVersion = "2.15.69"
   val log4jVersion = "2.17.1"
