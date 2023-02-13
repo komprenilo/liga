@@ -78,7 +78,7 @@ object ModelResolver {
   ): SparkUDFModel = {
     val specPath = Files.createTempFile("model-spec", ".json")
     val path = Files.createTempFile("model-code", ".cpt")
-    val dataTypeTxt= Files.createTempFile("schema", ".txt")
+    val dataTypeTxt = Files.createTempFile("schema", ".txt")
     val dataTypeJson = Files.createTempFile("data-type", "json")
     try {
       implicit val writeFormat = DefaultFormats.preservingEmptyValues
