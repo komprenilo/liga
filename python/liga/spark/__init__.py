@@ -91,7 +91,7 @@ def init_session(
     os.environ["PYSPARK_DRIVER_PYTHON"] = sys.executable
 
     default_conf = {
-        "spark.sql.extensions": "net.xmacs.rikai.sql.spark.RikaiSparkSessionExtensions",
+        "spark.sql.extensions": "net.xmacs.liga.spark.RikaiSparkSessionExtensions",
         "spark.driver.extraJavaOptions": "-Dio.netty.tryReflectionSetAccessible=true",
         "spark.executor.extraJavaOptions": "-Dio.netty.tryReflectionSetAccessible=true",
     }
