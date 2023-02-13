@@ -12,6 +12,6 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 
-from liga.registry.base import command_from_spec
+from liga.registry.base import command_from_spec, schema_from_spec
 
-__all__ = ["command_from_spec"]
+__all__ = ["command_from_spec", "schema_from_spec"]

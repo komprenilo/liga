@@ -57,6 +57,14 @@ class Registry(ABC):
         logger.info("Resolving model %s from %s", name, uri)
         return udf_from_spec(self.make_model_spec(raw_spec))
 
+    def resolve_schema(self, raw_spec: "ModelSpec") -> str:
+        """Resolve the model schema from the raw model spec."""
+        name = raw_spec["name"]  # type: ignore[index]
+        uri = raw_spec["uri"]  # type: ignore[index]
+        logger.info("Resolving schema of model %s from %s", name, uri)
+        spec = self.make_model_spec(raw_spec)
+        return spec.schema
+
 
 def codegen_from_spec(spec: ModelSpec) -> ModuleType:
     """Resolve the codegen module from the model spec.
@@ -83,6 +91,12 @@ def codegen_from_spec(spec: ModelSpec) -> ModuleType:
         raise
 
 
+def schema_from_spec(registry_class: str, raw_spec: dict) -> str:
+    cls = find_class(registry_class)
+    registry = cls()
+    return registry.resolve_schema(raw_spec)
+
+
 def udf_from_spec(spec: ModelSpec) -> Tuple:
     """Return a UDF from a given ModelSpec
 
@@ -101,9 +115,6 @@ def udf_from_spec(spec: ModelSpec) -> Tuple:
             f"Only spec version 1.0 is supported, got {spec.version}"
         )
 
-    schema = spec.schema
-
-    @udf(returnType=schema)
     def deserialize_return(data: bytes) -> Any:
         return _pickler.loads(data)
 
@@ -112,14 +123,13 @@ def udf_from_spec(spec: ModelSpec) -> Tuple:
         pickle_udt,
         codegen.generate_udf(spec),  # type: ignore[attr-defined]
         deserialize_return,
-        schema,
     )
 
 
-def command_from_spec(registry_class: str, row_spec: dict) -> Registry:
+def command_from_spec(registry_class: str, raw_spec: dict) -> Tuple:
     cls = find_class(registry_class)
     registry = cls()
-    return registry.resolve(row_spec)
+    return registry.resolve(raw_spec)
 
 
 @udf(returnType=BinaryType())

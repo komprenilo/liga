@@ -51,7 +51,7 @@ def mlflow_tracking_uri(mlflow_client_with_tracking_uri):
 
 @pytest.fixture(scope="module")
 def spark(mlflow_tracking_uri: str, tmp_path_factory) -> SparkSession:
-    print(f"mlflow tracking uri for spark: ${mlflow_tracking_uri}")
+    print(f"mlflow tracking uri for spark: {mlflow_tracking_uri}")
     warehouse_path = tmp_path_factory.mktemp("warehouse")
 
     return init_session(
@@ -61,7 +61,7 @@ def spark(mlflow_tracking_uri: str, tmp_path_factory) -> SparkSession:
                 ("spark.sql.warehouse.dir", str(warehouse_path)),
                 (
                     "spark.rikai.sql.ml.registry.test.impl",
-                    "net.xmacs.rikai.sql.model.testing.TestRegistry",
+                    "net.xmacs.liga.model.testing.TestRegistry",
                 ),
                 (
                     CONF_MLFLOW_TRACKING_URI,
@@ -69,7 +69,7 @@ def spark(mlflow_tracking_uri: str, tmp_path_factory) -> SparkSession:
                 ),
                 (
                     "spark.rikai.sql.ml.catalog.impl",
-                    "net.xmacs.rikai.sql.model.SimpleCatalog",
+                    "net.xmacs.liga.model.SimpleCatalog",
                 ),
             ]
         ),
