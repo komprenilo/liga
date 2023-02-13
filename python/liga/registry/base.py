@@ -58,8 +58,7 @@ class Registry(ABC):
         return udf_from_spec(self.make_model_spec(raw_spec))
 
     def resolve_schema(self, raw_spec: "ModelSpec") -> str:
-        """Resolve the model schema from the raw model spec.
-        """
+        """Resolve the model schema from the raw model spec."""
         name = raw_spec["name"]  # type: ignore[index]
         uri = raw_spec["uri"]  # type: ignore[index]
         logger.info("Resolving schema of model %s from %s", name, uri)
@@ -115,7 +114,6 @@ def udf_from_spec(spec: ModelSpec) -> Tuple:
         raise SpecError(
             f"Only spec version 1.0 is supported, got {spec.version}"
         )
-
 
     def deserialize_return(data: bytes) -> Any:
         return _pickler.loads(data)
