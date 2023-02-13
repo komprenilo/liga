@@ -78,34 +78,47 @@ object ModelResolver {
   ): SparkUDFModel = {
     val specPath = Files.createTempFile("model-spec", ".json")
     val path = Files.createTempFile("model-code", ".cpt")
-    val dataTypePath = Files.createTempFile("model-type", ".json")
+    val dataTypeTxt= Files.createTempFile("schema", ".txt")
+    val dataTypeJson = Files.createTempFile("data-type", "json")
     try {
       implicit val writeFormat = DefaultFormats.preservingEmptyValues
       Files.write(specPath, write(spec).getBytes)
       Python.execute(
-        s"""from pyspark.serializers import CloudPickleSerializer;
+        s"""
+           |from liga.registry import schema_from_spec
+           |import json
+           |spec = json.load(open("${specPath}", "r"))
+           |schema = schema_from_spec("${registryClassName}", spec)
+           |with open("${dataTypeTxt}", "w") as fobj:
+           |    fobj.write(schema)
+           |""".stripMargin
+      )
+      val schema = Files.readAllLines(dataTypeTxt).asScala.mkString("\n")
+      val returnType = ModelSchemaParser.parse_schema(schema)
+      Files.write(dataTypeJson, returnType.json.getBytes())
+
+      Python.execute(
+        s"""from pyspark.serializers import CloudPickleSerializer
+           |from pyspark.sql.types import _parse_datatype_json_string
            |import json
            |import base64
+           |returnType = _parse_datatype_json_string(open("${dataTypeJson}", "r"))
            |spec = json.load(open("${specPath}", "r"))
            |from liga.registry import command_from_spec
-           |serialize_func, func, deserialize_func, schema = command_from_spec("${registryClassName}", spec)
+           |serialize_func, func, deserialize_func = command_from_spec("${registryClassName}", spec)
            |pickle = CloudPickleSerializer()
            |with open("${path}", "w") as fobj:
            |    json.dump({
            |        "func": base64.b64encode(pickle.dumps((func.func, func.returnType))).decode('utf-8'),
            |        "serializer": base64.b64encode(pickle.dumps((serialize_func.func, serialize_func.returnType))).decode('utf-8'),
-           |        "deserializer": base64.b64encode(pickle.dumps(deserialize_func.func)).decode('utf-8'),
+           |        "deserializer": base64.b64encode(pickle.dumps((deserialize_func, returnType))).decode('utf-8'),
            |    }, fobj)
-           |with open("${dataTypePath}", "w") as fobj:
-           |    fobj.write(schema)
            |""".stripMargin,
         session
       )
       val cmdJson = Files.readAllLines(path).asScala.mkString("\n")
       implicit val extractFormat = Serialization.formats(NoTypeHints)
       val cmdMap = parse(cmdJson).extract[FuncDesc]
-      val schema = Files.readAllLines(dataTypePath).asScala.mkString("\n")
-      val returnType = ModelSchemaParser.parse_schema(schema)
       val suffix: String = Random.alphanumeric.take(6).mkString.toLowerCase
       val udfName = s"${spec.name.getOrElse("model")}_${suffix}"
       val preUdfName = s"${udfName}_pre"
@@ -144,7 +157,8 @@ object ModelResolver {
     } finally {
       Files.delete(path)
       Files.delete(specPath)
-      Files.delete(dataTypePath)
+      Files.delete(dataTypeJson)
+      Files.delete(dataTypeTxt)
     }
   }
 
