@@ -91,7 +91,8 @@ object ModelResolver {
            |schema = schema_from_spec("${registryClassName}", spec)
            |with open("${dataTypeTxt}", "w") as fobj:
            |    fobj.write(schema)
-           |""".stripMargin
+           |""".stripMargin,
+        session
       )
       val schema = Files.readAllLines(dataTypeTxt).asScala.mkString("\n")
       val returnType = ModelSchemaParser.parse_schema(schema)
@@ -102,7 +103,9 @@ object ModelResolver {
            |from pyspark.sql.types import _parse_datatype_json_string
            |import json
            |import base64
-           |returnType = _parse_datatype_json_string(open("${dataTypeJson}", "r"))
+           |with open("${dataTypeJson}", "r") as f:
+           |    data_type_json = f.read()
+           |returnType = _parse_datatype_json_string(data_type_json)
            |spec = json.load(open("${specPath}", "r"))
            |from liga.registry import command_from_spec
            |serialize_func, func, deserialize_func = command_from_spec("${registryClassName}", spec)
