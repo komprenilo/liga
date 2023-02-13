@@ -1,7 +1,7 @@
 import java.io.File
 import scala.reflect.io.Directory
 
-name := "liga"
+name := "liga-spark"
 crossScalaVersions := List("2.12.16", "2.13.8")
 scalaVersion := "2.12.16"
 scalaBinaryVersion := scalaVersion.value.split('.').slice(0, 2).mkString(".")
@@ -37,18 +37,10 @@ def fallbackVersion(d: java.util.Date): String =
 
 inThisBuild(
   List(
-    organization := "net.xmacs",
+    organization := "net.xmacs.liga",
     homepage := Some(url("https://github.com/eto-ai/rikai")),
     licenses := List(
       "Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0")
-    ),
-    developers := List(
-      Developer(
-        "rikai-dev",
-        "Rikai Developers",
-        "rikai-dev@eto.ai",
-        url("https://github.com/eto-ai/rikai")
-      )
     ),
     version := dynverGitDescribeOutput.value
       .mkVersion(versionFmt, fallbackVersion(dynverCurrentDate.value)),
@@ -156,7 +148,7 @@ import Tests._
   Test / testGrouping := groupByFirst( (Test / definedTests).value )
 }
 
-Antlr4 / antlr4PackageName := Some("net.xmacs.rikai.sql.spark.parser")
+Antlr4 / antlr4PackageName := Some("net.xmacs.liga.spark.parser")
 Antlr4 / antlr4GenVisitor := true
 Antlr4 / antlr4Version := {
   if ("3.1.2".equals(sparkVersion.value)) "4.8-1"
@@ -167,7 +159,7 @@ enablePlugins(Antlr4Plugin)
 
 Compile / doc / scalacOptions ++= Seq(
   "-skip-packages",
-  "net.xmacs.rikai.sql.spark.parser"
+  "net.xmacs.liga.spark.parser"
 )
 
 assembly / assemblyJarName := s"${name.value}-${sparkVerStr.value}-assembly_${scalaBinaryVersion.value}-${version.value}.jar"

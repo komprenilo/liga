@@ -16,7 +16,7 @@
 
 package net.xmacs.rikai
 
-import net.xmacs.rikai.sql.model.{Catalog, Registry}
+import net.xmacs.liga.model.{Catalog, Registry}
 import org.apache.spark.sql.{DataFrame, SparkSession}
 import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, Suite}
 
