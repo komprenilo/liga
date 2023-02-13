@@ -103,7 +103,6 @@ def udf_from_spec(spec: ModelSpec) -> Tuple:
 
     schema = spec.schema
 
-    @udf(returnType=schema)
     def deserialize_return(data: bytes) -> Any:
         return _pickler.loads(data)
 

@@ -94,7 +94,7 @@ object ModelResolver {
            |    json.dump({
            |        "func": base64.b64encode(pickle.dumps((func.func, func.returnType))).decode('utf-8'),
            |        "serializer": base64.b64encode(pickle.dumps((serialize_func.func, serialize_func.returnType))).decode('utf-8'),
-           |        "deserializer": base64.b64encode(pickle.dumps((deserialize_func.func, deserialize_func.returnType))).decode('utf-8'),
+           |        "deserializer": base64.b64encode(pickle.dumps(deserialize_func.func)).decode('utf-8'),
            |    }, fobj)
            |with open("${dataTypePath}", "w") as fobj:
            |    fobj.write(schema)
