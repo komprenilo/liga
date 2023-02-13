@@ -37,11 +37,6 @@ def fallbackVersion(d: java.util.Date): String =
 
 inThisBuild(
   List(
-    organization := "net.xmacs.liga",
-    homepage := Some(url("https://github.com/liga-ai/liga")),
-    licenses := List(
-      "Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0")
-    ),
     version := dynverGitDescribeOutput.value
       .mkVersion(versionFmt, fallbackVersion(dynverCurrentDate.value)),
     dynver := {
@@ -49,16 +44,10 @@ inThisBuild(
       sbtdynver.DynVer
         .getGitDescribeOutput(d)
         .mkVersion(versionFmt, fallbackVersion(d))
-    }
+    },
   )
 )
 
-scmInfo := Some(
-  ScmInfo(
-    url("https://github.com/liga-ai/liga"),
-    "git@github.com:liga-ai/liga.git"
-  )
-)
 
 libraryDependencies ++= {
   val log = sLog.value
