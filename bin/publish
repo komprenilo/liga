@@ -1,0 +1,4 @@
+#!/bin/bash
+
+sbt ++2.12 "set every Seq(sonatypeSessionName := \"test\", publishTo := sonatypePublishToBundle.value)" publishSigned sonatypeBundleRelease
+
