@@ -17,7 +17,12 @@
 package net.xmacs.liga.spark.execution
 
 import net.xmacs.liga.SparkTestSession
-import net.xmacs.liga.model.{Catalog, ModelNotFoundException, SimpleCatalog, SparkUDFModel}
+import net.xmacs.liga.model.{
+  Catalog,
+  ModelNotFoundException,
+  SimpleCatalog,
+  SparkUDFModel
+}
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.catalyst.parser.ParseException
 import org.scalatest.funsuite.AnyFunSuite

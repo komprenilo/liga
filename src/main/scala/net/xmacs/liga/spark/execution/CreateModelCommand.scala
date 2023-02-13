@@ -17,7 +17,12 @@
 package net.xmacs.liga.spark.execution
 
 import com.typesafe.scalalogging.LazyLogging
-import net.xmacs.liga.model.{ModelAlreadyExistException, ModelResolveException, ModelSpec, Registry}
+import net.xmacs.liga.model.{
+  ModelAlreadyExistException,
+  ModelResolveException,
+  ModelSpec,
+  Registry
+}
 import org.apache.spark.sql.catalyst.TableIdentifier
 import org.apache.spark.sql.{Row, SparkSession}
 

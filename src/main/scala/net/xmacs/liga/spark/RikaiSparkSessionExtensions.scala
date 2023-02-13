@@ -25,10 +25,7 @@ import org.apache.spark.sql.catalyst.analysis.{
   UnresolvedAttribute,
   UnresolvedFunction
 }
-import org.apache.spark.sql.catalyst.expressions.{
-  Expression,
-  Literal
-}
+import org.apache.spark.sql.catalyst.expressions.{Expression, Literal}
 import org.apache.spark.sql.catalyst.plans.logical.LogicalPlan
 import org.apache.spark.sql.catalyst.rules.Rule
 import org.apache.spark.sql.rikai.RikaiUDTRegistration

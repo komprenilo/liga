@@ -17,7 +17,12 @@
 package net.xmacs.liga.spark.parser
 
 import net.xmacs.liga.model.Model
-import net.xmacs.liga.spark.execution.{CreateModelCommand, DescribeModelCommand, DropModelCommand, ShowModelsCommand}
+import net.xmacs.liga.spark.execution.{
+  CreateModelCommand,
+  DescribeModelCommand,
+  DropModelCommand,
+  ShowModelsCommand
+}
 import net.xmacs.liga.spark.parser.RikaiExtSqlBaseBaseVisitor
 import net.xmacs.liga.spark.parser.RikaiExtSqlBaseParser._
 import org.antlr.v4.runtime.ParserRuleContext
