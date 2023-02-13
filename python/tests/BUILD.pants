@@ -7,7 +7,7 @@ python_sources(
 )
 
 python_tests(name = "liga",
-    sources=["liga/*.py", "liga/internal/*.py", "liga/spark/*.py", "!**/conftest.py"],
+    sources=["liga/*.py", "liga/internal/*.py", "liga/sklearn/*.py", "liga/spark/*.py", "!**/conftest.py"],
     dependencies=[
         "//python/liga:sources",
         "//python/liga/sklearn:sources",
