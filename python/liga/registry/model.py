@@ -69,11 +69,16 @@ def parse_model_type(flavor: str, model_type: str) -> "ModelType":
 
     if is_fully_qualified_name(model_type):
         model_modules_candidates.append(model_type)
+    elif is_fully_qualified_name(flavor):
+        model_modules_candidates.extend(
+            [
+                f"{flavor}.models.{model_type}",
+            ]
+        )
     else:
         model_modules_candidates.extend(
             [
                 f"liga.{flavor}.models.{model_type}",
-                f"liga.contrib.{flavor}.models.{model_type}",
             ]
         )
     for model_module in model_modules_candidates:
@@ -82,7 +87,7 @@ def parse_model_type(flavor: str, model_type: str) -> "ModelType":
         except ModuleNotFoundError:
             pass
     raise ModuleNotFoundError(
-        f"Model type not found for model/flavor: {model_type}/{flavor}"
+        f"Model type not found for flavor/model_type: {flavor}/{model_type}"
     )
 
 

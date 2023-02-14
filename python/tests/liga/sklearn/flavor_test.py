@@ -55,6 +55,7 @@ def test_specified_flavor_via_sql(
         CREATE MODEL {model_name} FLAVOR sklearn USING '{sklearn_lr_uri}';
         """
     )
+    spark.sql("show models").show()
     result = spark.sql(
         f"""
         select ML_PREDICT({model_name}, array(x0, x1)) as pred from tbl_X
@@ -68,6 +69,24 @@ def test_specified_flavor_via_sql(
         CREATE MODEL {model_name} FLAVOR liga.sklearn USING '{sklearn_lr_uri}';
         """
     )
+    spark.sql("show models").show()
+    result = spark.sql(
+        f"""
+        select ML_PREDICT({model_name}, array(x0, x1)) as pred from tbl_X
+        """
+    )
+    assert_sklearn_result(result)
+
+    model_name = "test_full_qualified_flavor_and_model_type"
+    spark.sql(
+        f"""
+        CREATE MODEL {model_name}
+        FLAVOR liga.sklearn
+        MODEL_TYPE regressor
+        USING '{sklearn_lr_uri}';
+        """
+    )
+    spark.sql("show models").show()
     result = spark.sql(
         f"""
         select ML_PREDICT({model_name}, array(x0, x1)) as pred from tbl_X
