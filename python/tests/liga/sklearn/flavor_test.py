@@ -20,6 +20,7 @@ def assert_sklearn_result(result):
     assert result.schema == StructType([StructField("pred", FloatType())])
     assert result.count() == 2
 
+
 def test_customized_flaovr_via_logging(
     mlflow_tracking_uri: str, sklearn_lr_uri: str, spark: SparkSession
 ):
