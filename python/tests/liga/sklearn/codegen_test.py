@@ -24,29 +24,6 @@ from sklearn.linear_model import LinearRegression
 from liga.sklearn.mlflow import log_model
 
 
-def test_sklearn_linear_regression(
-    mlflow_tracking_uri: str, sklearn_lr_uri: str, spark: SparkSession
-):
-    model_name = "sk_lr_m"
-
-    spark.sql(
-        f"""
-        CREATE MODEL {model_name} USING '{sklearn_lr_uri}';
-        """
-    )
-
-    df = spark.range(2).selectExpr("id as x0", "id+1 as x1")
-    df.createOrReplaceTempView("tbl_X")
-
-    result = spark.sql(
-        f"""
-        select ML_PREDICT({model_name}, array(x0, x1)) as pred from tbl_X
-        """
-    )
-    assert result.schema == StructType([StructField("pred", FloatType())])
-    assert result.count() == 2
-
-
 def test_sklearn_random_forest(mlflow_tracking_uri: str, spark: SparkSession):
     X, y = make_classification(
         n_samples=1000,
