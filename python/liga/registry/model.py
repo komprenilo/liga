@@ -70,13 +70,6 @@ def parse_model_type(flavor: str, model_type: str) -> "ModelType":
     if is_fully_qualified_name(model_type):
         model_modules_candidates.append(model_type)
     else:
-        # Try registered models first
-        try:
-            registered_models = find_func(f"liga.{flavor}.models.MODEL_TYPES")
-            if registered_models:
-                return registered_models[model_type]
-        except (ModuleNotFoundError, KeyError):
-            pass
         model_modules_candidates.extend(
             [
                 f"liga.{flavor}.models.{model_type}",
