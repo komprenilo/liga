@@ -54,14 +54,20 @@ class Registry(ABC):
         """
         name = raw_spec["name"]  # type: ignore[index]
         uri = raw_spec["uri"]  # type: ignore[index]
-        logger.info("Resolving model %s from %s", name, uri)
+        if uri:
+            logger.info("Resolving model %s from %s", name, uri)
+        else:
+            logger.info("Resolving model %s", name)
         return udf_from_spec(self.make_model_spec(raw_spec))
 
     def resolve_schema(self, raw_spec: "ModelSpec") -> str:
         """Resolve the model schema from the raw model spec."""
         name = raw_spec["name"]  # type: ignore[index]
         uri = raw_spec["uri"]  # type: ignore[index]
-        logger.info("Resolving schema of model %s from %s", name, uri)
+        if uri:
+            logger.info("Resolving schema of model %s from %s", name, uri)
+        else:
+            logger.info("Resolving schema of model %s", name)
         spec = self.make_model_spec(raw_spec)
         return spec.schema
 
