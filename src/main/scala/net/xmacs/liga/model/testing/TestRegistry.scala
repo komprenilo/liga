@@ -31,8 +31,7 @@ import org.apache.spark.sql.SparkSession
   *
   * A valid model URI is: "test://hostname/model_name"
   */
-class TestRegistry(conf: Map[String, String])
-    extends Registry {
+class TestRegistry(conf: Map[String, String]) extends Registry {
 
   val schema: String = "test"
 
