@@ -75,7 +75,6 @@ object Catalog {
           .asInstanceOf[Catalog]
       )
     }
-    logger.debug("catalog get {}", catalog.get.getClass)
     catalog.get
   }
 }
