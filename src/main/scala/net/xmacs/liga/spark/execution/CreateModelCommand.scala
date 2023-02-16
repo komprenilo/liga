@@ -16,7 +16,6 @@
 
 package net.xmacs.liga.spark.execution
 
-import com.typesafe.scalalogging.LazyLogging
 import net.xmacs.liga.model.{
   ModelAlreadyExistException,
   ModelResolveException,
@@ -36,8 +35,7 @@ case class CreateModelCommand(
     table: Option[TableIdentifier],
     replace: Boolean,
     options: Map[String, String]
-) extends ModelCommand
-    with LazyLogging {
+) extends ModelCommand {
 
   @throws[ModelResolveException]
   private[spark] def asSpec: ModelSpec =
@@ -65,7 +63,6 @@ case class CreateModelCommand(
         catalog(spark).dropModel(name)
       }
       catalog(spark).createModel(model)
-      logger.info(s"Model ${model} created")
       Seq.empty
     }
   }

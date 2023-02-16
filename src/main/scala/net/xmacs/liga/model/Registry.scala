@@ -16,7 +16,6 @@
 
 package net.xmacs.liga.model
 
-import com.typesafe.scalalogging.LazyLogging
 import net.xmacs.liga.model.testing.TestRegistry
 import org.apache.http.client.utils.URIUtils
 import org.apache.log4j.Logger
@@ -46,7 +45,7 @@ trait Registry {
   ): Model
 }
 
-object DummyRegistry extends Registry with LazyLogging {
+object DummyRegistry extends Registry {
   val pyClass: String =
     "liga.registry.dummy.DummyRegistry"
 
@@ -60,8 +59,7 @@ object DummyRegistry extends Registry with LazyLogging {
 }
 
 class PyImplRegistry(pyClass: String, val conf: Map[String, String])
-    extends Registry
-    with LazyLogging {
+    extends Registry {
 
   /** Resolve a [[Model]] from the specific URI.
     *
@@ -76,7 +74,6 @@ class PyImplRegistry(pyClass: String, val conf: Map[String, String])
       session: SparkSession,
       spec: ModelSpec
   ): Model = {
-    logger.info(s"Resolving ML model from ${spec.uri}")
     ModelResolver.resolve(session, pyClass, spec)
   }
 }
@@ -148,7 +145,6 @@ private[liga] object Registry {
           registryMap += (scheme ->
             new PyImplRegistry(value, conf))
         }
-        logger.debug(s"Model Registry ${scheme} registered to: ${value}")
       }
     }
   }
