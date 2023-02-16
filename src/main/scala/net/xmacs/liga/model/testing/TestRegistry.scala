@@ -18,7 +18,6 @@ package net.xmacs.liga.model.testing
 
 import java.io.File
 import java.net.URI
-import com.typesafe.scalalogging.LazyLogging
 import net.xmacs.liga.model.{
   Model,
   ModelNotFoundException,
@@ -32,9 +31,7 @@ import org.apache.spark.sql.SparkSession
   *
   * A valid model URI is: "test://hostname/model_name"
   */
-class TestRegistry(conf: Map[String, String])
-    extends Registry
-    with LazyLogging {
+class TestRegistry(conf: Map[String, String]) extends Registry {
 
   val schema: String = "test"
 
@@ -60,7 +57,6 @@ class TestRegistry(conf: Map[String, String])
               parsed.getAuthority + "/" + parsed.getPath
             ).getName
         }
-        logger.info(s"Creating Spark UDF model: func=${model_name} ${spec}")
         new SparkUDFModel(model_name, spec.uri.get, model_name, spec.flavor)
       }
       case _ =>

@@ -72,9 +72,6 @@ libraryDependencies ++= {
     "org.apache.spark" %% "spark-hive-thriftserver" % sparkVersion.value % Test,
     "org.apache.spark" %% "spark-hive-thriftserver" % sparkVersion.value % Test classifier "tests",
     "org.apache.hadoop" % "hadoop-common" % hadoopVersion % Provided,
-    "com.typesafe.scala-logging" %% "scala-logging" % scalaLoggingVersion exclude (
-      "org.scala-lang", "scala-reflect"
-    ),
     "org.scalatest" %% "scalatest-funsuite" % scalatestVersion % Test,
   )
 }

@@ -16,7 +16,6 @@
 
 package net.xmacs.liga.model
 
-import com.typesafe.scalalogging.LazyLogging
 import org.apache.spark.sql.SparkSession
 
 /** Catalog for SQL ML.
@@ -52,7 +51,7 @@ trait Catalog {
   def dropModel(name: String): Boolean
 }
 
-object Catalog extends LazyLogging {
+object Catalog {
 
   val SQL_ML_CATALOG_IMPL_KEY = "spark.rikai.sql.ml.catalog.impl"
   val SQL_ML_CATALOG_IMPL_DEFAULT = "net.xmacs.liga.model.SimpleCatalog"
@@ -76,7 +75,6 @@ object Catalog extends LazyLogging {
           .asInstanceOf[Catalog]
       )
     }
-    logger.debug("catalog get {}", catalog.get.getClass)
     catalog.get
   }
 }

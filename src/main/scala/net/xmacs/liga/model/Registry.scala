@@ -16,10 +16,8 @@
 
 package net.xmacs.liga.model
 
-import com.typesafe.scalalogging.LazyLogging
 import net.xmacs.liga.model.testing.TestRegistry
 import org.apache.http.client.utils.URIUtils
-import org.apache.log4j.Logger
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.rikai.model.ModelResolver
 import java.net.URI
@@ -46,7 +44,7 @@ trait Registry {
   ): Model
 }
 
-object DummyRegistry extends Registry with LazyLogging {
+object DummyRegistry extends Registry {
   val pyClass: String =
     "liga.registry.dummy.DummyRegistry"
 
@@ -54,14 +52,12 @@ object DummyRegistry extends Registry with LazyLogging {
       session: SparkSession,
       spec: ModelSpec
   ): Model = {
-    logger.info(s"Resolving ML model from ${spec.uri}")
     ModelResolver.resolve(session, pyClass, spec)
   }
 }
 
 class PyImplRegistry(pyClass: String, val conf: Map[String, String])
-    extends Registry
-    with LazyLogging {
+    extends Registry {
 
   /** Resolve a [[Model]] from the specific URI.
     *
@@ -76,7 +72,6 @@ class PyImplRegistry(pyClass: String, val conf: Map[String, String])
       session: SparkSession,
       spec: ModelSpec
   ): Model = {
-    logger.info(s"Resolving ML model from ${spec.uri}")
     ModelResolver.resolve(session, pyClass, spec)
   }
 }
@@ -100,7 +95,6 @@ private[liga] object Registry {
     "spark.rikai.sql.ml.registry.file.impl" -> "liga.registry.fs.FileSystemRegistry",
     "spark.rikai.sql.ml.registry.mlflow.impl" -> "liga.mlflow.registry.MlflowRegistry"
   )
-  private val logger = Logger.getLogger(Registry.getClass)
 
   /** Mapping from Model URI scheme to the registry. */
   private var registryMap: Map[String, Registry] = Map.empty
@@ -148,7 +142,6 @@ private[liga] object Registry {
           registryMap += (scheme ->
             new PyImplRegistry(value, conf))
         }
-        logger.debug(s"Model Registry ${scheme} registered to: ${value}")
       }
     }
   }
