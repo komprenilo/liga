@@ -1,4 +1,4 @@
-# Liga: the ML-Enhanced Spark SQL
+# Liga: Let Data Dance with ML Models
 
 Liga is general-purpose ML-enhanced SQL framework designed to be modular, extensible and scalable.
 
