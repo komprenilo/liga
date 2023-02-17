@@ -145,8 +145,8 @@ A Liga model flavor should provide:
 
 
 Supported flavors:
-+ [sklearn](https://github.com/liga-ai/liga/blob/main/python/liga/sklearn/codegen.py) (provided by `liga-sklearn`)
-+ pytorch (provided by `liga-pytorch`)
++ [sklearn](https://github.com/liga-ai/liga/blob/main/python/liga/sklearn/codegen.py) (provided by [`liga-sklearn`](https://pypi.org/project/liga-sklearn/))
++ [pytorch](https://github.com/liga-ai/liga-pytorch/blob/main/python/liga/pytorch/codegen.py) (provided by [`liga-pytorch`](https://pypi.org/project/liga-pytorch/))
 + ...
 
 ### Model Registry
