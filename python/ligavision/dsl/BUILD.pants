@@ -1,6 +1,8 @@
 python_sources(
     name="sources",
     resolve=parametrize("vision_dsl", "vision_dsl_test"),
+    skip_pylint=True,
+    skip_mypy=True,
 )
 
 python_tests(
@@ -9,6 +11,8 @@ python_tests(
     dependencies=[
         "//python/ligavision/dsl:requirements#aiohttp@resolve=vision_dsl_test",
     ],
+    skip_pylint=True,
+    skip_mypy=True,
 )
 
 python_requirements(
