@@ -1,6 +1,6 @@
 python_sources(
     name="sources",
-    resolve=parametrize("vision_dsl", "vision_dsl_test"),
+    resolve=parametrize("vision_dsl", "vision_dsl_test", "ligavision"),
     skip_pylint=True,
     skip_mypy=True,
 )
@@ -17,7 +17,7 @@ python_tests(
 
 python_requirements(
     name="requirements",
-    resolve=parametrize("vision_dsl", "vision_dsl_test"),
+    resolve=parametrize("vision_dsl", "vision_dsl_test", "ligavision"),
 )
 
 python_requirement(

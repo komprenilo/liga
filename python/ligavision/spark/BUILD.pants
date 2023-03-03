@@ -1,0 +1,22 @@
+# Tests
+python_sources(
+    name="sources",
+    sources=["conftest.py"],
+    resolve=parametrize("test", "mono"),
+)
+
+python_tests(name = "tests",
+    dependencies=[
+        ":sources",
+    ],
+    extra_env_vars=["ROOTDIR"],
+    resolve="ligavision",
+)
+
+python_requirement(
+    name="ipython",
+    requirements=[
+        "ipython>=7.31.1,!=8.0.0",
+    ],
+    resolve=parametrize("ligavision"),
+)
