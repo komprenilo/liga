@@ -9,6 +9,7 @@ on:
       - main
     paths:
       - 'image/**'
+      - 'python/ligavision/**'
       - '.github/workflows/test_ligavision.yml'
 
 jobs:

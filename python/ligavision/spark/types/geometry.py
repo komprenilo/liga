@@ -29,6 +29,7 @@ from pyspark.sql.types import (
     StructType,
     UserDefinedType,
 )
+import numpy as np
 
 # Liga
 from liga.logging import logger
@@ -36,6 +37,7 @@ from ligavision.dsl import Mask as DslMask
 from ligavision.dsl import Box2d as DslBox2d
 from ligavision.dsl import Box3d as DslBox3d
 from ligavision.dsl import Point as DslPoint
+
 
 __all__ = [
     "Point",

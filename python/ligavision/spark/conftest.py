@@ -1,6 +1,6 @@
-import pytest
 from pathlib import Path
 
+import pytest
 from pyspark.sql import SparkSession
 
 from ligavision.spark.types import Image
@@ -19,8 +19,7 @@ def two_flickr_images() -> list:
 
 
 @pytest.fixture(scope="module")
-def spark(tmp_path_factory) -> SparkSession:
-    warehouse_path = tmp_path_factory.mktemp("warehouse")
+def spark() -> SparkSession:
     return init_session(jar_type="local")
 
 
