@@ -1,6 +1,6 @@
 python_requirements(
     name="requirements",
-    resolve=parametrize("lv_spark_3_2_1", "ligavision"),
+    resolve=parametrize("lv_spark_3_2_1", "ligavision_test"),
 )
 
 python_requirement(
@@ -8,7 +8,7 @@ python_requirement(
     requirements=[
         "pyspark==3.2.1",
     ],
-    resolve=parametrize("lv_spark_3_2_1", "ligavision"),
+    resolve=parametrize("lv_spark_3_2_1", "ligavision_test"),
 )
 
 python_requirement(
@@ -22,5 +22,5 @@ python_requirement(
 python_sources(
     name="sources",
     sources=["!test_*.py", "!conftest.py", "*.py", "spark/**/*.py"],
-    resolve=parametrize("lv_spark_3_2_1", "ligavision"),
+    resolve=parametrize("lv_spark_3_2_1", "ligavision_test"),
 )

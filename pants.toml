@@ -31,7 +31,7 @@ enable_resolves = true
   vision_dsl = "3rdparty/python/vision_dsl.lock"
   vision_dsl_test = "3rdparty/python/vision_dsl_test.lock"
   lv_spark_3_2_1 = "3rdparty/python/lv_spark_3_2_1.lock"
-  ligavision = "3rdparty/python/ligavision.lock"
+  ligavision_test = "3rdparty/python/ligavision_test.lock"
 
 [black]
   version = "black==22.1.0"
