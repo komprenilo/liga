@@ -37,7 +37,16 @@ from ligavision.dsl import Box2d as DslBox2d
 from ligavision.dsl import Box3d as DslBox3d
 from ligavision.dsl import Point as DslPoint
 
-__all__ = ["Point", "PointType", "Box3d", "Box3dType", "Box2d", "Box2dType", "Mask","MaskType"]
+__all__ = [
+    "Point",
+    "PointType",
+    "Box3d",
+    "Box3dType",
+    "Box2d",
+    "Box2dType",
+    "Mask",
+    "MaskType",
+]
 
 
 class Box2dType(UserDefinedType):
@@ -80,6 +89,7 @@ class Box2dType(UserDefinedType):
     def simpleString(self) -> str:
         return "box2d"
 
+
 class Box2d(DslBox2d):
     __UDT__ = Box2dType()
 
@@ -117,6 +127,7 @@ class PointType(UserDefinedType):
 
     def simpleString(self) -> str:
         return "point"
+
 
 class Point(DslPoint):
     __UDT__ = PointType()
@@ -156,6 +167,7 @@ class Box3dType(UserDefinedType):
 
     def simpleString(self) -> str:
         return "box3d"
+
 
 class Box3d(DslBox3d):
     __UDT__ = Box3dType()
@@ -227,16 +239,17 @@ class MaskType(UserDefinedType):
     def simpleString(self) -> str:
         return "mask"
 
+
 class Mask(DslMask):
     __UDT__ = MaskType()
-    
+
     def __init__(self, dsl: DslMask):
         super().__init__(dsl.data, dsl.width, dsl.height, dsl.type)
 
     @staticmethod
     def from_rle(data: list[int], width: int, height: int) -> Mask:
         return Mask(DslMask.from_rle(data, width, height))
-        
+
     @staticmethod
     def from_coco_rle(data: list[int], width: int, height: int) -> Mask:
         return Mask(DslMask.from_coco_rle(data, width, height))

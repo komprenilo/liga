@@ -23,7 +23,9 @@ from ligavision.__version__ import version
 from ligavision.spark.functions import init_udf
 
 
-def get_liga_vision_jar(vision_type: str, jar_type: str, scala_version: str) -> str:
+def get_liga_vision_jar(
+    vision_type: str, jar_type: str, scala_version: str
+) -> str:
     name = f"liga-{vision_type}-assembly_{scala_version}"
     url = "https://github.com/liga-ai/ligavision/releases/download"
     github_jar = f"{url}/ligavision_{version}/{name}-{version}.jar"
@@ -41,7 +43,9 @@ def get_liga_vision_jar(vision_type: str, jar_type: str, scala_version: str) -> 
             if os.path.exists(local_jar_path):
                 return local_jar_path
             else:
-                raise ValueError("Please run `./mill 'image[2.12].assembly'` first")
+                raise ValueError(
+                    "Please run `./mill 'image[2.12].assembly'` first"
+                )
         else:
             logger.warning(
                 "Jar type `local` is for developing purpose, fallback to Jar"
@@ -57,7 +61,7 @@ def init_session(
     conf: Optional[dict] = None,
     jar_type="github",
     scala_version: str = "2.12",
-    with_udf=True, 
+    with_udf=True,
 ):
     if conf and "spark.jars" in conf.keys():
         pass
@@ -66,12 +70,13 @@ def init_session(
         if not conf:
             conf = {}
         conf["spark.jars"] = ",".join([liga_image_uri])
-        conf["spark.sql.extensions"] = ",".join([
-            "net.xmacs.liga.spark.RikaiSparkSessionExtensions",
-            "org.apache.spark.sql.rikai.LigaImageExtensions"
-        ])
+        conf["spark.sql.extensions"] = ",".join(
+            [
+                "net.xmacs.liga.spark.RikaiSparkSessionExtensions",
+                "org.apache.spark.sql.rikai.LigaImageExtensions",
+            ]
+        )
     spark = liga_init_session(app_name=app_name, conf=conf)
     if with_udf:
         init_udf(spark)
     return spark
-    

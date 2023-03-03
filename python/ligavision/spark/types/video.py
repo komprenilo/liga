@@ -62,6 +62,7 @@ class VideoStreamType(UserDefinedType):
     def simpleString(self) -> str:
         return "videostream"
 
+
 class VideoStream(DslVideoStream):
     __UDT__ = VideoStreamType()
 
@@ -101,6 +102,7 @@ class YouTubeVideoType(UserDefinedType):
 
     def simpleString(self) -> str:
         return "youtubevideo"
+
 
 class YouTubeVideo(DslYouTubeVideo):
     __DSL__ = YouTubeVideoType()
@@ -144,6 +146,7 @@ class SegmentType(UserDefinedType):
 
     def simpleString(self) -> str:
         return "segment"
+
 
 class Segment(DslSegment):
     __DSL__ = SegmentType()

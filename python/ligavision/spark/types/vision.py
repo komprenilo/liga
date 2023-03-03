@@ -69,6 +69,7 @@ class ImageType(UserDefinedType):
     def simpleString(self) -> str:
         return "image"
 
+
 class Image(DslImage):
     __UDT__ = ImageType()
 
