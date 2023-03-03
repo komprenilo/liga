@@ -3,6 +3,8 @@ python_sources(
     name="sources",
     sources=["conftest.py"],
     resolve="ligavision_test",
+    skip_pylint=True,
+    skip_mypy=True,
 )
 
 python_tests(name = "tests",
