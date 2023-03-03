@@ -37,13 +37,15 @@ def uri_equal(uri1: str, uri2: str) -> bool:
     if uri1 == uri2:
         return True
     from urllib.parse import urlparse
+
     parsed1 = urlparse(uri1)
     parsed2 = urlparse(uri2)
     if parsed1.scheme in ["", "file"] and parsed2.scheme in ["", "file"]:
         return (
-                parsed1.netloc == parsed2.netloc and parsed1.path == parsed2.path
+            parsed1.netloc == parsed2.netloc and parsed1.path == parsed2.path
         )
     return False
+
 
 class ToNumpy(ABC):
     """ToNumpy Mixin."""
@@ -84,7 +86,9 @@ class Drawable(ABC):
     def _render(self, render: "ligavision.dsl.Renderer", **kwargs) -> None:
         """Render the object using render."""
 
-    def __matmul__(self, style: Union[dict, "ligavision.dsl.Style"]) -> Drawable:
+    def __matmul__(
+        self, style: Union[dict, "ligavision.dsl.Style"]
+    ) -> Drawable:
         from ligavision.dsl import Style
 
         if not isinstance(style, (Mapping, Style)):
@@ -137,4 +141,5 @@ class Asset(ABC):
         if self.is_embedded:
             return BytesIO(self.data)
         import fsspec
+
         return fsspec.open(self.uri, mode).open()

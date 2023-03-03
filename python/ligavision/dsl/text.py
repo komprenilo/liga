@@ -32,10 +32,10 @@ class Text(Drawable):
     """
 
     def __init__(
-            self,
-            text: str,
-            xy: Tuple[int, int],
-            color: str = conf.text.color,
+        self,
+        text: str,
+        xy: Tuple[int, int],
+        color: str = conf.text.color,
     ):
         self.text = text
         self.xy = xy

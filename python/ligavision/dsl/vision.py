@@ -33,7 +33,14 @@ import fsspec
 
 # Rikai
 from ligavision.dsl import conf
-from ligavision.dsl.mixin import Asset, Displayable, Drawable, ToDict, ToNumpy, ToPIL
+from ligavision.dsl.mixin import (
+    Asset,
+    Displayable,
+    Drawable,
+    ToDict,
+    ToNumpy,
+    ToPIL,
+)
 from ligavision.dsl.geometry import Box2d
 from ligavision.dsl.base import Draw, PILRenderer
 
@@ -74,7 +81,6 @@ class Image(ToNumpy, ToPIL, Asset, Displayable, ToDict):
     image : bytes, file-like object, str or :py:class:`~pathlib.Path`
         It can be the content of image, or a URI / Path of an image.
     """
-
 
     def __init__(
         self,

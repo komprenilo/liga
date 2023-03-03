@@ -74,9 +74,7 @@ class Renderer(ABC):
     """The base class for rendering a :py:class:`Draw`."""
 
     @abstractmethod
-    def rectangle(
-            self, xy, color: str = conf.text.color, width: int = 1
-    ):
+    def rectangle(self, xy, color: str = conf.text.color, width: int = 1):
         pass
 
     @abstractmethod
@@ -103,16 +101,14 @@ class PILRenderer(Renderer):
     def image(self) -> PILImage:
         return self.img
 
-    def rectangle(
-            self, xy, color: str = conf.text.color, width: int = 1
-    ):
+    def rectangle(self, xy, color: str = conf.text.color, width: int = 1):
         self.draw.rectangle(xy, outline=color, width=width)
 
     def polygon(
-            self,
-            xy,
-            color: str = conf.text.color,
-            fill: bool = True,
+        self,
+        xy,
+        color: str = conf.text.color,
+        fill: bool = True,
     ):
         if fill:
             overlay = PILImage.new("RGBA", self.img.size, (255, 255, 255, 0))
@@ -127,14 +123,10 @@ class PILRenderer(Renderer):
         else:
             self.draw.polygon(xy=xy, outline=color)
 
-    def text(
-            self, xy, text: str, color: str = conf.text.color
-    ):
+    def text(self, xy, text: str, color: str = conf.text.color):
         self.draw.text(xy, text, fill=color)
 
-    def mask(
-            self, arr: np.ndarray, color: str = conf.text.color
-    ):
+    def mask(self, arr: np.ndarray, color: str = conf.text.color):
         overlay = PILImage.new("RGBA", self.img.size, (255, 255, 255, 0))
         overlay_draw = ImageDraw.Draw(overlay)
         overlay_draw.bitmap((0, 0), PILImage.fromarray(arr), fill=color)

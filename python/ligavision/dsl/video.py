@@ -35,7 +35,6 @@ class YouTubeVideo(Displayable):
     VideoStream instance which represents a particular video stream file obj
     """
 
-
     def __init__(self, vid: str):
         """
         Parameters

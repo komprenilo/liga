@@ -12,9 +12,11 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 
+
 class image:
     format = "PNG"
     notebook = "databricks"
+
 
 class text:
     color = "red"

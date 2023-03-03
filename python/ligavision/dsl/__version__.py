@@ -14,4 +14,4 @@
 
 from importlib.metadata import version
 
-version = version('ligavision-dsl')
+version = version("ligavision-dsl")
