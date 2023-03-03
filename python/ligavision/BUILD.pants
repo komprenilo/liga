@@ -1,0 +1,28 @@
+python_requirements(
+    name="requirements",
+    resolve=parametrize("ligavision", "ligavision_test"),
+)
+
+python_requirement(
+    name="spark_3_2",
+    requirements=[
+        "pyspark==3.2.1",
+    ],
+    resolve=parametrize("ligavision", "ligavision_test"),
+)
+
+python_requirement(
+    name="ligavision-dsl",
+    requirements=[
+        "ligavision-dsl==0.2.0",
+    ],
+    resolve="ligavision",
+)
+
+python_sources(
+    name="sources",
+    sources=["!test_*.py", "!conftest.py", "*.py", "spark/**/*.py"],
+    resolve=parametrize("ligavision", "ligavision_test"),
+    skip_pylint=True,
+    skip_mypy=True,
+)

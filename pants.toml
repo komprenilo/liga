@@ -20,12 +20,18 @@ interpreter_constraints = [">=3.8,<3.10"]
 enable_resolves = true
 
 [python.resolves]
-  vision_dsl = "3rdparty/python/vision_dsl.lock"
-  vision_dsl_test = "3rdparty/python/vision_dsl_test.lock"
+  # liga
   spark_3_2_1 = "3rdparty/python/spark_3_2_1.lock"
   spark_3_3_1 = "3rdparty/python/spark_3_3_1.lock"
+  # liga-sklearn
   sklearn = "3rdparty/python/sklearn.lock"
+  # liga-mlflow
   mlflow = "3rdparty/python/mlflow.lock"
+  # ligavision
+  vision_dsl = "3rdparty/python/vision_dsl.lock"
+  vision_dsl_test = "3rdparty/python/vision_dsl_test.lock"
+  ligavision = "3rdparty/python/ligavision.lock"
+  ligavision_test = "3rdparty/python/ligavision_test.lock"
 
 [black]
   version = "black==22.1.0"

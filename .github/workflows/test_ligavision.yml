@@ -1,4 +1,4 @@
-name: Test Image
+name: Test Liga Vision
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
       - main
     paths:
       - 'image/**'
-      - '.github/workflows/test_image.yml'
+      - '.github/workflows/test_ligavision.yml'
 
 jobs:
   build:
@@ -63,3 +63,5 @@ jobs:
       run: mill 'image[2.12].assembly'
       env:
         SPARK_VERSION: ${{ matrix.spark-version }}
+    - name: Test Liga Vision
+      run: bin/test_ligavision
