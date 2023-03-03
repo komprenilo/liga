@@ -1,6 +1,14 @@
+English | [简体中文](README_ZH.md)
+
 # Liga: Let Data Dance with ML Models
+> 理解机：让数据和机器学习模型一起舞动！
 
 Liga is general-purpose ML-enhanced SQL framework designed to be modular, extensible and scalable.
+
+Liga-based domain specific abstraction:
++ Liga Vision: UDT/UDF/Liga ModelType for Computer Vision
++ Liga Audio (TODO): UDT/UDF/Liga ModelType for Audio
++ Liga NLP (TODO): UDT/UDF/Liga ModelType for NLP
 
 ## Table of Contents
 * [Design](#design)
