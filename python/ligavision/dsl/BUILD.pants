@@ -1,0 +1,25 @@
+python_sources(
+    name="sources",
+    resolve=parametrize("vision_dsl", "vision_dsl_test"),
+)
+
+python_tests(
+    name="tests",
+    resolve="vision_dsl_test",
+    dependencies=[
+        "//python/ligavision/dsl:requirements#aiohttp@resolve=vision_dsl_test",
+    ],
+)
+
+python_requirements(
+    name="requirements",
+    resolve=parametrize("vision_dsl", "vision_dsl_test"),
+)
+
+python_requirement(
+    name="test_requirements",
+    requirements=[
+        "ipython>=7.31.1,!=8.0.0",
+    ],
+    resolve="vision_dsl_test",
+)

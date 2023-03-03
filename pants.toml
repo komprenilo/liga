@@ -20,6 +20,8 @@ interpreter_constraints = [">=3.8,<3.10"]
 enable_resolves = true
 
 [python.resolves]
+  vision_dsl = "3rdparty/python/vision_dsl.lock"
+  vision_dsl_test = "3rdparty/python/vision_dsl_test.lock"
   spark_3_2_1 = "3rdparty/python/spark_3_2_1.lock"
   spark_3_3_1 = "3rdparty/python/spark_3_3_1.lock"
   sklearn = "3rdparty/python/sklearn.lock"
