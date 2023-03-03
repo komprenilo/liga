@@ -23,6 +23,5 @@ python_sources(
     name="sources",
     sources=["!test_*.py", "!conftest.py", "*.py", "spark/**/*.py"],
     resolve=parametrize("ligavision", "ligavision_test"),
-    skip_pylint=True,
     skip_mypy=True,
 )
