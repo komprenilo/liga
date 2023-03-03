@@ -1,0 +1,6 @@
+Pillow
+numpy
+# fsspec with HTTP support
+fsspec
+requests
+aiohttp
