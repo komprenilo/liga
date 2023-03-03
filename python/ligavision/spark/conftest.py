@@ -26,4 +26,4 @@ def spark(tmp_path_factory) -> SparkSession:
 def asset_path() -> Path:
     import os
     project_path = os.environ.get("ROOTDIR")
-    return Path(project_path) / "video" / "test" / "resources"
+    return Path(project_path) / "image" / "test" / "resources"

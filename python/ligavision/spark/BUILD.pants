@@ -2,12 +2,14 @@
 python_sources(
     name="sources",
     sources=["conftest.py"],
-    resolve=parametrize("test", "mono"),
+    resolve="ligavision",
 )
 
 python_tests(name = "tests",
     dependencies=[
         ":sources",
+        "//python/ligavision/dsl:requirements#Pillow@resolve=ligavision",
+        "//python/ligavision/dsl:requirements#aiohttp@resolve=ligavision",
     ],
     extra_env_vars=["ROOTDIR"],
     resolve="ligavision",
@@ -18,5 +20,5 @@ python_requirement(
     requirements=[
         "ipython>=7.31.1,!=8.0.0",
     ],
-    resolve=parametrize("ligavision"),
+    resolve="ligavision",
 )
