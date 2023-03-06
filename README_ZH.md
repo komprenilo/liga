@@ -86,4 +86,4 @@ DROP MODEL model_name;
 > 注意：这种场景依赖于一个可持久化的模型目录（Model Catalog）。
 
 ## 历史
-理解机源于 ETO 公司的 Rikai 项目，在第四次Tubi黑客马拉松中，理解机的作者们将Rikai项目中扩展Spark SQL实现调用机器学习模型的部分从Rikai项目剥离并重构。
+理解机源于Rikai项目。Rikai的作者是[Chang She](https://github.com/changhiskhan)和[Lei Xu](https://github.com/eddyxu)，Rikai的第一个公开版本发布于2021年4月4日。在第四次Tubi黑客马拉松中，[Darcy Shen](https://github.com/da-tubi)和[Renkai Ge](https://github.com/Renkai)将Rikai项目中扩展Spark SQL实现调用机器学习模型的部分从Rikai项目剥离并重构。
