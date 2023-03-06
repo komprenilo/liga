@@ -20,7 +20,7 @@ we can provide domain specific Liga solution:
 ## Integration with Machine Learning
 ### Machine Learning Framework
 + [scikit-learn](README_SKLEARN.md)
-+ [PyTorch](https://gitee.com/komprenilo/liga-pytorch)
++ [PyTorch](https://github.com/komprenilo/liga-pytorch)
 
 ### Model Registry
 Liga v0.2.x supports MLflow. It does not mean it is bound to MLflow.
