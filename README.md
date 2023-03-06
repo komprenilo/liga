@@ -6,14 +6,16 @@ Liga is a general-purpose framework to extend any SQL engine with ML Models with
 + User Friendly: Well-designed SQL extension syntax and [Python API](README_PYTHON.md)
 + Extensible: Integrated with any ML system via Liga Plugin and Model Registry
 
-Based on the Liga framework, provided:
+Based on the Liga framework, with:
 + User Defined Functions
 + User Defined Types
 + Model Types
 
-| Specific Domain | PYPI | Visualization Demo | Liga SQL Demo |
+we can provide domain specific Liga solution:
+
+| Domain | PYPI | Visualization Demo | Liga SQL Demo |
 |-----------------|------|--------------------|---------------|
-| Liga Vision     | ligavision | TODO         | TODO          |
+| [Liga Vision](README_VISION.md) | ligavision | TODO | TODO |
 
 ## Integration with Machine Learning
 ### Machine Learning Framework
