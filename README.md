@@ -93,4 +93,4 @@ Apply the model
 > WARNING: it depends on a persistent Model Catalog
 
 ## History
-Liga is the ML extension part of [Rikai](https://github.com/eto-ai/rikai). Rikai is created by [Chang She](https://github.com/changhiskhan) and [Lei Xu](https://github.com/eddyxu) and [the first release](https://github.com/eto-ai/rikai/releases/tag/v0.0.4) of Rikai dates back to 2021/04/04. [Darcy Shen](https://github.com/da-tubi) and [Renkai Ge](https://github.com/Renkai) created the Liga fork of Rikai as a [project](https://github.com/liga-ai/liga/issues/13) of the 4th Tubi Hackathon.
+Liga is the ML extension part of [Rikai](https://github.com/eto-ai/rikai). Rikai is created by [Chang She](https://github.com/changhiskhan) and [Lei Xu](https://github.com/eddyxu) and [the first release](https://github.com/eto-ai/rikai/releases/tag/v0.0.4) of Rikai dates back to 2021/04/04. [Darcy Shen](https://github.com/da-tubi) and [Renkai Ge](https://github.com/Renkai) created the Liga fork of Rikai as a [project](https://github.com/komprenilo/liga/issues/13) of the 4th Tubi Hackathon.
