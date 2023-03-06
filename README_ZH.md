@@ -5,7 +5,7 @@
 理解机是一套扩展SQL引擎以支持使用机器学习模型处理数据的通用框架。具备以下特性：
 
 + 可伸缩：轻松处理任意规模数据集
-+ 灵活易用：提供精心设计的 SQL 和 Python API
++ 灵活易用：提供精心设计的 SQL 扩展语法和 [Python API](README_PYTHON.md)
 + 可扩展：通过插件机制和模型注册系统轻松集成任意机器学习模型
 
 基于理解机框架，通过提供领域专用的
@@ -22,10 +22,7 @@
 | 自然语言理解机 | | | |
 | 预测机 |  | | | |
 
-## 系统集成
-### SQL引擎
-理解机V0.2.x是基于Apache Spark实现的，这并不意味着理解机是一个基于 Apache Spark 的开源项目。Spark SQL仅仅是理解机这套框架想要适配的SQL引擎之一。
-
+## 机器学习系统集成
 ### 机器学习框架
 + [scikit-learn](README_SKLEARN.md)
 + [PyTorch](https://gitee.com/komprenilo/liga-pytorch)
@@ -33,8 +30,11 @@
 ### 模型注册系统
 理解机V0.2.x支持 MLflow 这个模型注册系统，这并不意味着理解机只能用 MLflow 这个特定的模型注册系统。
 
-## 理解机SQL扩展参考
-### SQL: ML_PREDICT
+## 数据处理系统集成
+### SQL引擎扩展
+理解机V0.2.x是基于Apache Spark实现的，这并不意味着理解机是一个基于 Apache Spark 的开源项目。Spark SQL仅仅是理解机这套框架想要适配的SQL引擎之一。
+
+#### SQL: ML_PREDICT
 ``` sql
 SELECT
   id,
@@ -42,16 +42,16 @@ SELECT
 FROM cocodataset
 ```
 
-### SQL：创建模型
+#### SQL：创建模型
 ``` sql
 -- Create model
 CREATE [OR REPLACE] MODEL model_name
-[USING liga_plugin]
+[USING liga_plugin_name]
 [FOR model_type]
 [OPTIONS (key1=value1,key2=value2,...)]
 ```
 
-### SQL：管理模型
+#### SQL：管理模型
 ``` sql
 -- Describe model
 { DESC | DESCRIBE } MODEL model_name;
@@ -68,7 +68,7 @@ DROP MODEL model_name;
 ```
 训练模型 -> 保存到模型注册中心 -> 创建模型 -> 使用模型
 ```
-> 注意：对于监督学习，目前只支持使用Python训练。
+> 注意：目前只支持使用Python训练模型，不支持使用SQL训练模型。
 
 ### 场景2：如果模型已经训练完成，则可以简化为：
 ```
