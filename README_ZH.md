@@ -35,7 +35,7 @@
 
 ## 理解机SQL扩展参考
 ### SQL: ML_PREDICT
-```
+``` sql
 SELECT
   id,
   ML_PREDICT(yolov5, image)
@@ -43,7 +43,7 @@ FROM cocodataset
 ```
 
 ### SQL：创建模型
-```
+``` sql
 -- Create model
 CREATE [OR REPLACE] MODEL model_name
 [USING liga_plugin]
@@ -52,7 +52,7 @@ CREATE [OR REPLACE] MODEL model_name
 ```
 
 ### SQL：管理模型
-```
+``` sql
 -- Describe model
 { DESC | DESCRIBE } MODEL model_name;
 
