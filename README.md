@@ -13,16 +13,11 @@ Liga-based domain specific abstraction:
 ## Table of Contents
 * [Design](#design)
 * [Live Notebooks](#live-notebooks)
-* [Liga SQL References](#liga-sql-references)
+* [SQL References](#sql-references)
    * [SQL: ML_PREDICT for small models](#sql-ml_predict-for-small-models)
    * [SQL: ML_TRANSFORM for big models](#sql-ml_transform-for-big-models)
    * [SQL: Model Creation](#sql-model-creation)
    * [SQL: Model Catalog](#sql-model-catalog)
-* [Python API](#python-api)
-   * [Model Type](#model-type)
-   * [Model Flavor](#model-flavor)
-   * [Model Registry](#model-registry)
-   * [Model Catalog](#model-catalog)
 * [History](#history)
 
 ## Design
@@ -42,7 +37,7 @@ Integration with a specific model, a specific ML framework or a specific domain 
 </dl>
 
 
-## Liga SQL References
+## SQL References
 ### SQL: `ML_PREDICT` for small models
 ```
 SELECT
@@ -85,6 +80,9 @@ SHOW MODELS;
 -- Delete a model
 DROP MODEL model_name;
 ```
+
+## Python API
+see [Python API](README_PYTHON.md).
 
 ## History
 Liga is the ML-enhanced SQL part of [Rikai](https://github.com/eto-ai/rikai). Rikai is created by [@changhiskhan](https://github.com/changhiskhan) and [@eddyxu](https://github.com/eddyxu) and [the first release](https://github.com/eto-ai/rikai/releases/tag/v0.0.4) of Rikai dates back to 2021/04/04. [@da-tubi](https://github.com/da-tubi) and [@Renkai](https://github.com/Renkai) created the Liga fork of Rikai as a [project](https://github.com/liga-ai/liga/issues/13) of the 4th Tubi Hackathon.
