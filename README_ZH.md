@@ -34,6 +34,14 @@
 理解机V0.2.x支持 MLflow 这个模型注册系统，这并不意味着理解机只能用 MLflow 这个特定的模型注册系统。
 
 ## 理解机SQL扩展参考
+### SQL: ML_PREDICT
+```
+SELECT
+  id,
+  ML_PREDICT(yolov5, image)
+FROM cocodataset
+```
+
 ### SQL：创建模型
 ```
 -- Create model
@@ -75,7 +83,7 @@ DROP MODEL model_name;
 ```
 使用模型
 ```
-> 注意：这种场景依赖于一个可以持久化的模型目录（Model Catalog）。
+> 注意：这种场景依赖于一个可持久化的模型目录（Model Catalog）。
 
 ## 历史
 理解机源于 ETO 公司的 Rikai 项目，在第四次Tubi黑客马拉松中，理解机的作者们将Rikai项目中扩展Spark SQL实现调用机器学习模型的部分从Rikai项目剥离并重构。
