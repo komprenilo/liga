@@ -2,6 +2,8 @@ English | [简体中文：理解机](README_ZH.md)
 
 # Liga: Let Data Dance with ML Models
 Liga is a general-purpose framework to extend any SQL engine with ML Models with the following features:
+
++ Humanity: Open source software made on earth for human beings
 + Scalable: Processing data at any scale
 + User Friendly: Well-designed SQL extension syntax and [Python API](README_PYTHON.md)
 + Extensible: Integrated with any ML system via Liga Plugin and Model Registry
