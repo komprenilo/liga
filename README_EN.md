@@ -1,5 +1,4 @@
-English | [简体中文：理解机](README_ZH.md)丨[Esperanto: Komprenilo](READEME_EO.md)
-
+[Esperanto: Komprenilo](README.md) | [简体中文：理解机](README_ZH.md) | English
 
 # Liga: Let Data Dance with ML Models
 Liga is a general-purpose framework to extend any SQL engine with ML Models with the following features:

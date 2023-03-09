@@ -1,4 +1,4 @@
-English | [简体中文：理解机](README_ZH.md)丨[Esperanto: Komprenilo](README_EO.md)
+[English: Liga](README_EN.md) | [简体中文：理解机](README_ZH.md)丨 Esperanto
 
 # Komprenilo: dancumigu datumojn kun Maŝinlernadaj Modeloj
 
