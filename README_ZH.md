@@ -1,5 +1,4 @@
-[English: Liga](README.md) | 简体中文丨[Esperanto: Komprenilo](README_EO.md)
-
+[Esperanto: Komprenilo](README.md) | [English: Liga](README_EN.md) | 简体中文
 
 # 理解机: 让数据和机器学习模型一起舞动
 

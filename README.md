@@ -1,66 +1,59 @@
-English | [简体中文：理解机](README_ZH.md)丨[Esperanto: Komprenilo](README_EO.md)
+[English: Liga](README_EN.md) | [简体中文：理解机](README_ZH.md)丨 Esperanto
 
+# Komprenilo: dancumigu datumojn kun Maŝinlernadaj Modeloj
 
-# Liga: Let Data Dance with ML Models
-Liga is a general-purpose framework to extend any SQL engine with ML Models with the following features:
+Komprenilo estas generala kadro por etendi iun ajn SQL-motoron por subteni datumtraktadon uzante Maŝinlernadaj Modeloj. Ĝi havas la sekvajn karakterizaĵojnj:
 
-+ Humanity: Open source software made on earth for human beings
-+ Scalable: Processing data at any scale
-+ User Friendly: Well-designed SQL extension syntax and [Python API](README_PYTHON.md)
-+ Extensible: Integrated with any ML system via Liga Plugin and Model Registry
++ Homamo & Neatako: malfermkoda programaro farita de Terano kaj por homaro
++ Skalebla: facile manipuli datumajn arojn de ajna grandeco
++ Fleksebla kaj facile uzabla: bon-desegnita SQL-etendan sintakson kaj [Python API](README_PYTHON.md)
++ Etendebla: eblas integri kun iu ajn Maŝinlernadaj Modeloj per aldonaĵa mekanismo kaj modelo-registra sistemo
 
-Based on the Liga framework, with:
-+ User Defined Functions
-+ User Defined Types
-+ Model Types
+urbazante la kadron de Komprenilo, kun: 
++ Uzant-definita funkcio (UDF)
++ Uzant-definita datumtipo (UDT)
++ Modela Tipo (Model Type)
 
-we can provide domain specific Liga solution:
+oni povas provizi domajn-specifajn komprenilajn solvojn
 
-| Domain | PYPI | Visualization Demo | Liga SQL Demo |
-|-----------------|------|--------------------|---------------|
-| [Liga Vision](README_VISION.md) | ligavision | TODO | TODO |
+| Domajno | PYPI | Bildiga Ekzemplo | Ekzemplo de Datumtraktado |
+|-----|-----------|------------|-|
+| Vida Komprenilo | [ligavision](README_VISION.md) | | | |
+| Aŭda Komprenilo | | | |
+| Naturlingva Komprenilo | | | |
+| Prognozilo |  | | | |
 
-## Integration with Machine Learning
-### Machine Learning Framework
+## Maŝinlernada Sistemo-Integriĝo
+### Kadro por Maŝinlernado
 + [scikit-learn](README_SKLEARN.md)
-+ [PyTorch](https://github.com/komprenilo/liga-pytorch)
++ [PyTorch](https://gitee.com/komprenilo/liga-pytorch)
 
-### Model Registry
-Liga v0.2.x supports MLflow. It does not mean it is bound to MLflow.
+### Model-registra Sistemo
+Komprenilo V0.2.x subtenas la model-registran sistemon MLflow, sed tio ne signifas ke Komprenilo nur povas uzi ĉi tiun model-registran sistemon (MLflow).
 
-## Integration with SQL Engine
-Liga v0.2.x extends Spark SQL. It does not mean it is bound to Spark SQL.
 
-### SQL References
-#### SQL: `ML_PREDICT`
+## Sistema Integriĝo de Datum-Traktado
+### Integriĝo kun SQL-motoro
+Komprenilo V0.2.x realiĝas surbazante Apache Spark, sed ĝi ne estas alia malfermkoda projekto de Apache Spark. Spark SQL estas nur unu el la SQL-motoroj, al kiuj Komprenilo volas adaptiĝi.
+
+#### SQL: ML_PREDICT
 ``` sql
 SELECT
   id,
-  ML_PREDICT(my_yolov5, image)
-FROM cocodataset 
+  ML_PREDICT(yolov5, image)
+FROM cocodataset
 ```
 
-`ML_PREDICT` is a special UDF which takes two parameters:
-+ `model_name` is a special parameter look likes an identifier
-+ data
-
-#### SQL: Model Creation
-A Model instance is created by specifying the model flavor, type and options on the uri.
-
+#### SQL：Krei modelon
 ``` sql
 -- Create model
 CREATE [OR REPLACE] MODEL model_name
-[FLAVOR flavor]
-[MODEL_TYPE model_type]
+[USING liga_plugin_name]
+[FOR model_type]
 [OPTIONS (key1=value1,key2=value2,...)]
-USING "uri";
 ```
 
-+ `flavor`: eg. `liga.sklearn` => `from liga.sklearn.codegen import codegen`
-+ `model_type`: eg. `classifier` => `from liga.sklearn.models.classifier import MODEL_TYPE`
-
-
-#### SQL: Model Catalog
+#### SQL：Administri modelon
 ``` sql
 -- Describe model
 { DESC | DESCRIBE } MODEL model_name;
@@ -72,28 +65,27 @@ SHOW MODELS;
 DROP MODEL model_name;
 ```
 
-## Workflow
-### Case 1: The Complete Workflow
+## Laborfluo 
+### Sceno 1: Kompleta laborfluo:
 ```
-Train -> Log to Model Registry -> Create a model -> Apply the model
+Trejnado de modelo -> Konservado en modelo-registrejon -> Kreo de modelo -> Uzado de modelo
 ```
-> WARNING: Please use Python to train a model, currently, Liga does not provide the SQL way to train a model.
+> Notu: Nuntempe nur subtenas Python por la modelo-trajnado, ne SQL.
 
-### Case 2: Without training
+### Sceno 2: Se la modelo jam trejniĝis, ĝi povas simpliĝi jene:
 ```
-Create a model -> Apply the model
+Kreo de modelo -> Uzado de modelo
 ```
-There are several ways to create a model:
-+ Load public pretrained model
-+ Load from private Model Registry
-+ Load from a URI
+Estas diversaj modoj por krei modelojn, ekzemple:
++ ŝarĝi publikajn antaŭ-trejnajn modelojn
++ ŝarĝi de privataj modelo-registraj sistemoj
++ ŝarĝi de URL
 
-
-### Case 3: Apply model directly
+### Sceno 3: Uzi modelon rekte
 ```
-Apply the model
+Uzi modelon
 ```
-> WARNING: it depends on a persistent Model Catalog
+> Notu: Ĉi tio dependas de persistanta modelo-katalogo (Model Catalog).
 
-## History
-Liga is the ML extension part of [Rikai](https://github.com/eto-ai/rikai). Rikai is created by [Chang She](https://github.com/changhiskhan) and [Lei Xu](https://github.com/eddyxu) and [the first release](https://github.com/eto-ai/rikai/releases/tag/v0.0.4) of Rikai dates back to 2021/04/04. [Darcy Shen](https://github.com/da-tubi) and [Renkai Ge](https://github.com/Renkai) created the Liga fork of Rikai as a [project](https://github.com/komprenilo/liga/issues/13) of the 4th Tubi Hackathon.
+## Historio
+Komprenilo devenas de la projekto Rikai. Rikai estas kreita de [Chang She](https://github.com/changhiskhan) kaj [Lei Xu](https://github.com/eddyxu). La unua versio publikiĝis je la 4-an de Aprilo, 2021. En la Kvara Tubi Hackathon, [Darcy Shen](https://github.com/da-tubi) kaj [Renkai Ge](https://github.com/Renkai) kreis la fork-projekton - Komprenilo el Rikai (https://github.com/komprenilo/liga/issues/13).
