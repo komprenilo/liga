@@ -1,4 +1,4 @@
-[English: Liga](README.md) | [简体中文：理解机](README_ZH.md)丨[Esperanto: Komprenilo](READEME_EO.md)
+[English: Liga](README.md) | [简体中文：理解机](README_ZH.md)丨[Esperanto: Komprenilo](README_EO.md)
 
 # Komprenilo: dancumigu datumojn kun Maŝinlernadaj Modeloj
 
