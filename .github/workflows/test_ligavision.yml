@@ -32,7 +32,7 @@ jobs:
         java-version: adopt@1.8
     - uses: jodersky/setup-mill@master
       with:
-        mill-version: 0.10.11
+        mill-version: 0.10.12
     - uses: pantsbuild/actions/init-pants@v1
       # This action bootstraps pants and manages 2-3 GHA caches.
       # See: https://github.com/pantsbuild/actions/tree/init-pants/
