@@ -21,7 +21,7 @@ class ImageModule(majorVersion: String) extends CrossScalaModule with PublishMod
     organization = "net.xmacs.liga",
     licenses = Seq(License.Common.Apache2),
     url = "https://github.com/komprenilo/liga-vision",
-    versionControl = VersionControl.github("liga-ai", "liga-vision"),
+    versionControl = VersionControl.github("komprenilo", "liga-vision"),
     developers = Seq(
       Developer("da-tubi", "Darcy Shen", "https://github.com/da-tubi")
     )
