@@ -3,7 +3,7 @@ enabled = true
 repo_id = "a8cdb096-9b8c-4e8c-934a-4f582c591f04"
 
 [GLOBAL]
-pants_version = "2.14.0"
+pants_version = "2.15.0"
 
 backend_packages.add = [
   "pants.backend.python",
