@@ -27,9 +27,11 @@ class LigaModule(majorVersion: String) extends CrossScalaModule with PublishModu
     )
   )
 
+
   override def compileIvyDeps = Agg(
     ivy"org.apache.spark::spark-sql:3.2.1",
-    ivy"com.thoughtworks.enableIf::enableif:1.1.8"
+    ivy"com.thoughtworks.enableIf::enableif:1.1.8",
+    ivy"org.apache.httpcomponents:httpclient:4.5.14",
   )
 }
 
