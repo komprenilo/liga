@@ -4,8 +4,9 @@ import mill.scalalib.publish._
 import mill.scalalib.scalafmt._
 import mill.modules.Assembly
 import mill.modules.Assembly.Rule.ExcludePattern
+import $file.antlr
 
-class LigaModule(majorVersion: String) extends CrossScalaModule with PublishModule with ScalafmtModule {
+class LigaModule(majorVersion: String) extends CrossScalaModule with PublishModule with ScalafmtModule with antlr.AntlrModule {
   override def crossScalaVersion: String = majorVersion match {
     case "2.12" => "2.12.13"
     case "2.13" => "2.13.7"
@@ -27,12 +28,21 @@ class LigaModule(majorVersion: String) extends CrossScalaModule with PublishModu
     )
   )
 
-
   override def compileIvyDeps = Agg(
     ivy"org.apache.spark::spark-sql:3.2.1",
     ivy"com.thoughtworks.enableIf::enableif:1.1.8",
     ivy"org.apache.httpcomponents:httpclient:4.5.14",
   )
+
+  override def ivyDeps = Agg(ivy"org.antlr:antlr4-runtime:4.8")
+
+  override def antlrGenerateVisitor: Boolean = true
+
+  override def antlrPackage: Option[String] = Some("net.xmacs.liga.spark.parser")
+
+  override def antlrGrammarSources = T.sources {
+    Seq(millSourcePath / "resources" / "antlr4").map(PathRef(_))
+  }
 }
 
 object liga extends mill.Cross[LigaModule]("2.12", "2.13")
