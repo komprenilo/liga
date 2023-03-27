@@ -67,11 +67,11 @@ jobs:
       run: mill 'liga[2.12].test'
       env:
         SPARK_VERSION: ${{ matrix.spark-version }}
-    # - name: sbt assembly
-    #   run: sbt assembly
-    #   env:
-    #     SPARK_VERSION: ${{ matrix.spark-version }}
-    # - name: Run python tests
-    #   run: bin/test
-    #   env:
-    #     SPARK_VERSION: ${{ matrix.spark-version }}
+    - name: Run scala assembly
+      run: mill 'liga[2.12].assembly'
+      env:
+        SPARK_VERSION: ${{ matrix.spark-version }}
+    - name: Run python tests
+       run: bin/test
+       env:
+         SPARK_VERSION: ${{ matrix.spark-version }}
