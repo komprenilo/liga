@@ -13,6 +13,13 @@ class LigaModule(majorVersion: String) extends CrossScalaModule with PublishModu
     case _ => ???
   }
 
+  def sparkVersion: String = {
+    sys.env.get("SPARK_VERSION") match {
+      case Some(v) => v
+      case None => "3.2.1"
+    }
+  }
+
   override def publishVersion = "0.2.3-SNAPSHOT"
 
   override def artifactId = s"liga-spark_${majorVersion}"
@@ -39,13 +46,13 @@ class LigaModule(majorVersion: String) extends CrossScalaModule with PublishModu
 
   override def compileIvyDeps = majorVersion match {
     case "2.12" => Agg(
-      ivy"org.apache.spark::spark-sql:3.2.1",
+      ivy"org.apache.spark::spark-sql:${sparkVersion}",
       ivy"org.apache.httpcomponents:httpclient:4.5.14",
       ivy"org.scalamacros:::paradise:2.1.1",
       ivy"com.thoughtworks.enableIf::enableif:1.1.8",
     )
     case "2.13" => Agg(
-      ivy"org.apache.spark::spark-sql:3.2.1",
+      ivy"org.apache.spark::spark-sql:${sparkVersion}",
       ivy"org.apache.httpcomponents:httpclient:4.5.14",
       ivy"com.thoughtworks.enableIf::enableif:1.1.8",
     )
@@ -75,7 +82,7 @@ class LigaModule(majorVersion: String) extends CrossScalaModule with PublishModu
 
   object test extends Tests with TestModule.ScalaTest {
     override def ivyDeps = Agg(
-      ivy"org.apache.spark::spark-sql:3.2.1",
+      ivy"org.apache.spark::spark-sql:${sparkVersion}",
       ivy"org.scalatest::scalatest:3.2.0",
       ivy"org.apache.httpcomponents:httpclient:4.5.14",
       ivy"ch.qos.logback:logback-classic:1.2.3",
