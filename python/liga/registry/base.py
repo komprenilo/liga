@@ -82,18 +82,18 @@ def codegen_from_spec(spec: ModelSpec) -> ModuleType:
     Returns
     -------
     ModuleType
-        The imported module for the specific flavor codegen
+        The imported module for the specific plugin codegen
     """
-    if is_fully_qualified_name(spec.flavor):
-        codegen_module = f"{spec.flavor}.codegen"
+    if is_fully_qualified_name(spec.plugin):
+        codegen_module = f"{spec.plugin}.codegen"
     else:
-        codegen_module = f"liga.{spec.flavor}.codegen"
+        codegen_module = f"liga.{spec.plugin}.codegen"
 
     try:
         codegen = importlib.import_module(codegen_module)
         return codegen
     except ModuleNotFoundError:
-        logger.error("Unsupported model flavor: %s", spec.flavor)
+        logger.error("Unsupported model plugin: %s", spec.plugin)
         raise
 
 

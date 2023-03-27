@@ -55,7 +55,7 @@ class FileModelSpec(ModelSpec):
             "name": raw_spec.get("name"),
             "options": raw_spec.get("options", {}),
             "model": {
-                "flavor": raw_spec.get("flavor"),
+                "plugin": raw_spec.get("plugin"),
                 "type": raw_spec.get("modelType"),
                 "uri": raw_spec.get("uri"),
             },

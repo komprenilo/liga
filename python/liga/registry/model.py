@@ -46,7 +46,7 @@ def gen_schema_spec(required_cols: List) -> dict:
                 "description": "model description",
                 "properties": {
                     "uri": {"type": "string"},
-                    "flavor": {"type": "string"},
+                    "plugin": {"type": "string"},
                     "type": {"type": "string"},
                 },
                 "required": required_cols,
@@ -57,28 +57,28 @@ def gen_schema_spec(required_cols: List) -> dict:
 
 
 SPEC_PAYLOAD_SCHEMA = gen_schema_spec(["uri"])
-NOURI_SPEC_SCHEMA = gen_schema_spec(["flavor", "type"])
+NOURI_SPEC_SCHEMA = gen_schema_spec(["plugin", "type"])
 
 
 def is_fully_qualified_name(name: str) -> bool:
     return "." in name
 
 
-def parse_model_type(flavor: str, model_type: str) -> "ModelType":
+def parse_model_type(plugin: str, model_type: str) -> "ModelType":
     model_modules_candidates = []
 
     if is_fully_qualified_name(model_type):
         model_modules_candidates.append(model_type)
-    elif is_fully_qualified_name(flavor):
+    elif is_fully_qualified_name(plugin):
         model_modules_candidates.extend(
             [
-                f"{flavor}.models.{model_type}",
+                f"{plugin}.models.{model_type}",
             ]
         )
     else:
         model_modules_candidates.extend(
             [
-                f"liga.{flavor}.models.{model_type}",
+                f"liga.{plugin}.models.{model_type}",
             ]
         )
     for model_module in model_modules_candidates:
@@ -87,7 +87,7 @@ def parse_model_type(flavor: str, model_type: str) -> "ModelType":
         except ModuleNotFoundError:
             pass
     raise ModuleNotFoundError(
-        f"Model type not found for flavor/model_type: {flavor}/{model_type}"
+        f"Model type not found for plugin/model_type: {plugin}/{model_type}"
     )
 
 
@@ -127,8 +127,8 @@ class ModelSpec(ABC):
             validate(instance=self._spec, schema=self._spec_schema)
         except ValidationError as e:
             raise SpecError(e.message) from e
-        if not self.flavor or not self.model_type:
-            raise SpecError("Missing model flavor or model type")
+        if not self.plugin or not self.model_type:
+            raise SpecError("Missing model plugin or model type")
 
     @property
     def version(self) -> str:
@@ -150,7 +150,7 @@ class ModelSpec(ABC):
         """Return model type"""
         mtype = self._spec["model"].get("type", None)
         if mtype:
-            return parse_model_type(self.flavor, mtype)
+            return parse_model_type(self.plugin, mtype)
         else:
             raise SpecError("ModelType is not available in spec")
 
@@ -172,9 +172,9 @@ class ModelSpec(ABC):
         return None
 
     @property
-    def flavor(self) -> str:
-        """Model flavor"""
-        return self._spec["model"].get("flavor", "")
+    def plugin(self) -> str:
+        """Model plugin"""
+        return self._spec["model"].get("plugin", "")
 
     @property
     def schema(self) -> str:

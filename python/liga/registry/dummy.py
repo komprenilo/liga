@@ -33,7 +33,7 @@ class DummyModelSpec(ModelSpec):
             "options": raw_spec.get("options", {}),
             "schema": raw_spec.get("schema", None),
             "model": {
-                "flavor": raw_spec.get("flavor", None),
+                "plugin": raw_spec.get("plugin", None),
                 "type": raw_spec.get("modelType", None),
             },
         }
