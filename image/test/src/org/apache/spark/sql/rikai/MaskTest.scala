@@ -22,7 +22,6 @@ import org.scalatest.FunSuite
 import java.io.File
 import java.nio.file.Files
 
-
 class MaskTest extends FunSuite with SparkTestSession {
   import spark.implicits._
 

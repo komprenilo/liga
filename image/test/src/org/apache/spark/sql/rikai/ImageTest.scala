@@ -5,7 +5,6 @@ import org.apache.spark.sql.Row
 import org.apache.spark.sql.types._
 import org.apache.spark.sql.rikai.Image
 
-
 class ImageTest extends FunSuite with SparkTestSession {
   import spark.implicits._
 

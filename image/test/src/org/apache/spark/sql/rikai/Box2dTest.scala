@@ -19,7 +19,6 @@ package org.apache.spark.sql.rikai
 import org.scalactic.{Equality, TolerantNumerics}
 import org.scalatest.FunSuite
 
-
 class Box2dTest extends FunSuite with SparkTestSession {
   import spark.implicits._
 

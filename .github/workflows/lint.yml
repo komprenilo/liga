@@ -60,12 +60,8 @@ jobs:
       uses: olafurpg/setup-scala@v10
       with:
         java-version: adopt@1.11
-    - name: cache SBT
-      uses: actions/cache@v2
+    - uses: jodersky/setup-mill@master
       with:
-        path: |
-          ~/.ivy2/cache
-          ~/.sbt
-        key: sbt-format-${{ hashFiles('**/build.sbt') }}
-    - name: scala lint
-      run: sbt scalafmtCheck
+        mill-version: 0.10.12
+    - name: scala checkFormat
+      run: mill mill.scalalib.scalafmt.ScalafmtModule/checkFormatAll __.sources

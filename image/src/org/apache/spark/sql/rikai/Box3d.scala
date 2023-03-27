@@ -59,7 +59,6 @@ class Box3d(
     f"Box3d(center=$center, l=$length, w=$width, h=$height, heading=$heading)"
 }
 
-
 /** User defined type of 3D Bounding Box
   */
 class Box3dType extends UserDefinedType[Box3d] {
