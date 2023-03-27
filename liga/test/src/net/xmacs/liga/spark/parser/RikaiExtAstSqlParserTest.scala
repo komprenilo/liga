@@ -27,9 +27,7 @@ class RikaiExtAstSqlParserTest extends AnyFunSuite {
   test("parse create model if not exists") {
     val cmd = parser.parsePlan("""
       |CREATE MODEL IF NOT EXISTS foo
-      |OPTIONS (
-      |  uri 's3://tmp/test_model'
-      |)
+      |LOCATION 's3://tmp/test_model'
     """.stripMargin)
     assert(cmd.isInstanceOf[CreateModelCommand])
     val create = cmd.asInstanceOf[CreateModelCommand]
@@ -40,27 +38,25 @@ class RikaiExtAstSqlParserTest extends AnyFunSuite {
     assertThrows[ParseException] {
       parser.parsePlan("""
           |CREATE OR REPLACE MODEL IF NOT EXISTS model_created
-          |OPTIONS (
-          |uri 'test://model/created/from/uri'
-          |)
+          |LOCATION 'test://model/created/from/uri'
           |""".stripMargin)
     }
   }
 
   test("parse returns datatype") {
     val cmd = parser.parsePlan(
-      "CREATE MODEL foo RETURN STRUCT<foo:int, bar:ARRAY<STRING>>  'abc'"
+      "CREATE MODEL foo LOCATION 'abc' RETURN STRUCT<foo:int, bar:ARRAY<STRING>>"
     )
     assert(cmd.isInstanceOf[CreateModelCommand])
     val create = cmd.asInstanceOf[CreateModelCommand]
     assert(create.name == "foo")
     assert(create.uri.contains("abc"))
-    assert(create.returns.contains("STRUCT<foo:int, bar:ARRAY<STRING>>"))
+    assert(create.outputSchema.contains("STRUCT<foo:int, bar:ARRAY<STRING>>"))
   }
 
   test("parse model type") {
     val cmd = parser.parsePlan(
-      "CREATE MODEL foo FLAVOR pytorch MODEL_TYPE ssd USING 'abc'"
+      "CREATE MODEL foo USING pytorch FOR ssd LOCATION 'abc'"
     )
     assert(cmd.isInstanceOf[CreateModelCommand])
     val create = cmd.asInstanceOf[CreateModelCommand]
@@ -69,19 +65,19 @@ class RikaiExtAstSqlParserTest extends AnyFunSuite {
 
   test("parse returns UDTs") {
     val cmd = parser.parsePlan(
-      "CREATE MODEL udts RETURNS STRUCT<foo:int, bar:ARRAY<Box2d>> USING 'gs://udt/bucket'"
+      "CREATE MODEL udts LOCATION 'gs://udt/bucket' RETURN STRUCT<foo:int, bar:ARRAY<Box2d>>"
     )
     assert(cmd.isInstanceOf[CreateModelCommand])
     val create = cmd.asInstanceOf[CreateModelCommand]
     assert(create.name == "udts")
     assert(create.uri.contains("gs://udt/bucket"))
-    assert(create.returns.contains("STRUCT<foo:int, bar:ARRAY<Box2d>>"))
+    assert(create.outputSchema.contains("STRUCT<foo:int, bar:ARRAY<Box2d>>"))
   }
 
   test("no uri") {
     val cmd = parser
       .parsePlan("""
-        |CREATE MODEL resnet18 MODEL_TYPE resnet""".stripMargin)
+        |CREATE MODEL resnet18 FOR resnet""".stripMargin)
       .asInstanceOf[CreateModelCommand]
     assert(cmd.name === "resnet18")
     assert(cmd.uri === None)
