@@ -72,6 +72,6 @@ jobs:
       env:
         SPARK_VERSION: ${{ matrix.spark-version }}
     - name: Run python tests
-       run: bin/test
-       env:
-         SPARK_VERSION: ${{ matrix.spark-version }}
+      run: bin/test
+      env:
+        SPARK_VERSION: ${{ matrix.spark-version }}
