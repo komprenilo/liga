@@ -71,7 +71,7 @@ class SparkDataTypeVisitor extends RikaiModelSchemaBaseVisitor[DataType] {
         val dataType = this.visitStructField(context)
         StructField(name, dataType)
       }
-    StructType(fields)
+    StructType(fields.toSeq)
   }
 
   override def visitStructField(ctx: StructFieldContext): DataType = {

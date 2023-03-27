@@ -21,7 +21,6 @@ import org.apache.spark.sql.catalyst.expressions.GenericInternalRow
 import org.apache.spark.sql.rikai.Utils.approxEqual
 import org.apache.spark.sql.types._
 
-
 /** 2-D Bounding Box
   *
   * @constructor Create a 2-D Bounding Box.

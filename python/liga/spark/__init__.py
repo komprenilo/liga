@@ -45,7 +45,7 @@ def get_default_jar_version(use_snapshot: bool = True) -> str:
 def get_liga_assembly_jar(jar_type: str, scala_version: str) -> str:
     spark_version = find_version("pyspark").replace(".", "")
     name = f"liga-spark{spark_version}-assembly_{scala_version}"
-    url = "https://github.com/liga-ai/liga/releases/download"
+    url = "https://github.com/komprenilo/liga/releases/download"
     github_jar = f"{url}/v{version}/{name}-{version}.jar"
     if jar_type == "github":
         if "dev" in version:
@@ -57,15 +57,9 @@ def get_liga_assembly_jar(jar_type: str, scala_version: str) -> str:
     elif jar_type == "local":
         project_path = os.environ.get("ROOTDIR")
         if project_path:
-            local_jar_path = f"{project_path}/target/scala-{scala_version}"
-            snapshot = (
-                f"{local_jar_path}/{name}-{get_default_jar_version()}.jar"
-            )
-            dev = f"{local_jar_path}/{name}-{version}.jar"
-            if os.path.exists(snapshot):
-                return snapshot
-            elif os.path.exists(dev):
-                return dev
+            local_jar_path = f"{project_path}/out/liga/{scala_version}/assembly.dest/out.jar"
+            if os.path.exists(local_jar_path):
+                return local_jar_path
             else:
                 raise ValueError("Please run `sbt clean assembly` first")
         else:

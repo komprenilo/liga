@@ -21,7 +21,6 @@ import org.apache.spark.sql.catalyst.InternalRow
 
 import Utils.approxEqual
 
-
 /** A Point in 3-D space
   *
   * @constructor create a 3-D Point

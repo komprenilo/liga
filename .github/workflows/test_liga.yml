@@ -9,7 +9,7 @@ on:
       - main
     paths:
       - 'python/liga/**'
-      - 'src/main/**'
+      - 'liga/**'
       - '.github/workflows/test_liga.yml'
 
 jobs:
@@ -35,6 +35,9 @@ jobs:
       uses: olafurpg/setup-scala@v10
       with:
         java-version: adopt@1.8
+    - uses: jodersky/setup-mill@master
+      with:
+        mill-version: 0.10.12
     - uses: pantsbuild/actions/init-pants@v1
       # This action bootstraps pants and manages 2-3 GHA caches.
       # See: https://github.com/pantsbuild/actions/tree/init-pants/
@@ -60,23 +63,15 @@ jobs:
       uses: actions/setup-python@v1
       with:
         python-version: ${{ matrix.python-version }}
-    - name: cache SBT
-      uses: actions/cache@v2
-      with:
-        path: |
-          ~/.ivy2/cache
-          ~/.sbt
-        key: ${{ matrix.spark-version }}-sbt-${{ hashFiles('**/build.sbt') }}
-    - name: sbt assembly
-      run: sbt assembly
+    - name: Run scala tests
+      run: mill 'liga[2.12].test'
+      env:
+        SPARK_VERSION: ${{ matrix.spark-version }}
+    - name: Run scala assembly
+      run: mill 'liga[2.12].assembly'
       env:
         SPARK_VERSION: ${{ matrix.spark-version }}
     - name: Run python tests
       run: bin/test
       env:
         SPARK_VERSION: ${{ matrix.spark-version }}
-    - name: Run scala tests
-      run: sbt test
-      env:
-        SPARK_VERSION: ${{ matrix.spark-version }}
-

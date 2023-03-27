@@ -20,7 +20,6 @@ import org.apache.spark.sql.catalyst.InternalRow
 import org.apache.spark.sql.types._
 import org.apache.spark.unsafe.types.UTF8String
 
-
 /** A reference to a particular Youtube vid. A given Youtube vid is associated with many
   * content streams. These can be video streams of different formats at different bitrates,
   * audio-only streams, and video-only streams.
@@ -65,7 +64,6 @@ class YouTubeVideoType extends UserDefinedType[YouTubeVideo] {
 
 case object YouTubeVideoType extends YouTubeVideoType
 
-
 /** A VideoStream references a particular video stream at a given uri
   *
   * @param uri
@@ -106,7 +104,6 @@ private[sql] class VideoStreamType extends UserDefinedType[VideoStream] {
 }
 
 case object VideoStreamType extends VideoStreamType
-
 
 /** A video segment as defined by the first and last frame numbers
   *

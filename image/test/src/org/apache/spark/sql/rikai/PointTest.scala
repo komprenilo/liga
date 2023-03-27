@@ -23,7 +23,6 @@ import java.io.File
 import java.nio.file.Files
 import scala.reflect.io.Directory
 
-
 class PointTest extends FunSuite with SparkTestSession {
   import spark.implicits._
 
