@@ -72,6 +72,17 @@ class LigaModule(majorVersion: String) extends CrossScalaModule with PublishModu
   override def antlrGrammarSources = T.sources {
     Seq(millSourcePath / "resources" / "antlr4").map(PathRef(_))
   }
+
+  object test extends Tests with TestModule.ScalaTest {
+    override def ivyDeps = Agg(
+      ivy"org.apache.spark::spark-sql:3.2.1",
+      ivy"org.scalatest::scalatest:3.2.0",
+      ivy"org.apache.httpcomponents:httpclient:4.5.14",
+      ivy"ch.qos.logback:logback-classic:1.2.3",
+    )
+
+    override def forkEnv = Map("LOG_LEVEL" -> "ERROR")
+  }
 }
 
 object liga extends mill.Cross[LigaModule]("2.12", "2.13")
