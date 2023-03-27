@@ -57,7 +57,7 @@ class TestRegistry(conf: Map[String, String]) extends Registry {
               parsed.getAuthority + "/" + parsed.getPath
             ).getName
         }
-        new SparkUDFModel(model_name, spec.uri.get, model_name, spec.flavor)
+        new SparkUDFModel(model_name, spec.uri.get, model_name, spec.plugin)
       }
       case _ =>
         throw new ModelNotFoundException(

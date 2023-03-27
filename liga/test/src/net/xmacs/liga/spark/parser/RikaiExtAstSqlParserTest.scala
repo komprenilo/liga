@@ -25,9 +25,12 @@ class RikaiExtAstSqlParserTest extends AnyFunSuite {
   val parser = new RikaiExtSqlParser()
 
   test("parse create model if not exists") {
-    val cmd = parser.parsePlan(
-      "CREATE MODEL IF NOT EXISTS foo USING 's3://tmp/test_model'"
-    )
+    val cmd = parser.parsePlan("""
+      |CREATE MODEL IF NOT EXISTS foo
+      |OPTIONS (
+      |  uri 's3://tmp/test_model'
+      |)
+    """.stripMargin)
     assert(cmd.isInstanceOf[CreateModelCommand])
     val create = cmd.asInstanceOf[CreateModelCommand]
     assert(create.ifNotExists === true)
@@ -37,14 +40,16 @@ class RikaiExtAstSqlParserTest extends AnyFunSuite {
     assertThrows[ParseException] {
       parser.parsePlan("""
           |CREATE OR REPLACE MODEL IF NOT EXISTS model_created
-          |USING 'test://model/created/from/uri'
+          |OPTIONS (
+          |uri 'test://model/created/from/uri'
+          |)
           |""".stripMargin)
     }
   }
 
   test("parse returns datatype") {
     val cmd = parser.parsePlan(
-      "CREATE MODEL foo RETURNS STRUCT<foo:int, bar:ARRAY<STRING>> USING 'abc'"
+      "CREATE MODEL foo RETURN STRUCT<foo:int, bar:ARRAY<STRING>>  'abc'"
     )
     assert(cmd.isInstanceOf[CreateModelCommand])
     val create = cmd.asInstanceOf[CreateModelCommand]

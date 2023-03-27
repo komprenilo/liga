@@ -28,10 +28,10 @@ import org.apache.spark.sql.{Row, SparkSession}
 case class CreateModelCommand(
     name: String,
     ifNotExists: Boolean,
-    flavor: Option[String],
+    plugin: Option[String],
     modelType: Option[String],
-    returns: Option[String],
     uri: Option[String],
+    outputSchema: Option[String],
     table: Option[TableIdentifier],
     replace: Boolean,
     options: Map[String, String]
@@ -42,9 +42,9 @@ case class CreateModelCommand(
     ModelSpec(
       name = Some(name),
       uri = uri.map(Registry.normalize_uri).map(_.toString),
-      flavor = flavor,
+      plugin = plugin,
       modelType = modelType,
-      schema = returns,
+      schema = outputSchema,
       options = Some(options)
     )
 

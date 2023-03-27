@@ -22,12 +22,12 @@ package net.xmacs.liga.model
 case class ModelSpec(
     name: Option[String],
     uri: Option[String] = None,
-    flavor: Option[String] = None,
+    plugin: Option[String] = None,
     modelType: Option[String] = None,
     schema: Option[String] = None,
     options: Option[Map[String, String]] = None
 ) {
 
   override def toString: String =
-    s"ModelSpec(name=${name}, uri=${uri}, flavor=${flavor})"
+    s"ModelSpec(name=${name}, uri=${uri}, plugin=${plugin})"
 }
