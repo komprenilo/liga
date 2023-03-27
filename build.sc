@@ -28,16 +28,40 @@ class LigaModule(majorVersion: String) extends CrossScalaModule with PublishModu
     )
   )
 
-  override def compileIvyDeps = Agg(
-    ivy"org.apache.spark::spark-sql:3.2.1",
-    ivy"org.apache.httpcomponents:httpclient:4.5.14",
-    ivy"org.scalamacros:::paradise:2.1.1",
-    ivy"com.thoughtworks.enableIf::enableif:1.1.8",
-  )
+  def scalacOptions = majorVersion match {
+    case "2.12" =>
+      super.scalacOptions()
+    case "2.13" =>
+      Seq("-Ymacro-annotations", "-language:postfixOps")
+    case _ => ???
+  }
 
-  def scalacPluginIvyDeps = super.scalacPluginIvyDeps() ++ Agg(
-    ivy"org.scalamacros:::paradise:2.1.1"
-  )
+
+  override def compileIvyDeps = majorVersion match {
+    case "2.12" => Agg(
+      ivy"org.apache.spark::spark-sql:3.2.1",
+      ivy"org.apache.httpcomponents:httpclient:4.5.14",
+      ivy"org.scalamacros:::paradise:2.1.1",
+      ivy"com.thoughtworks.enableIf::enableif:1.1.8",
+    )
+    case "2.13" => Agg(
+      ivy"org.apache.spark::spark-sql:3.2.1",
+      ivy"org.apache.httpcomponents:httpclient:4.5.14",
+      ivy"com.thoughtworks.enableIf::enableif:1.1.8",
+    )
+    case _ => ???
+  }
+  
+
+  def scalacPluginIvyDeps = majorVersion match {
+    case "2.12" =>
+      super.scalacPluginIvyDeps() ++ Agg(
+        ivy"org.scalamacros:::paradise:2.1.1"
+      )
+    case "2.13" =>
+      super.scalacPluginIvyDeps()
+    case _ => ???
+  }
 
   override def ivyDeps = Agg(ivy"org.antlr:antlr4-runtime:4.8")
 
