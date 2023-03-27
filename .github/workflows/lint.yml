@@ -8,11 +8,13 @@ on:
     branches:
       - main
     paths:
-      - 'python/**'
-      - 'src/main/**'
       - '.github/workflows/lint.yml'
-      - 'build.sbt'
+      - '.pylintrc'
+      - 'build.sc'
+      - 'liga/**'
+      - 'image/**'
       - 'pants.toml'
+      - 'python/**'
 
 jobs:
   build:
