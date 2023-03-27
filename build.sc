@@ -8,8 +8,8 @@ import $file.antlr
 
 class LigaModule(majorVersion: String) extends CrossScalaModule with PublishModule with ScalafmtModule with antlr.AntlrModule {
   override def crossScalaVersion: String = majorVersion match {
-    case "2.12" => "2.12.13"
-    case "2.13" => "2.13.7"
+    case "2.12" => "2.12.16"
+    case "2.13" => "2.13.8"
     case _ => ???
   }
 
@@ -30,8 +30,13 @@ class LigaModule(majorVersion: String) extends CrossScalaModule with PublishModu
 
   override def compileIvyDeps = Agg(
     ivy"org.apache.spark::spark-sql:3.2.1",
-    ivy"com.thoughtworks.enableIf::enableif:1.1.8",
     ivy"org.apache.httpcomponents:httpclient:4.5.14",
+    ivy"org.scalamacros:::paradise:2.1.1",
+    ivy"com.thoughtworks.enableIf::enableif:1.1.8",
+  )
+
+  def scalacPluginIvyDeps = super.scalacPluginIvyDeps() ++ Agg(
+    ivy"org.scalamacros:::paradise:2.1.1"
   )
 
   override def ivyDeps = Agg(ivy"org.antlr:antlr4-runtime:4.8")
