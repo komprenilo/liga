@@ -50,7 +50,7 @@ def test_sklearn_random_forest(mlflow_tracking_uri: str, spark: SparkSession):
 
         spark.sql(
             f"""
-            CREATE MODEL {model_name} USING 'mlflow:///{reg_model_name}';
+            CREATE MODEL {model_name} LOCATION 'mlflow:///{reg_model_name}';
             """
         )
 
@@ -90,7 +90,7 @@ def test_sklearn_pca(mlflow_tracking_uri: str, spark: SparkSession):
         )
         spark.sql(
             f"""
-            CREATE MODEL {model_name} USING 'mlflow:///{reg_model_name}';
+            CREATE MODEL {model_name} LOCATION 'mlflow:///{reg_model_name}';
             """
         )
         result = spark.sql(
