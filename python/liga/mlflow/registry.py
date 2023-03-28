@@ -30,7 +30,7 @@ from liga.registry.base import ModelSpec, Registry
 from liga.mlflow import (
     CONF_MLFLOW_LABEL_FUNC,
     CONF_MLFLOW_LABEL_URI,
-    CONF_MLFLOW_MODEL_FLAVOR,
+    CONF_MLFLOW_MODEL_PLUGIN,
     CONF_MLFLOW_MODEL_TYPE,
     CONF_MLFLOW_OUTPUT_SCHEMA,
     CONF_MLFLOW_SPEC_VERSION,
@@ -82,16 +82,17 @@ class MlflowModelSpec(ModelSpec):
         old_uri = mlflow.get_tracking_uri()
         try:
             mlflow.set_tracking_uri(self.tracking_uri)
-            if self.flavor == "tensorflow":
+            if self.plugin == "tensorflow":
                 return mlflow.pyfunc.load_model(
                     self.model_uri
                 )._model_impl.model
-            elif is_fully_qualified_name(self.flavor):
-                return getattr(mlflow, self.flavor.split(".")[-1]).load_model(
+            elif is_fully_qualified_name(self.plugin):
+                flavor = self.plugin.split(".")[-1]
+                return getattr(mlflow, flavor).load_model(
                     self.model_uri
                 )
             else:
-                return getattr(mlflow, self.flavor).load_model(self.model_uri)
+                return getattr(mlflow, self.plugin).load_model(self.model_uri)
         finally:
             mlflow.set_tracking_uri(old_uri)
 
@@ -118,7 +119,7 @@ class MlflowModelSpec(ModelSpec):
             ),
             "schema": conf.get(CONF_MLFLOW_OUTPUT_SCHEMA, None),
             "model": {
-                "flavor": _get_model_prop(conf, CONF_MLFLOW_MODEL_FLAVOR),
+                "plugin": _get_model_prop(conf, CONF_MLFLOW_MODEL_PLUGIN),
                 "uri": uri,
                 "type": conf.get(CONF_MLFLOW_MODEL_TYPE, None),
             },
@@ -164,7 +165,7 @@ def _get_model_prop(
     if not value and raise_if_absent:
         raise ValueError(
             (
-                "Please use rikai.mlflow.<flavor>.log_model after "
+                "Please use liga.mlflow.<plugin>.log_model after "
                 "training, or specify {} in CREATE MODEL OPTIONS. "
                 "Tags: {}. "
                 "Options: {}"
@@ -221,7 +222,7 @@ class MlflowRegistry(Registry):
         Get the configurations needed to specify the model
         """
         from_spec = [
-            (CONF_MLFLOW_MODEL_FLAVOR, spec["flavor"]),
+            (CONF_MLFLOW_MODEL_PLUGIN, spec["plugin"]),
             (CONF_MLFLOW_OUTPUT_SCHEMA, spec["schema"]),
         ]
         tags = {k: v for k, v in from_spec if v}

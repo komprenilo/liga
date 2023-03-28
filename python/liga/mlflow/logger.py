@@ -115,7 +115,7 @@ class MlflowLogger:
 
         tags = {
             CONF_MLFLOW_SPEC_VERSION: MlflowLogger._CURRENT_MODEL_SPEC_VERSION,
-            CONF_MLFLOW_MODEL_FLAVOR: customized_flavor
+            CONF_MLFLOW_MODEL_PLUGIN: customized_flavor
             if customized_flavor
             else self.flavor,
             CONF_MLFLOW_MODEL_TYPE: model_type,
