@@ -47,12 +47,14 @@ class LigaModule(majorVersion: String) extends CrossScalaModule with PublishModu
   override def compileIvyDeps = majorVersion match {
     case "2.12" => Agg(
       ivy"org.apache.spark::spark-sql:${sparkVersion}",
+      ivy"org.antlr:antlr4-runtime:4.8",
       ivy"org.apache.httpcomponents:httpclient:4.5.14",
       ivy"org.scalamacros:::paradise:2.1.1",
       ivy"com.thoughtworks.enableIf::enableif:1.1.8",
     )
     case "2.13" => Agg(
       ivy"org.apache.spark::spark-sql:${sparkVersion}",
+      ivy"org.antlr:antlr4-runtime:4.8",
       ivy"org.apache.httpcomponents:httpclient:4.5.14",
       ivy"com.thoughtworks.enableIf::enableif:1.1.8",
     )
@@ -70,8 +72,6 @@ class LigaModule(majorVersion: String) extends CrossScalaModule with PublishModu
     case _ => ???
   }
 
-  override def ivyDeps = Agg(ivy"org.antlr:antlr4-runtime:4.8")
-
   override def antlrGenerateVisitor: Boolean = true
 
   override def antlrPackage: Option[String] = Some("net.xmacs.liga.spark.parser")
@@ -80,9 +80,12 @@ class LigaModule(majorVersion: String) extends CrossScalaModule with PublishModu
     Seq(millSourcePath / "resources" / "antlr4").map(PathRef(_))
   }
 
+  def assemblyRules = Assembly.defaultRules ++ Seq(ExcludePattern("scala/.*"))
+
   object test extends Tests with TestModule.ScalaTest {
     override def ivyDeps = Agg(
       ivy"org.apache.spark::spark-sql:${sparkVersion}",
+      ivy"org.antlr:antlr4-runtime:4.8",
       ivy"org.scalatest::scalatest:3.2.0",
       ivy"org.apache.httpcomponents:httpclient:4.5.14",
       ivy"ch.qos.logback:logback-classic:1.2.3",
