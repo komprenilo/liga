@@ -22,8 +22,8 @@ package net.xmacs.liga
   *
   * {{{
   *   CREATE MODEL model_name
+  *   [ LOCATION "model_registry_uri" ]
   *   [ OPTIONS (key=value, key=value, ...) ]
-  *   [ AS "model_registry_uri" ]
   *
   *   # List all registered models.
   *   SHOW MODELS
