@@ -82,7 +82,7 @@ def test_specified_flavor_via_sql(
         f"""
         CREATE MODEL {model_name}
         USING liga.sklearn
-        MODEL_TYPE regressor
+        FOR regressor
         LOCATION '{sklearn_lr_uri}';
         """
     )
