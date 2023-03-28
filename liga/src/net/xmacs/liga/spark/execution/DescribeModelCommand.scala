@@ -30,7 +30,7 @@ case class DescribeModelCommand(name: String) extends ModelCommand {
         Seq(
           Row(
             model.name,
-            model.flavor.getOrElse(""),
+            model.plugin.getOrElse(""),
             model.spec_uri,
             Model.serializeOptions(model.options)
           )

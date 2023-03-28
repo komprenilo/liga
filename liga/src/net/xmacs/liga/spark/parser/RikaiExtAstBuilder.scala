@@ -61,10 +61,10 @@ private[parser] class RikaiExtAstBuilder
   override def visitCreateModel(ctx: CreateModelContext): LogicalPlan = {
     Model.verifyName(ctx.model.getText)
 
-    val flavor: Option[String] = ctx.flavor match {
+    val plugin: Option[String] = ctx.plugin match {
       case null => None
       case _ =>
-        visit(ctx.flavor) match {
+        visit(ctx.plugin) match {
           case s: String => Some(s)
           case _         => None
         }
@@ -73,7 +73,7 @@ private[parser] class RikaiExtAstBuilder
     val ifNotExists: Boolean = List(ctx.IF(), ctx.NOT(), ctx.EXISTS())
       .map(x => x != null)
       .forall(identity)
-    val returns: Option[String] = ctx.RETURNS() match {
+    val schema: Option[String] = ctx.RETURN() match {
       case null => None
       case _ =>
         visit(ctx.datatype) match {
@@ -97,11 +97,11 @@ private[parser] class RikaiExtAstBuilder
 
     CreateModelCommand(
       ctx.model.getText,
-      flavor = flavor,
+      plugin = plugin,
       modelType = modelType,
       ifNotExists = ifNotExists,
-      returns = returns,
       uri = Option(ctx.uri).map(string),
+      outputSchema = schema,
       table = None,
       replace = ctx.REPLACE() != null,
       options = visitOptionList(ctx.optionList())

@@ -61,7 +61,7 @@ def get_liga_assembly_jar(jar_type: str, scala_version: str) -> str:
             if os.path.exists(local_jar_path):
                 return local_jar_path
             else:
-                raise ValueError("Please run `sbt clean assembly` first")
+                raise ValueError("Please run `bin/mill 'liga[2.12].assembly'` first")
         else:
             logger.warning(
                 "Jar type `local` is for developing purpose, fallback to Jar"

@@ -21,11 +21,11 @@ singleStatement
 
 statement
     : CREATE (OR REPLACE)? MODEL (IF NOT EXISTS)? model=qualifiedName
-      (FLAVOR flavor=qualifiedName)?
-      (MODEL_TYPE modeltype=qualifiedName)?
+      (USING plugin=qualifiedName)?
+      (FOR modeltype=qualifiedName)?
+      (LOCATION uri=STRING)?
       (OPTIONS optionList)?
-      (RETURNS datatype=dataType)?
-      (USING uri=STRING)?	                        # createModel
+      (RETURN datatype=dataType)?                   # createModel
     | (DESC | DESCRIBE) MODEL model=qualifiedName   # describeModel
     | SHOW MODELS                                   # showModels
     | DROP MODEL model=qualifiedName                # dropModel
@@ -45,7 +45,7 @@ quotedIdentifier
     ;
 
 nonReserved
-    : CREATE | DESC | DESCRIBE | MODEL | MODEL_TYPE | MODELS | OPTIONS | REPLACE
+    : CREATE | DESC | DESCRIBE | MODEL | MODELS | OPTIONS | REPLACE
     ;
 
 ARRAY: 'ARRAY';
@@ -56,21 +56,21 @@ DESCRIBE : 'DESCRIBE';
 DROP: 'DROP';
 EXISTS: 'EXISTS';
 FALSE: 'FALSE';
-FLAVOR: 'FLAVOR';
 IF: 'IF';
 LIKE: 'LIKE';
 MODEL: 'MODEL';
-MODEL_TYPE: 'MODEL_TYPE';
+FOR: 'FOR';
 MODELS: 'MODELS';
 NOT: 'NOT';
 OPTIONS: 'OPTIONS';
 OR: 'OR';
 REPLACE: 'REPLACE';
-RETURNS: 'RETURNS';
+RETURN: 'RETURN';
 SHOW: 'SHOW';
 STRUCT: 'STRUCT';
 TRUE: 'TRUE';
 USING: 'USING';
+LOCATION: 'LOCATION';
 
 EQ: '=' | '==';
 

@@ -28,7 +28,7 @@ def test_customized_flaovr_via_logging(
 
     spark.sql(
         f"""
-        CREATE MODEL {model_name} USING '{sklearn_lr_uri}';
+        CREATE MODEL {model_name} LOCATION '{sklearn_lr_uri}';
         """
     )
 
@@ -52,7 +52,7 @@ def test_specified_flavor_via_sql(
     model_name = "test_specified_flavor_via_sql"
     spark.sql(
         f"""
-        CREATE MODEL {model_name} FLAVOR sklearn USING '{sklearn_lr_uri}';
+        CREATE MODEL {model_name} USING sklearn LOCATION '{sklearn_lr_uri}';
         """
     )
     spark.sql("show models").show()
@@ -66,7 +66,7 @@ def test_specified_flavor_via_sql(
     model_name = "test_full_qualified_flavor_via_sql"
     spark.sql(
         f"""
-        CREATE MODEL {model_name} FLAVOR liga.sklearn USING '{sklearn_lr_uri}';
+        CREATE MODEL {model_name} USING liga.sklearn LOCATION '{sklearn_lr_uri}';
         """
     )
     spark.sql("show models").show()
@@ -81,9 +81,9 @@ def test_specified_flavor_via_sql(
     spark.sql(
         f"""
         CREATE MODEL {model_name}
-        FLAVOR liga.sklearn
-        MODEL_TYPE regressor
-        USING '{sklearn_lr_uri}';
+        USING liga.sklearn
+        FOR regressor
+        LOCATION '{sklearn_lr_uri}';
         """
     )
     spark.sql("show models").show()

@@ -35,8 +35,8 @@ trait Model {
   /** Model URI in the registry */
   val spec_uri: String
 
-  /** Flavor of the model */
-  val flavor: Option[String]
+  /** plugin of the model */
+  val plugin: Option[String]
 
   /** Model Options. */
   var options: Map[String, String] = Map.empty
@@ -75,7 +75,7 @@ class SparkUDFModel(
     val name: String,
     val spec_uri: String,
     val funcName: String,
-    val flavor: Option[String],
+    val plugin: Option[String],
     /** Temporary solution to address PandasUDF and UDT incompatibility */
     val preFuncName: Option[String] = None,
     val postFuncName: Option[String] = None
@@ -86,8 +86,8 @@ class SparkUDFModel(
     this(name, spec_uri, funcName, None)
   }
 
-  def this(name: String, spec_uri: String, funcName: String, flavor: String) = {
-    this(name, spec_uri, funcName, Some(flavor))
+  def this(name: String, spec_uri: String, funcName: String, plugin: String) = {
+    this(name, spec_uri, funcName, Some(plugin))
   }
 
   override def toString: String =

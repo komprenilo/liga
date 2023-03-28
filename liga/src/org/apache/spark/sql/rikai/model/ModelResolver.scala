@@ -153,7 +153,7 @@ object ModelResolver {
         spec.name.get,
         spec.uri.getOrElse(""),
         udfName,
-        flavor = spec.flavor,
+        plugin = spec.plugin,
         preFuncName = Some(preUdfName),
         postFuncName = Some(postUdfName)
       )
