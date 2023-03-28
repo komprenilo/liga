@@ -35,13 +35,13 @@ class ShowModelsCommandTest extends AnyFunSuite with SparkTestSession {
   test("show models") {
     spark
       .sql(
-        "CREATE MODEL model_foo USING 'test://model/foo'"
+        "CREATE MODEL model_foo LOCATION 'test://model/foo'"
       )
 
     val expected =
       Seq(("model_foo", "", "test://model/foo", "")).toDF(
         "name",
-        "flavor",
+        "plugin",
         "uri",
         "options"
       )
@@ -52,7 +52,7 @@ class ShowModelsCommandTest extends AnyFunSuite with SparkTestSession {
   test("show models with options") {
     spark
       .sql(
-        "CREATE MODEL model_options FLAVOR pytorch OPTIONS (foo='bar',num=1.2,flag=True) USING 'test://foo'"
+        "CREATE MODEL model_options USING pytorch LOCATION 'test://foo' OPTIONS (foo='bar',num=1.2,flag=True)"
       )
 
     val expected_options = Seq(
@@ -67,26 +67,26 @@ class ShowModelsCommandTest extends AnyFunSuite with SparkTestSession {
         "test://foo",
         Model.serializeOptions(expected_options)
       )
-    ).toDF("name", "flavor", "uri", "options")
+    ).toDF("name", "plugin", "uri", "options")
     assertEqual(spark.sql("SHOW MODELS"), expected)
   }
 
   test("show multiple models") {
     spark
       .sql(
-        "CREATE MODEL model_foo OPTIONS (foo='bar',num=1.2,flag=True) USING 'test://foo'"
+        "CREATE MODEL model_foo LOCATION 'test://foo' OPTIONS (foo='bar',num=1.2,flag=True)"
       )
     assert(spark.sql("SHOW MODELS").count() == 1)
 
     spark
       .sql(
-        "CREATE MODEL model_bar OPTIONS (foo='bar',num=1.2,flag=True) USING 'test://bar'"
+        "CREATE MODEL model_bar LOCATION 'test://bar' OPTIONS (foo='bar',num=1.2,flag=True)"
       )
     assert(spark.sql("SHOW MODELS").count() == 2)
 
     // same name
     assertThrows[ModelAlreadyExistException] {
-      spark.sql("CREATE MODEL model_foo USING 'test://foo2'")
+      spark.sql("CREATE MODEL model_foo LOCATION 'test://foo2'")
     }
     assert(spark.sql("SHOW MODELS").count() == 2)
 

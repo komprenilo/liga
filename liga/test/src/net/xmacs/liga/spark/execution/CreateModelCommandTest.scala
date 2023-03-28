@@ -25,7 +25,9 @@ class CreateModelCommandTest extends AnyFunSuite with SparkTestSession {
   test("create model from uri") {
 
     spark
-      .sql("CREATE MODEL model_created USING 'test://model/created/from/uri'")
+      .sql(
+        "CREATE MODEL model_created LOCATION 'test://model/created/from/uri'"
+      )
       .count()
     assert(Catalog.testing.modelExists("model_created"))
 
@@ -38,9 +40,9 @@ class CreateModelCommandTest extends AnyFunSuite with SparkTestSession {
   test("create model with options") {
     spark
       .sql(
-        "CREATE MODEL qualified_opt OPTIONS (" +
-          "rikai.foo.bar=1.23, foo='bar', num=-1.23, batch=10, flag=True) " +
-          "USING 'test://foo/options'"
+        "CREATE MODEL qualified_opt " +
+          "LOCATION 'test://foo/options' " +
+          "OPTIONS (rikai.foo.bar=1.23, foo='bar', num=-1.23, batch=10, flag=True)"
       )
       .count()
     val model = Catalog.testing.getModel("qualified_opt", spark).get
@@ -57,46 +59,46 @@ class CreateModelCommandTest extends AnyFunSuite with SparkTestSession {
 
   test("model already exist") {
     spark.sql(
-      "CREATE MODEL model_created USING 'test://model/created/from/uri'"
+      "CREATE MODEL model_created LOCATION 'test://model/created/from/uri'"
     )
     assertThrows[ModelAlreadyExistException] {
-      spark.sql("CREATE MODEL model_created USING 'test://model/other/uri'")
+      spark.sql("CREATE MODEL model_created LOCATION 'test://model/other/uri'")
     }
   }
 
   test("create model if not exists") {
     spark.sql(
-      "CREATE MODEL model_created USING 'test://model/created/from/uri'"
+      "CREATE MODEL model_created LOCATION 'test://model/created/from/uri'"
     )
     spark.sql(
       """
         |CREATE MODEL IF NOT EXISTS model_created
-        |USING 'test://model/created/from/uri'
+        |LOCATION 'test://model/created/from/uri'
         |""".stripMargin
     )
   }
 
   test("create or replace model") {
     spark.sql(
-      "CREATE OR REPLACE MODEL replace_model USING 'test://model/to_be_replaced'"
+      "CREATE OR REPLACE MODEL replace_model LOCATION 'test://model/to_be_replaced'"
     )
     val to_be_replaced = Catalog.testing.getModel("replace_model", spark).get
     assert(to_be_replaced.spec_uri == "test://model/to_be_replaced")
     spark.sql(
-      "CREATE OR REPLACE MODEL replace_model USING 'test://model/replaced'"
+      "CREATE OR REPLACE MODEL replace_model LOCATION 'test://model/replaced'"
     )
     val replaced = Catalog.testing.getModel("replace_model", spark).get
     assert(replaced.spec_uri == "test://model/replaced")
   }
 
-  test("model flavor") {
+  test("model plugin") {
     spark.sql(
       "CREATE MODEL tfmodel " +
-        "FLAVOR tensorflow " +
-        "USING 'test://model/tfmodel'"
+        "USING tensorflow " +
+        "LOCATION 'test://model/tfmodel'"
     )
     val model = Catalog.testing.getModel("tfmodel", spark).get
-    assert(model.flavor.isDefined)
-    assert(model.flavor.contains("tensorflow"))
+    assert(model.plugin.isDefined)
+    assert(model.plugin.contains("tensorflow"))
   }
 }
