@@ -39,6 +39,6 @@ python_distribution(
     ],
     provides=python_artifact(
         name="ligavision",
-        version="0.3.0.dev0",
+        version="0.3.0",
     ),
 )
