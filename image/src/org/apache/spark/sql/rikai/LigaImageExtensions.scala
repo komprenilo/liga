@@ -27,10 +27,11 @@ import org.apache.spark.sql.catalyst.expressions.{
   Literal
 }
 import org.apache.spark.sql.catalyst.plans.logical.LogicalPlan
-import org.apache.spark.sql.rikai.{ImageType, Image}
-import org.apache.spark.sql.rikai.expressions.{Area, IOU, Image, ToStruct}
 import org.apache.spark.sql.{SparkSession, SparkSessionExtensions}
 import org.apache.spark.sql.types.UDTRegistration
+import org.apache.spark.sql.rikai.{ImageType, Image}
+import org.apache.spark.sql.rikai.expressions.{Area, IOU, Image, ToStruct}
+import org.apache.spark.sql.rikai.RikaiUDTRegistration
 
 /** Rikai SparkSession extensions to enable Spark SQL ML.
   */

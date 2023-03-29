@@ -97,8 +97,9 @@ class LigaModule(majorVersion: String) extends CrossScalaModule with PublishModu
 
 object liga extends mill.Cross[LigaModule]("2.12", "2.13")
 
-
 class ImageModule(majorVersion: String) extends CrossScalaModule with PublishModule with ScalafmtModule {
+  def moduleDeps = Seq(liga())
+
   override def crossScalaVersion: String = majorVersion match {
     case "2.12" => "2.12.13"
     case "2.13" => "2.13.7"
@@ -118,10 +119,6 @@ class ImageModule(majorVersion: String) extends CrossScalaModule with PublishMod
     developers = Seq(
       Developer("da-tubi", "Darcy Shen", "https://github.com/da-tubi")
     )
-  )
-
-  override def ivyDeps = Agg(
-    ivy"net.xmacs.liga::liga-spark:0.2.2",
   )
 
   override def compileIvyDeps = Agg(
