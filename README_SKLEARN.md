@@ -2,9 +2,9 @@
 ## Live Notebooks
 Try the latest notebooks:
 ```
-# Please install JDK 8/11, SBT, Python 3.8/3.9 locally
-git clone https://github.com/liga-ai/liga.git
-cd liga && sbt clean assembly && bin/lab
+# Please install JDK 8/11, Python 3.8/3.9 locally
+git clone https://github.com/komprenilo/liga.git
+cd liga && bin/mill 'liga[2.12].assembly' && bin/lab
 ```
 
 Preview the notebooks on Github or Try the live notebook on Google Colab:
