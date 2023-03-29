@@ -30,3 +30,15 @@ python_distribution(
         version="0.3.0",
     ),
 )
+
+python_distribution(
+    name="ligavision",
+    dependencies=[
+        "python/ligavision:sources@resolve=ligavision",
+        "python/ligavision:ligavision-dsl",
+    ],
+    provides=python_artifact(
+        name="ligavision",
+        version="0.3.0.dev0",
+    ),
+)
