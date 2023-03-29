@@ -6,14 +6,14 @@ python_requirement(
 
 python_requirement(
     name="liga",
-    requirements=["liga==0.3.0.dev0"],
+    requirements=["liga==0.3.0.dev1"],
     resolve="sklearn",
 )
 
 python_requirement(
     name="liga-mlflow",
     requirements=[
-        "liga-mlflow==0.3.0.dev1",
+        "liga-mlflow==0.3.0.dev2",
     ],
     resolve="sklearn",
 )
