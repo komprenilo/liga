@@ -18,31 +18,29 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 100
-      - name: Get tags
-        run: git fetch --tags origin
       - name: Setup Scala
         uses: olafurpg/setup-scala@v10
         with:
           java-version: adopt@1.8
-      - name: cache SBT
-        uses: actions/cache@v2
+      - uses: jodersky/setup-mill@master
         with:
-          path: |
-            ~/.ivy2/cache
-            ~/.sbt
-          key: sbt-assembly-${{ hashFiles('**/build.sbt') }}
+          mill-version: 0.10.12
       - name: assembly
-        run: sbt assembly
+        run: mill 'liga[2.12].assembly'
+        env:
+          SPARK_VERSION: ${{ matrix.spark-version }}
+      - name: Rename out.jar to liga-sparkXYZ-assembly_2.12-version.jar
+        run: cp ${{ github.workspace }}/out/liga/2.12/assembly.dest/out.jar /tmp/liga-spark"${SPARK_VERSION//./}"-assembly_2.12-${{github.ref_name}}.jar
         env:
           SPARK_VERSION: ${{ matrix.spark-version }}
       - name: Upload assembly
         uses: actions/upload-artifact@v3
         if: ${{ !startsWith(github.ref, 'refs/tags/') }}
         with:
-          path: ${{ github.workspace }}/target/scala-2.12/liga-*.jar
+          path: /tmp/liga-spark"${SPARK_VERSION//./}"-assembly_2.12-${{github.ref_name}}.jar
       - name: Release assembly
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
           prerelease: true
-          files: ${{ github.workspace }}/target/scala-2.12/liga-*.jar
+          files: /tmp/liga-spark"${SPARK_VERSION//./}"-assembly_2.12-${{github.ref_name}}.jar
