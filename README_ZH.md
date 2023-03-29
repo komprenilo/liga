@@ -88,5 +88,9 @@ DROP MODEL model_name;
 ```
 > 注意：这种场景依赖于一个可持久化的模型目录（Model Catalog）。
 
+## 公开演讲
++ Live Video Stack公开课：《Rikai——分析并理解大规模视频内容的开源引擎》([Bilibili](https://www.bilibili.com/video/BV17b4y1n7gW/))
++ 《漫谈数据与AI的结合：Rikai核心设计》([幻灯片](https://www.slidestalk.com/rikai/RikaiCoreDesign2022)/[Bilibili](https://www.bilibili.com/video/BV1Aa411h7Zs))
+
 ## 历史
 理解机源于Rikai项目。Rikai的作者是[Chang She](https://github.com/changhiskhan)和[Lei Xu](https://github.com/eddyxu)，Rikai的第一个公开版本发布于2021年4月4日。在第四次Tubi黑客马拉松中，[Darcy Shen](https://github.com/da-tubi)和[Renkai Ge](https://github.com/Renkai)将Rikai项目中扩展Spark SQL实现调用机器学习模型的部分从Rikai项目[剥离并重构](https://github.com/komprenilo/liga/issues/13)。
