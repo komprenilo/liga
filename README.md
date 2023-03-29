@@ -50,7 +50,9 @@ FROM cocodataset
 CREATE [OR REPLACE] MODEL model_name
 [USING liga_plugin_name]
 [FOR model_type]
+[LOCATION "uri"]
 [OPTIONS (key1=value1,key2=value2,...)]
+[RETURN dataType]
 ```
 
 #### SQL：Administri modelon
