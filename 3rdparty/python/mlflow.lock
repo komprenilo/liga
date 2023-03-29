@@ -10,7 +10,7 @@
 //   ],
 //   "generated_with_requirements": [
 //     "SQLAlchemy<2.0.0",
-//     "liga==0.3.0.dev1",
+//     "liga<0.4.0,>=0.3.0",
 //     "mlflow<2.0.0,>=1.24.0"
 //   ],
 //   "manylinux": "manylinux2014",
@@ -768,13 +768,13 @@
           "artifacts": [
             {
               "algorithm": "sha256",
-              "hash": "8a488a2b845d842a1d417d5b01472f6536905c785f7593a542af7f3fd7d00221",
-              "url": "https://files.pythonhosted.org/packages/84/3c/76f0906690e818c68c1d4e46d356c0b62961d0959b436efc75ba173754a9/liga-0.3.0.dev1-py3-none-any.whl"
+              "hash": "d76d6739dd18f8e4f34ddc8ada77b298a44ee2ed9eecf14be35ed02227c7b4f2",
+              "url": "https://files.pythonhosted.org/packages/44/ab/0b4fea73ecb82424753732d8b58a5078ab962921fc4937fd3ef3fb105a2e/liga-0.3.0-py3-none-any.whl"
             },
             {
               "algorithm": "sha256",
-              "hash": "74544fe10751139c595c6bbee3634c1e4455be92f011584710eb5093a3a86ee8",
-              "url": "https://files.pythonhosted.org/packages/8b/6f/15e3a126bddb731c76958ec8d90227a87044e9c5ce2a2479f9752ced6a9a/liga-0.3.0.dev1.tar.gz"
+              "hash": "0b78e6cccb67f026133eb0aed4889a1f07e8d607fa34fc5299f80736b1b3e166",
+              "url": "https://files.pythonhosted.org/packages/80/03/dcda5d6f2e98123b7e031134011139a96a1026e29f3a6dcce63e1083ce1d/liga-0.3.0.tar.gz"
             }
           ],
           "project_name": "liga",
@@ -790,7 +790,7 @@
             "requests"
           ],
           "requires_python": "<3.10,>=3.8",
-          "version": "0.3.0.dev1"
+          "version": "0.3.0"
         },
         {
           "artifacts": [
@@ -2018,7 +2018,7 @@
   "prefer_older_binary": false,
   "requirements": [
     "SQLAlchemy<2.0.0",
-    "liga==0.3.0.dev1",
+    "liga<0.4.0,>=0.3.0",
     "mlflow<2.0.0,>=1.24.0"
   ],
   "requires_python": [
