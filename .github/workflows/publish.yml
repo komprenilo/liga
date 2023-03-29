@@ -30,9 +30,10 @@ jobs:
         env:
           SPARK_VERSION: ${{ matrix.spark-version }}
       - name: Rename out.jar to liga-sparkXYZ-assembly_2.12-version.jar
-        run: cp ${{ github.workspace }}/out/liga/2.12/assembly.dest/out.jar /tmp/liga-spark"${SPARK_VERSION//./}"-assembly_2.12-${{github.ref_name}}.jar
+        run: cp ${{ github.workspace }}/out/liga/2.12/assembly.dest/out.jar /tmp/liga-spark"${SPARK_VERSION//./}"-assembly_2.12-${REF_NAME//\//}.jar
         env:
           SPARK_VERSION: ${{ matrix.spark-version }}
+          REF_NAME: ${{ github.ref_name }}
       - name: Upload assembly
         uses: actions/upload-artifact@v3
         if: ${{ !startsWith(github.ref, 'refs/tags/') }}
