@@ -20,7 +20,7 @@ class LigaModule(majorVersion: String) extends CrossScalaModule with PublishModu
     }
   }
 
-  override def publishVersion = "0.2.3-SNAPSHOT"
+  override def publishVersion = "0.3.0.dev0"
 
   override def artifactId = s"liga-spark_${majorVersion}"
 
