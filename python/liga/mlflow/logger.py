@@ -48,7 +48,7 @@ class MlflowLogger:
         artifact_path: str,
         schema: Optional[str] = None,
         registered_model_name: Optional[str] = None,
-        customized_flavor: Optional[str] = None,
+        liga_plugin_name: Optional[str] = None,
         model_type: Optional[str] = None,
         labels: Optional[dict] = None,
         **kwargs: Any,
@@ -115,8 +115,8 @@ class MlflowLogger:
 
         tags = {
             CONF_MLFLOW_SPEC_VERSION: MlflowLogger._CURRENT_MODEL_SPEC_VERSION,
-            CONF_MLFLOW_MODEL_PLUGIN: customized_flavor
-            if customized_flavor
+            CONF_MLFLOW_MODEL_PLUGIN: liga_plugin_name
+            if liga_plugin_name
             else self.flavor,
             CONF_MLFLOW_MODEL_TYPE: model_type,
             CONF_MLFLOW_OUTPUT_SCHEMA: schema,
