@@ -106,7 +106,7 @@ class ImageModule(majorVersion: String) extends CrossScalaModule with PublishMod
     case _ => ???
   }
 
-  override def publishVersion = "0.2.0"
+  override def publishVersion = "0.3.0.dev0"
 
   override def artifactId = s"liga-image_${majorVersion}"
 

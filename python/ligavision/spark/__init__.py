@@ -27,7 +27,7 @@ def get_liga_vision_jar(
     vision_type: str, jar_type: str, scala_version: str
 ) -> str:
     name = f"liga-{vision_type}-assembly_{scala_version}"
-    url = "https://github.com/liga-ai/ligavision/releases/download"
+    url = "https://github.com/komprenilo/liga/releases/download"
     github_jar = f"{url}/ligavision_{version}/{name}-{version}.jar"
     if jar_type == "github":
         if "dev" in version:
@@ -44,7 +44,7 @@ def get_liga_vision_jar(
                 return local_jar_path
             else:
                 raise ValueError(
-                    "Please run `./mill 'image[2.12].assembly'` first"
+                    "Please run `bin/mill 'image[2.12].assembly'` first"
                 )
         else:
             logger.warning(
