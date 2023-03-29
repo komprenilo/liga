@@ -11,8 +11,8 @@
 //   "generated_with_requirements": [
 //     "SQLAlchemy<2.0.0",
 //     "jupyterlab",
-//     "liga-mlflow==0.3.0.dev2",
-//     "liga==0.3.0.dev1",
+//     "liga-mlflow<0.4.0,>=0.3.0",
+//     "liga<0.4.0,>=0.3.0",
 //     "matplotlib",
 //     "mlflow<2.0.0,>=1.24.0",
 //     "scikit-learn"
@@ -2416,13 +2416,13 @@
           "artifacts": [
             {
               "algorithm": "sha256",
-              "hash": "8a488a2b845d842a1d417d5b01472f6536905c785f7593a542af7f3fd7d00221",
-              "url": "https://files.pythonhosted.org/packages/84/3c/76f0906690e818c68c1d4e46d356c0b62961d0959b436efc75ba173754a9/liga-0.3.0.dev1-py3-none-any.whl"
+              "hash": "d76d6739dd18f8e4f34ddc8ada77b298a44ee2ed9eecf14be35ed02227c7b4f2",
+              "url": "https://files.pythonhosted.org/packages/44/ab/0b4fea73ecb82424753732d8b58a5078ab962921fc4937fd3ef3fb105a2e/liga-0.3.0-py3-none-any.whl"
             },
             {
               "algorithm": "sha256",
-              "hash": "74544fe10751139c595c6bbee3634c1e4455be92f011584710eb5093a3a86ee8",
-              "url": "https://files.pythonhosted.org/packages/8b/6f/15e3a126bddb731c76958ec8d90227a87044e9c5ce2a2479f9752ced6a9a/liga-0.3.0.dev1.tar.gz"
+              "hash": "0b78e6cccb67f026133eb0aed4889a1f07e8d607fa34fc5299f80736b1b3e166",
+              "url": "https://files.pythonhosted.org/packages/80/03/dcda5d6f2e98123b7e031134011139a96a1026e29f3a6dcce63e1083ce1d/liga-0.3.0.tar.gz"
             }
           ],
           "project_name": "liga",
@@ -2438,29 +2438,29 @@
             "requests"
           ],
           "requires_python": "<3.10,>=3.8",
-          "version": "0.3.0.dev1"
+          "version": "0.3.0"
         },
         {
           "artifacts": [
             {
               "algorithm": "sha256",
-              "hash": "881b6198b171037fd60768cf69ea46270e86c40b554304f481f64f241b2aa53d",
-              "url": "https://files.pythonhosted.org/packages/30/69/0825a290faad043915d2c62f141bd365f252996e8d48cfcd1a5fda716a06/liga_mlflow-0.3.0.dev2-py3-none-any.whl"
+              "hash": "66478f05b333c88c921863df312bc2435e46f46af661b89c31ee5a1d0eb8d1ef",
+              "url": "https://files.pythonhosted.org/packages/c5/c7/ed877172f2f0f838f85d096629353de2768ab6bbed79f8fe82fad8473ec8/liga_mlflow-0.3.0-py3-none-any.whl"
             },
             {
               "algorithm": "sha256",
-              "hash": "7003a3e11b763e6c94b25c58288173d39896a24aec225c2ce524457e842f94f0",
-              "url": "https://files.pythonhosted.org/packages/1c/ad/975a9cbc42fc9443f2fba43070c3de16c38dd1438a8fc225cd8f244fece4/liga-mlflow-0.3.0.dev2.tar.gz"
+              "hash": "d24d0b234e9ffb3f90ba7eb6736e90dc448e9f84b994e69193f92d7bc355b92e",
+              "url": "https://files.pythonhosted.org/packages/af/8f/3a8446c74047a04ec21b5a1d30055d30f38499d9bbbbd56d442fcfca4345/liga-mlflow-0.3.0.tar.gz"
             }
           ],
           "project_name": "liga-mlflow",
           "requires_dists": [
             "SQLAlchemy<2.0.0",
-            "liga==0.3.0.dev1",
+            "liga<0.4.0,>=0.3.0",
             "mlflow<2.0.0,>=1.24.0"
           ],
           "requires_python": "<3.10,>=3.8",
-          "version": "0.3.0.dev2"
+          "version": "0.3.0"
         },
         {
           "artifacts": [
@@ -5396,8 +5396,8 @@
   "requirements": [
     "SQLAlchemy<2.0.0",
     "jupyterlab",
-    "liga-mlflow==0.3.0.dev2",
-    "liga==0.3.0.dev1",
+    "liga-mlflow<0.4.0,>=0.3.0",
+    "liga<0.4.0,>=0.3.0",
     "matplotlib",
     "mlflow<2.0.0,>=1.24.0",
     "scikit-learn"
