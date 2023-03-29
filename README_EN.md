@@ -49,10 +49,11 @@ A Model instance is created by specifying the model flavor, type and options on 
 ``` sql
 -- Create model
 CREATE [OR REPLACE] MODEL model_name
-[FLAVOR flavor]
-[MODEL_TYPE model_type]
+[USING liga_plugin_name]
+[FOR model_type]
+[LOCATION "uri"]
 [OPTIONS (key1=value1,key2=value2,...)]
-USING "uri";
+[RETURN dataType]
 ```
 
 + `flavor`: eg. `liga.sklearn` => `from liga.sklearn.codegen import codegen`
