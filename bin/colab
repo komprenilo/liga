@@ -1,4 +1,4 @@
 #!/bin/bash
 
-./pants run notebooks/lab.py:sklearn  -- --notebook-dir notebooks
+pants run notebooks/lab.py:sklearn  -- --notebook-dir notebooks
 

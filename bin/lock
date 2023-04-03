@@ -2,5 +2,5 @@
 
 set -x
 
-./pants generate-lockfiles --resolve=$1
+pants generate-lockfiles --resolve=$1
 

@@ -1,5 +1,5 @@
 #!/bin/bash
 
-./pants update-build-files
+pants update-build-files
 
-./pants fmt ::
+pants fmt ::

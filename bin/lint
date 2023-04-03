@@ -1,5 +1,5 @@
 #!/bin/bash
 
-./pants lint python/liga:sources
-./pants lint python/ligavision:sources@resolve=ligavision_test
+pants lint python/liga:sources
+pants lint python/ligavision:sources@resolve=ligavision_test
 

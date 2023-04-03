@@ -1,2 +1,2 @@
 #!/bin/bash
-ROOTDIR=`pwd` ./pants test  python/tests:sklearn
+ROOTDIR=`pwd` pants test  python/tests:sklearn
