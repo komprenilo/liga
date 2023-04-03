@@ -1,1 +1,1 @@
-ROOTDIR=`pwd` ./pants test  python/ligavision/spark:tests
+ROOTDIR=`pwd` pants test  python/ligavision/spark:tests
