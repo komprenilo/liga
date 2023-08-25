@@ -106,7 +106,7 @@ class ImageModule(majorVersion: String) extends CrossScalaModule with PublishMod
     case _ => ???
   }
 
-  override def publishVersion = "0.3.0"
+  override def publishVersion = "0.3.1"
 
   override def artifactId = s"liga-image_${majorVersion}"
 
@@ -122,14 +122,14 @@ class ImageModule(majorVersion: String) extends CrossScalaModule with PublishMod
   )
 
   override def compileIvyDeps = Agg(
-    ivy"org.apache.spark::spark-sql:3.2.1",
+    ivy"org.apache.spark::spark-sql:3.3.1",
   )
 
   def assemblyRules = Assembly.defaultRules ++ Seq(ExcludePattern("scala/.*"))
 
   object test extends Tests with TestModule.ScalaTest {
     override def ivyDeps = Agg(
-      ivy"org.apache.spark::spark-sql:3.2.1",
+      ivy"org.apache.spark::spark-sql:3.3.1",
       ivy"org.scalatest::scalatest:3.0.8",
       ivy"ch.qos.logback:logback-classic:1.2.3",
     )
