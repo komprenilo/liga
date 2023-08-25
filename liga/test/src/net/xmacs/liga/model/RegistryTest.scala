@@ -23,7 +23,7 @@ import org.scalatest.funsuite.AnyFunSuite
 class RegistryTest extends AnyFunSuite with BeforeAndAfter {
 
   before {
-    Register.reset
+    Registry.reset
     Registry.registerAll(
       Map(
         Registry.REGISTRY_IMPL_PREFIX + "test.impl" -> "net.xmacs.rikai.sql.model.testing.TestRegistry",
