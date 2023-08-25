@@ -11,6 +11,7 @@ on:
       - 'image/**'
       - 'python/ligavision/**'
       - '.github/workflows/test_ligavision.yml'
+      - 'pants.toml'
 
 jobs:
   build:

@@ -11,6 +11,7 @@ on:
       - 'python/liga/**'
       - 'liga/**'
       - '.github/workflows/test_liga.yml'
+      - 'pants.toml'
 
 jobs:
   build:
