@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        spark-version: [3.2.1]
+        spark-version: [3.3.1]
 
     steps:
       - uses: actions/checkout@v3
