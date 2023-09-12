@@ -231,24 +231,24 @@
           "artifacts": [
             {
               "algorithm": "sha256",
-              "hash": "6b0ac9e93fb0335014d382b8fa9b3afa7df546984258005da0b9e7095b3deb1c",
-              "url": "https://files.pythonhosted.org/packages/f3/e1/64679d9d0759db5b182222c81ff322c2fe2c31e156a59afd6e9208c960e5/asttokens-2.2.1-py2.py3-none-any.whl"
+              "hash": "cf8fc9e61a86461aa9fb161a14a0841a03c405fa829ac6b202670b3495d2ce69",
+              "url": "https://files.pythonhosted.org/packages/4f/25/adda9979586d9606300415c89ad0e4c5b53d72b92d2747a3c634701a6a02/asttokens-2.4.0-py2.py3-none-any.whl"
             },
             {
               "algorithm": "sha256",
-              "hash": "4622110b2a6f30b77e1473affaa97e711bc2f07d3f10848420ff1898edbe94f3",
-              "url": "https://files.pythonhosted.org/packages/c8/e3/b0b4f32162621126fbdaba636c152c6b6baec486c99f48686e66343d638f/asttokens-2.2.1.tar.gz"
+              "hash": "2e0171b991b2c959acc6c49318049236844a5da1d65ba2672c4880c1c894834e",
+              "url": "https://files.pythonhosted.org/packages/ed/e0/7e5af07a090b9ef4f88e29b6edb8db8ca3366a0d7736ae9c3a6522fae140/asttokens-2.4.0.tar.gz"
             }
           ],
           "project_name": "asttokens",
           "requires_dists": [
             "astroid; extra == \"test\"",
             "pytest; extra == \"test\"",
-            "six",
+            "six>=1.12.0",
             "typing; python_version < \"3.5\""
           ],
           "requires_python": null,
-          "version": "2.2.1"
+          "version": "2.4.0"
         },
         {
           "artifacts": [
@@ -683,13 +683,13 @@
           "artifacts": [
             {
               "algorithm": "sha256",
-              "hash": "1cbad1faef3e391fba6dc005ae9b5bdcbf43005c9167ce78c915549c352c869a",
-              "url": "https://files.pythonhosted.org/packages/e3/bd/4c0a4619494188a9db5d77e2100ab7d544a42e76b2447869d8e124e981d8/fsspec-2023.6.0-py3-none-any.whl"
+              "hash": "d55b9ab2a4c1f2b759888ae9f93e40c2aa72c0808132e87e282b549f9e6c4254",
+              "url": "https://files.pythonhosted.org/packages/3a/9f/b40e8e5be886143379000af5fc0c675352d59e82fd869d24bf784161dc77/fsspec-2023.9.0-py3-none-any.whl"
             },
             {
               "algorithm": "sha256",
-              "hash": "d0b2f935446169753e7a5c5c55681c54ea91996cc67be93c39a154fb3a2742af",
-              "url": "https://files.pythonhosted.org/packages/14/e4/33a5c4635cff37ef6eb66608c675ae678b48baa6e73b331536cf2cbf18a1/fsspec-2023.6.0.tar.gz"
+              "hash": "4dbf0fefee035b7c6d3bbbe6bc99b2f201f40d4dca95b67c2b719be77bcd917f",
+              "url": "https://files.pythonhosted.org/packages/1d/0d/fcbbc5b104a745982118283f07c427a355bf76b8b595005f6b1b9add6b9f/fsspec-2023.9.0.tar.gz"
             }
           ],
           "project_name": "fsspec",
@@ -740,7 +740,7 @@
             "tqdm; extra == \"tqdm\""
           ],
           "requires_python": ">=3.8",
-          "version": "2023.6.0"
+          "version": "2023.9.0"
         },
         {
           "artifacts": [
